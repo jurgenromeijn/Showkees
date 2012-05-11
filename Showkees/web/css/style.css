@@ -1,0 +1,135 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    font-family: verdana, sans-serif;
+    min-height: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/**
+ * CSS for the loginpage
+ */
+#loginPage #logoContainer
+{
+    position: absolute;
+    top: 30px;
+    bottom: 280px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+}
+
+#loginPage #logoContainer #logo
+{
+    height: 100%;
+}
+ 
+#loginPage div#loginContainer
+{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 240px;
+    background: #8fbf4f;
+}
+
+#loginPage #loginForm
+{
+    width: 960px;
+    margin: auto;
+    position: relative;
+    height: 100%;
+}
+
+#loginPage #loginForm label
+{
+    display: none;
+}
+
+#loginPage fieldset
+{
+    border: 0px solid #000;
+}
+
+#loginPage fieldset#fields
+{
+    position: absolute;
+    right: 450px;
+    margin: 50px 20px 0 0;
+    width: 300px;
+}
+
+#loginPage fieldset#fields input
+{
+    display: block;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    border: 0px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    -moz-box-shadow: 3px 3px #243014;
+    -webkit-box-shadow: 3px 3px #243014;
+    box-shadow: 3px 3px #243014;
+    color: #86c359;
+    font-size: 1.5em;
+}
+
+#loginPage fieldset#button
+{
+    position: absolute;
+    left: 550px;
+    top: 80px;
+}
+
+#loginPage fieldset#button .button
+{
+    height: 50px;
+    margin-bottom: 20px;
+    border: 0px solid #000;
+    border-radius: 25px;
+    padding: 0px 30px;
+    -moz-box-shadow: 3px 3px #243014;
+    -webkit-box-shadow: 3px 3px #243014;
+    box-shadow: 3px 3px #243014;
+    color: #857d4b;
+    cursor: pointer;
+    font-size: 1.5em;    
+}
+
+#loginPage #loginForm #toolTip
+{
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    color: #fff;
+    background-color: #405624;
+    padding: 10px;
+    width: 350px;
+    line-height: 1.2em;
+    border-radius: 0px 10px 10px 10px;
+}
+
+#loginPage #loginForm #toolTip strong
+{
+    color: #b4693b;
+    font-weight: bold;
+}
+
+#loginPage #loginForm #toolTip .icon
+{
+    position: absolute;
+    top: -20px;
+    right: -20px;
+}

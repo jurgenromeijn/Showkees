@@ -1,0 +1,3 @@
+MooiUserBundle_homepage:
+    pattern:  /
+    defaults: { _controller: MooiUserBundle:User:login }
