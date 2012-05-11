@@ -34,8 +34,8 @@
     <parameter key="mailer_host">localhost</parameter>
     <parameter key="mailer_user"></parameter>
     <parameter key="mailer_password"></parameter>
-    <parameter key="locale">en</parameter>
-    <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
+    <parameter key="locale">nl</parameter>
+    <parameter key="secret">7ty56fgtgf4rdewsx3efc4rt5u7yhi</parameter>
     <parameter key="router_listener.class">Symfony\Bundle\FrameworkBundle\EventListener\RouterListener</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
@@ -53,13 +53,13 @@
     <parameter key="translation.loader.xliff.class">Symfony\Component\Translation\Loader\XliffFileLoader</parameter>
     <parameter key="debug.event_dispatcher.class">Symfony\Bundle\FrameworkBundle\Debug\TraceableEventDispatcher</parameter>
     <parameter key="debug.container.dump">E:\School\Showkees\Showkees\app/cache/dev/appDevDebugProjectContainer.xml</parameter>
-    <parameter key="kernel.secret">ThisTokenIsNotSoSecretChangeIt</parameter>
+    <parameter key="kernel.secret">7ty56fgtgf4rdewsx3efc4rt5u7yhi</parameter>
     <parameter key="kernel.trust_proxy_headers">false</parameter>
     <parameter key="session.class">Symfony\Component\HttpFoundation\Session</parameter>
     <parameter key="session.storage.native.class">Symfony\Component\HttpFoundation\SessionStorage\NativeSessionStorage</parameter>
     <parameter key="session.storage.filesystem.class">Symfony\Component\HttpFoundation\SessionStorage\FilesystemSessionStorage</parameter>
     <parameter key="session_listener.class">Symfony\Bundle\FrameworkBundle\EventListener\SessionListener</parameter>
-    <parameter key="session.default_locale">en</parameter>
+    <parameter key="session.default_locale">nl</parameter>
     <parameter key="session.storage.options" type="collection"/>
     <parameter key="form.extension.class">Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension</parameter>
     <parameter key="form.factory.class">Symfony\Component\Form\FormFactory</parameter>
@@ -700,7 +700,7 @@
     </service>
     <service id="session" class="Symfony\Component\HttpFoundation\Session">
       <argument type="service" id="session.storage"/>
-      <argument>en</argument>
+      <argument>nl</argument>
     </service>
     <service id="session_listener" class="Symfony\Bundle\FrameworkBundle\EventListener\SessionListener">
       <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="128"/>
@@ -851,7 +851,7 @@
     </service>
     <service id="form.csrf_provider" class="Symfony\Component\Form\Extension\Csrf\CsrfProvider\SessionCsrfProvider">
       <argument type="service" id="session"/>
-      <argument>ThisTokenIsNotSoSecretChangeIt</argument>
+      <argument>7ty56fgtgf4rdewsx3efc4rt5u7yhi</argument>
     </service>
     <service id="form.type.csrf" class="Symfony\Component\Form\Extension\Csrf\Type\CsrfType">
       <tag name="form.type" alias="csrf"/>
