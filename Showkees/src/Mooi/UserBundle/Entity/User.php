@@ -2,67 +2,20 @@
 
 namespace Mooi\UserBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Mooi\UserBundle\Entity\User
- *
- * @ORM\Table(name="users")
- * @ORM\Entity(repositoryClass="Mooi\UserBundle\Entity\UserRepository")
- */
+
+
 class User
 {
     
-    /**
-     * @var integer $id
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     private $id;
-
-     /**
-     * @ORM\ManyToOne(targetEntity="Mooi\UserBundle\Entity\Role", inversedBy="users")
-     * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
-     */
     private $role;   
-    
-    /**
-     * @var string $first_name
-     *
-     * @ORM\Column(name="first_name", type="string", length=60)
-     */
     private $first_name;
-
-    /**
-     * @var string $last_name
-     *
-     * @ORM\Column(name="last_name", type="string", length=60)
-     */
     private $last_name;
-
-    /**
-     * @var string $preposition
-     *
-     * @ORM\Column(name="preposition", type="string", length=20)
-     */
     private $preposition;
-
-    /**
-     * @var string $email
-     *
-     * @ORM\Column(name="email", type="string", length=150)
-     */
     private $email;
-
-    /**
-     * @var string $password
-     *
-     * @ORM\Column(name="password", type="string", length=60)
-     */
     private $password;
-
+   
     /**
      * Get id
      *
@@ -74,25 +27,25 @@ class User
     }
 
     /**
-     * Set role
+     * Set name
      *
-     * @param Mooi\UserBundle\Entity\Role $role
+     * @param string $name
      */
-    public function setRole($role)
+    public function setName($name)
     {
-        $this->role = $role;
+        $this->name = $name;
     }
 
     /**
-     * Get role
+     * Get name
      *
-     * @return Mooi\UserBundle\Entity\Role 
+     * @return string 
      */
-    public function getRole()
+    public function getName()
     {
-        return $this->role;
+        return $this->name;
     }
-    
+
     /**
      * Set first_name
      *
@@ -192,5 +145,24 @@ class User
     {
         return $this->password;
     }
-    
+
+    /**
+     * Set role
+     *
+     * @param Mooi\UserBundle\Entity\Role $role
+     */
+    public function setRole(\Mooi\UserBundle\Entity\Role $role)
+    {
+        $this->role = $role;
+    }
+
+    /**
+     * Get role
+     *
+     * @return Mooi\UserBundle\Entity\Role 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
 }

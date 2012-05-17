@@ -2,43 +2,22 @@
 
 namespace Mooi\UserBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * Mooi\UserBundle\Entity\Role
- *
- * @ORM\Table(name="roles")
- * @ORM\Entity
- */
+
+
 class Role
 {
-    /**
-     * @var integer $id
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @var string $name
-     *
-     * @ORM\Column(name="name", type="string", length=60)
-     */
-    private $name;
     
+    private $id;
+    private $name;
     /**
-     * @ORM\OneToMany(targetEntity="Mooi\UserBundle\Entity\User", mappedBy="role")
+     * @var Mooi\UserBundle\Entity\User
      */
     private $users;
 
     public function __construct()
     {
-	
-	$this->users = new ArrayCollection();
-	
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -72,23 +51,22 @@ class Role
     }
 
     /**
-     * Set users
+     * Add users
      *
-     * @param ArrayCollection $users
+     * @param Mooi\UserBundle\Entity\User $users
      */
-    public function setUsers($users)
+    public function addUser(\Mooi\UserBundle\Entity\User $users)
     {
-        $this->users = $users;
+        $this->users[] = $users;
     }
 
     /**
      * Get users
      *
-     * @return ArrayCollection 
+     * @return Doctrine\Common\Collections\Collection 
      */
     public function getUsers()
     {
         return $this->users;
     }
-    
 }
