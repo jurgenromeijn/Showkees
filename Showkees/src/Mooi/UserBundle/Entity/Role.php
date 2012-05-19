@@ -51,16 +51,6 @@ class Role
     }
 
     /**
-     * Add users
-     *
-     * @param Mooi\UserBundle\Entity\User $users
-     */
-    public function addUser(\Mooi\UserBundle\Entity\User $users)
-    {
-        $this->users[] = $users;
-    }
-
-    /**
      * Get users
      *
      * @return Doctrine\Common\Collections\Collection 
@@ -68,5 +58,15 @@ class Role
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add users
+     *
+     * @param Mooi\UserBundle\Entity\User $users
+     */
+    public function addUser(\Mooi\UserBundle\Entity\User $user)
+    {
+        $this->users[] = $users;
     }
 }

@@ -2,9 +2,6 @@
 
 namespace Mooi\UserBundle\Entity;
 
-
-
-
 class User
 {
     

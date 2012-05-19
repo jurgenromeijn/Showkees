@@ -1,6 +1,6 @@
 Mooi\UserBundle\Entity\Role:
     type: entity
-    table: role
+    table: roles
     id:
         id:
             type: integer
