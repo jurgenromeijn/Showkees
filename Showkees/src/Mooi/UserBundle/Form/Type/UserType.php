@@ -13,13 +13,17 @@ class UserType extends AbstractType
         
         $builder->add('first_name', 'text', array('label' => 'Voornaam'));
         $builder->add('preposition', 'text', array(
-            'label' => 'Tussenvoegsel', 
+            'label'    => 'Tussenvoegsel', 
             'required' => false
         ));
         $builder->add('last_name', 'text', array('label' => 'Achternaam'));
         $builder->add('role', null, array('label' => 'Account soort'));
-        $builder->add('email', 'email', array('label' => 'Emailadress'));
+        $builder->add('email', 'email', array(
+            'label'    => 'Emailadress', 
+            'required' => false)
+        );
         $builder->add('password', 'repeated', array (
+            'required'        => false,
             'type'            => 'password',
             'first_name'      => 'Wachtwoord',
             'second_name'     => 'Bevestig wachtwoord',

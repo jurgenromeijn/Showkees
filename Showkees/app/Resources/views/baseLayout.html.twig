@@ -1,8 +1,11 @@
+{% form_theme form '::baseForm.html.twig' %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <title>{% block title %}Showkees{% endblock %}</title>
+        <link rel="apple-touch-icon" href="{{ asset('images/touch-icon.png') }}"/>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
         {% endblock %}

@@ -75,15 +75,12 @@ body
  #contentWrapper form>div>div
  {
     border-bottom: 1px #ddd dotted;
-    text-align: right;
     padding: 10px 0;
  }
  
 #contentWrapper form>div>div label
 {
     width: 200px;
-    float: left;
-    text-align: left;
     padding-top: 15px;
 }
 
@@ -94,6 +91,7 @@ body
     border: 0px solid #000;
     border-radius: 25px;
     padding: 0px 30px;
+    float: right;
     -moz-box-shadow: 3px 3px #243014;
     -webkit-box-shadow: 3px 3px #243014;
     box-shadow: 3px 3px #243014;
@@ -124,6 +122,16 @@ body
     background-color: #8fbf4f;
 }
 
+#contentWrapper form ul.errors
+{
+    color: #ff0000;
+    margin-left: 20px;
+}
+
+#contentWrapper form>div>ul.errors
+{
+    margin-bottom: 1em;
+}
 
 /**
  * Footer
@@ -145,3 +153,11 @@ body
      margin: 0px auto;
      padding: 10px;
 }
+
+/**
+ * Clearfix to reset floats
+ */
+ .clearfix
+ {
+     clear: both;
+ }
