@@ -3,7 +3,7 @@ Mooi\UserBundle\Entity\User:
       - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: {fields: email, message: "Er is al een account met dit emailadress"}
   getters: 
     Username:
-      - NotBlank: {message: "Vul een emailadress of studentnummer in."}
+      - NotBlank: {message: "Vul een emailadres of studentnummer in."}
       - MinLength: {limit: 3, message: "Emailadress of studentnummer moet langer zijn dan 2 tekens"}
   properties:
     first_name:
@@ -15,8 +15,8 @@ Mooi\UserBundle\Entity\User:
     role:
       - NotBlank: {message: "Selecteer een rol."}
     email:
-      - NotBlank: {message: "Vul een emailadress in."}
-      - Email: {message: "Dit emailadress is niet geldig.", checkMX: true}
+      - NotBlank: {message: "Vul een emailadres in."}
+      - Email: {message: "Dit emailadres is niet geldig.", checkMX: true}
     password:
       - NotBlank: {message: "Vul een wachtwoord in.", groups: [registration]}
       - MinLength: {limit: 8, message: "Wachtwoord moet 8 tekens of langer zijn", groups: [registration]}

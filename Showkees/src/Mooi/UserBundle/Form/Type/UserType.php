@@ -19,11 +19,11 @@ class UserType extends AbstractType
         $builder->add('last_name', 'text', array('label' => 'Achternaam'));
         $builder->add('role', null, array('label' => 'Account soort'));
         $builder->add('email', 'email', array(
-            'label'    => 'Emailadress', 
-            'required' => false)
+            'label'    => 'Emailadres', 
+            'required' => true)
         );
         $builder->add('password', 'repeated', array (
-            'required'        => false,
+            'required'        => true,
             'type'            => 'password',
             'first_name'      => 'Wachtwoord',
             'second_name'     => 'Bevestig wachtwoord',
