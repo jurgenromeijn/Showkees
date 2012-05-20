@@ -1,5 +1,91 @@
+/**
+ * Make sure the html and body are at least the size of the browser window.
+ */
+html
+{
+    min-height: 100%;
+    position: relative;
+}
+
+body
+{
+    font-family: verdana, sans-serif;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-width: 960px;
+}
+
 *
 {
     padding: 0;
     margin: 0;
+}
+
+/**
+ * Header
+ */
+#headerWrapper
+{
+    background-color: #8fbf4f;
+}
+
+#headerWrapper header
+{
+    width: 940px;
+    margin: 0px auto;
+    padding: 10px;
+    position: relative;
+}
+
+#headerWrapper header h2
+{
+    position: absolute;
+    top: 2em;
+    left: 300px;
+    color: #fff;
+    font-size: 2em;
+}
+
+#headerWrapper header h1
+{
+    position: absolute;
+    top: 10px;
+    left: 230px;
+    font-size: 3em;
+}
+
+/**
+ * Content
+ */
+#contentWrapper
+{
+     width: 940px;
+     margin: 10px auto;
+     padding: 10px 10px 140px;
+}
+
+#contentWrapper *
+{
+    margin: 1em 0;
+}
+
+/**
+ * Footer
+ */
+#footerWrapper
+{
+    background: #eee;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 120px;
+}
+
+#footerWrapper footer
+{
+     height: 100px;
+     width: 940px;
+     margin: 0px auto;
+     padding: 10px;
 }

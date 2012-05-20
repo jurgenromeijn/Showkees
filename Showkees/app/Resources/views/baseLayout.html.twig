@@ -13,6 +13,28 @@
     </head>
     <body>
         {% block body %}
+            <div id="headerWrapper">
+                <header>
+                    <img src="{{ asset('images/logoRegular.png') }}" alt="Showkees" />
+                    <h2>van</h2>
+                    <h1 class="clearfix">Naam</h1>
+                </header>
+            </div>
+            <div id="contentWrapper">
+                {% block content %}
+                    <h1>Kop</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis orci mauris. Suspendisse potenti. In hac habitasse platea dictumst. Nam sit amet posuere augue. Pellentesque ligula turpis, viverra ut volutpat vitae, commodo tempor felis. Maecenas sodales aliquet velit sit amet eleifend. Nam vehicula porta augue eget imperdiet. Cras at dui augue, id commodo urna. Aliquam consectetur, justo at aliquam commodo, erat sem posuere dolor, et hendrerit sapien turpis eget leo. Nulla facilisi. Vestibulum semper vestibulum pharetra. Pellentesque sapien nisi, varius vel egestas non, vestibulum nec nisi. Sed in mi at leo ultricies eleifend eget ac felis. Duis luctus rutrum nisl porttitor sollicitudin.</p>
+                    <p>Cras varius egestas eleifend. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas semper sagittis ante vel tincidunt. Maecenas fringilla turpis nec neque lobortis fringilla vehicula sapien pellentesque. Ut ultricies risus sollicitudin arcu malesuada sagittis. Maecenas viverra accumsan enim, a adipiscing enim varius in. Phasellus lobortis elit aliquet mi mollis in luctus libero vulputate. Nunc leo orci, dictum eu consectetur at, rutrum eu nunc. Suspendisse vitae pulvinar risus. Aliquam sodales ultrices lorem ut interdum.</p>
+                    <p>Suspendisse bibendum, tortor lobortis rutrum sagittis, turpis mi rhoncus nisl, at faucibus tortor augue sit amet lorem. Suspendisse potenti. Vivamus feugiat consequat felis ut eleifend. In hac habitasse platea dictumst. Donec quis enim lorem, vitae congue justo. Proin luctus bibendum augue, tincidunt varius erat vestibulum vitae. Fusce molestie, turpis et interdum convallis, odio tellus facilisis sapien, vitae laoreet justo odio eget orci. Suspendisse pretium magna in massa euismod iaculis id eget velit. Aliquam vel velit sem. Aenean vehicula dictum feugiat. Fusce non sem vel urna feugiat tempor vel nec velit.</p>
+                    <p>Sed augue risus, bibendum a semper eget, facilisis eu velit. In hac habitasse platea dictumst. Vestibulum et turpis volutpat turpis ornare imperdiet. Aliquam in sem vel augue eleifend bibendum et nec nisl. Aenean augue velit, pellentesque id aliquam eget, blandit ac sem. Aliquam nec libero sem, sit amet interdum augue. Phasellus varius tellus sit amet leo hendrerit porttitor. Fusce eu nulla nec purus aliquet congue sed nec felis. Proin posuere, lorem at convallis pretium, diam turpis lobortis dolor, et venenatis mi nulla id mi. Nulla tempus, dolor vitae mollis semper, turpis ante feugiat metus, vitae sollicitudin nibh leo eget quam. Donec in ipsum urna. Aenean in nisl in urna varius scelerisque ac ut lorem. Fusce quis tortor a risus dapibus faucibus. Proin augue velit, elementum aliquam dictum non, consectetur vel lacus. Maecenas tempus fermentum odio.</p>
+                    <p>Etiam eu tristique lacus. Fusce vitae suscipit dolor. Nam enim arcu, adipiscing auctor mattis vel, sodales in metus. Aliquam scelerisque euismod lorem, in iaculis nunc aliquam consequat. Quisque metus nulla, blandit ac pulvinar quis, tristique in risus. Quisque egestas tincidunt ante, nec congue libero tempus in. Phasellus vel ipsum in velit elementum consequat ut quis tellus. Proin sem dui, auctor feugiat dignissim sit amet, rhoncus sed lectus. Aliquam leo libero, elementum ornare dignissim eu, gravida id mauris. Sed egestas, massa elementum ultricies laoreet, risus velit varius magna, non sollicitudin libero purus id nisi. In elit lorem, lacinia eget condimentum fermentum, suscipit ut urna. In hac habitasse platea dictumst. Vivamus iaculis nisl sit amet purus egestas ac facilisis turpis auctor. Nunc nunc erat, congue sed imperdiet vitae, malesuada vitae est. Nunc mollis eros sed massa mattis ut ultrices odio faucibus.</p>
+                {% endblock %}
+            </div>
+            <div id="footerWrapper">
+                <footer>
+                    <p>Lijst met copyrights en weet ik het allemaal niet</p>
+                </footer>
+            </div>
         {% endblock %}
     </body>
 </html>

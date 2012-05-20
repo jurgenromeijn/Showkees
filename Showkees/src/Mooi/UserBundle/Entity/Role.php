@@ -2,17 +2,12 @@
 
 namespace Mooi\UserBundle\Entity;
 
-
-
-
 class Role
 {
     
     private $id;
     private $name;
-    /**
-     * @var Mooi\UserBundle\Entity\User
-     */
+    private $internal_name;
     private $users;
 
     public function __construct()
@@ -67,6 +62,27 @@ class Role
      */
     public function addUser(\Mooi\UserBundle\Entity\User $user)
     {
-        $this->users[] = $users;
+        $this->users[] = $user;
     }
+
+    /**
+     * Set internal_name
+     *
+     * @param string $internalName
+     */
+    public function setInternalName($internalName)
+    {
+        $this->internal_name = $internalName;
+    }
+
+    /**
+     * Get internal_name
+     *
+     * @return string 
+     */
+    public function getInternalName()
+    {
+        return $this->internal_name;
+    }
+    
 }

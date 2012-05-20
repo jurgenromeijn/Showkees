@@ -2,7 +2,9 @@
 
 namespace Mooi\UserBundle\Entity;
 
-class User
+use Symfony\Component\Security\Core\User\UserInterface;
+
+class User implements UserInterface
 {
     
     private $id;
@@ -11,8 +13,16 @@ class User
     private $last_name;
     private $preposition;
     private $email;
+    private $salt;
     private $password;
-   
+    private $is_active;
+    
+    public function __construct()
+    {
+        $this->is_active = true;
+        $this->salt = md5(uniqid(null, true));
+    }
+    
     /**
      * Get id
      *
@@ -162,4 +172,77 @@ class User
     {
         return $this->role;
     }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string 
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * Set is_active
+     *
+     * @param boolean $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->is_active = $isActive;
+    }
+
+    /**
+     * Get is_active
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function equals(UserInterface $user)
+    {
+        return $this->getUsername() === $user->getUsername();
+    }
+    
+    
 }

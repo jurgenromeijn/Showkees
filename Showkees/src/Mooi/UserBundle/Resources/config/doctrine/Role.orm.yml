@@ -9,6 +9,9 @@ Mooi\UserBundle\Entity\Role:
         name:
             type: string
             length: 60
+        internal_name:
+            type: string
+            length: 60
     oneToMany:
         users:
             targetEntity: User

@@ -6,6 +6,9 @@ Mooi\UserBundle\Entity\User:
             type: integer
             generator: { strategy: AUTO }
     fields:
+        salt:
+            type: string
+            length: 32
         first_name:
             type: string
             length: 60
@@ -21,6 +24,8 @@ Mooi\UserBundle\Entity\User:
         password:
             type: string
             length: 60
+        is_active:
+            type: boolean
     manyToOne:
         role:
             targetEntity: Role

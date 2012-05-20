@@ -12,8 +12,18 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class UserController extends Controller {
 
-    public function loginAction() {	
+    public function loginAction() 
+    {
+        
 	return $this->render("MooiUserBundle:User:login.html.twig");
+        
+    }
+    
+    public function createAction()
+    {
+                
+        return $this->render("MooiUserBundle:User:create.html.twig");
+        
     }
 
 }
