@@ -85,4 +85,11 @@ class Role
         return $this->internal_name;
     }
     
+    public function __toString()
+    {
+        
+        return $this->getName();
+        
+    }
+    
 }

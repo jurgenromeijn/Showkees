@@ -2,4 +2,12 @@
 
 {% block content %}
     <h1>Account aanmaken</h1>
+    <form action="{{ path('MooiUserBundle_UserCreate') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <div class="button">
+            <input type="submit" class="button" value="Toevoegen" />
+        </div>
+    </form>
 {% endblock %}
+    
+    

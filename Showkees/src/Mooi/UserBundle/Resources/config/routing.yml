@@ -1,7 +1,7 @@
-MooiUserBundle_homepage:
+MooiUserBundle_UserLogin:
     pattern:  /
     defaults: { _controller: MooiUserBundle:User:login }
 
-MooiUserBundle_createUser:
+MooiUserBundle_UserCreate:
     pattern: /create
     defaults: { _controller: MooiUserBundle:User:create }

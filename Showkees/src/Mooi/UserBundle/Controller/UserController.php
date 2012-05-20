@@ -4,6 +4,8 @@ namespace Mooi\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Mooi\UserBundle\Entity\User;
+use Mooi\UserBundle\Form\Type\UserType;
 
 /**
  * Description of UserController
@@ -21,8 +23,13 @@ class UserController extends Controller {
     
     public function createAction()
     {
-                
-        return $this->render("MooiUserBundle:User:create.html.twig");
+        
+        $user = new User();
+        $form = $this->createForm(new UserType(), $user);
+        
+        return $this->render("MooiUserBundle:User:create.html.twig", array(
+            'form' => $form->createView()
+        ));
         
     }
 
