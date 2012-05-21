@@ -12,14 +12,18 @@ security:
 
     firewalls:
         user_area:
-            pattern: ^(?!/login$)
+            pattern:    ^/
+            anonymous: ~
             form_login:
                 login_path:  /login
-                failure_path: /login
                 check_path:  /login_check
+                always_use_default_target_path: true
+                default_target_path: /
             logout:
                 path:   /logout
                 target: /
 
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }

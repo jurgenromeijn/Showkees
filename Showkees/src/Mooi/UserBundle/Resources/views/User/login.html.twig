@@ -12,24 +12,27 @@
 {% endblock %}
     
 {% block body %}
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
     <div id="logoContainer">
         <img src="{{ asset('images/logoFullsize.jpg') }}" alt="Showkees" id="logo" />
     </div>
     <div id="loginContainer">
-        <form id="loginForm">
-        <fieldset id="fields">
-            <label for="userName">Gebruikersnaam</label>
-            <input id="userName" placeholder="Gebruikersnaam" type="text" class="inputField" />
-            <label for="passWord">Wachtwoord</label>
-            <input id="passWord" placeholder="Wachtwoord" type="password" class="inputField" />
-        </fieldset>
-        <fieldset id="button">
-            <input type="submit" value="Login" class="button" />
-        </fieldset>
-        <p id="toolTip">
-            <img src="{{ asset('images/tabletshowkees40.png') }}" alt="" class="icon" />
-            Vul eerst je <strong>Gebruikersnaam</strong> en <strong>Wachtwoord</strong> in. Daarna klik je op <strong>login</strong>
-        </p>
+        <form action="{{ path('login_check') }}" method="post" id="loginForm">
+            <fieldset id="fields">
+                <label for="userName">Gebruikersnaam</label>
+                <input id="userName" value="{{ last_username }}" name="_username" placeholder="Gebruikersnaam" type="text" class="inputField" />
+                <label for="passWord">Wachtwoord</label>
+                <input id="passWord" placeholder="Wachtwoord" name="_password" type="password" class="inputField" />
+            </fieldset>
+            <fieldset id="button">
+                <input type="submit" value="Login" class="button" />
+            </fieldset>
+            <p id="toolTip">
+                <img src="{{ asset('images/tabletshowkees40.png') }}" alt="" class="icon" />
+                Vul eerst je <strong>Gebruikersnaam</strong> en <strong>Wachtwoord</strong> in. Daarna klik je op <strong>login</strong>
+            </p>
         </form>
     </div>
 {% endblock %}
