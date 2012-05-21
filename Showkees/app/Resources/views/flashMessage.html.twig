@@ -1,0 +1,5 @@
+{% if app.session.hasFlash('notice') %}
+    <p class="flashMessage">
+        {{ app.session.flash('notice') }}
+    </p>
+{% endif %}

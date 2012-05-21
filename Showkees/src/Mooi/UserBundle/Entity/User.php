@@ -16,11 +16,13 @@ class User implements UserInterface
     private $salt;
     private $password;
     private $is_active;
+    private $date;
     
     public function __construct()
     {
         $this->is_active = true;
-        $this->salt = md5(uniqid(null, true));
+        $this->salt      = md5(uniqid(null, true));
+        $this->date      = new \DateTime();
     }
     
     /**
@@ -242,7 +244,25 @@ class User implements UserInterface
     public function equals(UserInterface $user)
     {
         return $this->getUsername() === $user->getUsername();
+    }    
+
+    /**
+     * Set date
+     *
+     * @param datetime $date
+     */
+    public function setDate(\DateTime $date)
+    {
+        $this->date = $date;
     }
-    
-    
+
+    /**
+     * Get date
+     *
+     * @return datetime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 }

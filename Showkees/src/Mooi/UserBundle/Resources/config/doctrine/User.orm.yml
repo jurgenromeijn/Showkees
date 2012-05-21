@@ -11,21 +11,24 @@ Mooi\UserBundle\Entity\User:
             length: 32
         first_name:
             type: string
-            length: 60
+            length: 150
         last_name:
             type: string
-            length: 60
+            length: 150
         preposition:
             type: string
             length: 20
+            nullable: true
         email:
             type: string
             length: 150
         password:
             type: string
-            length: 60
+            length: 100
         is_active:
             type: boolean
+        date:
+            type: datetime
     manyToOne:
         role:
             targetEntity: Role

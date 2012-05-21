@@ -24,7 +24,7 @@ class UserFactory
     public function encode(UserInterface $user, $password = null)
     {
         $encoder = $this->encoder_factory->getEncoder($user);
-        $toEncode = null === $password ? $user->getPassword : $password;
+        $toEncode = null === $password ? $user->getPassword() : $password;
         $encoded = $encoder->encodePassword($toEncode, $user->getSalt());
                 
         return $encoded;

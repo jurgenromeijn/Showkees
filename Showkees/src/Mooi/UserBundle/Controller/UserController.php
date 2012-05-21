@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Mooi\UserBundle\Entity\User;
 use Mooi\UserBundle\Form\Type\UserType;
 use Symfony\Component\HttpFoundation\Request;
+use Mooi\UserBundle\Model\UserFactory;
 
 /**
  * Description of UserController
@@ -14,6 +15,14 @@ use Symfony\Component\HttpFoundation\Request;
  * @author Jurgen
  */
 class UserController extends Controller {
+
+    
+    public function indexAction()
+    {
+        
+        return $this->render("MooiUserBundle:User:index.html.twig");
+        
+    }
 
     public function loginAction() 
     {
@@ -25,6 +34,7 @@ class UserController extends Controller {
     public function createAction(Request $request)
     {
         
+        // Create a suer and set up the form
         $user = new User();
         $form = $this->createForm(new UserType(), $user, array(
             "validation_groups" => array("Default", "registration")
@@ -34,16 +44,28 @@ class UserController extends Controller {
         {
             
             $form->bindRequest($request);
-
+            
             if ($form->isValid()) 
             {
 
+                // Get User factory and let it encode the password
+                $userFactory = new UserFactory($this->get('security.encoder_factory'));
+                $user->setPassword($userFactory->encode($user));
+                
+                // Save the User to the database
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($user);
+                $em->flush();
+                
+                // Set flash message and redirect to another page
+                $this->get("session")->setFlash('notice', 'Het account is toegevoegd.');
+                return $this->redirect($this->generateUrl('MooiUserBundle_UserIndex'));
                 
             }
             
         }
 
-        
+        // Show the form
         return $this->render("MooiUserBundle:User:create.html.twig", array(
             'form' => $form->createView()
         ));
