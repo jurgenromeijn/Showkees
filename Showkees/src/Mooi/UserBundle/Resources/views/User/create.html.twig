@@ -1,5 +1,7 @@
 {% extends '::baseLayout.html.twig' %}
 
+{% form_theme form '::baseForm.html.twig' %}
+
 {% block content %}
     <h1>Account aanmaken</h1>
     <form action="{{ path('MooiUserBundle_UserCreate') }}" method="post" {{ form_enctype(form) }}>
