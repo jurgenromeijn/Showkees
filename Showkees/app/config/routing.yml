@@ -6,3 +6,6 @@ MooiUserBundle:
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
+
+logout:
+    pattern:   /logout

@@ -4,19 +4,19 @@ namespace Mooi\UserBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     
-    private $id;
-    private $role;   
-    private $first_name;
-    private $last_name;
-    private $preposition;
-    private $email;
-    private $salt;
-    private $password;
-    private $is_active;
-    private $date;
+    protected $id;
+    protected $role;   
+    protected $first_name;
+    protected $last_name;
+    protected $preposition;
+    protected $email;
+    protected $salt;
+    protected $password;
+    protected $is_active;
+    protected $date;
     
     public function __construct()
     {
@@ -228,7 +228,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array("ROLE_USER");
     }
 
     /**
@@ -265,4 +265,17 @@ class User implements UserInterface
     {
         return $this->date;
     }
+    
+    public function serialize()
+    {
+        
+        return serialize($this->id);
+        
+    }
+
+    public function unserialize($data)
+    {
+        $this->id = unserialize($data);
+    }
+
 }

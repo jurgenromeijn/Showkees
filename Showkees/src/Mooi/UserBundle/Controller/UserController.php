@@ -26,7 +26,7 @@ class UserController extends Controller {
 
     public function loginAction() 
     {
-        
+                
 	return $this->render("MooiUserBundle:User:login.html.twig");
         
     }
