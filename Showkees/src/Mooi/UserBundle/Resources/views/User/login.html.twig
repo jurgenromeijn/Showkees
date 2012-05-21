@@ -2,19 +2,16 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}" />
-    {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/jquery/plugins/jquery.placeholder.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/addPlaceholders.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/closeLoginError.js') }}" type="text/javascript"></script>
 {% endblock %}
     
 {% block body %}
-    {% if error %}
-        <div>{{ error.message }}</div>
-    {% endif %}
     <div id="logoContainer">
         <img src="{{ asset('images/logoFullsize.jpg') }}" alt="Showkees" id="logo" />
     </div>
@@ -35,4 +32,12 @@
             </p>
         </form>
     </div>
+    {% if error %}
+        <div id="loginErrorOverlay"></div>
+        <div id="loginError">
+            <h3>Oeps</h3>
+            <p>Deze gebruikernsnaam & wachtwoord combinatie konden niet worden gevonden. Probeer het nog eens.</p>
+            <button id="closeError" class="button">Ok</button>
+        </div>
+    {% endif %}
 {% endblock %}

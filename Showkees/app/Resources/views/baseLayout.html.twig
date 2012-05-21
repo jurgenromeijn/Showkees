@@ -20,6 +20,16 @@
                     <img src="{{ asset('images/logoRegular.png') }}" alt="Showkees" />
                     <h2>van</h2>
                     <h1 class="clearfix">Naam</h1>
+                    {% if app.user != null %}
+                    <div id="userOptions">
+                        <a href="{{ path('MooiUserBundle_UserIndex') }}">{{ app.user.getFullName() }}</a>
+                        <ul>
+                            <li><a href="{{ path('logout') }}">Uitloggen</a></li>
+                            <li><a>Wijzigen</a></li>
+                            <li><a href="{{ path('MooiUserBundle_UserCreate') }}">Toevoegen</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
                 </header>
             </div>
             <div id="contentWrapper">

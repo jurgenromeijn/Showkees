@@ -277,5 +277,18 @@ class User implements UserInterface, \Serializable
     {
         $this->id = unserialize($data);
     }
+    
+    public function getFullName()
+    {
+        
+        $fullName = $this->first_name;
+        $fullName .= (!empty($this->preposition)) ? 
+            '' + $this->preposition + ' ' :
+            ' ';
+        $fullName .= $this->last_name;
+        
+        return $fullName;
+        
+    }
 
 }
