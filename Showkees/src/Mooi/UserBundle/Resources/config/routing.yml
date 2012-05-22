@@ -2,10 +2,10 @@ MooiUserBundle_UserIndex:
     pattern:  /
     defaults: { _controller: MooiUserBundle:User:index }
 
-MooiUserBundle_UserLogin:
-    pattern:  /login
-    defaults: { _controller: MooiUserBundle:User:login }
-
 MooiUserBundle_UserCreate:
     pattern: /create
     defaults: { _controller: MooiUserBundle:User:create }
+    
+MooiUserBundle_UserEdit:
+    pattern: /edit
+    defaults: { _controller: MooiUserBundle:User:edit }

@@ -4,8 +4,15 @@ MooiWallBundle:
 
 MooiUserBundle:
     resource: "@MooiUserBundle/Resources/config/routing.yml"
-    prefix:   /
- 
+    prefix:   /user
+
+MooiUserBundle_UserLogin:
+    pattern:  /login
+    defaults: { _controller: MooiUserBundle:User:login }
+
+index:
+    pattern:  /
+    defaults: { _controller: MooiUserBundle:User:index }
 
 # Internal routing configuration to handle ESI
 #_internal:

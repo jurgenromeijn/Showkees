@@ -5,7 +5,8 @@ namespace Mooi\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Mooi\UserBundle\Entity\User;
-use Mooi\UserBundle\Form\Type\UserType;
+use Mooi\UserBundle\Form\Type\UserRegistrationType;
+use Mooi\UserBundle\Form\Type\UserEditType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Mooi\UserBundle\Model\UserFactory;
@@ -51,7 +52,7 @@ class UserController extends Controller {
         
         // Create a suer and set up the form
         $user = new User();
-        $form = $this->createForm(new UserType(), $user, array(
+        $form = $this->createForm(new UserRegistrationType(), $user, array(
             "validation_groups" => array("Default", "registration")
         ));
         
@@ -83,6 +84,70 @@ class UserController extends Controller {
         // Show the form
         return $this->render("MooiUserBundle:User:create.html.twig", array(
             'form' => $form->createView()
+        ));
+        
+    }
+    
+    public function editAction(Request $request)
+    {
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        $form = $this->createForm(new UserEditType(), $user, array(
+            "validation_groups" => array("Default")
+        ));
+        
+        $originalPassword = $user->getPassword();
+        $newPassword = "";
+        
+        if ($request->getMethod() == 'POST') 
+        {
+            
+            $form->bindRequest($request);
+            
+            if ($form->isValid()) 
+            {
+
+                $newPassword = $user->getPassword();
+                
+                if(!empty($newPassword))
+                {
+                    
+                    $userFactory = new UserFactory($this->get('security.encoder_factory'));
+                    $user->setPassword($userFactory->encode($user));
+                    //echo "new";
+                    
+                }
+                else 
+                {
+                    
+                    $user->setPassword($originalPassword);
+                    //echo "old";
+                    
+                }
+                
+                // Get User factory and let it encode the password
+                $userFactory = new UserFactory($this->get('security.encoder_factory'));
+                $user->setPassword($userFactory->encode($user));
+                
+                /*
+                // Save the User to the database
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($user);
+                $em->flush();
+                
+                // Set flash message and redirect to another page
+                $this->get("session")->setFlash('notice', 'Het account is toegevoegd.');
+                return $this->redirect($this->generateUrl('MooiUserBundle_UserIndex'));
+                 */
+                
+            }
+            
+        }
+        
+        return $this->render("MooiUserBundle:User:update.html.twig", array(
+            'form' => $form->createView(),
+            'originalPassword' => $originalPassword,
+            'newPassword' => $newPassword
         ));
         
     }

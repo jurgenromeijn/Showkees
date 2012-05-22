@@ -5,7 +5,7 @@ namespace Mooi\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class UserType extends AbstractType
+class UserRegistrationType extends AbstractType
 {
     
     public function buildForm(FormBuilder $builder, array $options)
@@ -35,7 +35,7 @@ class UserType extends AbstractType
     public function getName()
     {
         
-        return 'User';
+        return 'UserRegistration';
         
     }
 
@@ -47,7 +47,7 @@ class UserType extends AbstractType
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
             // a unique key to help generate the secret token
-            'intention'       => 'user_item',
+            'intention'       => 'user_create',
         );
         
     }

@@ -17,7 +17,7 @@ class User implements UserInterface, \Serializable
     protected $password;
     protected $is_active;
     protected $date;
-    
+
     public function __construct()
     {
         $this->is_active = true;

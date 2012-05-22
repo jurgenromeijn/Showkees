@@ -1,0 +1,17 @@
+{% extends '::singleColumnLayout.html.twig' %}
+
+{% form_theme form '::baseForm.html.twig' %}
+
+{% block content %}
+    <h1>Instellingen aanpassen</h1>
+    <p>Huidige wachtwoord: {{ originalPassword }}</p>
+    <p>Nieuwe wachtwrood: {{ newPassword }}</p>
+    <form action="{{ path('MooiUserBundle_UserEdit') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <div class="button">
+            <input type="submit" class="button" value="Toevoegen" />
+        </div>
+    </form>
+{% endblock %}
+    
+    
