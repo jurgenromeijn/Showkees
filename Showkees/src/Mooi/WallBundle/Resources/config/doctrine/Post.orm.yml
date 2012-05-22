@@ -1,0 +1,25 @@
+Mooi\WallBundle\Entity\Post:
+    type: entity
+    table: posts
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        sender_id:
+            type: integer
+            length: 9
+        text:
+            type: string
+            length: 60
+        internal_name:
+            type: string
+            length: 60
+    manyToOne:
+        users:
+            targetEntity: User
+            mappedBy: wall_owner_id
+        users:
+            targetEntity: User
+            mappedBy: sender_id
+            #TODO Check namespace naar user en de manyToOne met meerdere identifiers
