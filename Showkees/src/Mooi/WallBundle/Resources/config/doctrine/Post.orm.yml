@@ -12,9 +12,8 @@ Mooi\WallBundle\Entity\Post:
         text:
             type: string
             length: 60
-        internal_name:
-            type: string
-            length: 60
+        time:
+            type: date
     manyToOne:
         users:
             targetEntity: User
