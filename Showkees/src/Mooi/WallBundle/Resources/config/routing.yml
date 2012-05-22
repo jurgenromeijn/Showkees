@@ -1,0 +1,4 @@
+MooiWallBundle_WallIndex:
+    pattern:  /wall
+    defaults: { _controller: MooiWallBundle:Wall:index }
+

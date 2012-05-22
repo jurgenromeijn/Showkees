@@ -1,6 +1,11 @@
+MooiWallBundle:
+    resource: "@MooiWallBundle/Resources/config/routing.yml"
+    prefix:   /
+
 MooiUserBundle:
     resource: "@MooiUserBundle/Resources/config/routing.yml"
     prefix:   /
+ 
 
 # Internal routing configuration to handle ESI
 #_internal:
