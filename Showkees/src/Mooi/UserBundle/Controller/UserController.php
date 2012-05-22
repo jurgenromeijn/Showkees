@@ -144,7 +144,7 @@ class UserController extends Controller {
             
         }
         
-        return $this->render("MooiUserBundle:User:update.html.twig", array(
+        return $this->render("MooiUserBundle:User:edit.html.twig", array(
             'form' => $form->createView(),
             'originalPassword' => $originalPassword,
             'newPassword' => $newPassword
