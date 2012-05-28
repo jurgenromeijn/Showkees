@@ -14,11 +14,9 @@ Mooi\WallBundle\Entity\Post:
             length: 60
         time:
             type: date
-    manyToOne:
+    oneToMany:
         users:
-            targetEntity: User
-            mappedBy: wall_owner_id
-        users:
-            targetEntity: User
-            mappedBy: sender_id
-            #TODO Check namespace naar user en de manyToOne met meerdere identifiers
+            targetEntity: Mooi\UserBundle\Entity\User
+            mappedBy: id
+        
+           
