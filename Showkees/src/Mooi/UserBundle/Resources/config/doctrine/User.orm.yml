@@ -36,3 +36,15 @@ Mooi\UserBundle\Entity\User:
             joinColumn:
                 name: role_id
                 referencedColumnName: id
+        post:
+            targetEntity: Post
+            inversedBy: users
+            joinColumn:
+                name: sender_id
+                referencedColumnName: id
+        post:
+            targetEntity: Post
+            inversedBy: users
+            joinColumn:
+                name: wall_owner_id
+                referencedColumnName: id

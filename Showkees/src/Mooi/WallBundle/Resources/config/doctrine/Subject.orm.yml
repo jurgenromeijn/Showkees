@@ -1,22 +1,20 @@
-Mooi\WallBundle\Entity\Post:
+Mooi\WallBundle\Entity\Subject:
     type: entity
-    table: posts
+    table: subjects
     id:
         id:
             type: integer
             generator: { strategy: AUTO }
     fields:
-        text:
+        name:
             type: string
             length: 60
-        time:
-            type: date
+        description:
+            type: text
     oneToMany:
-        users:
-            targetEntity: Mooi\UserBundle\Entity\User
-            mappedBy: user
-        subjects:
+        posts:
             targetEntity: Post_has_subject
-            mappedBy: subject
+            mappedBy: post
             cascade: [persist]
+        
            
