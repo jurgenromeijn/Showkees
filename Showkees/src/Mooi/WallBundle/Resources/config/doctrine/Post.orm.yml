@@ -16,13 +16,13 @@ Mooi\WallBundle\Entity\Post:
             targetEntity: Subject
             inversedBy: posts
     manyToOne:
-        user:
+        user_sender:
             targetEntity: Mooi\UserBundle\Entity\User
             inversedBy: posts
             joinColumn:
                 name: sender_id
                 referencedColumnName: id
-        user:
+        user_wall_owner:
             targetEntity: Mooi\UserBundle\Entity\User
             inversedBy: posts
             joinColumn:

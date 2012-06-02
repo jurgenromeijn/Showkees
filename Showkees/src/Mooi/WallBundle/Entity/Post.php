@@ -159,4 +159,54 @@ class Post
     {
         return $this->user;
     }
+    /**
+     * @var Mooi\UserBundle\Entity\User
+     */
+    private $user_sender;
+
+    /**
+     * @var Mooi\UserBundle\Entity\User
+     */
+    private $user_wall_owner;
+
+
+    /**
+     * Set user_sender
+     *
+     * @param Mooi\UserBundle\Entity\User $userSender
+     */
+    public function setUserSender(\Mooi\UserBundle\Entity\User $userSender)
+    {
+        $this->user_sender = $userSender;
+    }
+
+    /**
+     * Get user_sender
+     *
+     * @return Mooi\UserBundle\Entity\User 
+     */
+    public function getUserSender()
+    {
+        return $this->user_sender;
+    }
+
+    /**
+     * Set user_wall_owner
+     *
+     * @param Mooi\UserBundle\Entity\User $userWallOwner
+     */
+    public function setUserWallOwner(\Mooi\UserBundle\Entity\User $userWallOwner)
+    {
+        $this->user_wall_owner = $userWallOwner;
+    }
+
+    /**
+     * Get user_wall_owner
+     *
+     * @return Mooi\UserBundle\Entity\User 
+     */
+    public function getUserWallOwner()
+    {
+        return $this->user_wall_owner;
+    }
 }
