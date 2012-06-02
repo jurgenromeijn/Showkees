@@ -42,10 +42,5 @@ class WallController extends Controller
         
     }
     
-     public function createAction(Request $request)
-     {
-         
-         
-         
-     }
+
 }
