@@ -37,13 +37,13 @@ Mooi\UserBundle\Entity\User:
                 name: role_id
                 referencedColumnName: id
         post:
-            targetEntity: Post
+            targetEntity: Mooi\WallBundle\Entity\Post
             inversedBy: users
             joinColumn:
                 name: sender_id
                 referencedColumnName: id
         post:
-            targetEntity: Post
+            targetEntity: Mooi\WallBundle\Entity\Post
             inversedBy: users
             joinColumn:
                 name: wall_owner_id

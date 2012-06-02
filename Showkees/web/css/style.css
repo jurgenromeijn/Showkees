@@ -157,7 +157,7 @@ body
     display: inline-block;
 }
 
-#contentWrapper form>div>div input, #contentWrapper form>div>div select
+#contentWrapper form>div>div input, #contentWrapper form>div>div select, #contentWrapper form>div>div textarea
 {
     padding: 10px 0;
     height: 50px;
@@ -171,6 +171,11 @@ body
     color: #000;
     font-size: 1.5em;    
     background-color: #eeeeee;
+}
+#contentWrapper form>div>div textArea{
+    width: 400px;
+    height: 300px;
+    padding-top: 10px;
 }
 
 #contentWrapper form>div.button
