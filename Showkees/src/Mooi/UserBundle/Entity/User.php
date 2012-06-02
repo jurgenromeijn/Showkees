@@ -290,55 +290,34 @@ class User implements UserInterface, \Serializable
         return $fullName;
         
     }
-
     /**
-     * @var Mooi\UserBundle\Entity\Post
+     * @var Mooi\WallBundle\Entity\Post
      */
-    private $post;
-
+    private $wall_owner_posts;
 
     /**
-     * Set post
-     *
-     * @param Mooi\UserBundle\Entity\Post $post
+     * @var Mooi\WallBundle\Entity\Post
      */
-    public function setPost(\Mooi\UserBundle\Entity\Post $post)
-    {
-        $this->post = $post;
-    }
-
-    /**
-     * Get post
-     *
-     * @return Mooi\UserBundle\Entity\Post 
-     */
-    public function getPost()
-    {
-        return $this->post;
-    }
-    /**
-     * @var Mooi\UserBundle\Entity\Post
-     */
-    private $posts;
+    private $sender_id_posts;
 
 
     /**
-     * Add posts
-     *
-     * @param Mooi\UserBundle\Entity\Post $posts
-     */
-    public function addPost(\Mooi\UserBundle\Entity\Post $posts)
-    {
-        $this->posts[] = $posts;
-    }
-
-    /**
-     * Get posts
+     * Get wall_owner_posts
      *
      * @return Doctrine\Common\Collections\Collection 
      */
-    public function getPosts()
+    public function getWallOwnerPosts()
     {
-        return $this->posts;
+        return $this->wall_owner_posts;
+    }
+
+    /**
+     * Get sender_id_posts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getSenderIdPosts()
+    {
+        return $this->sender_id_posts;
     }
 }

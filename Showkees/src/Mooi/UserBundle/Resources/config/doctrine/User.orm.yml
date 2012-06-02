@@ -37,6 +37,9 @@ Mooi\UserBundle\Entity\User:
                 name: role_id
                 referencedColumnName: id
     oneToMany:
-        posts:
+        wall_owner_posts:
+            targetEntity: Mooi\WallBundle\Entity\Post
+            mappedBy: user
+        sender_id_posts:
             targetEntity: Mooi\WallBundle\Entity\Post
             mappedBy: user

@@ -134,58 +134,55 @@ class Post
     {
         return $this->subjects;
     }
-    /**
-     * @var Mooi\UserBundle\Entity\User
-     */
-    
-    /**
-     * @var Mooi\UserBundle\Entity\User
-     */
-    private $user_sender;
 
     /**
      * @var Mooi\UserBundle\Entity\User
      */
-    private $user_wall_owner;
+    private $sender_users;
+
+    /**
+     * @var Mooi\UserBundle\Entity\User
+     */
+    private $wall_owner_users;
 
 
     /**
-     * Set user_sender
+     * Set sender_users
      *
-     * @param Mooi\UserBundle\Entity\User $userSender
+     * @param Mooi\UserBundle\Entity\User $senderUsers
      */
-    public function setUserSender(\Mooi\UserBundle\Entity\User $userSender)
+    public function setSenderUsers(\Mooi\UserBundle\Entity\User $senderUsers)
     {
-        $this->user_sender = $userSender;
+        $this->sender_users = $senderUsers;
     }
 
     /**
-     * Get user_sender
+     * Get sender_users
      *
      * @return Mooi\UserBundle\Entity\User 
      */
-    public function getUserSender()
+    public function getSenderUsers()
     {
-        return $this->user_sender;
+        return $this->sender_users;
     }
 
     /**
-     * Set user_wall_owner
+     * Set wall_owner_users
      *
-     * @param Mooi\UserBundle\Entity\User $userWallOwner
+     * @param Mooi\UserBundle\Entity\User $wallOwnerUsers
      */
-    public function setUserWallOwner(\Mooi\UserBundle\Entity\User $userWallOwner)
+    public function setWallOwnerUsers(\Mooi\UserBundle\Entity\User $wallOwnerUsers)
     {
-        $this->user_wall_owner = $userWallOwner;
+        $this->wall_owner_users = $wallOwnerUsers;
     }
 
     /**
-     * Get user_wall_owner
+     * Get wall_owner_users
      *
      * @return Mooi\UserBundle\Entity\User 
      */
-    public function getUserWallOwner()
+    public function getWallOwnerUsers()
     {
-        return $this->user_wall_owner;
+        return $this->wall_owner_users;
     }
 }
