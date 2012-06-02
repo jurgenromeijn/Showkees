@@ -69,7 +69,7 @@ class Post
      *
      * @param date $time
      */
-    public function setTime($time)
+    public function setTime(\DateTime $time)
     {
         $this->time = $time;
     }
@@ -103,22 +103,28 @@ class Post
     {
         return $this->users;
     }
+
+    
     /**
-     * @var Mooi\WallBundle\Entity\Post_has_subject
+     * @var Mooi\WallBundle\Entity\Subject
      */
-    private $subjects;
+    public $subjects;
 
 
     /**
      * Add subjects
      *
-     * @param Mooi\WallBundle\Entity\Post_has_subject $subjects
+     * @param Mooi\WallBundle\Entity\Subject $subjects
      */
-    public function addPost_has_subject(\Mooi\WallBundle\Entity\Post_has_subject $subjects)
+    public function addSubject(\Mooi\WallBundle\Entity\Subject $subjects)
     {
         $this->subjects[] = $subjects;
     }
-
+    
+    /*public function setSubjects(ArrayCollection $subjects)
+    {
+        $this->subjects = $subjects;
+    }*/
     /**
      * Get subjects
      *
@@ -127,31 +133,5 @@ class Post
     public function getSubjects()
     {
         return $this->subjects;
-    }
-    
-    /**
-     * @var Mooi\WallBundle\Entity\post_has_subject
-     */
-    private $posts_has_subjets;
-
-
-    /**
-     * Add posts_has_subjets
-     *
-     * @param Mooi\WallBundle\Entity\post_has_subject $postsHasSubjets
-     */
-    public function addpost_has_subject(\Mooi\WallBundle\Entity\post_has_subject $postsHasSubjets)
-    {
-        $this->posts_has_subjets[] = $postsHasSubjets;
-    }
-
-    /**
-     * Get posts_has_subjets
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getPostsHasSubjets()
-    {
-        return $this->posts_has_subjets;
     }
 }

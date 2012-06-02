@@ -1,5 +1,12 @@
-{% extends '::twoColumnLayout.html.twig' %}
+{% extends '::singleColumnLayout.html.twig' %}
 
+{% form_theme form '::baseForm.html.twig' %}
 {% block content %}
-    Hello {{ name }}!
+    <h1>Account aanmaken</h1>
+    <form action="{{ path('MooiWallBundle_WallIndex') }}" method="post" autocomplete="off" {{ form_enctype(form) }} >
+        {{ form_widget(form) }}
+        <div class="button">
+            <input type="submit" class="button" value="Plaatsen" />
+        </div>
+    </form>
 {% endblock %}

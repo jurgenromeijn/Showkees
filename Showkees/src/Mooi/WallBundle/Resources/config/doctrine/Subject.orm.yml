@@ -11,10 +11,7 @@ Mooi\WallBundle\Entity\Subject:
             length: 60
         description:
             type: text
-    oneToMany:
+    manyToMany:
         posts:
-            targetEntity: Post_has_subject
-            mappedBy: post
-            cascade: [persist]
-        
-           
+            targetEntity: Post
+            inversedBy: subjects

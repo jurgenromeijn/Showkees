@@ -24,11 +24,6 @@ class Subject
      */
     private $description;
 
-    /**
-     * @var Mooi\WallBundle\Entity\Post_has_subject
-     */
-    private $posts;
-
     public function __construct()
     {
         $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
@@ -85,11 +80,17 @@ class Subject
     }
 
     /**
+     * @var Mooi\WallBundle\Entity\Post
+     */
+    private $posts;
+
+
+    /**
      * Add posts
      *
-     * @param Mooi\WallBundle\Entity\Post_has_subject $posts
+     * @param Mooi\WallBundle\Entity\Post $posts
      */
-    public function addPost_has_subject(\Mooi\WallBundle\Entity\Post_has_subject $posts)
+    public function addPost(\Mooi\WallBundle\Entity\Post $posts)
     {
         $this->posts[] = $posts;
     }
@@ -102,5 +103,12 @@ class Subject
     public function getPosts()
     {
         return $this->posts;
+    }
+    
+    public function __toString()
+    {
+        
+        return $this->getName();
+        
     }
 }

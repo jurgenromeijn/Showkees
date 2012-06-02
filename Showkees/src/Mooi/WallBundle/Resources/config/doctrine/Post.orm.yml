@@ -10,13 +10,13 @@ Mooi\WallBundle\Entity\Post:
             type: string
             length: 60
         time:
-            type: date
+            type: datetime
     oneToMany:
         users:
             targetEntity: Mooi\UserBundle\Entity\User
             mappedBy: user
+    manyToMany:
         subjects:
-            targetEntity: Post_has_subject
-            mappedBy: subject
-            cascade: [persist]
+            targetEntity: Subject
+            inversedBy: posts
            

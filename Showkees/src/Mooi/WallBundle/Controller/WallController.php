@@ -3,8 +3,8 @@
 namespace Mooi\WallBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Mooi\WallBundle\Entity\Post;
+use Mooi\WallBundle\Form\Type\WallPostType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,12 +15,37 @@ class WallController extends Controller
     {
         
         $request = $this->getRequest();
-        $session = $request->getSession();
+        $post = new Post();
+        $form = $this->createForm(new WallPostType(), $post);
         
-        //check if wall_owner or teacher
+        if ($request->getMethod() == 'POST') 
+        {
+            
+            $form->bindRequest($request);
+            $post->setTime(new \DateTime);
+            
+            if ($form->isValid()) 
+            {
+                // Save the Post to the database
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($post);
+                $em->flush();
+                
+            }
+            
+        }
         
-        return $this->render('MooiWallBundle:Wall:index.html.twig', array('name' => 'Dubbele column'));
+        return $this->render('MooiWallBundle:Wall:index.html.twig', array(
+                'form' => $form->createView()
+        ));
         
         
     }
+    
+     public function createAction(Request $request)
+     {
+         
+         
+         
+     }
 }
