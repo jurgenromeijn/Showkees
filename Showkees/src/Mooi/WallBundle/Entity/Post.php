@@ -134,4 +134,29 @@ class Post
     {
         return $this->subjects;
     }
+    /**
+     * @var Mooi\UserBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param Mooi\UserBundle\Entity\User $user
+     */
+    public function setUser(\Mooi\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Mooi\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

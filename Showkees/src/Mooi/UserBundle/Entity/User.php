@@ -316,4 +316,29 @@ class User implements UserInterface, \Serializable
     {
         return $this->post;
     }
+    /**
+     * @var Mooi\UserBundle\Entity\Post
+     */
+    private $posts;
+
+
+    /**
+     * Add posts
+     *
+     * @param Mooi\UserBundle\Entity\Post $posts
+     */
+    public function addPost(\Mooi\UserBundle\Entity\Post $posts)
+    {
+        $this->posts[] = $posts;
+    }
+
+    /**
+     * Get posts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
 }

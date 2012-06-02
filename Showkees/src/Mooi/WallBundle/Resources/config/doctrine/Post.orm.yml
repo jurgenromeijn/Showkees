@@ -11,12 +11,20 @@ Mooi\WallBundle\Entity\Post:
             length: 60
         time:
             type: datetime
-    oneToMany:
-        users:
-            targetEntity: Mooi\UserBundle\Entity\User
-            mappedBy: user
     manyToMany:
         subjects:
             targetEntity: Subject
             inversedBy: posts
-           
+    manyToOne:
+        user:
+            targetEntity: Mooi\UserBundle\Entity\User
+            inversedBy: posts
+            joinColumn:
+                name: sender_id
+                referencedColumnName: id
+        user:
+            targetEntity: Mooi\UserBundle\Entity\User
+            inversedBy: posts
+            joinColumn:
+                name: wall_owner_id
+                referencedColumnName: id
