@@ -22,7 +22,12 @@ class UserController extends Controller {
     public function indexAction()
     {
         
-        return $this->render("MooiUserBundle:User:index.html.twig");
+        $userId = $this->get('security.context')->getToken()
+                        ->getUser()->getId();
+        
+        return $this->forward('MooiWallBundle:Wall:index', array(
+            'id'  => $userId
+        ));
         
     }
 

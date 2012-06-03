@@ -7,14 +7,13 @@
             {% for wallOwner in wallOwnerPosts %}
                 <li>{{ wallOwner.text }}</li>
                 <li>{{ wallOwner.getWallOwner.getEmail }}</li>
-                <li>{{ wallOwner.getSubjects.getDescription }}</li>
             {% else %}
                 <li>No posts found</li>
             {% endfor %}
         </ul>
     
     <h1>Account aanmaken</h1>
-    <form action="{{ path('MooiWallBundle_WallIndex') }}" method="post" autocomplete="off" {{ form_enctype(form) }} >
+    <form action="{{ path('MooiWallBundle_WallIndex', {id: '$'}) }}" method="post" autocomplete="off" {{ form_enctype(form) }} >
         {{ form_widget(form) }}
         <div class="button">
             <input type="submit" class="button" value="Plaatsen" />

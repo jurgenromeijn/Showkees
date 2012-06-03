@@ -156,7 +156,7 @@ class Post
     /**
      * @var Mooi\WallBundle\Entity\Subject
      */
-    private $subjects;
+    public $subjects;
 
 
     /**
@@ -204,5 +204,7 @@ class Post
     {
         return $this->images;
     }
+    
+    
     
 }

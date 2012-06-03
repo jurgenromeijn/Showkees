@@ -11,60 +11,63 @@ use Symfony\Component\HttpFoundation\Response;
 class WallController extends Controller
 {
 
-    public function indexAction()
+    public function indexAction($id)
     {
         
         $request = $this->getRequest();
         $user = $this->get('security.context')->getToken()->getUser();
+        $wallOwner = $this->getDoctrine()
+            ->getRepository('MooiUserBundle:User')
+            ->find($id);
+        $roleId = $user->getRole()->getId();
         
-        $newPost = new Post();
-        $form = $this->createForm(new WallPostType(), $newPost);
-        
-        if ($request->getMethod() == 'POST') 
+        //checks if the logged user is a teacher or the wallowner
+        if($roleId == 2 || $wallOwner->getId() == $user->getId())
         {
             
-            $form->bindRequest($request);
+            //set new post object and create form
+            $newPost = new Post();
+            $form = $this->createForm(new WallPostType(), $newPost);
             
-            
-            //$post->setWallOwner($userDieDeWallHeeftWaarJeOpZit);         
-
-            if ($form->isValid()) 
+            if ($request->getMethod() == 'POST') 
             {
-                
-                //set post data
-                $newPost->setTime(new \DateTime);
-                $newPost->setSender($user);
 
-                // Save the Post to the database
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($newPost);
-                $em->flush();
-                
+                $form->bindRequest($request);   
+
+                if ($form->isValid()) 
+                {
+
+                    //set post data
+                    $newPost->setTime(new \DateTime);
+                    $newPost->setSender($user);
+                    $newPost->setWallOwner($wallOwner);
+                    
+                    // Save the Post to the database
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $em->persist($newPost);
+                    $em->flush();
+                    return new Response('ja ja');
+
+                }
+
             }
+
+            $wallOwnerPosts = $wallOwner->getWallOwnerPosts();
+
+
+            return $this->render('MooiWallBundle:Wall:index.html.twig', array(
+                    'form'              => $form->createView(),
+                    'wallOwnerPosts'    => $wallOwnerPosts          
+            ));
+
+        }
+        else
+        {
+            
+            return new Response('Nee nee daar dit mag jij niet zien');
             
         }
-        
-        $wallOwner = $this->getDoctrine()
-        ->getRepository('MooiUserBundle:User')
-        ->find(2);/*->findAllById(1); id $_GET*/
-        
-        $wallOwnerPosts = $wallOwner->getWallOwnerPosts();
-        
 
-        return $this->render('MooiWallBundle:Wall:index.html.twig', array(
-                'form'              => $form->createView(),
-                'wallOwnerPosts'    => $wallOwnerPosts         
-                
-        ));
-        //$wallOwner
-        
-        
-        //show products
-        /*$posts = $this->getDoctrine()
-        ->getRepository('AcmeWallBundle:Post')
-        ->findAllById(1);*///id $_GET
-        //'posts' => $post
-        
         
     }
     

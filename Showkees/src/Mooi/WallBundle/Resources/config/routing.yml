@@ -1,5 +1,5 @@
 MooiWallBundle_WallIndex:
-    pattern:  /wall
+    pattern:  /wall/{id}
     defaults: { _controller: MooiWallBundle:Wall:index }
 MooiWallBundle_WallCreate:
     pattern: /create
