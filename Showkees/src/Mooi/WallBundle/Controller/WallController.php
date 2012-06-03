@@ -46,25 +46,25 @@ class WallController extends Controller
                     $em = $this->getDoctrine()->getEntityManager();
                     $em->persist($newPost);
                     $em->flush();
-                    return new Response('ja ja');
+                    return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
+                        'id'  => $id
+                    )));
 
                 }
 
             }
-
-            $wallOwnerPosts = $wallOwner->getWallOwnerPosts();
-
-
+            
             return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                     'form'              => $form->createView(),
-                    'wallOwnerPosts'    => $wallOwnerPosts          
+                    'id'                => $id,
+                    'wallOwner'         => $wallOwner
             ));
 
         }
         else
         {
             
-            return new Response('Nee nee daar dit mag jij niet zien');
+            return new Response('Nee nee daar dit mag jij niet zijn');
             
         }
 
