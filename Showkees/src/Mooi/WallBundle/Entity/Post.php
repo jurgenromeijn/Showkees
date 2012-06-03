@@ -178,4 +178,31 @@ class Post
     {
         return $this->subjects;
     }
+    
+    /**
+     * @var Mooi\WallBundle\Entity\Subject
+     */
+    private $images;
+
+
+    /**
+     * Add subjects
+     *
+     * @param Mooi\WallBundle\Entity\Subject $subjects
+     */
+    public function addImages(\Mooi\WallBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+    }
+
+    /**
+     * Get subjects
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+    
 }
