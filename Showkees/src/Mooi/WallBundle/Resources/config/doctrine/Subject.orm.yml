@@ -14,4 +14,4 @@ Mooi\WallBundle\Entity\Subject:
     manyToMany:
         posts:
             targetEntity: Post
-            inversedBy: subjects
+            mappedBy: subjects

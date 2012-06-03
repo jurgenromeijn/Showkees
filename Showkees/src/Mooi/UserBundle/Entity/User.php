@@ -320,4 +320,14 @@ class User implements UserInterface, \Serializable
     {
         return $this->sender_id_posts;
     }
+
+    /**
+     * Add wall_owner_posts
+     *
+     * @param Mooi\WallBundle\Entity\Post $wallOwnerPosts
+     */
+    public function addPost(\Mooi\WallBundle\Entity\Post $wallOwnerPosts)
+    {
+        $this->wall_owner_posts[] = $wallOwnerPosts;
+    }
 }

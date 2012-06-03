@@ -102,13 +102,61 @@ class Post
     public function getUsers()
     {
         return $this->users;
+    }   
+    /**
+     * @var Mooi\UserBundle\Entity\User
+     */
+    private $sender;
+
+    /**
+     * @var Mooi\UserBundle\Entity\User
+     */
+    private $wall_owner;
+
+
+    /**
+     * Set sender
+     *
+     * @param Mooi\UserBundle\Entity\User $sender
+     */
+    public function setSender(\Mooi\UserBundle\Entity\User $sender)
+    {
+        $this->sender = $sender;
     }
 
-    
+    /**
+     * Get sender
+     *
+     * @return Mooi\UserBundle\Entity\User 
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    /**
+     * Set wall_owner
+     *
+     * @param Mooi\UserBundle\Entity\User $wallOwner
+     */
+    public function setWallOwner(\Mooi\UserBundle\Entity\User $wallOwner)
+    {
+        $this->wall_owner = $wallOwner;
+    }
+
+    /**
+     * Get wall_owner
+     *
+     * @return Mooi\UserBundle\Entity\User 
+     */
+    public function getWallOwner()
+    {
+        return $this->wall_owner;
+    }
     /**
      * @var Mooi\WallBundle\Entity\Subject
      */
-    public $subjects;
+    private $subjects;
 
 
     /**
@@ -120,11 +168,7 @@ class Post
     {
         $this->subjects[] = $subjects;
     }
-    
-    /*public function setSubjects(ArrayCollection $subjects)
-    {
-        $this->subjects = $subjects;
-    }*/
+
     /**
      * Get subjects
      *
@@ -133,56 +177,5 @@ class Post
     public function getSubjects()
     {
         return $this->subjects;
-    }
-
-    /**
-     * @var Mooi\UserBundle\Entity\User
-     */
-    private $sender_users;
-
-    /**
-     * @var Mooi\UserBundle\Entity\User
-     */
-    private $wall_owner_users;
-
-
-    /**
-     * Set sender_users
-     *
-     * @param Mooi\UserBundle\Entity\User $senderUsers
-     */
-    public function setSenderUsers(\Mooi\UserBundle\Entity\User $senderUsers)
-    {
-        $this->sender_users = $senderUsers;
-    }
-
-    /**
-     * Get sender_users
-     *
-     * @return Mooi\UserBundle\Entity\User 
-     */
-    public function getSenderUsers()
-    {
-        return $this->sender_users;
-    }
-
-    /**
-     * Set wall_owner_users
-     *
-     * @param Mooi\UserBundle\Entity\User $wallOwnerUsers
-     */
-    public function setWallOwnerUsers(\Mooi\UserBundle\Entity\User $wallOwnerUsers)
-    {
-        $this->wall_owner_users = $wallOwnerUsers;
-    }
-
-    /**
-     * Get wall_owner_users
-     *
-     * @return Mooi\UserBundle\Entity\User 
-     */
-    public function getWallOwnerUsers()
-    {
-        return $this->wall_owner_users;
     }
 }

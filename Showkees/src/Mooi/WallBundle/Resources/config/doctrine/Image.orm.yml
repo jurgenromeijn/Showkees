@@ -1,0 +1,24 @@
+Mooi\WallBundle\Entity\Image:
+    type: entity
+    table: images
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 60
+        time:
+            type: datetime
+        extension:
+            type: string
+            length: 4
+    manyToOne:
+        posts:
+            targetEntity: Mooi\UserBundle\Entity\User
+            inversedBy: posts
+            joinColumn:
+                name: post_id
+                referencedColumnName: id
+                

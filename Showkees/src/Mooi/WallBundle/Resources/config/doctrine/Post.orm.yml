@@ -15,16 +15,21 @@ Mooi\WallBundle\Entity\Post:
         subjects:
             targetEntity: Subject
             inversedBy: posts
+    oneToMany:
+        images:
+            targetEntity: Image
+            mappedBy: post_images
     manyToOne:
-        sender_users:
+        sender:
             targetEntity: Mooi\UserBundle\Entity\User
             inversedBy: posts
             joinColumn:
                 name: sender_id
                 referencedColumnName: id
-        wall_owner_users:
+        wall_owner:
             targetEntity: Mooi\UserBundle\Entity\User
             inversedBy: posts
             joinColumn:
                 name: wall_owner_id
                 referencedColumnName: id
+                
