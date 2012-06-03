@@ -7,6 +7,7 @@ use Mooi\WallBundle\Entity\Post;
 use Mooi\WallBundle\Form\Type\WallPostType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class WallController extends Controller
 {

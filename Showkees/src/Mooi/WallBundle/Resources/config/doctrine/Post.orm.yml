@@ -19,6 +19,9 @@ Mooi\WallBundle\Entity\Post:
         images:
             targetEntity: Image
             mappedBy: post_images
+        replies:
+            targetEntity: Reply
+            mappedBy: posts
     manyToOne:
         sender:
             targetEntity: Mooi\UserBundle\Entity\User

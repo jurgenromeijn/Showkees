@@ -8,7 +8,13 @@
             {% for wallOwnerPost in wallOwner.getWallOwnerPosts %}
                 <li>{{ wallOwnerPost.text }}</li>
                 <li>van {{ wallOwnerPost.getSender.getFullName }}</li>
-                <li>{{ wallOwnerPost.getSubjects.getDescription }}</li>
+                <li>
+                    {% for subject in wallOwnerPost.getSubjects %}
+                    <ul>
+                        <li>{{ subject.getDescription }}</li>
+                    </ul>
+                    {% endfor %}
+                </li>
             {% else %}
                 <li>No posts found</li>
             {% endfor %}
@@ -20,5 +26,6 @@
         <div class="button">
             <input type="submit" class="button" value="Plaatsen" />
         </div>
+        {{ form_widget(form.upload)}}
     </form>
 {% endblock %}
