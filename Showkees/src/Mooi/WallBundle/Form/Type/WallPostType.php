@@ -11,12 +11,12 @@ class WallPostType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         
-        $builder->add('text', 'textarea', array('label' => 'Bericht toevoegen'));
+        $builder->add('text', 'textarea');
         $builder->add('subjects', null, array('label' => 'Vakken'));
-        $builder->add('upload', 'entity', array(
+        /*$builder->add('upload', 'entity', array(
             'class' => 'Mooi\WallBundle:Image',
             'name' => 'file'
-        ));
+        ));*/
         
     }
 

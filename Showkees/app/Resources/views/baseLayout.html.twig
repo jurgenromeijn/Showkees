@@ -17,9 +17,8 @@
         {% block body %}
             <div id="headerWrapper">
                 <header>
-                    <img src="{{ asset('images/logoRegular.png') }}" alt="Showkees" />
-                    <h2>van</h2>
-                    <h1 class="clearfix">Naam</h1>
+                    <img src="{{ asset('images/logoShowkees.png') }}" alt="Showkees" />
+                    <h1><span>van</span> {% block wall_owner_name %}{% endblock %}</h1>
                     {% if app.user != null %}
                     <div id="userOptions">
                         <a href="{{ path('MooiUserBundle_UserIndex') }}">{{ app.user.getFullName() }}</a>

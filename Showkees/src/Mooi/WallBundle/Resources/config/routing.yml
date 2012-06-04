@@ -1,7 +1,10 @@
 MooiWallBundle_WallIndex:
     pattern:  /wall/{id}
     defaults: { _controller: MooiWallBundle:Wall:index }
-MooiWallBundle_WallCreate:
-    pattern: /create
-    defaults: { _controller: MooiWallBundle:User:create }
+MooiWallBundle_WallEdit:
+    pattern: /edit
+    defaults: { _controller: MooiWallBundle:Wall:edit }
+MooiWallBundle_WallDelete:
+    pattern: /delete
+    defaults: { _controller: MooiWallBundle:Wall:delete }
 

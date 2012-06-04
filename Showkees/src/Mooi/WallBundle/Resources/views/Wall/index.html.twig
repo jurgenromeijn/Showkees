@@ -1,31 +1,54 @@
 {% extends '::singleColumnLayout.html.twig' %}
 
+{% block wall_owner_name %}
+    {{ wallOwner.getFullName }}
+{% endblock %}
 {% form_theme form '::baseForm.html.twig' %}
 {% block content %}
-    <h1>Dit is de wall van {{ wallOwner.getFullName }}</h1>
-    <h2>Posts</h2>
-        <ul>
+        <div id="content_left">
+            <form action="{{ path('MooiWallBundle_WallIndex', {'id': id }) }}" method="post" autocomplete="off" {{ form_enctype(form) }} >
+                {{ form_widget(form) }}
+                <div class="button">
+                    <input type="submit" class="button" value="Plaatsen" />
+                </div>
+            </form>
             {% for wallOwnerPost in wallOwner.getWallOwnerPosts %}
-                <li>{{ wallOwnerPost.text }}</li>
-                <li>van {{ wallOwnerPost.getSender.getFullName }}</li>
-                <li>
+            <div class="post">
+                <h2>{{ wallOwnerPost.getSender.getFullName }}
                     {% for subject in wallOwnerPost.getSubjects %}
-                    <ul>
-                        <li>{{ subject.getDescription }}</li>
-                    </ul>
+                        <span>over {{ subject.getDescription }}</span>
                     {% endfor %}
-                </li>
+                </h2>
+                <p class="post_text">
+                    {{ wallOwnerPost.text }}
+                </p>
+                <div class="image_gallery">
+                    <img src="{{ asset('images/afbeelding.gif') }}" alt="" />
+                    <img src="{{ asset('images/afbeelding.gif') }}" alt="" />
+                    <img src="{{ asset('images/afbeelding.gif') }}" alt="" />
+                </div>
+                <ul class="postItems">
+                    <li><a href="">Vind ik goed</a></li>
+                    <li><a href="">Reageer</a></li>
+                    <li>{{ wallOwnerPost.time|date('l,  j F Y') }}</li>
+                </ul>    
+            </div>
+            <div class="replies">
+                <h2>Reacties</h2>
+                <div class="reply">
+                    <p>
+                        Hoi bert, wat had jij verschrikkelijk goed je best gedaan op die
+                        sommen van afgelopen
+                    </p>
+                    <ul class="replyItems">
+                        <li><a href="">Sender</a></li>
+                        <li>1 dag geleden</li>
+                    </ul>
+                </div>
+            </div>    
             {% else %}
-                <li>No posts found</li>
-            {% endfor %}
-        </ul>
-    
-    <h2>Post aanmaken</h2>
-    <form action="{{ path('MooiWallBundle_WallIndex', {'id': id }) }}" method="post" autocomplete="off" {{ form_enctype(form) }} >
-        {{ form_widget(form) }}
-        <div class="button">
-            <input type="submit" class="button" value="Plaatsen" />
-        </div>
-        {{ form_widget(form.upload)}}
-    </form>
+                <div class="empty">Er zijn nog geen posts op deze wall</div>
+            {% endfor %} 
+        </div>    
+        
 {% endblock %}
