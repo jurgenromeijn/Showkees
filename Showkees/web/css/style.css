@@ -78,7 +78,7 @@ body
 {
     position: absolute;
     right: 0px;
-    top: 18px;
+    top: 45px;
 }
 
 #userOptions>a
@@ -170,7 +170,7 @@ body
 #contentWrapper form>div>div label
 {
     font-size: 1.2em;    
-    width: 25s0px;
+    width: 250px;
     padding-top: 8px;
     display: inline-block;
 }
