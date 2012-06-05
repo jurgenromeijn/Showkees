@@ -135,6 +135,9 @@ class UserController extends Controller {
                 // Get User factory and let it encode the password
                 $userFactory = new UserFactory($this->get('security.encoder_factory'));
                 $user->setPassword($userFactory->encode($user));
+
+                $this->get("session")->setFlash('notice', 'Je instellingen zijn aangepast.');
+                return $this->redirect($this->generateUrl('MooiUserBundle_UserIndex'));
                 
                 /*
                 // Save the User to the database

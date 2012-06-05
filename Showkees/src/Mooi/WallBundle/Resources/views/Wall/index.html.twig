@@ -16,7 +16,7 @@
             <div class="post">
                 <h2>{{ wallOwnerPost.getSender.getFullName }}
                     {% for subject in wallOwnerPost.getSubjects %}
-                        <span>over {{ subject.getDescription }}</span>
+                        <span>over {{ subject.getName }}</span>
                     {% endfor %}
                 </h2>
                 <p class="post_text">
