@@ -17,7 +17,7 @@
         {% block body %}
             <div id="headerWrapper">
                 <header>
-                    <img src="{{ asset('images/logoShowkees.png') }}" alt="Showkees" id="logo" />
+                    <a href="{{ path('index') }}"><img src="{{ asset('images/logoShowkees.png') }}" alt="Showkees" id="logo" /></a>
                     <h1><span>van</span> {% block wall_owner_name %}{% endblock %}</h1>
                     {% if app.user != null %}
                     <div id="userOptions">
