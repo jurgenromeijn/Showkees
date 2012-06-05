@@ -17,7 +17,7 @@
         {% block body %}
             <div id="headerWrapper">
                 <header>
-                    <img src="{{ asset('images/logoShowkees.png') }}" alt="Showkees" />
+                    <img src="{{ asset('images/logoShowkees.png') }}" alt="Showkees" id="logo" />
                     <h1><span>van</span> {% block wall_owner_name %}{% endblock %}</h1>
                     {% if app.user != null %}
                     <div id="userOptions">
@@ -38,7 +38,7 @@
             </div>
             <div id="footerWrapper">
                 <footer>
-                    <p>Lijst met copyrights en weet ik het allemaal niet</p>
+                    <p>Footer placeholder</p>
                 </footer>
             </div>
         {% endblock %}

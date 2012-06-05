@@ -11,15 +11,17 @@ class PasswordValidator extends ConstraintValidator
     public function isValid($value, Constraint $constraint)
     {
         
-        if(!empty($value) && strleng($value))
-        
-        if (!in_array($value, $constraint->protocols)) {
-            $this->setMessage($constraint->message, array('%protocols%' => $constraint->protocols));
-
+        if(!empty($value) && strlen($value) < 8)
+        {
+            
+            $this->setMessage($constraint->message);
+            
             return false;
+            
         }
 
         return true;
+        
     }
     
 }

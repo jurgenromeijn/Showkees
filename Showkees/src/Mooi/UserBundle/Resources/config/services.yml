@@ -2,6 +2,10 @@ parameters:
 #    mooi_user.example.class: Mooi\UserBundle\Example
 
 services:
+    validator.unique.password:
+        class: Mooi\UserBundle\Validator\PasswordValidator
+        tags:
+            - { name: validator.constraint_validator, alias: password_validator }
 #    mooi_user.example:
 #        class: %mooi_user.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

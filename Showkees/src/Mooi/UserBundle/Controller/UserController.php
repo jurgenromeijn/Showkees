@@ -100,7 +100,7 @@ class UserController extends Controller {
         
         $user = $this->get('security.context')->getToken()->getUser();
         $form = $this->createForm(new UserEditType(), $user, array(
-            "validation_groups" => array("Default")
+            "validation_groups" => array("Default", "update")
         ));
         
         $originalPassword = $user->getPassword();

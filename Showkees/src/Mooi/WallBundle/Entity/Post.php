@@ -207,4 +207,39 @@ class Post
     
     
     
+    /**
+     * @var Mooi\WallBundle\Entity\Reply
+     */
+    private $replies;
+
+
+    /**
+     * Add images
+     *
+     * @param Mooi\WallBundle\Entity\Image $images
+     */
+    public function addImage(\Mooi\WallBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+    }
+
+    /**
+     * Add replies
+     *
+     * @param Mooi\WallBundle\Entity\Reply $replies
+     */
+    public function addReply(\Mooi\WallBundle\Entity\Reply $replies)
+    {
+        $this->replies[] = $replies;
+    }
+
+    /**
+     * Get replies
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getReplies()
+    {
+        return $this->replies;
+    }
 }

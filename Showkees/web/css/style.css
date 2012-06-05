@@ -26,17 +26,22 @@ body
  */
 #headerWrapper
 {
-    height: 50px;
     background-color: #54C2C1;
-    margin-bottom: 59px;
+    margin-bottom: 30px;
 }
 
 #headerWrapper header
 {
     width: 940px;
     margin: 0px auto;
-    padding: 10px;
+    padding: 20px 10px;
     position: relative;
+}
+
+#headerWrapper img#logo
+{
+    position: absolute;
+    top: 10px;
 }
 
 /*#headerWrapper header h2
@@ -56,11 +61,12 @@ body
     font-size: 3em;
 }*/
 #headerWrapper h1{
-    position: absolute;
     top: 10px;
     left: 230px;
     font-size: 2em;
+    margin-left: 160px;
 }
+
 #headerWrapper h1 span{
     color: #fff;
 }
@@ -163,25 +169,24 @@ body
  
 #contentWrapper form>div>div label
 {
-    width: 200px;
-    padding-top: 15px;
+    font-size: 1.2em;    
+    width: 25s0px;
+    padding-top: 8px;
     display: inline-block;
 }
 
 #contentWrapper form>div>div input, #contentWrapper form>div>div select, #contentWrapper form>div>div textarea
 {
     padding: 10px 0;
-    height: 50px;
-    border: 0px solid #000;
-    border-radius: 25px;
-    padding: 0px 30px;
+    border: 5px solid #54C2C1;
+    border-radius: 5px;
+    padding: 0.2em;
     float: right;
-    -moz-box-shadow: 3px 3px #243014;
-    -webkit-box-shadow: 3px 3px #243014;
-    box-shadow: 3px 3px #243014;
-    color: #000;
-    font-size: 1.5em;    
-    background-color: #eeeeee;
+    color: #666;
+    font-style: italic;
+    font-size: 1.2em;    
+    background-color: #fff;
+    width: 300px;
 }
 #contentWrapper form>div>div textArea{
     width: 468px;
