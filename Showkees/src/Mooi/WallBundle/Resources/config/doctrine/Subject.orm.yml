@@ -11,7 +11,7 @@ Mooi\WallBundle\Entity\Subject:
             length: 60
         description:
             type: text
-    manyToMany:
+    oneToMany:
         posts:
             targetEntity: Post
-            mappedBy: subjects
+            mappedBy: posts

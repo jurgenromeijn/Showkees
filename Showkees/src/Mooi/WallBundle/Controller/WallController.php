@@ -21,6 +21,7 @@ class WallController extends Controller
         $wallOwner = $this->getDoctrine()
             ->getRepository('MooiUserBundle:User')
             ->find($id);
+        
         /*$rp = $this->getDoctrine()
                    ->getRepository('MooiUserBundle:User');
         $query = $rp->createQueryBuilder('u')
@@ -39,41 +40,10 @@ class WallController extends Controller
         
         $roleId = $user->getRole()->getId();
         
-        //checks if the logged user is a teacher or the wallowner
-        if($roleId == 2 || $wallOwner->getId() == $user->getId())
-        {
-            
-            //set new post object and create form
-            $newPost = new Post();
-            $form = $this->createForm(new WallPostType(), $newPost);
-            
-            if ($request->getMethod() == 'POST') 
-            {
-
-                $form->bindRequest($request);   
-
-                if ($form->isValid()) 
-                {
-
-                    //set post data
-                    $newPost->setTime(new \DateTime);
-                    $newPost->setSender($user);
-                    $newPost->setWallOwner($wallOwner);
-                    /*$reply = new Reply();
-                    $reply->setText("Eerste reply");
-                    $newPost->addReply($reply);*/
-                    
-                    // Save the Post to the database
-                    $em = $this->getDoctrine()->getEntityManager();
-                    $em->persist($newPost);
-                    $em->flush();
-                    return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                        'id'  => $id
-                    )));
-
-                }
-
-            }
+        //set new post object and create form
+        $newPost = new Post();
+        $form = $this->createForm(new WallPostType(), $newPost);
+       
             
             return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                     'form'              => $form->createView(),
@@ -81,13 +51,7 @@ class WallController extends Controller
                     'wallOwner'         => $wallOwner
             ));
 
-        }
-        else
-        {
-            
-            return new Response('Nee nee daar dit mag jij niet zijn');
-            
-        }
+      
 
         
     }

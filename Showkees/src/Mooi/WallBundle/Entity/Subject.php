@@ -78,7 +78,13 @@ class Subject
     {
         return $this->description;
     }
-
+    
+    public function __toString()
+    {
+        
+        return $this->getName();
+        
+    }
     /**
      * @var Mooi\WallBundle\Entity\Post
      */
@@ -103,12 +109,5 @@ class Subject
     public function getPosts()
     {
         return $this->posts;
-    }
-    
-    public function __toString()
-    {
-        
-        return $this->getName();
-        
     }
 }

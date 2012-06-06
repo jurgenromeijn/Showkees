@@ -14,10 +14,8 @@
             </form>
             {% for wallOwnerPost in wallOwner.getWallOwnerPosts %}
             <div class="post">
-                <h2>{{ wallOwnerPost.getSender.getFullName }}
-                    {% for subject in wallOwnerPost.getSubjects %}
-                        <span>over {{ subject.getName }}</span>
-                    {% endfor %}
+                <h2>
+                        wallOwnerPost.getgetSubject
                 </h2>
                 <p class="post_text">
                     {{ wallOwnerPost.text }}

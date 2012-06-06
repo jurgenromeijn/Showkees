@@ -153,42 +153,17 @@ class Post
     {
         return $this->wall_owner;
     }
-    /**
-     * @var Mooi\WallBundle\Entity\Subject
-     */
-    public $subjects;
-
-
-    /**
-     * Add subjects
-     *
-     * @param Mooi\WallBundle\Entity\Subject $subjects
-     */
-    public function addSubject(\Mooi\WallBundle\Entity\Subject $subjects)
-    {
-        $this->subjects[] = $subjects;
-    }
-
-    /**
-     * Get subjects
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getSubjects()
-    {
-        return $this->subjects;
-    }
     
     /**
-     * @var Mooi\WallBundle\Entity\Subject
+     * @var Mooi\WallBundle\Entity\Image
      */
     private $images;
 
 
     /**
-     * Add subjects
+     * Add images
      *
-     * @param Mooi\WallBundle\Entity\Subject $subjects
+     * @param Mooi\WallBundle\Entity\Image $images
      */
     public function addImages(\Mooi\WallBundle\Entity\Image $images)
     {
@@ -196,7 +171,7 @@ class Post
     }
 
     /**
-     * Get subjects
+     * Get images
      *
      * @return Doctrine\Common\Collections\Collection 
      */
@@ -241,5 +216,31 @@ class Post
     public function getReplies()
     {
         return $this->replies;
+    }
+
+    /**
+     * @var Mooi\WallBundle\Entity\Subject
+     */
+    private $subject;
+
+
+    /**
+     * Set subject
+     *
+     * @param Mooi\WallBundle\Entity\Subject $subject
+     */
+    public function setSubject(\Mooi\WallBundle\Entity\Subject $subject)
+    {
+        $this->subject = $subject;
+    }
+
+    /**
+     * Get subject
+     *
+     * @return Mooi\WallBundle\Entity\Subject 
+     */
+    public function getSubject()
+    {
+        return $this->subject;
     }
 }

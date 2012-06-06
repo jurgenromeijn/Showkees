@@ -11,10 +11,6 @@ Mooi\WallBundle\Entity\Post:
             length: 60
         time:
             type: datetime
-    manyToMany:
-        subjects:
-            targetEntity: Subject
-            inversedBy: posts
     oneToMany:
         images:
             targetEntity: Image
@@ -35,4 +31,9 @@ Mooi\WallBundle\Entity\Post:
             joinColumn:
                 name: wall_owner_id
                 referencedColumnName: id
-                
+        subject:
+            targetEntity: Subject
+            inversedBy: posts
+            joinColumn:
+                name: subject_id
+                referencedColumnName: id    

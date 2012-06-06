@@ -7,4 +7,3 @@ MooiWallBundle_WallEdit:
 MooiWallBundle_WallDelete:
     pattern: /delete
     defaults: { _controller: MooiWallBundle:Wall:delete }
-
