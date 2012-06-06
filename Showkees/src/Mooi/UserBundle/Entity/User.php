@@ -283,7 +283,7 @@ class User implements UserInterface, \Serializable
         
         $fullName = $this->first_name;
         $fullName .= (!empty($this->preposition)) ? 
-            '' + $this->preposition + ' ' :
+            ' ' . $this->preposition . ' ' :
             ' ';
         $fullName .= $this->last_name;
         

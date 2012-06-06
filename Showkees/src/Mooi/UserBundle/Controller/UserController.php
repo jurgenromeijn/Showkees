@@ -115,40 +115,29 @@ class UserController extends Controller {
             {
 
                 $newPassword = $user->getPassword();
-                
+                                
                 if(!empty($newPassword))
                 {
-                    
+                             
                     $userFactory = new UserFactory($this->get('security.encoder_factory'));
                     $user->setPassword($userFactory->encode($user));
-                    //echo "new";
                     
                 }
                 else 
                 {
                     
                     $user->setPassword($originalPassword);
-                    //echo "old";
                     
                 }
-                
-                // Get User factory and let it encode the password
-                $userFactory = new UserFactory($this->get('security.encoder_factory'));
-                $user->setPassword($userFactory->encode($user));
-
-                $this->get("session")->setFlash('notice', 'Je instellingen zijn aangepast.');
-                return $this->redirect($this->generateUrl('MooiUserBundle_UserIndex'));
-                
-                /*
+                                                
                 // Save the User to the database
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($user);
                 $em->flush();
                 
                 // Set flash message and redirect to another page
-                $this->get("session")->setFlash('notice', 'Het account is toegevoegd.');
+                $this->get("session")->setFlash('notice', 'Je instellingen zijn aangepast.');
                 return $this->redirect($this->generateUrl('MooiUserBundle_UserIndex'));
-                 */
                 
             }
             
