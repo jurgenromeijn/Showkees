@@ -13,8 +13,8 @@
                 <tr>
                     <th>Vak</th>
                     <th>Beschrijving</th>
-                    <th>&nbsp</th>
-                    <th>&nbsp</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             
@@ -35,7 +35,11 @@
                         <a href="{{ path('MooiWallBundle_SubjectEdit', {'name' : subject.getName()}) }}">aanpassen</a>
                     </td>
                     <td>
-                        <a href="{{ path('MooiWallBundle_SubjectDelete', {'name' : subject.getName()}) }}">verwijderen</a>
+                        <a class="confirm" href="{{ path('MooiWallBundle_SubjectDelete', {'name' : subject.getName()}) }}">
+                            verwijderen
+                            <h3 class="head">{{ subject.getName() }} verwijderen</h3>
+                            <p class="body">Weet je zeker dat je het vak {{ subject.getName() }} wilt verwijderen?</p>
+                        </a>
                     </td>
                     
                 </tr>

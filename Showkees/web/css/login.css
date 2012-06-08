@@ -119,7 +119,7 @@ fieldset#button
     right: 30px;
     bottom: 30px;
     color: #fff;
-    background-color: #405624;
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 10px;
     width: 350px;
     line-height: 1.2em;
@@ -172,7 +172,6 @@ fieldset#button
 {
     line-height: 1.5em;
 }
-
 
 #loginError .button
 {
