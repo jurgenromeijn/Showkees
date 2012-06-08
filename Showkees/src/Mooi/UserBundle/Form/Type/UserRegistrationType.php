@@ -4,6 +4,7 @@ namespace Mooi\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Mooi\UserBundle\Entity\User;
 
 class UserRegistrationType extends AbstractType
 {
@@ -11,17 +12,26 @@ class UserRegistrationType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         
+        $builder->add('username', 'text', array('label' => 'Gebruikersnaam'));
         $builder->add('first_name', 'text', array('label' => 'Voornaam'));
         $builder->add('preposition', 'text', array(
             'label'    => 'Tussenvoegsel', 
             'required' => false
         ));
         $builder->add('last_name', 'text', array('label' => 'Achternaam'));
+        $builder->add('gender', 'choice', array(
+            'label' => 'Geslacht',
+            'choices' => array(
+                User::GENDER_MALE => User::GENDER_MALE,
+                User::GENDER_FEMALE => User::GENDER_FEMALE
+            ),
+            'expanded' => true
+        ));
         $builder->add('role', null, array('label' => 'Account soort'));
         $builder->add('email', 'email', array(
-            'label'    => 'Emailadres', 
-            'required' => true)
-        );
+            'label'    => 'Emailadres',
+            'required' => false
+        ));
         $builder->add('password', 'repeated', array (
             'required'        => true,
             'type'            => 'password',

@@ -9,6 +9,9 @@ Mooi\UserBundle\Entity\User:
         salt:
             type: string
             length: 32
+        username:
+            type: string
+            length: 150
         first_name:
             type: string
             length: 150
@@ -19,9 +22,13 @@ Mooi\UserBundle\Entity\User:
             type: string
             length: 20
             nullable: true
+        gender:
+            type: string
+            columnDefinition: ENUM('man', 'vrouw')
         email:
             type: string
             length: 150
+            nullable: true
         password:
             type: string
             length: 100

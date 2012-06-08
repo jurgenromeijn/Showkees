@@ -5,6 +5,11 @@
 {% block content %}
     <h1>Instellingen aanpassen</h1>
     <form action="{{ path('MooiUserBundle_UserEdit') }}" method="post" autocomplete="off" {{ form_enctype(form) }}>
+        <div class="form_row">
+            <span class="label">Gebruikersnaam</span>
+            <span class="value">{{ user.getUsername() }}</span>
+            <div class="clearfix"></div>
+        </div>
         {{ form_widget(form) }}
         <div class="button">
             <input type="submit" class="button" value="Toevoegen" />

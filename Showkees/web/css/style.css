@@ -161,13 +161,13 @@ body
 /**
  * Contentforms
  */
- #contentWrapper form>div>div
+ #contentWrapper form .form_row
  {
     border-bottom: 1px #ddd dotted;
     padding: 10px 0;
  }
  
-#contentWrapper form>div>div label
+#contentWrapper .form_row>label, #contentWrapper .form_row>span.label
 {
     font-size: 1.2em;    
     width: 250px;
@@ -175,7 +175,20 @@ body
     display: inline-block;
 }
 
-#contentWrapper form>div>div input, #contentWrapper form>div>div select, #contentWrapper form>div>div textarea
+#contentWrapper .form_row>span.value
+{
+    padding: 10px 0;
+    margin: 5px;
+    padding: 0.2em;
+    float: right;
+    color: #999;
+    font-style: italic;
+    font-size: 1.2em;    
+    background-color: #fff;
+    width: 300px;    
+}
+
+#contentWrapper .form_row>input, #contentWrapper .form_row>select, #contentWrapper .form_row>textarea
 {
     padding: 10px 0;
     border: 5px solid #54C2C1;
@@ -188,6 +201,25 @@ body
     background-color: #fff;
     width: 300px;
 }
+
+#contentWrapper .form_row>.options
+{
+    float: right;
+    width: 300px;
+}
+
+#contentWrapper .form_row>.options input
+{
+    margin-right: 10px;
+}
+
+#contentWrapper .form_row>.options label
+{
+    color: #666;
+    font-style: italic;
+    font-size: 1.2em;    
+}
+
 #contentWrapper form>div>div textArea{
     width: 468px;
     height: 210px;

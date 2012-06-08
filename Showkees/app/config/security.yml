@@ -8,7 +8,7 @@ security:
 
     providers:
         user_db:
-            entity: { class: MooiUserBundle:User, property: email }
+            entity: { class: MooiUserBundle:User, property: username }
 
     firewalls:
         user_area:

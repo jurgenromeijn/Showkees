@@ -7,6 +7,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface, \Serializable
 {
     
+    const GENDER_MALE = 'man';
+    const GENDER_FEMALE = 'vrouw'; 
+
     protected $id;
     protected $role;   
     protected $first_name;
@@ -17,6 +20,8 @@ class User implements UserInterface, \Serializable
     protected $password;
     protected $is_active;
     protected $date;
+    protected $username;
+    protected $gender;
 
     public function __construct()
     {
@@ -115,6 +120,26 @@ class User implements UserInterface, \Serializable
         return $this->preposition;
     }
 
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string 
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+    
     /**
      * Set email
      *
@@ -220,9 +245,18 @@ class User implements UserInterface, \Serializable
      */
     public function getUsername()
     {
-        return $this->email;
+        return $this->username;
     }
-
+    
+    /**
+     * Set username
+     *
+     * @param string $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
     /**
      * @inheritDoc
      */
@@ -330,4 +364,5 @@ class User implements UserInterface, \Serializable
     {
         $this->wall_owner_posts[] = $wallOwnerPosts;
     }
+
 }
