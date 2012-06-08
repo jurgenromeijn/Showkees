@@ -3,7 +3,7 @@
 {% form_theme form '::baseForm.html.twig' %}
 
 {% block content %}
-    <h1>Instellingen aanpassen</h1>
+    <h1>Instellingen</h1>
     <form action="{{ path('MooiUserBundle_UserEdit') }}" method="post" autocomplete="off" {{ form_enctype(form) }}>
         <div class="form_row">
             <span class="label">Gebruikersnaam</span>
@@ -12,7 +12,9 @@
         </div>
         {{ form_widget(form) }}
         <div class="button">
-            <input type="submit" class="button" value="Toevoegen" />
+            <input type="submit" class="button" value="Opslaan" />
+            <p>Velden met een * zijn verplicht.</p>
+            <div class="clearfix"></div>
         </div>
     </form>
 {% endblock %}

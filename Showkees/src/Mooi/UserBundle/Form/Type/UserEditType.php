@@ -12,21 +12,21 @@ class UserEditType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         
-        $builder->add('first_name', 'text', array('label' => 'Voornaam'));
+        $builder->add('first_name', 'text', array('label' => 'Voornaam*'));
         $builder->add('preposition', 'text', array(
             'label'    => 'Tussenvoegsel', 
             'required' => false
         ));
-        $builder->add('last_name', 'text', array('label' => 'Achternaam'));
+        $builder->add('last_name', 'text', array('label' => 'Achternaam*'));
         $builder->add('gender', 'choice', array(
-            'label' => 'Geslacht',
+            'label' => 'Geslacht*',
             'choices' => array(
                 User::GENDER_MALE => User::GENDER_MALE,
                 User::GENDER_FEMALE => User::GENDER_FEMALE
             ),
             'expanded' => true
         ));
-        $builder->add('role', null, array('label' => 'Account soort'));
+        $builder->add('role', null, array('label' => 'Account type*'));
         $builder->add('email', 'email', array(
             'label'    => 'Emailadres',
             'required' => false
