@@ -2,6 +2,14 @@ Mooi\WallBundle\Entity\Post:
   properties:
     text:
       - NotBlank: {message: "Vul een bericht in."}
-      - MinLength: {limit: 3, message: "Voornaam moet langer zijn dan 2 tekens"}
+      - MinLength: {limit: 3, message: "Voornaam moet langer zijn dan 2 tekens."}
     subject:
       - NotBlank: {message: "Geef een vak op."}
+
+Mooi\WallBundle\Entity\Subject:
+  constraints:
+      - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: {fields: name, message: "Dit vak bestaat al."}
+  properties:
+    name:
+      - NotBlank: {message: "Vul een naam voor het vak in."}
+      - MinLength: {limit: 3, message: "De naam moet langer zijn dan 2 tekens."}

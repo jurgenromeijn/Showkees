@@ -76,9 +76,9 @@ class UserController extends Controller {
                 $user->setPassword($userFactory->encode($user));
                 
                 // Save the User to the database
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($user);
-                $em->flush();
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
                 
                 // Set flash message and redirect to another page
                 $this->get("session")->setFlash('notice', 'Het account is toegevoegd.');
@@ -131,9 +131,9 @@ class UserController extends Controller {
                 }
                                                 
                 // Save the User to the database
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($user);
-                $em->flush();
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
                 
                 // Set flash message and redirect to another page
                 $this->get("session")->setFlash('notice', 'Je instellingen zijn aangepast.');

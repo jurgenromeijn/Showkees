@@ -1,0 +1,17 @@
+{% extends '::singleColumnLayout.html.twig' %}
+
+{% form_theme form '::baseForm.html.twig' %}
+
+{% block content %}
+    <h1>Vak toevoegen</h1>
+    <p><a href="{{ path('MooiWallBundle_SubjectIndex') }}">terug naar vakken overzicht</a></p>
+    <form action="{{ path('MooiWallBundle_SubjectAdd') }}" method="post" autocomplete="off" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <div class="button">
+            <input type="submit" class="button" value="Opslaan" />
+            <p>Velden met een * zijn verplicht.</p>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+    <p><a href="{{ path('MooiWallBundle_SubjectIndex') }}">terug naar vakken overzicht</a></p>
+{% endblock %}

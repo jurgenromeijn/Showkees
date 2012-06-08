@@ -1,0 +1,49 @@
+{% extends '::singleColumnLayout.html.twig' %}
+
+{% block content %}
+    <h1>Vakken</h1>
+    
+    <p><a href="{{ path('MooiWallBundle_SubjectAdd') }}">Vak toevoegen</a></p>
+    {% if subjects|length < 1 %}
+        <p>Er zijn nog geen vakken</p>
+    {% else %}
+        <table class="dataTable">
+        
+            <thead>
+                <tr>
+                    <th>Vak</th>
+                    <th>Beschrijving</th>
+                    <th>&nbsp</th>
+                    <th>&nbsp</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+            
+                {% for subject in subjects %}
+                <tr>
+                
+                    <td>{{ subject.getName() }}</td>
+                    <td>
+                        {% if subject.getDescription()|length > 30 %}
+                            {{ subject.getDescription()[1:30] }}..
+                        {% else %}
+                            {{ subject.getDescription() }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path('MooiWallBundle_SubjectEdit', {'name' : subject.getName()}) }}">aanpassen</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('MooiWallBundle_SubjectDelete', {'name' : subject.getName()}) }}">verwijderen</a>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+            
+        </table>
+    {% endif %}
+    <p><a href="{{ path('MooiWallBundle_SubjectAdd') }}">Vak toevoegen</a></p>
+{% endblock %}

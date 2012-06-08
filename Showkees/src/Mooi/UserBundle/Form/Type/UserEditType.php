@@ -26,7 +26,10 @@ class UserEditType extends AbstractType
             ),
             'expanded' => true
         ));
-        $builder->add('role', null, array('label' => 'Account type*'));
+        $builder->add('role', null, array(
+            'label' => 'Account type*',
+            'preferred_choices' => array(4)
+        ));
         $builder->add('email', 'email', array(
             'label'    => 'Emailadres',
             'required' => false

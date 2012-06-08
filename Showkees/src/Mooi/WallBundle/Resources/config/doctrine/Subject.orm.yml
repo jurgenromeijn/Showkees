@@ -11,6 +11,7 @@ Mooi\WallBundle\Entity\Subject:
             length: 60
         description:
             type: text
+            nullable: true
     oneToMany:
         posts:
             targetEntity: Post
