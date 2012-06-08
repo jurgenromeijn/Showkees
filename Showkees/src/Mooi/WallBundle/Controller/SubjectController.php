@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Mooi\WallBundle\Entity\Subject;
 use Mooi\WallBundle\Form\Type\SubjectType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SubjectController extends Controller
 {
@@ -62,33 +63,45 @@ class SubjectController extends Controller
         $repository = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Subject');
         $subject = $repository->findOneByName($name);
-        $form = $this->createForm(new SubjectType(), $subject);
         
-        if ($request->getMethod() == 'POST') 
+        if($subject == null)
         {
             
-            $form->bindRequest($request);
-            
-            if ($form->isValid()) 
-            {
-
-                // Save the User to the database
-                $entityManager = $this->getDoctrine()->getEntityManager();
-                $entityManager->persist($subject);
-                $entityManager->flush();
-                
-                // Set flash message and redirect to another page
-                $this->get("session")->setFlash('notice', 'Het vak '. $subject->getName() .' is aangepast.');
-                return $this->redirect($this->generateUrl('MooiWallBundle_SubjectIndex'));
-                
-            }
+            throw $this->createNotFoundException("Vak kon niet gevonden worden");
             
         }
+        else
+        {
+        
+            $form = $this->createForm(new SubjectType(), $subject);
 
-         return $this->render('MooiWallBundle:Subject:edit.html.twig', array(
-            'form' => $form->createView(),
-            'subject' => $subject
-        ));
+            if ($request->getMethod() == 'POST') 
+            {
+
+                $form->bindRequest($request);
+
+                if ($form->isValid()) 
+                {
+
+                    // Save the User to the database
+                    $entityManager = $this->getDoctrine()->getEntityManager();
+                    $entityManager->persist($subject);
+                    $entityManager->flush();
+
+                    // Set flash message and redirect to another page
+                    $this->get("session")->setFlash('notice', 'Het vak '. $subject->getName() .' is aangepast.');
+                    return $this->redirect($this->generateUrl('MooiWallBundle_SubjectIndex'));
+
+                }
+
+            }
+
+            return $this->render('MooiWallBundle:Subject:edit.html.twig', array(
+                'form' => $form->createView(),
+                'subject' => $subject
+            ));
+         
+        }
         
     }
     
