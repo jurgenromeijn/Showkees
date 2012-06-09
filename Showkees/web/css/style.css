@@ -405,7 +405,43 @@ table.dataTable tbody tr:nth-child(even)
       {
           font-size: 1.2em;
       }
+      
+      #sidebarColumn #studentSearchField
+      {
+          width: 100%;
+          background-color: #fff;
+          background-image: url('../images/magnifyingGlass.png');
+          background-repeat: no-repeat;
+          background-position: 250px center;
+          padding: 5px;
+          font-size: 1.2em;
+          width: 265px;
+          border-radius: 5px;
+          border: 3px #399 solid;
+          font-style: italic;
+      }
+      
+      #sidebarColumn #studentList
+      {
+          list-style: none;
+          max-height: 300px;
+          overflow: auto;
+          margin: 5px 0;
+      }
 
+      #sidebarColumn #studentList li
+      {
+          margin: 5px 0;
+      }
+      
+      #sidebarColumn #studentList a
+      {
+          padding: 5px;
+          border-radius: 5px;
+          display: block;
+          background-color: rgba(255, 255, 255, 0.5);
+      }
+      
 /**
  * Footer
  */

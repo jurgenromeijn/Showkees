@@ -1,5 +1,10 @@
 {% extends '::twoColumnLayout.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/studentListSearcher.js') }}" type="text/javascript"></script>
+{% endblock %}
+
 {% block content %}
     <h1>Leerlingen overzicht</h1>
     {% if teacher.getStudents()|length < 1 %}
@@ -33,7 +38,7 @@
                         <td>
                             <a class="confirm" href="{{ path('MooiUserBundle_TeacherRemoveStudentOverview', {'username': student.getUsername()}) }}">
                                 verwijderen
-                                <h3 class="head">Leerling verwijderen</h3>
+                                <h3 class="head">Leerling toevoegen</h3>
                                 <p class="body">Weet je zeker dat je wilt dat {{ student.getFullname() }} niet langer een van je leerlingen is?</p>
                             </a>
                         </td>
@@ -51,9 +56,12 @@
 {% block sidebarContent %}
     <h1>Leerling toewijzen</h1>
     {% if students|length <= pupilList|length %}
-        <p>Er konden geen leerlingen worden gevonden.</p>
+        <p>Er konden geen leerlingen worden gevonden die nog niet aan jou zijn toegewezen.</p>
     {% else %}
-        <ul>
+        <form id="studentSearchForm" autocomplete="off">
+            <input type="input" placeholder="Zoeken" id="studentSearchField" />
+        </form>
+        <ul id="studentList">
         {% for student in students %}
             {% if student.getId() not in pupilList %}
                 <li><a href="{{ path('MooiUserBundle_TeacherAddStudentOverview', {'username': student.getUsername()}) }}">{{ student.getFullName() }}</a></li>
