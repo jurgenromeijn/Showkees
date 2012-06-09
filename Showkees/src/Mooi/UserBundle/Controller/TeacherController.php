@@ -53,7 +53,9 @@ class TeacherController extends Controller
                 $entityManager = $this->getDoctrine()->getEntityManager();
                 $entityManager->persist($teacher);
                 $entityManager->flush();
-            
+
+                $this->get("session")->setFlash('notice', $student->getFullName() . ' is nu een van jouw leerlingen.');
+
             }
             catch(\PDOException $exception)
             {

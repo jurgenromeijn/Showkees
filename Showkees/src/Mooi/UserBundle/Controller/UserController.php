@@ -102,10 +102,34 @@ class UserController extends Controller {
         
     }
     
-    public function editAction(Request $request)
+    public function editAction(Request $request, $username)
     {
+
+        $user;
+                
+        if($username == null)
+        {
+    
+            $user = $this->get('security.context')->getToken()->getUser();
+            
+        }
+        else
+        {
+
+            $userRepository = $this->getDoctrine()
+                ->getRepository('MooiUserBundle:User');
+
+            $user = $userRepository->findOneByUsername($username);
+            
+        }
         
-        $user = $this->get('security.context')->getToken()->getUser();
+        if($user == null)
+        {
+            
+            throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
+        
+        }
+        
         $form = $this->createForm(new UserEditType(), $user, array(
             "validation_groups" => array("Default", "update")
         ));
@@ -143,7 +167,7 @@ class UserController extends Controller {
                 $entityManager->flush();
                 
                 // Set flash message and redirect to another page
-                $this->get("session")->setFlash('notice', 'Je instellingen zijn aangepast.');
+                $this->get("session")->setFlash('notice', 'De instellingen zijn aangepast.');
                 return $this->redirect($this->generateUrl('MooiUserBundle_UserIndex'));
                 
             }
@@ -152,7 +176,8 @@ class UserController extends Controller {
         
         return $this->render("MooiUserBundle:User:edit.html.twig", array(
             'form' => $form->createView(),
-            'user' => $user
+            'user' => $user,
+            'username' => $username
         ));
         
     }

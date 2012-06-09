@@ -1,7 +1,7 @@
 {% extends '::twoColumnLayout.html.twig' %}
 
 {% block content %}
-    <h1>Test</h1>
+    <h1>Leerlingen overzicht</h1>
     {% if teacher.getStudents()|length < 1 %}
         <p>Je hebt nog geen leerlingen aan jezelf toegewezen.</p>
     {% else %}
@@ -24,8 +24,8 @@
                 
                     <tr>
                     
-                        <td>{{ student.getFullname() }}</td>
-                        <td>aanpassen</td>
+                        <td><a href="{{ path('MooiWallBundle_WallIndex', {'id': student.getId()}) }}">{{ student.getFullname() }}</a></td>
+                        <td><a href="{{ path('MooiUserBundle_UserEdit', {'username': student.getUsername()}) }}">aanpassen</a></td>
                         <td><a href="{{ path('MooiUserBundle_TeacherRemoveStudentOverview', {'username': student.getUsername()}) }}">verwijderen</a></td>
                         
                     </tr>
@@ -40,7 +40,7 @@
     
 {% block sidebarContent %}
     <h1>Leerling toewijzen</h1>
-    {% if students|length < pupilList|length %}
+    {% if students|length <= pupilList|length %}
         <p>Er konden geen leerlingen worden gevonden.</p>
     {% else %}
         <ul>

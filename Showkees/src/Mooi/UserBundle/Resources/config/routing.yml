@@ -8,8 +8,8 @@ MooiUserBundle_UserCreate:
     defaults: { _controller: MooiUserBundle:User:create }
     
 MooiUserBundle_UserEdit:
-    pattern: /user/edit
-    defaults: { _controller: MooiUserBundle:User:edit }
+    pattern: /user/edit/{username}
+    defaults: { _controller: MooiUserBundle:User:edit, username: null }
     
 #
 MooiUserBundle_TeacherStudentOverview:
