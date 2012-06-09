@@ -24,9 +24,19 @@
                 
                     <tr>
                     
-                        <td><a href="{{ path('MooiWallBundle_WallIndex', {'id': student.getId()}) }}">{{ student.getFullname() }}</a></td>
-                        <td><a href="{{ path('MooiUserBundle_UserEdit', {'username': student.getUsername()}) }}">aanpassen</a></td>
-                        <td><a href="{{ path('MooiUserBundle_TeacherRemoveStudentOverview', {'username': student.getUsername()}) }}">verwijderen</a></td>
+                        <td>
+                            <a href="{{ path('MooiWallBundle_WallIndex', {'id': student.getId()}) }}">{{ student.getFullname() }}</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('MooiUserBundle_UserEdit', {'username': student.getUsername()}) }}">aanpassen</a>
+                        </td>
+                        <td>
+                            <a class="confirm" href="{{ path('MooiUserBundle_TeacherRemoveStudentOverview', {'username': student.getUsername()}) }}">
+                                verwijderen
+                                <h3 class="head">Leerling verwijderen</h3>
+                                <p class="body">Weet je zeker dat je wilt dat {{ student.getFullname() }} niet langer een van je leerlingen is?</p>
+                            </a>
+                        </td>
                         
                     </tr>
                 
