@@ -2,6 +2,8 @@
 
 namespace Mooi\UserBundle\Entity;
 
+use \Doctrine\Common\Collections\ArrayCollection;
+
 class Role
 {
     
@@ -12,7 +14,7 @@ class Role
 
     public function __construct()
     {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new ArrayCollection();
     }
     
     /**

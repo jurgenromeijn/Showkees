@@ -1,10 +1,8 @@
 MooiWallBundle:
     resource: "@MooiWallBundle/Resources/config/routing.yml"
-    prefix:   /
 
 MooiUserBundle:
     resource: "@MooiUserBundle/Resources/config/routing.yml"
-    prefix:   /user
 
 MooiUserBundle_UserLogin:
     pattern:  /login

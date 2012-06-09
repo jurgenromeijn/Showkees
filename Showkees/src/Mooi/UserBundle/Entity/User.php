@@ -3,6 +3,7 @@
 namespace Mooi\UserBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 class User implements UserInterface, \Serializable
 {
@@ -22,12 +23,16 @@ class User implements UserInterface, \Serializable
     protected $date;
     protected $username;
     protected $gender;
+    protected $teachers;
+    protected $students;
 
     public function __construct()
     {
         $this->is_active = true;
         $this->salt      = md5(uniqid(null, true));
         $this->date      = new \DateTime();
+        $this->teachers  = new ArrayCollection();
+        $this->students  = new ArrayCollection();
     }
     
     /**
@@ -365,4 +370,34 @@ class User implements UserInterface, \Serializable
         $this->wall_owner_posts[] = $wallOwnerPosts;
     }
 
+
+    /**
+     * Add students
+     *
+     * @param Mooi\UserBundle\Entity\User $students
+     */
+    public function addUser(\Mooi\UserBundle\Entity\User $students)
+    {
+        $this->students[] = $students;
+    }
+
+    /**
+     * Get students
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getStudents()
+    {
+        return $this->students;
+    }
+
+    /**
+     * Get teachers
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTeachers()
+    {
+        return $this->teachers;
+    }
 }

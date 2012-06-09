@@ -25,5 +25,5 @@ MooiWallBundle_SubjectEdit:
     defaults: { _controller: MooiWallBundle:Subject:edit }
     
 MooiWallBundle_SubjectDelete:
-    pattern: /subject/delete/{name}/
+    pattern: /subject/delete/{name}
     defaults: { _controller: MooiWallBundle:Subject:delete }

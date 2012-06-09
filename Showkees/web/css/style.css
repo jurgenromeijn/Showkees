@@ -370,6 +370,43 @@ table.dataTable tbody tr:nth-child(even)
 }
 
 /**
+ * Two column layout
+ */
+ 
+    /**
+     * Content column
+     */
+     #contentColumn
+     {
+         width: 620px;
+         float: left;
+     }
+     
+     /**
+      * Sidebar colunn
+      */
+      #sidebarColumn
+      {
+          width: 280px;
+          float: right;
+          background-image: linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
+          background-image: -o-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
+          background-image: -moz-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
+          background-image: -webkit-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
+          background-image: -ms-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
+          background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #54C2C0), color-stop(0.51, #54C2C0), color-stop(1, white));
+          -webkit-border-radius: 12px;
+          -moz-border-radius: 12px;
+          border-radius: 12px;
+          padding: 0 10px;
+      }
+      
+      #sidebarColumn h1
+      {
+          font-size: 1.2em;
+      }
+
+/**
  * Footer
  */
 #footerWrapper

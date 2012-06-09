@@ -1,11 +1,25 @@
+#userstuff
 MooiUserBundle_UserIndex:
-    pattern:  /
+    pattern:  /user/
     defaults: { _controller: MooiUserBundle:User:index }
 
 MooiUserBundle_UserCreate:
-    pattern: /create
+    pattern: /user/create
     defaults: { _controller: MooiUserBundle:User:create }
     
 MooiUserBundle_UserEdit:
-    pattern: /edit
+    pattern: /user/edit
     defaults: { _controller: MooiUserBundle:User:edit }
+    
+#
+MooiUserBundle_TeacherStudentOverview:
+    pattern: /teacher/students
+    defaults: { _controller: MooiUserBundle:Teacher:studentOverview }
+    
+MooiUserBundle_TeacherAddStudentOverview:
+    pattern: /teacher/students/add/{username}
+    defaults: { _controller: MooiUserBundle:Teacher:addStudent }
+    
+MooiUserBundle_TeacherRemoveStudentOverview:
+    pattern: /teacher/students/remove/{username}
+    defaults: { _controller: MooiUserBundle:Teacher:removeStudent }

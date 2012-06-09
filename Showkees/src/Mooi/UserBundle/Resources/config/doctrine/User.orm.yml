@@ -50,3 +50,20 @@ Mooi\UserBundle\Entity\User:
         sender_id_posts:
             targetEntity: Mooi\WallBundle\Entity\Post
             mappedBy: sender
+    manyToMany:
+        students:
+            targetEntity: Mooi\UserBundle\Entity\User
+            inversedBy: teachers
+            joinTable:
+                name: teachers_students
+                joinColumns:
+                    joinColumn:
+                        name: teacher_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    joinColumn:
+                        name: student_id
+                        referencedColumnName: id
+        teachers:
+            targetEntity: Mooi\UserBundle\Entity\User
+            mappedBy: students

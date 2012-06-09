@@ -1,5 +1,27 @@
 {% extends '::baseLayout.html.twig' %}
 
-{% block content %}
+{% block columns %}
+
+    <div id="contentColumn">
+
+    {% include '::flashMessage.html.twig' %}
+        
+    {% block content %}
+    {% endblock %}
+        
+    </div>
+
+    {% block sidebar %}
+    
+        <div id="sidebarColumn">
+
+        {% block sidebarContent %}
+        {% endblock %}
+            
+        </div>
+
+    {% endblock %}
+
+    <div class="clearfix"></div>
 
 {% endblock %}

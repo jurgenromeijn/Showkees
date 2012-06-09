@@ -1,0 +1,54 @@
+{% extends '::twoColumnLayout.html.twig' %}
+
+{% block content %}
+    <h1>Test</h1>
+    {% if teacher.getStudents()|length < 1 %}
+        <p>Je hebt nog geen leerlingen aan jezelf toegewezen.</p>
+    {% else %}
+        <table class="dataTable">
+            
+            <thead>
+            
+                <tr>
+                
+                    <th>Naam</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    
+                </tr>
+            
+            </thead>
+            <tbody>
+            
+                {% for student in teacher.getStudents() %}
+                
+                    <tr>
+                    
+                        <td>{{ student.getFullname() }}</td>
+                        <td>aanpassen</td>
+                        <td><a href="{{ path('MooiUserBundle_TeacherRemoveStudentOverview', {'username': student.getUsername()}) }}">verwijderen</a></td>
+                        
+                    </tr>
+                
+                {% endfor %}
+            
+            </tbody>
+            
+        </table>
+    {% endif %}
+{% endblock %}
+    
+{% block sidebarContent %}
+    <h1>Leerling toewijzen</h1>
+    {% if students|length < pupilList|length %}
+        <p>Er konden geen leerlingen worden gevonden.</p>
+    {% else %}
+        <ul>
+        {% for student in students %}
+            {% if student.getId() not in pupilList %}
+                <li><a href="{{ path('MooiUserBundle_TeacherAddStudentOverview', {'username': student.getUsername()}) }}">{{ student.getFullName() }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
