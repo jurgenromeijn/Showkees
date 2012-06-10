@@ -54,6 +54,9 @@ Mooi\UserBundle\Entity\User:
         students:
             targetEntity: Mooi\UserBundle\Entity\User
             inversedBy: teachers
+            orderBy: 
+                first_name: ASC
+                last_name: ASC
             joinTable:
                 name: teachers_students
                 joinColumns:

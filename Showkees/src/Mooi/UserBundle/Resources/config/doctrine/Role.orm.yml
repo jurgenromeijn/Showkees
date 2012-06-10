@@ -16,3 +16,6 @@ Mooi\UserBundle\Entity\Role:
         users:
             targetEntity: User
             mappedBy: role
+            orderBy: 
+                first_name: ASC
+                last_name: ASC
