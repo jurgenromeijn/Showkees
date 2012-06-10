@@ -47,9 +47,13 @@ Mooi\UserBundle\Entity\User:
         wall_owner_posts:
             targetEntity: Mooi\WallBundle\Entity\Post
             mappedBy: wall_owner
+            orderBy: 
+                time: DESC
         sender_id_posts:
             targetEntity: Mooi\WallBundle\Entity\Post
             mappedBy: sender
+            orderBy: 
+                time: DESC
     manyToMany:
         students:
             targetEntity: Mooi\UserBundle\Entity\User
