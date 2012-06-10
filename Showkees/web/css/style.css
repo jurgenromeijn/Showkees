@@ -234,7 +234,7 @@ body
     padding: 10px 0;
 }
 
-input.button
+input.button, .add_post_button
 {
     padding: 10px 0;
     height: 50px;
@@ -250,6 +250,21 @@ input.button
     float: right;
     background-color: #54C2C1;
 }
+
+.add_post_button{
+    width: 200px;
+    height: 75px;
+    float: none;
+    line-height: 67px;
+}
+.add_post_button a{
+    color: #fff !important;
+    font-size: 19px;
+    text-decoration: none;
+}
+/*p{
+    position: relative;
+}*/
 
 #contentWrapper form ul.errors
 {
@@ -482,6 +497,7 @@ table.dataTable tbody tr:nth-child(even)
      padding: 15px 10px;
      color: #666;
      margin-bottom: 10px;
+     position: relative;
  }
  .reply{
      border-bottom: solid 1px indianred;
@@ -508,6 +524,16 @@ table.dataTable tbody tr:nth-child(even)
  }
  .post h2 span{
      color: #54C2C1;
+ }
+ .post a .delete_post_button{
+    position: absolute;
+    top: 18px;
+    right: 9px;
+ }
+ .post a .edit_post_button{
+    position: absolute;
+    top: 18px;
+    right: 44px;
  }
  .image_gallery{
      overflow: hidden;

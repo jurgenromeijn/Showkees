@@ -4,11 +4,15 @@ MooiWallBundle_WallIndex:
     defaults: { _controller: MooiWallBundle:Wall:index }
     
 MooiWallBundle_WallEdit:
-    pattern: /edit
+    pattern: /wall/edit/{postId}
     defaults: { _controller: MooiWallBundle:Wall:edit }
+
+MooiWallBundle_WallAdd:
+    pattern: /wall/add/{id}
+    defaults: { _controller: MooiWallBundle:Wall:add }
     
 MooiWallBundle_WallDelete:
-    pattern: /delete
+    pattern: /wall/delete/{postId}
     defaults: { _controller: MooiWallBundle:Wall:delete }
     
 #subjects

@@ -1,24 +1,21 @@
-{% extends '::singleColumnLayout.html.twig' %}
+{% extends '::twoColumnLayout.html.twig' %}
 
 {% block wall_owner_name %}
-    {{ wallOwner.getFullName }}
+    {{ wallOwner.getUserName }}
 {% endblock %}
-{% form_theme form '::baseForm.html.twig' %}
 {% block content %}
         <div id="content_left">
-            <form action="{{ path('MooiWallBundle_WallIndex', {'id': id }) }}" method="post" autocomplete="off" {{ form_enctype(form) }} >
-                {{ form_widget(form) }}
-                <div class="button">
-                    <input type="submit" class="button" value="Plaatsen" />
-                </div>
-            </form>
+            <h1>Posts</h1>
+            <p class="add_post_button">
+                <a href="{{ path('MooiWallBundle_WallAdd', {'id': id }) }}">Voeg een post toe</a>
+            </p>
             {% for wallOwnerPost in wallOwner.getWallOwnerPosts %}
             <div class="post">
                 <h2>
-                        wallOwnerPost.getgetSubject
+                    {{ wallOwnerPost.getWallOwner().getUserName() }}<span> over </span>{{wallOwnerPost.getSubject}}
                 </h2>
                 <p class="post_text">
-                    {{ wallOwnerPost.text }}
+                    {{ wallOwnerPost.getText() }}
                 </p>
                 <div class="image_gallery">
                     <img src="{{ asset('images/afbeelding.gif') }}" alt="" />
@@ -29,7 +26,17 @@
                     <li><a href="">Vind ik goed</a></li>
                     <li><a href="">Reageer</a></li>
                     <li>{{ wallOwnerPost.time|date('l,  j F Y') }}</li>
-                </ul>    
+                </ul>
+                {% if wallOwnerPost.getWallOwner().getId() == id %}
+                <a href="{{ path('MooiWallBundle_WallEdit', {'postId': wallOwnerPost.getId() }) }}">
+                    <img class="edit_post_button" src="{{ asset('images/close_delete.png') }}" alt="" />
+                </a>
+                <a class="confirm" href="{{ path('MooiWallBundle_WallDelete', {'postId' : wallOwnerPost.getId()}) }}">
+                            <img class="delete_post_button" src="{{ asset('images/close_delete.png') }}" alt="" />
+                            <h3 class="head">Post verwijderen</h3>
+                            <p class="body">Weet je zeker dat je de post van {% if user.getUserName == wallOwnerPost.getWallOwner().getUserName() %} jezelf {% else %} {{ wallOwnerPost.getWallOwner().getUserName() }} {% endif %} wilt verwijderen?</p>
+                        </a>
+                {% endif %}
             </div>
             <!--<div class="replies">
                 <h2>Reacties</h2>
@@ -49,4 +56,8 @@
             {% endfor %} 
         </div>    
         
+{% endblock %}
+
+{% block sidebarContent %}
+    <h1>Hoi hier komt nog data</h1>
 {% endblock %}

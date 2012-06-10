@@ -1,0 +1,18 @@
+{% extends '::singleColumnLayout.html.twig' %}
+
+{% form_theme form '::baseForm.html.twig' %}
+
+{% block content %}
+    <h1>Voeg een post toe</h1>
+    <p><a href="{{ path('MooiWallBundle_WallIndex', {'id': id }) }}">terug naar de wall</a></p>
+    <form action="{{ path('MooiWallBundle_WallAdd', {'id': id }) }}" method="post" autocomplete="off" {{ form_enctype(form) }} >
+        <div class="form_row">
+            <div class="clearfix"></div>
+        </div>
+        {{ form_widget(form) }}
+        <div class="button">
+            <input type="submit" class="button" value="Plaatsen" />
+        </div>
+    </form>
+    <p><a href="{{ path('MooiWallBundle_WallIndex', {'id': id }) }}">terug naar de wall</a></p>
+{% endblock %}
