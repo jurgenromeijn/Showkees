@@ -138,11 +138,20 @@ body
      padding: 10px 10px 140px;
 }
 
-#contentWrapper p, #contentWrapper h1
+#contentWrapper p, #contentWrapper h1, #contentWrapper h2
 {
     margin: 1em 0;
 }
 
+#contentWrapper h1
+{
+    
+}
+
+#contentWrapper h2
+{
+    color: #399;
+}
 /**
  * Flash messages
  */
@@ -154,8 +163,7 @@ body
     background-color: #e3efd3;
     background-image: url('../images/noticeIcon.png');
     background-repeat: no-repeat;
-    background-position-x: 5px;
-    background-position-y: 5px;
+    background-position: 5px 5px;
 }
 
 /**
