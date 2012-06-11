@@ -30,6 +30,6 @@ security:
     access_control:
         - { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/create, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/create, roles: ROLE_TEACHER }
         - { path: ^/teacher, roles: ROLE_TEACHER }
         - { path: ^/, roles: ROLE_STUDENT }
