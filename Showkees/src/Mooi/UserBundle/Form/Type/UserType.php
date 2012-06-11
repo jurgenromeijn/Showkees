@@ -7,23 +7,31 @@ use Symfony\Component\Form\FormBuilder;
 use Mooi\UserBundle\Entity\User;
 use Mooi\UserBundle\Repository\RoleRepository;
 
-class UserEditType extends AbstractType
+class UserType extends AbstractType
 {
     
     private $user;
-    private $ownAccount;
+    private $allowRoleChanging;
+    private $allowUsernameChanging;
 
-    public function __construct(User $user, $ownAccount)
+    public function __construct(User $user, $allowRoleChanging = true, $allowUsernameChanging = true)
     {
         $this->user = $user;
-        $this->ownAccount = $ownAccount;
+        $this->allowRoleChanging = $allowRoleChanging;
+        $this->allowUsernameChanging = $allowUsernameChanging;
     }
     
     public function buildForm(FormBuilder $builder, array $options)
     {
         
         $user = $this->user;
+
+        if($this->allowUsernameChanging)
+        {
         
+            $builder->add('username', 'text', array('label' => 'Gebruikersnaam*'));
+        
+        }
         $builder->add('first_name', 'text', array('label' => 'Voornaam*'));
         $builder->add('preposition', 'text', array(
             'label'    => 'Tussenvoegsel', 
@@ -39,7 +47,7 @@ class UserEditType extends AbstractType
             'expanded' => true
         ));
         
-        if(!$this->ownAccount && $user->getRole()->getId() <= 2)
+        if($this->allowRoleChanging && $user->getRole()->getId() <= 2)
         {
             
             $builder->add('role', 'entity', array(
@@ -76,7 +84,7 @@ class UserEditType extends AbstractType
     public function getName()
     {
         
-        return 'UserEdit';
+        return 'user';
         
     }
 
@@ -88,7 +96,7 @@ class UserEditType extends AbstractType
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
             // a unique key to help generate the secret token
-            'intention'       => 'user_editr',
+            'intention'       => 'user'
         );
         
     }

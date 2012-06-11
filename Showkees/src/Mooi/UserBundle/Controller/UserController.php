@@ -5,8 +5,7 @@ namespace Mooi\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Mooi\UserBundle\Entity\User;
-use Mooi\UserBundle\Form\Type\UserRegistrationType;
-use Mooi\UserBundle\Form\Type\UserEditType;
+use Mooi\UserBundle\Form\Type\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Mooi\UserBundle\Model\UserFactory;
@@ -72,7 +71,7 @@ class UserController extends Controller
         // Create a user and set up the form
         $user = new User();
         $user->setRole($roleRepository->find(4));
-        $form = $this->createForm(new UserRegistrationType($securityUser), $user, array(
+        $form = $this->createForm(new UserType($securityUser), $user, array(
             "validation_groups" => array("Default", "registration")
         ));
                 
@@ -151,7 +150,7 @@ class UserController extends Controller
             
         }
         
-        $form = $this->createForm(new UserEditType($securityUser, $ownAccount), $user, array(
+        $form = $this->createForm(new UserType($securityUser, !$ownAccount, false), $user, array(
             "validation_groups" => array("Default", "update")
         ));
         
