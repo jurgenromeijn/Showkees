@@ -30,6 +30,7 @@
                             <li><a href="{{ path('MooiUserBundle_UserEdit') }}">Instelligen</a></li>
                             {% if is_granted('ROLE_ADMIN') %}
                                 <li><a href="{{ path('MooiWallBundle_SubjectIndex') }}">Vakken</a></li>
+                                <li><a href="{{ path('MooiUserBundle_TeacherOverview') }}">Docenten overzicht</a></li>
                             {% endif %}
                             {% if is_granted('ROLE_TEACHER') %}
                                 <li><a href="{{ path('MooiUserBundle_TeacherStudentOverview') }}">Leerlingen overzicht</a></li>

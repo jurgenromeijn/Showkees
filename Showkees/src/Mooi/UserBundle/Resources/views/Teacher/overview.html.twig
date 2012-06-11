@@ -1,0 +1,80 @@
+{% extends '::singleColumnLayout.html.twig' %}
+
+{% block content %}
+    <h1>Docenten overzicht</h1>
+    <h2>Admin&#39;s</h2>
+    {% if admins|length < 1 %}
+        <p>Er zijn nog geen admin&#39;s</p>
+    {% else %}
+                <table class="dataTable">
+            
+            <thead>
+            
+                <tr>
+                
+                    <th>Naam</th>
+                    <th>&nbsp;</th>
+                    
+                </tr>
+            
+            </thead>
+            <tbody>
+            
+                {% for admin in admins %}
+                
+                    <tr>
+                    
+                        <td>
+                            {{ admin.getFullname() }}
+                        </td>
+                        <td>
+                            <a href="{{ path('MooiUserBundle_UserEdit', {'username': admin.getUsername()}) }}">aanpassen</a>
+                        </td>
+                        
+                    </tr>
+                
+                {% endfor %}
+            
+            </tbody>
+            
+        </table>
+    {% endif %}
+    <h2>Docenten</h2>
+    {% if teachers|length < 1 %}
+        <p>Er zijn nog geen docenten</p>
+    {% else %}
+                <table class="dataTable">
+            
+            <thead>
+            
+                <tr>
+                
+                    <th>Naam</th>
+                    <th>&nbsp;</th>
+                    
+                </tr>
+            
+            </thead>
+            <tbody>
+            
+                {% for teacher in teachers %}
+                
+                    <tr>
+                    
+                        <td>
+                            {{ teacher.getFullname() }}
+                        </td>
+                        <td>
+                            <a href="{{ path('MooiUserBundle_UserEdit', {'username': teacher.getUsername()}) }}">aanpassen</a>
+                        </td>
+                        
+                    </tr>
+                
+                {% endfor %}
+            
+            </tbody>
+            
+        </table>
+    {% endif %}
+{% endblock %}
+    

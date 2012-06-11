@@ -7,6 +7,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class TeacherController extends Controller
 {
     
+    public function overviewAction()
+    {
+        
+        $roleRepository = $this->getDoctrine()
+            ->getRepository('MooiUserBundle:Role');
+        
+        $admins   = $roleRepository->findOneByName('admin')->getUsers();
+        $teachers = $roleRepository->findOneByName('leerkracht')->getUsers();
+        
+        return $this->render('MooiUserBundle:Teacher:overview.html.twig', array(
+            'admins'   => $admins,
+            'teachers' => $teachers
+        ));
+        
+    }
+
     public function studentOverviewAction()
     {
                 
