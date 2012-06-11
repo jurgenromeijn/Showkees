@@ -75,7 +75,7 @@ class UserController extends Controller
         $form = $this->createForm(new UserRegistrationType($securityUser), $user, array(
             "validation_groups" => array("Default", "registration")
         ));
-        
+                
         if ($request->getMethod() == 'POST') 
         {
             
@@ -170,6 +170,13 @@ class UserController extends Controller
                 {
                     
                     throw new AccessDeniedException("Je mag geen rang hoger dan je eigen instellen");
+                    
+                }
+                elseif($securityUser->getRole()->getId() == 1)
+                {
+                    
+                    // if a user gets set to student, make sure he has no studnets under him
+                    $user->getStudents()->clear();
                     
                 }
                 
