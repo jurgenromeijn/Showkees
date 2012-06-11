@@ -319,6 +319,7 @@ input.button, .add_post_button
 table.dataTable
 {
     width: 100%;
+    background: #54C2C1;
 }
 
 table.dataTable thead

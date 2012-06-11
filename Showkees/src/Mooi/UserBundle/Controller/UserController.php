@@ -150,7 +150,7 @@ class UserController extends Controller
             
         }
         
-        $form = $this->createForm(new UserType($securityUser, !$ownAccount, false), $user, array(
+        $form = $this->createForm(new UserType($securityUser, !$ownAccount, false, false), $user, array(
             "validation_groups" => array("Default", "update")
         ));
         

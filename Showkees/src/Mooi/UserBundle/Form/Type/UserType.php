@@ -13,12 +13,14 @@ class UserType extends AbstractType
     private $user;
     private $allowRoleChanging;
     private $allowUsernameChanging;
+    private $passWordRequired;
 
-    public function __construct(User $user, $allowRoleChanging = true, $allowUsernameChanging = true)
+    public function __construct(User $user, $allowRoleChanging = true, $allowUsernameChanging = true, $passwordRequired = true)
     {
         $this->user = $user;
         $this->allowRoleChanging = $allowRoleChanging;
         $this->allowUsernameChanging = $allowUsernameChanging;
+        $this->passWordRequired = $passwordRequired;
     }
     
     public function buildForm(FormBuilder $builder, array $options)
@@ -71,13 +73,26 @@ class UserType extends AbstractType
             'label'    => 'Emailadres',
             'required' => false
         ));
-        $builder->add('password', 'repeated', array (
-            'required'        => false,
-            'type'            => 'password',
-            'first_name'      => 'Wachtwoord',
-            'second_name'     => 'Bevestig wachtwoord',
-            'invalid_message' => 'De wachtwoorden komen niet overeen!'
-        ));
+        if($this->passWordRequired)
+        {
+            $builder->add('password', 'repeated', array (
+                'required'        => true,
+                'type'            => 'password',
+                'first_name'      => 'Wachtwoord*',
+                'second_name'     => 'Bevestig wachtwoord*s',
+                'invalid_message' => 'De wachtwoorden komen niet overeen!'
+            ));
+        }
+        else
+        {
+            $builder->add('password', 'repeated', array (
+                'required'        => false,
+                'type'            => 'password',
+                'first_name'      => 'Wachtwoord',
+                'second_name'     => 'Bevestig wachtwoord',
+                'invalid_message' => 'De wachtwoorden komen niet overeen!'
+            ));
+        }
         
     }
 
