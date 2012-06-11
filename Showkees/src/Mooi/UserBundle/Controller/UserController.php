@@ -10,13 +10,14 @@ use Mooi\UserBundle\Form\Type\UserEditType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Mooi\UserBundle\Model\UserFactory;
-
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 /**
  * Description of UserController
  *
  * @author Jurgen
  */
-class UserController extends Controller {
+class UserController extends Controller 
+{
 
     
     public function indexAction()
@@ -64,9 +65,14 @@ class UserController extends Controller {
     public function createAction(Request $request)
     {
         
-        // Create a suer and set up the form
+        $securityUser = $this->get('security.context')->getToken()->getUser();
+       
+        $roleRepository = $this->getDoctrine()->getRepository('MooiUserBundle:Role');
+        
+        // Create a user and set up the form
         $user = new User();
-        $form = $this->createForm(new UserRegistrationType(), $user, array(
+        $user->setRole($roleRepository->find(4));
+        $form = $this->createForm(new UserRegistrationType($securityUser), $user, array(
             "validation_groups" => array("Default", "registration")
         ));
         
@@ -75,8 +81,15 @@ class UserController extends Controller {
             
             $form->bindRequest($request);
             
-            if ($form->isValid()) 
+            if ($form->isValid())
             {
+                
+                if($user->getRole()->getId() < $securityUser->getRole()->getId())
+                {
+                    
+                    throw new AccessDeniedException("Je mag geen rang hoger dan je eigen instellen");
+                    
+                }
 
                 // Get User factory and let it encode the password
                 $userFactory = new UserFactory($this->get('security.encoder_factory'));
@@ -104,13 +117,15 @@ class UserController extends Controller {
     
     public function editAction(Request $request, $username)
     {
-
+        
         $user;
+        $securityUser = $this->get('security.context')->getToken()->getUser();
+        $ownAccount = false;
                 
         if($username == null)
         {
     
-            $user = $this->get('security.context')->getToken()->getUser();
+            $user = $securityUser;
             
         }
         else
@@ -129,8 +144,14 @@ class UserController extends Controller {
             throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
         
         }
+        elseif($securityUser->getUsername() == $user->getUsername())
+        {
+            
+            $ownAccount = true;            
+            
+        }
         
-        $form = $this->createForm(new UserEditType(), $user, array(
+        $form = $this->createForm(new UserEditType($securityUser, $ownAccount), $user, array(
             "validation_groups" => array("Default", "update")
         ));
         
@@ -144,7 +165,14 @@ class UserController extends Controller {
             
             if ($form->isValid()) 
             {
-
+                
+                if($user->getRole()->getId() < $securityUser->getRole()->getId())
+                {
+                    
+                    throw new AccessDeniedException("Je mag geen rang hoger dan je eigen instellen");
+                    
+                }
+                
                 $newPassword = $user->getPassword();
                                 
                 if(!empty($newPassword))

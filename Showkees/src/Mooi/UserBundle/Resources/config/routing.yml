@@ -1,4 +1,13 @@
-#userstuff
+#setup
+MooiUserBundle_setupRoles:
+    pattern: /setup/roles
+    defaults: { _controller: MooiUserBundle:Setup:Roles } 
+
+MooiUserBundle_setupRolesACL:
+    pattern: /setup/roles_acl
+    defaults: { _controller: MooiUserBundle:Setup:RolesACL } 
+
+#user
 MooiUserBundle_UserIndex:
     pattern:  /user/
     defaults: { _controller: MooiUserBundle:User:index }
@@ -11,7 +20,7 @@ MooiUserBundle_UserEdit:
     pattern: /user/edit/{username}
     defaults: { _controller: MooiUserBundle:User:edit, username: null }
     
-#
+#teacher
 MooiUserBundle_TeacherStudentOverview:
     pattern: /teacher/students
     defaults: { _controller: MooiUserBundle:Teacher:studentOverview }

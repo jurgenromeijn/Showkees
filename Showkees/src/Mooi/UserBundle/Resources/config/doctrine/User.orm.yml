@@ -1,6 +1,8 @@
 Mooi\UserBundle\Entity\User:
     type: entity
     table: users
+    repositoryClass: Mooi\UserBundle\Repository\UserRepository
+    Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
     id:
         id:
             type: integer
@@ -12,6 +14,7 @@ Mooi\UserBundle\Entity\User:
         username:
             type: string
             length: 150
+            unique: true
         first_name:
             type: string
             length: 150

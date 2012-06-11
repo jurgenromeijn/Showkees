@@ -1,6 +1,8 @@
 Mooi\UserBundle\Entity\Role:
     type: entity
     table: roles
+    repositoryClass: Mooi\UserBundle\Repository\RoleRepository
+    Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: internal_name
     id:
         id:
             type: integer
@@ -12,6 +14,7 @@ Mooi\UserBundle\Entity\Role:
         internal_name:
             type: string
             length: 60
+            unique: true
     oneToMany:
         users:
             targetEntity: User

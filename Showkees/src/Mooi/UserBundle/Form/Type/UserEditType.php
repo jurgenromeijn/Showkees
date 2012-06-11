@@ -5,12 +5,24 @@ namespace Mooi\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 use Mooi\UserBundle\Entity\User;
+use Mooi\UserBundle\Repository\RoleRepository;
 
 class UserEditType extends AbstractType
 {
     
+    private $user;
+    private $ownAccount;
+
+    public function __construct(User $user, $ownAccount)
+    {
+        $this->user = $user;
+        $this->ownAccount = $ownAccount;
+    }
+    
     public function buildForm(FormBuilder $builder, array $options)
     {
+        
+        $user = $this->user;
         
         $builder->add('first_name', 'text', array('label' => 'Voornaam*'));
         $builder->add('preposition', 'text', array(
@@ -26,10 +38,27 @@ class UserEditType extends AbstractType
             ),
             'expanded' => true
         ));
-        $builder->add('role', null, array(
-            'label' => 'Account type*',
-            'preferred_choices' => array(4)
-        ));
+        
+        if(!$this->ownAccount && $user->getRole()->getId() <= 2)
+        {
+            
+            $builder->add('role', 'entity', array(
+                'class' => 'MooiUserBundle:Role',
+                'label' => 'Account type*',
+                'preferred_choices' => array(4),
+                'query_builder' => function(RoleRepository $repository) use ($user) 
+                {
+                                
+                    return $repository->createQueryBuilder('r')
+                                ->where('r.id >= :role_id')
+                                ->orderBy('r.id', 'DESC')
+                                ->setParameter('role_id', $user->getRole()->getId());
+                
+                }
+            ));
+            
+        }
+
         $builder->add('email', 'email', array(
             'label'    => 'Emailadres',
             'required' => false

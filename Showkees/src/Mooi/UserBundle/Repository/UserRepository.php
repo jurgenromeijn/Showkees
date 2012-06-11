@@ -1,6 +1,6 @@
 <?php
 
-namespace Mooi\UserBundle\Entity;
+namespace Mooi\UserBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

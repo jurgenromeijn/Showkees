@@ -13,6 +13,7 @@ class LoadRoles extends AbstractFixture implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         
+        
         $superAdmin = new Role();
         $superAdmin->setName("superadmin");
         $superAdmin->setInternalName("ROLE_SUPERADMIN");
