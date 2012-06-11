@@ -1,7 +1,7 @@
 {% block field_row %}
     <div class="form_row">
-        {{ form_widget(form) }}
         {{ form_label(form) }}
+        {{ form_widget(form) }}
         {{ form_errors(form) }}
         <div class="clearfix"></div>
     </div>
@@ -12,8 +12,8 @@
     {% set i = 0 %}
     {% for child in form %}
         <div class="form_row">
-            {{ form_widget(child) }}
             {{ form_label(child) }}
+            {{ form_widget(child) }}
             {% if i == 0 %}
                 {{ form_errors(form) }}
                 {% set i = i + 1 %}

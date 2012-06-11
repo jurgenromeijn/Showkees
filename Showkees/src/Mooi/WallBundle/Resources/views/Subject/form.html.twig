@@ -1,0 +1,15 @@
+{% form_theme form '::baseForm.html.twig' %}
+
+{% block subjectForm %}
+
+    <h1>{{ formTitle }}</h1>
+    <form action="{{ formAction }}" method="post" autocomplete="off" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <div class="button">
+            <p>Velden met een * zijn verplicht.</p>
+            <input type="submit" class="button" value="Opslaan" />
+            <div class="clearfix"></div>
+        </div>
+    </form>
+
+{% endblock %}

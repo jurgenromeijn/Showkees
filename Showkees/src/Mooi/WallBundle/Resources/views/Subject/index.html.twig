@@ -1,9 +1,7 @@
-{% extends '::singleColumnLayout.html.twig' %}
+{% extends '::twoColumnLayout.html.twig' %}
 
 {% block content %}
     <h1>Vakken</h1>
-    
-    <p><a href="{{ path('MooiWallBundle_SubjectAdd') }}">Vak toevoegen</a></p>
     {% if subjects|length < 1 %}
         <p>Er zijn nog geen vakken</p>
     {% else %}
@@ -12,7 +10,6 @@
             <thead>
                 <tr>
                     <th>Vak</th>
-                    <th>Beschrijving</th>
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
                 </tr>
@@ -24,13 +21,6 @@
                 <tr>
                 
                     <td>{{ subject.getName() }}</td>
-                    <td>
-                        {% if subject.getDescription()|length > 30 %}
-                            {{ subject.getDescription()[1:30] }}..
-                        {% else %}
-                            {{ subject.getDescription() }}
-                        {% endif %}
-                    </td>
                     <td>
                         <a href="{{ path('MooiWallBundle_SubjectEdit', {'name' : subject.getName()}) }}">aanpassen</a>
                     </td>
@@ -49,5 +39,10 @@
             
         </table>
     {% endif %}
-    <p><a href="{{ path('MooiWallBundle_SubjectAdd') }}">Vak toevoegen</a></p>
+{% endblock %}
+    
+{% block sidebarContent %}
+    
+    {% include 'MooiWallBundle:Subject:form.html.twig' %}
+    
 {% endblock %}
