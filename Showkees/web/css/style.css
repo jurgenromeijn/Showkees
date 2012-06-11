@@ -43,23 +43,6 @@ body
     top: 10px;
 }
 
-
-/*#headerWrapper header h2
-{
-    position: absolute;
-    top: 2em;
-    left: 300px;
-    color: #fff;
-    font-size: 2em;
-}*/
-
-/*#headerWrapper header h1
-{
-    position: absolute;
-    top: 10px;
-    left: 230px;
-    font-size: 3em;
-}*/
 #headerWrapper h1{
     top: 10px;
     left: 230px;
@@ -169,11 +152,11 @@ body
 /**
  * Contentforms
  */
- #contentWrapper form .form_row
- {
+#contentWrapper form .form_row
+{
     border-bottom: 1px #ddd dotted;
     padding: 10px 0;
- }
+}
  
 #contentWrapper .form_row>label, #contentWrapper .form_row>span.label
 {
@@ -270,9 +253,6 @@ input.button, .add_post_button
     font-size: 19px;
     text-decoration: none;
 }
-/*p{
-    position: relative;
-}*/
 
 #contentWrapper form ul.errors
 {
@@ -289,6 +269,48 @@ input.button, .add_post_button
 {
     color: #399;
     font-weight: bold;
+}
+
+/**
+ * Sidebar forms
+ */
+#sidebarColumn .form_row>label
+{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#sidebarColumn .form_row>input, #sidebarColumn .form_row>select, #sidebarColumn .form_row>textarea
+{
+    padding: 10px 0;
+    border: 5px solid #54C2C1;
+    border-radius: 5px;
+    padding: 0.2em;
+    color: #666;
+    float: none;
+    max-height: 100px;
+    font-style: italic;
+    font-size: 1.2em;    
+    background-color: #fff;
+    width: 262px;
+}
+
+#sidebarColumn form .form_row
+{
+    border-bottom: 1px #fff dotted;
+    padding: 10px 0;
+}
+
+#sidebarColumn form>div.button
+{
+    padding: 0 0 13px 0;
+}
+
+#sidebarColumn input.button
+{
+    background-color: #fff;
+    color: #54C2C1;
 }
 
 /**
@@ -489,10 +511,10 @@ table.dataTable tbody tr:nth-child(even)
 /**
  * Clearfix to reset floats
  */
- .clearfix
- {
-     clear: both;
- }
+.clearfix
+{
+    clear: both;
+}
  
  /**
  * Temp css
