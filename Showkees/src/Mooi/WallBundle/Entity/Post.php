@@ -23,7 +23,12 @@ class Post
      * @var date $time
      */
     private $time;
-
+    
+    /**
+    * @var int $likes
+    */
+    private $likes;
+    
     /**
      * @var Mooi\UserBundle\Entity\User
      */
@@ -32,6 +37,30 @@ class Post
     public function __construct()
     {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set like
+     *
+     * @param int $likes
+     */
+    public function setLikes($likes)
+    {
+        
+        $this->likes = $likes;
+        
+    }
+
+    /**
+     * Get like
+     *
+     * @return int 
+     */
+    public function getLikes()
+    {
+        
+        return $this->likes;
+        
     }
     
     /**
@@ -243,4 +272,6 @@ class Post
     {
         return $this->subject;
     }
+    
+    
 }

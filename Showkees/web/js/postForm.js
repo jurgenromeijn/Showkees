@@ -3,17 +3,31 @@
  */
 $(function(){
    
-   var postButton   = $('.add_post_button'),
-       postForm     = $('#postForm');
+   var addPostButton    = $('.add_post_button'),
+       postForm         = $('#postForm'),
+       formMenu         = $('#formMenu');
+       
+   if(formMenu.hasClass('formBool'))
+   {
+       
+       addPostButton.hide();
+       $('textarea', postForm).focus();
+        
+   }
+   else
+   {
+       
+       postForm.hide();
+       
+   } 
    
-   postButton.click(function(e){
+   addPostButton.click(function(){
        
        $(this).fadeOut(200);
        postForm.fadeIn(200);
        $('textarea', postForm).focus();
        
-       e.preventDefault();
-       
+       return false;
    });
    
 });

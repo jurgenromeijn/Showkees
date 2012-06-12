@@ -30,7 +30,8 @@ class WallController extends Controller
                 'form'              => $form->createView(),
                 'id'                => $id,
                 'wallOwner'         => $wallOwner,
-                'user'              => $user
+                'user'              => $user,
+                'showForm'          => false
         ));
    
     }
@@ -77,10 +78,13 @@ class WallController extends Controller
 
         }
         
-        return $this->render('MooiWallBundle:Wall:add.html.twig', array(
-                    'form'              => $form->createView(),
-                    'id'                => $id,
-                    'wallOwner'         => $wallOwner
+        return $this->render('MooiWallBundle:Wall:index.html.twig', array(
+                'formAction'        => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $id)),      
+                'form'              => $form->createView(),
+                'id'                => $id,
+                'wallOwner'         => $wallOwner,
+                'user'              => $user,
+                'showForm'          => false
         ));
         
     }
@@ -136,7 +140,8 @@ class WallController extends Controller
             'form'              => $form->createView(),
             'id'                => $wallOwnerId,
             'wallOwner'         => $post->getWallOwner(),
-            'user'              => $user
+            'user'              => $user,
+            'showForm'          => true
         ));
         
     }
@@ -174,6 +179,23 @@ class WallController extends Controller
             
         }
          
+    }
+    
+    public function likeAction($postId)
+    {
+        
+        $post = $this->getDoctrine()
+            ->getRepository('MooiWallBundle:Post')
+            ->find($postId);
+        
+        $amountLikes = $post->getLikes();
+        $amountLikes++;
+        $post->setLikes($amountLikes);
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($post);
+        $em->flush();
+        
     }
     
 

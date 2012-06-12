@@ -14,7 +14,10 @@ MooiWallBundle_WallAdd:
 MooiWallBundle_WallDelete:
     pattern: /wall/delete/{postId}
     defaults: { _controller: MooiWallBundle:Wall:delete }
-    
+
+MooiWallBundle_WallLike:
+    pattern: /wall/like/{postId}
+    defaults: { _controller: MooiWallBundle:Wall:like }
 #subjects
 MooiWallBundle_SubjectIndex:
     pattern: /subject
