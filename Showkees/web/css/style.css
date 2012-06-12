@@ -241,15 +241,14 @@ input.button, .add_post_button
     float: right;
     background-color: #54C2C1;
 }
-
 .add_post_button{
-    padding: 25px;
-    width: 200px;
+    text-align: center;
+    width: 557px;
     height: 75px;
-    float: none;
     line-height: 67px;
-    color: #fff !important;
-    font-size: 19px;
+    color: 
+    white !important;
+    font-size: 37px;
     text-decoration: none;
 }
 
@@ -524,15 +523,14 @@ table.dataTable th.action
  /**
  * Temp css
  */
- #content_left{
-     width: 520px;
- }
+
  .post, .reply{
      border-bottom: solid 1px #54C2C1;
      padding: 15px 10px;
      color: #666;
      margin-bottom: 10px;
      position: relative;
+     clear: both;
  }
  .reply{
      border-bottom: solid 1px #ff0000;
