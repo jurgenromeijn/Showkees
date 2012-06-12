@@ -21,7 +21,13 @@ class WallController extends Controller
             ->getRepository('MooiUserBundle:User')
             ->find($id);
         
+        //set new post object and create form
+        $newPost = new Post();
+        $form = $this->createForm(new WallPostType(), $newPost);
+        
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
+                'formAction'        => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $id)),      
+                'form'              => $form->createView(),
                 'id'                => $id,
                 'wallOwner'         => $wallOwner,
                 'user'              => $user
@@ -81,8 +87,9 @@ class WallController extends Controller
     
     public function editAction($postId)
     {
-        
+
         $request = $this->getRequest();
+        $user = $this->get('security.context')->getToken()->getUser();
         $post = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
             ->find($postId);
@@ -95,48 +102,42 @@ class WallController extends Controller
             throw $this->createNotFoundException("De post kon niet gevonden worden");
             
         }
-        else
-        {
-            
-            $form = $this->createForm(new WallPostType(), $post);
+
+        $form = $this->createForm(new WallPostType(), $post);
         
-            if ($request->getMethod() == 'POST') 
+        if ($request->getMethod() == 'POST') 
+        {
+
+            $form->bindRequest($request);   
+
+            if ($form->isValid()) 
             {
 
-                $form->bindRequest($request);   
+                //set post data
+                $post->setTime(new \DateTime);
 
-                if ($form->isValid()) 
-                {
+                // Save the Post to the database
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($post);
+                $em->flush();
 
-                    //set post data
-                    $post->setTime(new \DateTime);
+                $this->get("session")->setFlash('notice', 'De post is gewijzigd.');
 
-                    // Save the Post to the database
-                    $em = $this->getDoctrine()->getEntityManager();
-                    $em->persist($post);
-                    $em->flush();
-
-                    $this->get("session")->setFlash('notice', 'De post is gewijzigd.');
-
-                    return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                        'id'  => $wallOwnerId
-                    )));
-
-                }
+                return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
+                    'id'  => $wallOwnerId
+                )));
 
             }
-            else
-            {
-                
-                return $this->render('MooiWallBundle:Wall:edit.html.twig', array(
-                    'form'              => $form->createView(),
-                    'post'            => $post
-                ));
-                
-            }
-            
-            
+
         }
+        
+        return $this->render('MooiWallBundle:Wall:index.html.twig', array(
+            'formAction'        => $this->get('router')->generate('MooiWallBundle_WallEdit', array('postId' => $postId)),      
+            'form'              => $form->createView(),
+            'id'                => $wallOwnerId,
+            'wallOwner'         => $post->getWallOwner(),
+            'user'              => $user
+        ));
         
     }
     

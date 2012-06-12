@@ -1,14 +1,23 @@
 {% extends '::twoColumnLayout.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+     <script src="{{ asset('js/postForm.js') }}" type="text/javascript"></script>
+{% endblock %}
+
 {% block wall_owner_name %}
     {{ wallOwner.getUserName }}
 {% endblock %}
+     
+{% form_theme form '::baseForm.html.twig' %}  
+     
 {% block content %}
         <div id="content_left">
             <h1>Posts</h1>
-            <p class="add_post_button">
-                <a href="{{ path('MooiWallBundle_WallAdd', {'id': id }) }}">Voeg een post toe</a>
+            <p>
+                <a class="add_post_button" href="{{ path('MooiWallBundle_WallAdd', {'id': id }) }}">Voeg een post toe</a>
             </p>
+            {% include 'MooiWallBundle:Wall:form.html.twig' %}
             {% for wallOwnerPost in wallOwner.getWallOwnerPosts %}
             <div class="post">
                 <h2>
