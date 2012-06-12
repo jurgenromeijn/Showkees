@@ -554,7 +554,7 @@ table.dataTable th.action
     padding: 5px;
  }
  .post h2{
-     color: indianred !important;
+     color: #ff0000 !important;
      font-size: 20px;
  }
  .post h2 span{
