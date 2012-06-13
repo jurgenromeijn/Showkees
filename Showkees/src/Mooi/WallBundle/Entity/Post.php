@@ -27,7 +27,7 @@ class Post
     /**
     * @var int $likes
     */
-    private $likes;
+    private $likes = 0;
     
     /**
      * @var Mooi\UserBundle\Entity\User

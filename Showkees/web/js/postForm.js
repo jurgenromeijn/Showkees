@@ -23,11 +23,16 @@ $(function(){
    
    addPostButton.click(function(){
        
-       $(this).fadeOut(200);
-       postForm.fadeIn(200);
-       $('textarea', postForm).focus();
+        $(this).slideUp(200, function()
+        {
+            
+            postForm.slideDown(600);
+            $('textarea', postForm).focus();
+            
+        });
        
        return false;
+       
    });
    
 });

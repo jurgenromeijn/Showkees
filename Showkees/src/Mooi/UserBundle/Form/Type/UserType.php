@@ -79,7 +79,7 @@ class UserType extends AbstractType
                 'required'        => true,
                 'type'            => 'password',
                 'first_name'      => 'Wachtwoord*',
-                'second_name'     => 'Bevestig wachtwoord*s',
+                'second_name'     => 'Bevestig wachtwoord*',
                 'invalid_message' => 'De wachtwoorden komen niet overeen!'
             ));
         }
