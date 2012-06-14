@@ -535,8 +535,8 @@ table.dataTable th.action
  .reply{
      border-bottom: solid 1px #ff0000;
  }
- .post:first-child{
-     border-top: solid 1px #54C2C1;
+ #contentWrapper #postForm .button{
+     border-bottom: solid 1px #54C2C1;
  }
  .reply:first-child{
      border-top: solid 1px #54C2C1;
@@ -596,6 +596,10 @@ table.dataTable th.action
  .postItems li a:hover, .replyItems li a:hover{
      color: #54C2C1;
  }
- #postForm{
-     
+ .postItems li:first-child{
+     max-width: 190px;
+ }
+ .postItems li p{
+     float: right;
+     margin: 0 0 0 7px !important;
  }

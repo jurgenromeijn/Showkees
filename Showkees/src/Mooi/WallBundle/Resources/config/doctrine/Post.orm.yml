@@ -14,13 +14,29 @@ Mooi\WallBundle\Entity\Post:
             length: 60
         time:
             type: datetime
+    manyToMany:
+        replies:
+            targetEntity: Mooi\WallBundle\Entity\Post
+            inversedBy: mainPosts
+            orderBy: 
+                time: DESC
+            joinTable:
+                name: posts_has_posts
+                joinColumns:
+                    joinColumn:
+                        name: post_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    joinColumn:
+                        name: reply_id
+                        referencedColumnName: id
+        mainPosts:
+            targetEntity: Mooi\WallBundle\Entity\Post
+            mappedBy: replies
     oneToMany:
         images:
             targetEntity: Image
             mappedBy: post_images
-        replies:
-            targetEntity: Reply
-            mappedBy: posts
     manyToOne:
         sender:
             targetEntity: Mooi\UserBundle\Entity\User
@@ -39,4 +55,4 @@ Mooi\WallBundle\Entity\Post:
             inversedBy: posts
             joinColumn:
                 name: subject_id
-                referencedColumnName: id    
+                referencedColumnName: id

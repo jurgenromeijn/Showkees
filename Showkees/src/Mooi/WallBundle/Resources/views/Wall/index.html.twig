@@ -10,16 +10,15 @@
     {{ wallOwner.getUserName }}
 {% endblock %}
      
-{% form_theme form '::baseForm.html.twig' %}  
      
 {% block content %}
+        {% set i = 0 %}
         <div id="content_left">
-            <h1>Posts</h1>
             <div id="formMenu" {% if showForm %} class="formBool" {% endif %}>
                 <p>
                     <a class="add_post_button" href="{{ path('MooiWallBundle_WallAdd', {'id': id }) }}">Voeg een post toe</a>
                 </p>
-                {% include 'MooiWallBundle:Wall:form.html.twig' %}
+                {% include 'MooiWallBundle:Wall:postForm.html.twig' %}
             </div>
             {% for wallOwnerPost in wallOwner.getWallOwnerPosts %}
             <div class="post">
@@ -57,7 +56,21 @@
                         </a>
                 {% endif %}
             </div>
-            <!--<div class="replies">
+                {# replieform #}
+                {% form_theme replyForms[i].form '::baseForm.html.twig' %}
+                <form id="replyForm" action="{{ replyForms[i].action }}" method="post" autocomplete="off" {{ form_enctype(replyForms[i].form ) }} >
+                    <div class="form_row">
+                        <div class="clearfix"></div>
+                    </div>
+                    {{ form_widget(replyForms[i].form ) }}
+                    <div class="button">
+                        <input type="submit" class="button" value="Plaatsen" />
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+                {% set i = i + 1 %}
+                {#  #}
+            <div class="replies">
                 <h2>Reacties</h2>
                 <div class="reply">
                     <p>
@@ -69,7 +82,7 @@
                         <li>1 dag geleden</li>
                     </ul>
                 </div>
-            </div>-->    
+            </div>   
             {% else %}
                 <div class="empty">Er zijn nog geen posts op deze wall</div>
             {% endfor %} 

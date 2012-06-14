@@ -208,14 +208,6 @@ class Post
     {
         return $this->images;
     }
-    
-    
-    
-    /**
-     * @var Mooi\WallBundle\Entity\Reply
-     */
-    private $replies;
-
 
     /**
      * Add images
@@ -226,27 +218,7 @@ class Post
     {
         $this->images[] = $images;
     }
-
-    /**
-     * Add replies
-     *
-     * @param Mooi\WallBundle\Entity\Reply $replies
-     */
-    public function addReply(\Mooi\WallBundle\Entity\Reply $replies)
-    {
-        $this->replies[] = $replies;
-    }
-
-    /**
-     * Get replies
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getReplies()
-    {
-        return $this->replies;
-    }
-
+    
     /**
      * @var Mooi\WallBundle\Entity\Subject
      */
@@ -274,4 +246,44 @@ class Post
     }
     
     
+    /**
+     * @var Mooi\WallBundle\Entity\Post
+     */
+    private $replies;
+
+    /**
+     * @var Mooi\WallBundle\Entity\Post
+     */
+    private $mainPosts;
+
+
+    /**
+     * Add replies
+     *
+     * @param Mooi\WallBundle\Entity\Post $replies
+     */
+    public function addReply(\Mooi\WallBundle\Entity\Post $replies)
+    {
+        $this->replies[] = $replies;
+    }
+
+    /**
+     * Get replies
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getReplies()
+    {
+        return $this->replies;
+    }
+
+    /**
+     * Get mainPosts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getMainPosts()
+    {
+        return $this->mainPosts;
+    }
 }

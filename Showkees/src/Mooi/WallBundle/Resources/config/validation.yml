@@ -2,7 +2,7 @@ Mooi\WallBundle\Entity\Post:
   properties:
     text:
       - NotBlank: {message: "Vul een bericht in."}
-      - MinLength: {limit: 3, message: "Voornaam moet langer zijn dan 2 tekens."}
+      - MinLength: {limit: 3, message: "Bericht moet langer zijn dan 2 tekens."}
     subject:
       - NotBlank: {message: "Geef een vak op."}
 
