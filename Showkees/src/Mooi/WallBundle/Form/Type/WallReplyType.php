@@ -26,7 +26,7 @@ class WallReplyType extends AbstractType
     {
         
         return array(
-            'data_class'    => 'Mooi\WallBundle\Entity\Reply'       
+            'data_class'    => 'Mooi\WallBundle\Entity\Post'       
         );
         
     }

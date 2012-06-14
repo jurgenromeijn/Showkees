@@ -71,17 +71,18 @@
                 {% set i = i + 1 %}
                 {#  #}
             <div class="replies">
+                {% for reply in wallOwnerPost.getReplies %}
                 <h2>Reacties</h2>
                 <div class="reply">
                     <p>
-                        Hoi bert, wat had jij verschrikkelijk goed je best gedaan op die
-                        sommen van afgelopen
+                        {{ reply.text }}
                     </p>
                     <ul class="replyItems">
-                        <li><a href="">Sender</a></li>
-                        <li>1 dag geleden</li>
+                        <li><a href="{{ path('MooiWallBundle_WallIndex', {'id': reply.getSender.getId }) }}">{{ reply.getSender.getUserName }}</a></li>
+                        <li>{{ reply.time|date('l,  j F Y') }}</li>
                     </ul>
                 </div>
+                {% endfor %}
             </div>   
             {% else %}
                 <div class="empty">Er zijn nog geen posts op deze wall</div>

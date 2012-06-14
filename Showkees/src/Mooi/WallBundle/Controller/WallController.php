@@ -95,9 +95,9 @@ class WallController extends Controller
         }
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
-                'formTitle'         => 'Voeg een post toe',
-                'formAction'        => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $id)),      
-                'form'              => $form->createView(),
+                'formPostTitle'     => 'Voeg een post toe',
+                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $id)),      
+                'formPost'          => $postForm->createView(),
                 'id'                => $id,
                 'wallOwner'         => $wallOwner,
                 'user'              => $user,
@@ -153,9 +153,9 @@ class WallController extends Controller
         }
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
-            'formTitle'         => 'Wijzig de post',
-            'formAction'        => $this->get('router')->generate('MooiWallBundle_WallEdit', array('postId' => $postId)),      
-            'form'              => $form->createView(),
+            'formPostTitle'     => 'Wijzig de post',
+            'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallEdit', array('postId' => $postId)),      
+            'formPost'          => $form->createView(),
             'id'                => $wallOwnerId,
             'wallOwner'         => $post->getWallOwner(),
             'user'              => $user,
