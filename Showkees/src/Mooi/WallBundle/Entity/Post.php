@@ -286,4 +286,14 @@ class Post
     {
         return $this->mainPosts;
     }
+
+    /**
+     * Add replies
+     *
+     * @param Mooi\WallBundle\Entity\Post $replies
+     */
+    public function addPost(\Mooi\WallBundle\Entity\Post $replies)
+    {
+        $this->replies[] = $replies;
+    }
 }

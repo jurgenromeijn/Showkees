@@ -56,7 +56,7 @@
                         </a>
                 {% endif %}
             </div>
-                {# replieform #}
+                {# replyform #}
                 {% form_theme replyForms[i].form '::baseForm.html.twig' %}
                 <form id="replyForm" action="{{ replyForms[i].action }}" method="post" autocomplete="off" {{ form_enctype(replyForms[i].form ) }} >
                     <div class="form_row">

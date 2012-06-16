@@ -214,6 +214,12 @@ class WallController extends Controller
         $em->persist($post);
         $em->flush();
         
+        $responseJson = array(
+            'succes' => true
+        );
+        
+        return new Response(json_encode($responseJson));
+        
     }
     
      public function addReplyAction($postId)
