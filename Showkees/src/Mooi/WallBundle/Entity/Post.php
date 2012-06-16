@@ -284,7 +284,25 @@ class Post
      */
     public function getMainPosts()
     {
+        
         return $this->mainPosts;
+        
+    }
+    
+    private $replyForm;
+    
+    public function setReplyForm($replyForm)
+    {
+        
+        $this->replyForm = $replyForm;
+        
+    }
+    
+    public function getReplyForm()
+    {
+        
+        return $this->replyForm;
+        
     }
 
     /**

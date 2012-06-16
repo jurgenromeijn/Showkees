@@ -35,6 +35,6 @@ MooiWallBundle_SubjectDelete:
     pattern: /subject/delete/{name}
     defaults: { _controller: MooiWallBundle:Subject:delete }   
 #replies
-MooiWallBundle_WallAddReply:
+MooiWallBundle_WallReplyAdd:
     pattern: /wall/comment/add/{postId}
-    defaults: { _controller: MooiWallBundle:Wall:addReply }
+    defaults: { _controller: MooiWallBundle:Reply:add }
