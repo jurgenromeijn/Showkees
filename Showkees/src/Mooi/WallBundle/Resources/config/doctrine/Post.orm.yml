@@ -1,6 +1,7 @@
 Mooi\WallBundle\Entity\Post:
     type: entity
     table: posts
+    repositoryClass: Mooi\WallBundle\Repository\PostRepository
     id:
         id:
             type: integer
@@ -12,11 +13,15 @@ Mooi\WallBundle\Entity\Post:
         text:
             type: string
             length: 60
+        type:
+            type: string
+            columnDefinition: ENUM('post', 'reply')
         time:
             type: datetime
     manyToMany:
         replies:
             targetEntity: Mooi\WallBundle\Entity\Post
+            cascade: ["persist"]
             inversedBy: mainPosts
             orderBy: 
                 time: DESC
@@ -33,6 +38,7 @@ Mooi\WallBundle\Entity\Post:
         mainPosts:
             targetEntity: Mooi\WallBundle\Entity\Post
             mappedBy: replies
+            cascade: ["persist"]
     oneToMany:
         images:
             targetEntity: Image

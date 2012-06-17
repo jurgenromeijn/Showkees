@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class UserRepository extends EntityRepository
 {
     
-    /*public function findByRole($role)
+    public function findByRole($role)
     {
         $query = $this->getEntityManager()
             ->createQuery('
@@ -27,6 +27,23 @@ class UserRepository extends EntityRepository
         } catch (\Doctrine\ORM\NoResultException $e) {
             return null;
         }
-    }*/
+    }
+    
+    public function findByIdAndUserName($id, $username)
+    {
+        
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT u 
+                FROM MooiUserBundle:User u
+                WHERE u.username = :username
+                AND u.id = :id'
+            )->setParameter('username', $username)
+             ->setParameter('id', $id);
+        
+        return $query->getResult();
+        
+        
+    }
     
 }

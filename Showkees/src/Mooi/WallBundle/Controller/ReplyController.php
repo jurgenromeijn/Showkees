@@ -36,20 +36,18 @@ class ReplyController extends Controller
         
         //set new post object and create form
         $newReply = new Post();
-        $form = $this->createForm(new WallPostType(), $newReply);
+        $newReply->setSubject($post->getSubject());
+        $formReply = $this->createForm(new WallReplyType(), $newReply);
         
         if ($request->getMethod() == 'POST') 
         {
 
-            $form->bindRequest($request);   
-            
-            if ($form->isValid()) 
+            $formReply->bindRequest($request);   
+
+            if ($formReply->isValid())
             {
-                
-                return new Response('dasdas');
-                
                 //set post data
-                /*$newReply->setTime(new \DateTime);
+                $newReply->setTime(new \DateTime);
                 $newReply->setSender($user);
                 $newReply->setWallOwner($wallOwner);
                 $post->addReply($newReply);
@@ -63,31 +61,44 @@ class ReplyController extends Controller
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                     'id'  => $wallOwner->getId()
-                )));*/
+                )));
 
-            }
+             }
 
         }
-        //set new post object and create form
-        $newPost = new Post();
-        $postForm = $this->createForm(new WallPostType(), $newPost);
-
+        
         foreach($wallOwner->getWallOwnerPosts() as $post)
         {
-
-            $replyForm['form'] = $this->createForm(new WallReplyType(), $newReply);
-            $replyForm['form'] = $replyForm['form']->createView();
-            $replyForm['action'] = $this->get('router')->generate('MooiWallBundle_WallReplyAdd', array('postId' => $post->getId()));
-            $replyForm['show'] = false;
+            if($postId == $post->getId())
+            {
+                
+                $replyForm['form']      = $formReply;
+                $replyForm['show']      = true;
+                
+            }
+            else
+            {
+                
+                $replyForm['form']      = $this->createForm(new WallReplyType(), $newReply);
+                $replyForm['show']      = false;
+                
+            }
+            
+            $replyForm['action']    = $this->get('router')->generate('MooiWallBundle_WallReplyAdd', array('postId' => $post->getId()));
+            $replyForm['form']      = $replyForm['form']->createView();
             $post->setReplyForm($replyForm);
 
         }
-
+        
+        //set new post object and create form
+        $newPost = new Post();
+        $formPost = $this->createForm(new WallPostType(), $newPost);
+        
 
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $wallOwner->getId())),      
-                'formPost'          => $postForm->createView(),
+                'formPost'          => $formPost->createView(),
                 'id'                => $wallOwner->getId(),
                 'wallOwner'         => $wallOwner,
                 'user'              => $user,

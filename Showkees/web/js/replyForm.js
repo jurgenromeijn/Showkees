@@ -1,16 +1,19 @@
 /* 
- * forms opens in a popup
+ * reply form slides up and down
  */
 $(function(){
    
    var commentButton    = $('.commentButton'),
        checkReplyForm   = $('.replyForm');
        
-   if(checkReplyForm.hasClass('formReplyBool'))
+   if($('div').hasClass('replyFormCheck formReplyBool'))
    {
-       
-       checkReplyForm.show();
-       $('textarea', commentForm).focus();
+       var postIdForm = $('.replyFormCheck.formReplyBool').attr('id'),
+           form = $('.' + postIdForm);
+           
+       checkReplyForm.hide();//all replyforms hide
+       $(form).show();
+       $('textarea', '.' + form).focus();
         
    }
    else

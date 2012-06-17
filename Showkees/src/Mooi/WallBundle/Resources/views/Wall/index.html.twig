@@ -20,6 +20,7 @@
                 </p>
                 {% include 'MooiWallBundle:Wall:postForm.html.twig' %}
             </div>
+            
             {% for wallOwnerPost in wallOwner.getWallOwnerPosts %}
             <div class="post">
                 <h2>
@@ -56,7 +57,7 @@
                         </a>
                 {% endif %}
             </div>
-            <div class="replyFormCheck{% if wallOwnerPost.getReplyForm.show %} formReplyBool{% endif %}" >
+            <div id="replyFormShow{{ wallOwnerPost.getId }}" class="replyFormCheck{% if wallOwnerPost.getReplyForm.show %} formReplyBool{% endif %}" >
                 {% form_theme wallOwnerPost.getReplyForm.form '::baseForm.html.twig' %}
                 <form class="replyForm replyFormShow{{ wallOwnerPost.getId() }}" action="{{ wallOwnerPost.getReplyForm.action }}" method="post" autocomplete="off" {{ form_enctype(wallOwnerPost.getReplyForm.form ) }} >
                     <div class="form_row">
@@ -70,8 +71,10 @@
                 </form>
             </div>
             <div class="replies">
-                {% for reply in wallOwnerPost.getReplies %}
+                {% if wallOwnerPost.getReplies == true %}
                 <h2>Reacties</h2>
+                {% endif %}
+                {% for reply in wallOwnerPost.getReplies %}
                 <div class="reply">
                     <p>
                         {{ reply.text }}

@@ -245,7 +245,6 @@ class Post
         return $this->subject;
     }
     
-    
     /**
      * @var Mooi\WallBundle\Entity\Post
      */
@@ -288,7 +287,17 @@ class Post
         return $this->mainPosts;
         
     }
-    
+
+    /**
+     * Add replies
+     *
+     * @param Mooi\WallBundle\Entity\Post $replies
+     */
+    public function addPost(\Mooi\WallBundle\Entity\Post $replies)
+    {
+        $this->replies[] = $replies;
+    }
+            
     private $replyForm;
     
     public function setReplyForm($replyForm)
@@ -303,15 +312,5 @@ class Post
         
         return $this->replyForm;
         
-    }
-
-    /**
-     * Add replies
-     *
-     * @param Mooi\WallBundle\Entity\Post $replies
-     */
-    public function addPost(\Mooi\WallBundle\Entity\Post $replies)
-    {
-        $this->replies[] = $replies;
     }
 }
