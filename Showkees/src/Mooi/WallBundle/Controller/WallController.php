@@ -21,9 +21,9 @@ class WallController extends Controller
             ->getRepository('MooiUserBundle:User')
               ->find($id);
         
-        $wallOwnerPosts = $this->getDoctrine()
+        /*$wallOwnerPosts = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
-            ->findMainPostsByUser($id);
+            ->findMainPostsByUser($id);*/
         
         //set new post object and create form
         $newPost = new Post();
