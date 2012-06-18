@@ -43,9 +43,11 @@
             <div id="headerWrapper">
                 <header>
                     <a href="{{ path('index') }}"><img src="{{ asset('images/logoRegular.png') }}" alt="Showkees" id="logo" /></a>
+                    {% if wallOwner is defined %}
                     <h1>
-                        <span>van</span> {% block wall_owner_name %}{% endblock %}
+                        <span>van</span> {{ wallOwner.getFullname() }}
                     </h1>
+                    {% endif %}
                     {% if app.user != null %}
                     <ul id="colorMenu">
                         <li class="blue">Blauw</li>
