@@ -10,12 +10,13 @@
         {% endblock %}
         {% block javascripts %}
             <script src="{{ asset('js/jquery/jquery-1.7.2.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/colorPicker.js') }}" type="text/javascript"></script>
             <script src="{{ asset('js/confirmation.js') }}" type="text/javascript"></script>
             <script src="{{ asset('js/autohideNotifications.js') }}" type="text/javascript"></script>
         {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body class="blue">
         {% block body %}
             <div id="headerWrapper">
                 <header>
@@ -24,6 +25,10 @@
                         <span>van</span> {% block wall_owner_name %}{% endblock %}
                     </h1>
                     {% if app.user != null %}
+                    <ul id="colorMenu">
+                        <li class="blue">Blauw</li>
+                        <li class="red">Rood</li>
+                    </ul>
                     <div id="userOptions">
                         <a href="{{ path('MooiUserBundle_UserIndex') }}">{{ app.user.getFullName() }}</a>
                         <ul>

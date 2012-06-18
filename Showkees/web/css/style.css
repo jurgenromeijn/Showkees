@@ -21,6 +21,45 @@ body
 }
 
 /**
+ * Customizationstyles
+ */
+ 
+    /**
+    * Red
+    */
+    
+    body.red #headerWrapper, body.red .dataTable, body.red .add_post_button, body.red input.button, #colorMenu li.red
+    {
+        background-color: #cc6666;
+    }
+    
+    body.red #contentWrapper h2, body.red #sidebarColumn input.button
+    {
+        color: #cc6666;
+    }
+    
+    body.red #contentWrapper a
+    {
+        color: #993333;
+    }
+    
+    body.red #sidebarColumn
+    {
+        background-image: linear-gradient(bottom, #cc6666 1%, #cc6666 51%, #fff 100%);
+        background-image: -o-linear-gradient(bottom, #cc6666 1%, #cc6666 51%, #fff 100%);
+        background-image: -moz-linear-gradient(bottom, #cc6666 1%, #cc6666 51%, #fff 100%);
+        background-image: -webkit-linear-gradient(bottom, #cc6666 1%, #cc6666 51%, #fff 100%);
+        background-image: -ms-linear-gradient(bottom, #cc6666 1%, #cc6666 51%, #fff 100%);
+        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #cc6666), color-stop(0.51, #cc6666), color-stop(1, #fff));
+    }
+    
+    body.red #contentWrapper .form_row>input, body.red #contentWrapper .form_row>select, body.red #contentWrapper .form_row>textarea
+    {
+        border: 5px solid #cc6666;
+
+    }
+     
+/**
  * Header
  */
 #headerWrapper
@@ -111,6 +150,32 @@ body
     display: block;
 }
 
+/**
+ * Color menu
+ */
+#colorMenu
+{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    list-style: none;
+    line-height: 0px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+#colorMenu li
+{
+    width: 10px;
+    height: 10px;
+    border: 1px #000 solid;
+    font-size: 0;
+    display: inline-block;
+    background: #54C2C1;
+    cursor: pointer;
+}
+ 
 /**
  * Content
  */
@@ -246,8 +311,7 @@ input.button, .add_post_button
     width: 557px;
     height: 75px;
     line-height: 67px;
-    color: 
-    white !important;
+    color: #fff !important;
     font-size: 37px;
     text-decoration: none;
 }
@@ -322,7 +386,6 @@ table.dataTable
 
 table.dataTable thead
 {
-    background: #54C2C1;
     color: #fff;
     text-align: left;
 }
@@ -398,7 +461,7 @@ table.dataTable th.action
 
 .confirmation input.confirm
 {
-    background: #8fbf4f;
+    background: #8fbf4f !important;
     color: #fff;
     position: absolute;
     right: 150px;
@@ -409,7 +472,7 @@ table.dataTable th.action
 
 .confirmation input.cancel
 {
-    background: #cc3333;
+    background: #cc3333 !important;
     color: #fff;
     position: absolute;
     left: 150px;
@@ -438,12 +501,12 @@ table.dataTable th.action
       {
           width: 280px;
           float: right;
-          background-image: linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
-          background-image: -o-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
-          background-image: -moz-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
-          background-image: -webkit-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
-          background-image: -ms-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, white 100%);
-          background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #54C2C0), color-stop(0.51, #54C2C0), color-stop(1, white));
+          background-image: linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, #fff 100%);
+          background-image: -o-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, #fff 100%);
+          background-image: -moz-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, #fff 100%);
+          background-image: -webkit-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, #fff 100%);
+          background-image: -ms-linear-gradient(bottom, #54C2C0 1%, #54C2C0 51%, #fff 100%);
+          background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #54C2C0), color-stop(0.51, #54C2C0), color-stop(1, #fff));
           -webkit-border-radius: 12px;
           -moz-border-radius: 12px;
           border-radius: 12px;
@@ -488,6 +551,7 @@ table.dataTable th.action
           padding: 5px;
           border-radius: 5px;
           display: block;
+          color: #000;
           background-color: rgba(255, 255, 255, 0.5);
       }
       
