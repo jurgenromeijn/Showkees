@@ -215,6 +215,35 @@ class UserController extends Controller
         ));
         
     }
+    
+    public function changeStyleAction(Request $request)
+    {
+        
+        $style = $request->get("style");
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        $user->setStyle($style);
+        
+        $succes = false;
+        
+        try
+        {
+        
+            $entityManager = $this->getDoctrine()->getEntityManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            
+            $succes = true;
+        
+        }
+        catch(\Exception $exception)
+        {
+            // Don't really care if things go wrong, so do nothing
+        }
+        
+        return new Response(json_encode(array('succes' => $succes)));
+        
+    }
 
 }
 

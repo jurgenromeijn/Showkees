@@ -10,13 +10,35 @@
         {% endblock %}
         {% block javascripts %}
             <script src="{{ asset('js/jquery/jquery-1.7.2.min.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('js/colorPicker.js') }}" type="text/javascript"></script>
             <script src="{{ asset('js/confirmation.js') }}" type="text/javascript"></script>
             <script src="{{ asset('js/autohideNotifications.js') }}" type="text/javascript"></script>
+            <script>
+                $(document).ready(function()
+                {
+
+                    $("#colorMenu li").click(switchColor);
+
+                })
+
+                function switchColor()
+                {
+
+                    var style = $(this).attr('class');
+
+                    $("body").attr('class', style);
+
+                    $.post('{{ path('MooiUserBundle_ChangeStyle') }}', {'style': style});
+
+                }
+        </script>
         {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body class="blue">
+    {% if app.user != null %}
+        <body class="{{ app.user.style }}">
+    {% else %}
+        <body>
+    {% endif %}
         {% block body %}
             <div id="headerWrapper">
                 <header>
@@ -36,7 +58,7 @@
                         <li class="gray">Grijs</li>
                     </ul>
                     <div id="userOptions">
-                        <a href="{{ path('MooiUserBundle_UserIndex') }}">{{ app.user.getFullName() }}</a>
+                        <a href="{{ path('MooiUserBundle_UserIndex') }}">Opties</a>
                         <ul>
                             <li><a href="{{ path('logout') }}">Uitloggen</a></li>
                             <li><a href="{{ path('MooiUserBundle_UserEdit') }}">Instelligen</a></li>

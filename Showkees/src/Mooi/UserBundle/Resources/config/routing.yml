@@ -20,6 +20,10 @@ MooiUserBundle_UserEdit:
     pattern: /user/edit/{username}
     defaults: { _controller: MooiUserBundle:User:edit, username: null }
     
+MooiUserBundle_ChangeStyle:
+    pattern: /user/style
+    defaults: { _controller: MooiUserBundle:User:changeStyle}
+    
 #teacher
 MooiUserBundle_TeacherOverview:
     pattern: /teacher

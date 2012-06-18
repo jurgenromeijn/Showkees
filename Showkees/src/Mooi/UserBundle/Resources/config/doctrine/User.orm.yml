@@ -39,6 +39,9 @@ Mooi\UserBundle\Entity\User:
             type: boolean
         date:
             type: datetime
+        style:
+            type: string
+            columnDefinition: ENUM('blue', 'green', 'yellow', 'orange', 'red', 'purple', 'pink', 'gray')
     manyToOne:
         role:
             targetEntity: Role

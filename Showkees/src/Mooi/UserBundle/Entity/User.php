@@ -25,6 +25,7 @@ class User implements UserInterface, \Serializable
     protected $gender;
     protected $teachers;
     protected $students;
+    protected $style;
 
     public function __construct()
     {
@@ -399,5 +400,24 @@ class User implements UserInterface, \Serializable
     public function getTeachers()
     {
         return $this->teachers;
+    }
+    /**
+     * Set style
+     *
+     * @param string $style
+     */
+    public function setStyle($style)
+    {
+        $this->style = $style;
+    }
+
+    /**
+     * Get style
+     *
+     * @return string 
+     */
+    public function getStyle()
+    {
+        return $this->style;
     }
 }
