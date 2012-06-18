@@ -134,6 +134,16 @@ class User implements UserInterface, \Serializable
     public function setGender($gender)
     {
         $this->gender = $gender;
+        
+        //Set style based on gender for new accounts
+        if(empty($this->style) && $gender == self::GENDER_MALE)
+        {
+            $this->style = "blue";
+        }
+        elseif(empty($this->style) && $gender == self::GENDER_FEMALE)
+        {
+            $this->style = "pink";
+        }
     }
 
     /**
