@@ -62,3 +62,4 @@ Mooi\WallBundle\Entity\Post:
             joinColumn:
                 name: subject_id
                 referencedColumnName: id
+                onDelete: cascade

@@ -22,7 +22,7 @@ class PostRepository extends EntityRepository
         
         $queryBuilder->select('p, u')
                 ->from('MooiWallBundle:Post', 'p')
-                ->innerJoin('p.wall_owner_id', 'u.id')
+                ->join('MooiUserBundle:User', 'u')
                 ->where('u.id = :user_id')
                 ->andWhere('p.type = :type')
                 ->orderBy('p.time', 'DESC')
