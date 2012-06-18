@@ -1,0 +1,28 @@
+Mooi\WallBundle\Entity\Notification:
+  type: entity
+  table: notifications
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    message:
+      type: text
+    new:
+      type: boolean
+    time:
+      type: datetime
+  manyToOne:
+    owner:
+      targetEntity: Mooi\UserBundle\Entity\User
+      inversedBy: notifications
+      joinColumn:
+        name: owner_id
+        referencedColumnName: id
+    about:
+      targetEntity: Mooi\UserBundle\Entity\User
+      inversedBy: notifications_about
+      joinColumn:
+        name: about_id
+        referencedColumnName: id

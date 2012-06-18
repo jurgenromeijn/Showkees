@@ -60,6 +60,16 @@ Mooi\UserBundle\Entity\User:
             mappedBy: sender
             orderBy: 
                 time: DESC
+        notifications:
+            targetEntity: Mooi\WallBundle\Entity\Notification
+            mappedBy: owner
+            orderBy: 
+                time: DESC
+        notifications_about:
+            targetEntity: Mooi\WallBundle\Entity\Notification
+            mappedBy: about
+            orderBy: 
+                time: DESC 
     manyToMany:
         students:
             targetEntity: Mooi\UserBundle\Entity\User

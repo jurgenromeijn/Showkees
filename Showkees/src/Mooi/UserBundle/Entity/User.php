@@ -430,4 +430,54 @@ class User implements UserInterface, \Serializable
     {
         return $this->style;
     }
+    /**
+     * @var Mooi\WallBundle\Entity\Notifications
+     */
+    private $notifications;
+
+    /**
+     * @var Mooi\WallBundle\Entity\Notifications
+     */
+    private $notifications_about;
+
+
+    /**
+     * Add notifications
+     *
+     * @param Mooi\WallBundle\Entity\Notifications $notifications
+     */
+    public function addNotifications(\Mooi\WallBundle\Entity\Notifications $notifications)
+    {
+        $this->notifications[] = $notifications;
+    }
+
+    /**
+     * Get notifications
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
+
+    /**
+     * Get notifications_about
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getNotificationsAbout()
+    {
+        return $this->notifications_about;
+    }
+
+    /**
+     * Add notifications
+     *
+     * @param Mooi\WallBundle\Entity\Notification $notifications
+     */
+    public function addNotification(\Mooi\WallBundle\Entity\Notification $notifications)
+    {
+        $this->notifications[] = $notifications;
+    }
 }
