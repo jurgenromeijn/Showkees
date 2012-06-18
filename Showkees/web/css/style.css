@@ -151,7 +151,7 @@ body
         color: #ff3333;
     }
     
-    body.red #contentWrapper a
+    body.red #contentWrapper a, body.red #contentWrapper form ul.errors
     {
         color: #cc3333;
     }
@@ -301,6 +301,7 @@ body
 {
     background-color: #54C2C1;
     margin-bottom: 30px;
+    height: 80px;
 }
 
 #headerWrapper header
@@ -342,7 +343,7 @@ body
 {
     display: block;
     padding: 8px;
-    height: 20px;
+    height: 19px;
     font-weight: bold;    
     text-decoration: none;
     color: #fff;
@@ -360,7 +361,7 @@ body
 {
     display: none;
     list-style: none;
-    background: rgba(0, 0, 0, 0.2);
+    background: #cdcdcd;
     border-radius: 0px 0px 5px 5px;
     padding: 1px;
 }

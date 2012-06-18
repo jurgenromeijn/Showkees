@@ -35,7 +35,6 @@ class SubjectController extends Controller
 
         $repository = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Subject');
-        $subjects = $repository->findAll();
                 
         $subject = new Subject();
         $form = $this->createForm(new SubjectType(), $subject);
@@ -61,7 +60,9 @@ class SubjectController extends Controller
             
         }
 
-         return $this->render('MooiWallBundle:Subject:index.html.twig', array(
+        $subjects = $repository->findAll();
+
+        return $this->render('MooiWallBundle:Subject:index.html.twig', array(
             'subjects' => $subjects,
             'formTitle' => 'Vak toevoegen',
             'formAction' => $this->get('router')->generate('MooiWallBundle_SubjectAdd'),
@@ -75,7 +76,6 @@ class SubjectController extends Controller
 
         $repository = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Subject');
-        $subjects = $repository->findAll();
         $subject = $repository->findOneByName($name);
         
         if($subject == null)
@@ -107,6 +107,8 @@ class SubjectController extends Controller
             }
 
         }
+
+        $subjects = $repository->findAll();
 
         return $this->render('MooiWallBundle:Subject:index.html.twig', array(
             'subjects' => $subjects,

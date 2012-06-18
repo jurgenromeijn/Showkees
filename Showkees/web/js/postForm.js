@@ -23,10 +23,10 @@ $(function(){
    
    addPostButton.click(function(){
        
-        $(this).slideUp(200, function()
+        $(this).fadeOut(200, function()
         {
             
-            postForm.slideDown(600);
+            postForm.fadeIn(600);
             $('textarea', postForm).focus();
             
         });
