@@ -833,6 +833,16 @@ table.dataTable th.action
      position: relative;
      clear: both;
  }
+ .post > img{
+     float: left;
+     margin-right: 10px;
+     width: 106px;
+ }
+ #contentColumn .post > p{
+     width: 480px;
+     float: right;
+     margin: 0;
+ }
  .reply{
      border-bottom: solid 1px #ff0000;
  }
@@ -855,6 +865,7 @@ table.dataTable th.action
  .post h2{
      color: #ff000 !important;
      font-size: 20px;
+     text-align: right;
  }
  .post h2 span{
      color: #54C2C1;
@@ -871,6 +882,8 @@ table.dataTable th.action
  }
  .image_gallery{
      overflow: hidden;
+     clear: both;
+     padding-top: 10px;
  }
  .image_gallery img{
      float: left;

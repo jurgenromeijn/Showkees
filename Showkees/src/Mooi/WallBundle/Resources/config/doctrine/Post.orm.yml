@@ -12,7 +12,6 @@ Mooi\WallBundle\Entity\Post:
             length: 4
         text:
             type: string
-            length: 60
         type:
             type: string
             columnDefinition: ENUM('post', 'reply')
