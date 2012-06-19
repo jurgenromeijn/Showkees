@@ -29,12 +29,12 @@ body
     */
     body.green #headerWrapper, body.green .dataTable, body.green .add_post_button, body.green input.button, #colorMenu li.green
     {
-        background-color: #66cc66;
+        background-color: #46bd48;
     }
     
     body.green #contentWrapper h2, body.green #sidebarColumn input.button
     {
-        color: #66cc66;
+        color: #46bd48;
     }
     
     body.green #contentWrapper a
@@ -49,17 +49,17 @@ body
     
     body.green #sidebarColumn
     {
-        background-image: linear-gradient(bottom, #66cc66 1%, #66cc66 51%, #fff 100%);
-        background-image: -o-linear-gradient(bottom, #66cc66 1%, #66cc66 51%, #fff 100%);
-        background-image: -moz-linear-gradient(bottom, #66cc66 1%, #66cc66 51%, #fff 100%);
-        background-image: -webkit-linear-gradient(bottom, #66cc66 1%, #66cc66 51%, #fff 100%);
-        background-image: -ms-linear-gradient(bottom, #66cc66 1%, #66cc66 51%, #fff 100%);
-        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #66cc66), color-stop(0.51, #66cc66), color-stop(1, #fff));
+        background-image: linear-gradient(bottom, #46bd48 1%, #46bd48 51%, #fff 100%);
+        background-image: -o-linear-gradient(bottom, #46bd48 1%, #46bd48 51%, #fff 100%);
+        background-image: -moz-linear-gradient(bottom, #46bd48 1%, #46bd48 51%, #fff 100%);
+        background-image: -webkit-linear-gradient(bottom, #46bd48 1%, #46bd48 51%, #fff 100%);
+        background-image: -ms-linear-gradient(bottom, #46bd48 1%, #46bd48 51%, #fff 100%);
+        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #46bd48), color-stop(0.51, #46bd48), color-stop(1, #fff));
     }
     
     body.green #contentWrapper .form_row>input, body.green #contentWrapper .form_row>select, body.green #contentWrapper .form_row>textarea
     {
-        border-color: #66cc66;
+        border-color: #46bd48;
     }
 
     /**
@@ -67,12 +67,12 @@ body
     */
     body.yellow #headerWrapper, body.yellow .dataTable, body.yellow .add_post_button, body.yellow input.button, #colorMenu li.yellow
     {
-        background-color: #cccc00;
+        background-color: #ebde00;
     }
     
     body.yellow #contentWrapper h2, body.yellow #sidebarColumn input.button
     {
-        color: #cccc00;
+        color: #ebde00;
     }
     
     body.yellow #contentWrapper a
@@ -87,17 +87,17 @@ body
     
     body.yellow #sidebarColumn
     {
-        background-image: linear-gradient(bottom, #cccc00 1%, #cccc00 51%, #fff 100%);
-        background-image: -o-linear-gradient(bottom, #cccc00 1%, #cccc00 51%, #fff 100%);
-        background-image: -moz-linear-gradient(bottom, #cccc00 1%, #cccc00 51%, #fff 100%);
-        background-image: -webkit-linear-gradient(bottom, #cccc00 1%, #cccc00 51%, #fff 100%);
-        background-image: -ms-linear-gradient(bottom, #cccc00 1%, #cccc00 51%, #fff 100%);
-        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #cccc00), color-stop(0.51, #cccc00), color-stop(1, #fff));
+        background-image: linear-gradient(bottom, #ebde00 1%, #ebde00 51%, #fff 100%);
+        background-image: -o-linear-gradient(bottom, #ebde00 1%, #ebde00 51%, #fff 100%);
+        background-image: -moz-linear-gradient(bottom, #ebde00 1%, #ebde00 51%, #fff 100%);
+        background-image: -webkit-linear-gradient(bottom, #ebde00 1%, #ebde00 51%, #fff 100%);
+        background-image: -ms-linear-gradient(bottom, #ebde00 1%, #ebde00 51%, #fff 100%);
+        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #ebde00), color-stop(0.51, #ebde00), color-stop(1, #fff));
     }
     
     body.yellow #contentWrapper .form_row>input, body.yellow #contentWrapper .form_row>select, body.yellow #contentWrapper .form_row>textarea
     {
-        border-color: #cccc00;
+        border-color: #ebde00;
     }
 
     /**
@@ -105,12 +105,12 @@ body
     */
     body.orange #headerWrapper, body.orange .dataTable, body.orange .add_post_button, body.orange input.button, #colorMenu li.orange
     {
-        background-color: #ff9933;
+        background-color: #eb8500;
     }
     
     body.orange #contentWrapper h2, body.orange #sidebarColumn input.button
     {
-        color: #ff9933;
+        color: #eb8500;
     }
     
     body.orange #contentWrapper a
@@ -125,17 +125,17 @@ body
     
     body.orange #sidebarColumn
     {
-        background-image: linear-gradient(bottom, #ff9933 1%, #ff9933 51%, #fff 100%);
-        background-image: -o-linear-gradient(bottom, #ff9933 1%, #ff9933 51%, #fff 100%);
-        background-image: -moz-linear-gradient(bottom, #ff9933 1%, #ff9933 51%, #fff 100%);
-        background-image: -webkit-linear-gradient(bottom, #ff9933 1%, #ff9933 51%, #fff 100%);
-        background-image: -ms-linear-gradient(bottom, #ff9933 1%, #ff9933 51%, #fff 100%);
-        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #ff9933), color-stop(0.51, #ff9933), color-stop(1, #fff));
+        background-image: linear-gradient(bottom, #eb8500 1%, #eb8500 51%, #fff 100%);
+        background-image: -o-linear-gradient(bottom, #eb8500 1%, #eb8500 51%, #fff 100%);
+        background-image: -moz-linear-gradient(bottom, #eb8500 1%, #eb8500 51%, #fff 100%);
+        background-image: -webkit-linear-gradient(bottom, #eb8500 1%, #eb8500 51%, #fff 100%);
+        background-image: -ms-linear-gradient(bottom, #eb8500 1%, #eb8500 51%, #fff 100%);
+        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #eb8500), color-stop(0.51, #eb8500), color-stop(1, #fff));
     }
     
     body.orange #contentWrapper .form_row>input, body.orange #contentWrapper .form_row>select, body.orange #contentWrapper .form_row>textarea
     {
-        border-color: #ff9933;
+        border-color: #eb8500;
     }
     
     /**
@@ -143,12 +143,12 @@ body
     */
     body.red #headerWrapper, body.red .dataTable, body.red .add_post_button, body.red input.button, #colorMenu li.red
     {
-        background-color: #ff3333;
+        background-color: #df2f2f;
     }
     
     body.red #contentWrapper h2, body.red #sidebarColumn input.button
     {
-        color: #ff3333;
+        color: #df2f2f;
     }
     
     body.red #contentWrapper a, body.red #contentWrapper form ul.errors
@@ -163,17 +163,17 @@ body
     
     body.red #sidebarColumn
     {
-        background-image: linear-gradient(bottom, #ff3333 1%, #ff3333 51%, #fff 100%);
-        background-image: -o-linear-gradient(bottom, #ff3333 1%, #ff3333 51%, #fff 100%);
-        background-image: -moz-linear-gradient(bottom, #ff3333 1%, #ff3333 51%, #fff 100%);
-        background-image: -webkit-linear-gradient(bottom, #ff3333 1%, #ff3333 51%, #fff 100%);
-        background-image: -ms-linear-gradient(bottom, #ff3333 1%, #ff3333 51%, #fff 100%);
-        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #ff3333), color-stop(0.51, #ff3333), color-stop(1, #fff));
+        background-image: linear-gradient(bottom, #df2f2f 1%, #df2f2f 51%, #fff 100%);
+        background-image: -o-linear-gradient(bottom, #df2f2f 1%, #df2f2f 51%, #fff 100%);
+        background-image: -moz-linear-gradient(bottom, #df2f2f 1%, #df2f2f 51%, #fff 100%);
+        background-image: -webkit-linear-gradient(bottom, #df2f2f 1%, #df2f2f 51%, #fff 100%);
+        background-image: -ms-linear-gradient(bottom, #df2f2f 1%, #df2f2f 51%, #fff 100%);
+        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #df2f2f), color-stop(0.51, #df2f2f), color-stop(1, #fff));
     }
     
     body.red #contentWrapper .form_row>input, body.red #contentWrapper .form_row>select, body.red #contentWrapper .form_row>textarea
     {
-        border-color: #ff3333;
+        border-color: #df2f2f;
 
     }
 
@@ -182,12 +182,12 @@ body
     */
     body.purple #headerWrapper, body.purple .dataTable, body.purple .add_post_button, body.purple input.button, #colorMenu li.purple
     {
-        background-color: #cc66cc;
+        background-color: #a546b6;
     }
     
     body.purple #contentWrapper h2, body.purple #sidebarColumn input.button
     {
-        color: #cc66cc;
+        color: #a546b6;
     }
     
     body.purple #contentWrapper a
@@ -202,17 +202,17 @@ body
     
     body.purple #sidebarColumn
     {
-        background-image: linear-gradient(bottom, #cc66cc 1%, #cc66cc 51%, #fff 100%);
-        background-image: -o-linear-gradient(bottom, #cc66cc 1%, #cc66cc 51%, #fff 100%);
-        background-image: -moz-linear-gradient(bottom, #cc66cc 1%, #cc66cc 51%, #fff 100%);
-        background-image: -webkit-linear-gradient(bottom, #cc66cc 1%, #cc66cc 51%, #fff 100%);
-        background-image: -ms-linear-gradient(bottom, #cc66cc 1%, #cc66cc 51%, #fff 100%);
-        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #cc66cc), color-stop(0.51, #cc66cc), color-stop(1, #fff));
+        background-image: linear-gradient(bottom, #a546b6 1%, #a546b6 51%, #fff 100%);
+        background-image: -o-linear-gradient(bottom, #a546b6 1%, #a546b6 51%, #fff 100%);
+        background-image: -moz-linear-gradient(bottom, #a546b6 1%, #a546b6 51%, #fff 100%);
+        background-image: -webkit-linear-gradient(bottom, #a546b6 1%, #a546b6 51%, #fff 100%);
+        background-image: -ms-linear-gradient(bottom, #a546b6 1%, #a546b6 51%, #fff 100%);
+        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #a546b6), color-stop(0.51, #a546b6), color-stop(1, #fff));
     }
     
     body.purple #contentWrapper .form_row>input, body.purple #contentWrapper .form_row>select, body.purple #contentWrapper .form_row>textarea
     {
-        border-color: #cc66cc;
+        border-color: #a546b6;
 
     }
 
@@ -260,37 +260,37 @@ body
     */
     body.gray #headerWrapper, body.gray .dataTable, body.gray .add_post_button, body.gray input.button, #colorMenu li.gray
     {
-        background-color: #999999;
+        background-color: #666666;
     }
     
     body.gray #contentWrapper h2, body.gray #sidebarColumn input.button
     {
-        color: #999999;
+        color: #666666;
     }
     
     body.gray #contentWrapper a
     {
-        color: #666666;
+        color: #333333;
     }
     
     body.gray #sidebarColumn #studentSearchField
     {
-        border-color: #666666;
+        border-color: #333333;
     }
     
     body.gray #sidebarColumn
     {
-        background-image: linear-gradient(bottom, #999999 1%, #999999 51%, #fff 100%);
-        background-image: -o-linear-gradient(bottom, #999999 1%, #999999 51%, #fff 100%);
-        background-image: -moz-linear-gradient(bottom, #999999 1%, #999999 51%, #fff 100%);
-        background-image: -webkit-linear-gradient(bottom, #999999 1%, #999999 51%, #fff 100%);
-        background-image: -ms-linear-gradient(bottom, #999999 1%, #999999 51%, #fff 100%);
-        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #999999), color-stop(0.51, #999999), color-stop(1, #fff));
+        background-image: linear-gradient(bottom, #666666 1%, #666666 51%, #fff 100%);
+        background-image: -o-linear-gradient(bottom, #666666 1%, #666666 51%, #fff 100%);
+        background-image: -moz-linear-gradient(bottom, #666666 1%, #666666 51%, #fff 100%);
+        background-image: -webkit-linear-gradient(bottom, #666666 1%, #666666 51%, #fff 100%);
+        background-image: -ms-linear-gradient(bottom, #666666 1%, #666666 51%, #fff 100%);
+        background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #666666), color-stop(0.51, #666666), color-stop(1, #fff));
     }
     
     body.gray #contentWrapper .form_row>input, body.gray #contentWrapper .form_row>select, body.gray #contentWrapper .form_row>textarea
     {
-        border-color: #999999;
+        border-color: #666666;
 
     }
     
