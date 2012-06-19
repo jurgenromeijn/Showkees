@@ -26,3 +26,8 @@ Mooi\WallBundle\Entity\Notification:
       joinColumn:
         name: about_id
         referencedColumnName: id
+    post:
+      targetEntity: Mooi\WallBundle\Entity\Post
+      joinColumn:
+        name: post_id
+        referencedColumnName: id

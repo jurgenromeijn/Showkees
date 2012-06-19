@@ -149,4 +149,29 @@ class Notification
     {
         return $this->about;
     }
+    /**
+     * @var Mooi\WallBundle\Entity\Post
+     */
+    private $post;
+
+
+    /**
+     * Set post
+     *
+     * @param Mooi\WallBundle\Entity\Post $post
+     */
+    public function setPost(\Mooi\WallBundle\Entity\Post $post)
+    {
+        $this->post = $post;
+    }
+
+    /**
+     * Get post
+     *
+     * @return Mooi\WallBundle\Entity\Post 
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
 }
