@@ -55,7 +55,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAnnotationReaderService()
     {
-        return $this->services['annotation_reader'] = new \Doctrine\Common\Annotations\FileCacheReader(new \Doctrine\Common\Annotations\AnnotationReader(), 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/annotations', true);
+        return $this->services['annotation_reader'] = new \Doctrine\Common\Annotations\FileCacheReader(new \Doctrine\Common\Annotations\AnnotationReader(), 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/annotations', true);
     }
 
     /**
@@ -70,24 +70,24 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('templating.loader');
 
-        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/assetic/config'), true)));
+        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/assetic/config'), true)));
 
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/FrameworkBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SecurityBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\SecurityBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/TwigBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\TwigBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/MonologBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\MonologBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SwiftmailerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\SwiftmailerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/DoctrineBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\DoctrineBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/AsseticBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\Symfony\\Bundle\\AsseticBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SensioFrameworkExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\Sensio\\Bundle\\FrameworkExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/JMSSecurityExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\JMS\\SecurityExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MooiUserBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/MooiUserBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MooiUserBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MooiWallBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/MooiWallBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MooiWallBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/AcmeDemoBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Acme\\DemoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/WebProfilerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SensioDistributionBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\Sensio\\Bundle\\DistributionBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioGeneratorBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SensioGeneratorBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioGeneratorBundle', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\Sensio\\Bundle\\GeneratorBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/FrameworkBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SecurityBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\SecurityBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/TwigBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\TwigBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/MonologBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\MonologBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SwiftmailerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\SwiftmailerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/DoctrineBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\DoctrineBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/AsseticBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\Symfony\\Bundle\\AsseticBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SensioFrameworkExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\Sensio\\Bundle\\FrameworkExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/JMSSecurityExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\JMS\\SecurityExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MooiUserBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/MooiUserBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MooiUserBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MooiWallBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/MooiWallBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MooiWallBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/AcmeDemoBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Acme\\DemoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/WebProfilerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SensioDistributionBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\Sensio\\Bundle\\DistributionBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioGeneratorBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/SensioGeneratorBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioGeneratorBundle', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\bundles\\Sensio\\Bundle\\GeneratorBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'), 'twig');
 
         return $instance;
     }
@@ -154,7 +154,7 @@ class appDevDebugProjectContainer extends Container
         $a = $this->get('kernel');
         $b = $this->get('templating.name_parser');
 
-        $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources');
+        $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources');
 
         return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer($c, $this->get('templating.locator')), 1 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer($this), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router')), 3 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer($this, $c), 4 => new \Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer($this->get('doctrine'))));
     }
@@ -214,7 +214,7 @@ class appDevDebugProjectContainer extends Container
         $b = new \Doctrine\Common\EventManager();
         $b->addEventSubscriber(new \Doctrine\DBAL\Event\Listeners\MysqlSessionInit('UTF8'));
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'showkees', 'host' => 'localhost', 'port' => '', 'user' => 'root', 'password' => '', 'driver' => 'pdo_mysql', 'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock', 'driverOptions' => array()), $a, $b, array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'showkees', 'host' => 'localhost', 'port' => '', 'user' => 'root', 'password' => '', 'driver' => 'pdo_mysql', 'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock', 'driverOptions' => array()), $a, $b, array('enum' => 'string'));
     }
 
     /**
@@ -228,16 +228,16 @@ class appDevDebugProjectContainer extends Container
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
         $a = new \Doctrine\Common\Cache\ArrayCache();
-        $a->setNamespace('sf2orm_default_1f77b770502215c5e4204262a569a1c3');
+        $a->setNamespace('sf2orm_default_4408da9aac2a51b4fb7869423f530d17');
 
         $b = new \Doctrine\Common\Cache\ArrayCache();
-        $b->setNamespace('sf2orm_default_1f77b770502215c5e4204262a569a1c3');
+        $b->setNamespace('sf2orm_default_4408da9aac2a51b4fb7869423f530d17');
 
         $c = new \Doctrine\Common\Cache\ArrayCache();
-        $c->setNamespace('sf2orm_default_1f77b770502215c5e4204262a569a1c3');
+        $c->setNamespace('sf2orm_default_4408da9aac2a51b4fb7869423f530d17');
 
-        $d = new \Symfony\Bridge\Doctrine\Mapping\Driver\YamlDriver(array(0 => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle\\Resources\\config\\doctrine', 1 => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle\\Resources\\config\\doctrine'));
-        $d->setNamespacePrefixes(array('C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle\\Resources\\config\\doctrine' => 'Mooi\\UserBundle\\Entity', 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle\\Resources\\config\\doctrine' => 'Mooi\\WallBundle\\Entity'));
+        $d = new \Symfony\Bridge\Doctrine\Mapping\Driver\YamlDriver(array(0 => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle\\Resources\\config\\doctrine', 1 => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle\\Resources\\config\\doctrine'));
+        $d->setNamespacePrefixes(array('C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle\\Resources\\config\\doctrine' => 'Mooi\\UserBundle\\Entity', 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle\\Resources\\config\\doctrine' => 'Mooi\\WallBundle\\Entity'));
         $d->setGlobalBasename('mapping');
 
         $e = new \Doctrine\ORM\Mapping\Driver\DriverChain();
@@ -250,7 +250,7 @@ class appDevDebugProjectContainer extends Container
         $f->setQueryCacheImpl($b);
         $f->setResultCacheImpl($c);
         $f->setMetadataDriverImpl($e);
-        $f->setProxyDir('C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/doctrine/orm/Proxies');
+        $f->setProxyDir('C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/doctrine/orm/Proxies');
         $f->setProxyNamespace('Proxies');
         $f->setAutoGenerateProxyClasses(true);
         $f->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
@@ -331,7 +331,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFileLocatorService()
     {
-        return $this->services['file_locator'] = new \Symfony\Component\HttpKernel\Config\FileLocator($this->get('kernel'), 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/Resources');
+        return $this->services['file_locator'] = new \Symfony\Component\HttpKernel\Config\FileLocator($this->get('kernel'), 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/Resources');
     }
 
     /**
@@ -896,7 +896,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getMonolog_Handler_MainService()
     {
-        return $this->services['monolog.handler.main'] = new \Monolog\Handler\StreamHandler('C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/logs/dev.log', 100, true);
+        return $this->services['monolog.handler.main'] = new \Monolog\Handler\StreamHandler('C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/logs/dev.log', 100, true);
     }
 
     /**
@@ -1048,7 +1048,7 @@ class appDevDebugProjectContainer extends Container
         $c = new \Symfony\Component\HttpKernel\DataCollector\EventDataCollector();
         $c->setEventDispatcher($this->get('event_dispatcher'));
 
-        $this->services['profiler'] = $instance = new \Symfony\Component\HttpKernel\Profiler\Profiler(new \Symfony\Component\HttpKernel\Profiler\SqliteProfilerStorage('sqlite:C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/profiler.db', '', '', 86400), $a);
+        $this->services['profiler'] = $instance = new \Symfony\Component\HttpKernel\Profiler\Profiler(new \Symfony\Component\HttpKernel\Profiler\SqliteProfilerStorage('sqlite:C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/profiler.db', '', '', 86400), $a);
 
         $instance->add(new \Symfony\Component\HttpKernel\DataCollector\ConfigDataCollector($b));
         $instance->add($this->get('data_collector.request'));
@@ -1117,7 +1117,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getRouterService()
     {
-        return $this->services['router'] = new \Symfony\Bundle\FrameworkBundle\Routing\Router($this, 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/config/routing_dev.yml', array('cache_dir' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev', 'debug' => true, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appdevUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appdevUrlMatcher'));
+        return $this->services['router'] = new \Symfony\Bundle\FrameworkBundle\Routing\Router($this, 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/config/routing_dev.yml', array('cache_dir' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev', 'debug' => true, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appdevUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appdevUrlMatcher'));
     }
 
     /**
@@ -1170,7 +1170,20 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Access_MethodInterceptorService()
     {
-        return $this->services['security.access.method_interceptor'] = new \JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor($this->get('security.context'), $this->get('security.authentication.manager'), $this->get('security.access.decision_manager'), new \JMS\SecurityExtraBundle\Security\Authorization\AfterInvocation\AfterInvocationManager(array()), new \JMS\SecurityExtraBundle\Security\Authorization\RunAsManager('RunAsToken', 'ROLE_'), $this->get('logger'));
+        return $this->services['security.access.method_interceptor'] = new \JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor($this->get('security.context'), $this->get('security.authentication.manager'), $this->get('security.access.decision_manager'), new \JMS\SecurityExtraBundle\Security\Authorization\AfterInvocation\AfterInvocationManager(array(0 => new \JMS\SecurityExtraBundle\Security\Authorization\AfterInvocation\AclAfterInvocationProvider($this->get('security.acl.provider'), $this->get('security.acl.object_identity_retrieval_strategy'), $this->get('security.acl.security_identity_retrieval_strategy'), $this->get('security.acl.permission.map')))), new \JMS\SecurityExtraBundle\Security\Authorization\RunAsManager('RunAsToken', 'ROLE_'), $this->get('logger'));
+    }
+
+    /**
+     * Gets the 'security.acl.provider' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Symfony\Component\Security\Acl\Dbal\MutableAclProvider A Symfony\Component\Security\Acl\Dbal\MutableAclProvider instance.
+     */
+    protected function getSecurity_Acl_ProviderService()
+    {
+        return $this->services['security.acl.provider'] = new \Symfony\Component\Security\Acl\Dbal\MutableAclProvider($this->get('doctrine.dbal.default_connection'), new \Symfony\Component\Security\Acl\Domain\PermissionGrantingStrategy(), array('class_table_name' => 'acl_classes', 'entry_table_name' => 'acl_entries', 'oid_table_name' => 'acl_object_identities', 'oid_ancestors_table_name' => 'acl_object_identity_ancestors', 'sid_table_name' => 'acl_security_identities'), NULL);
     }
 
     /**
@@ -1248,18 +1261,24 @@ class appDevDebugProjectContainer extends Container
 
         $i = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/create');
 
-        $j = new \Symfony\Component\Security\Http\AccessMap();
-        $j->add($g, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $j->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $j->add($i, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $j->add($a, array(0 => 'ROLE_USER'), NULL);
+        $j = new \Symfony\Component\HttpFoundation\RequestMatcher('^/teacher');
 
-        $k = new \Symfony\Component\Security\Http\HttpUtils($e);
+        $k = new \Symfony\Component\HttpFoundation\RequestMatcher('^/subject');
 
-        $l = new \Symfony\Component\Security\Http\Firewall\LogoutListener($c, $k, '/logout', '/', NULL);
-        $l->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+        $l = new \Symfony\Component\Security\Http\AccessMap();
+        $l->add($g, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $l->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $l->add($i, array(0 => 'ROLE_TEACHER'), NULL);
+        $l->add($j, array(0 => 'ROLE_TEACHER'), NULL);
+        $l->add($k, array(0 => 'ROLE_TEACHER'), NULL);
+        $l->add($a, array(0 => 'ROLE_STUDENT'), NULL);
 
-        return $this->services['security.firewall.map.context.user_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($j, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(), $b), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($c, array(0 => $this->get('security.user.provider.concrete.user_db')), 'user_area', $b, $d), 2 => $l, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($c, $f, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $k, 'user_area', array('check_path' => '/login_check', 'login_path' => '/login', 'always_use_default_target_path' => true, 'default_target_path' => '/', 'use_forward' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), NULL, NULL, $b, $d), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($c, '4fca967955398', $b), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($c, $this->get('security.access.decision_manager'), $j, $f, $b)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($c, $this->get('security.authentication.trust_resolver'), $k, new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $k, '/login', false), NULL, NULL, $b));
+        $m = new \Symfony\Component\Security\Http\HttpUtils($e);
+
+        $n = new \Symfony\Component\Security\Http\Firewall\LogoutListener($c, $m, '/logout', '/', NULL);
+        $n->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+
+        return $this->services['security.firewall.map.context.user_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($l, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(), $b), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($c, array(0 => $this->get('security.user.provider.concrete.user_db')), 'user_area', $b, $d), 2 => $n, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($c, $f, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $m, 'user_area', array('check_path' => '/login_check', 'login_path' => '/login', 'always_use_default_target_path' => true, 'default_target_path' => '/', 'use_forward' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), NULL, NULL, $b, $d), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($c, '4fe0623da6ad5', $b), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($c, $this->get('security.access.decision_manager'), $l, $f, $b)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($c, $this->get('security.authentication.trust_resolver'), $m, new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $m, '/login', false), NULL, NULL, $b));
     }
 
     /**
@@ -1285,7 +1304,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSensio_Distribution_WebconfiguratorService()
     {
-        return $this->services['sensio.distribution.webconfigurator'] = new \Sensio\Bundle\DistributionBundle\Configurator\Configurator('C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app');
+        return $this->services['sensio.distribution.webconfigurator'] = new \Sensio\Bundle\DistributionBundle\Configurator\Configurator('C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app');
     }
 
     /**
@@ -1537,7 +1556,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTemplating_Helper_CodeService()
     {
-        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper(NULL, 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app', 'UTF-8');
+        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper(NULL, 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app', 'UTF-8');
     }
 
     /**
@@ -1723,7 +1742,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTranslator_DefaultService()
     {
-        return $this->services['translator.default'] = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, $this->get('translator.selector'), array('translation.loader.php' => 'php', 'translation.loader.yml' => 'yml', 'translation.loader.xliff' => 'xliff'), array('cache_dir' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/translations', 'debug' => true), $this->get('session'));
+        return $this->services['translator.default'] = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, $this->get('translator.selector'), array('translation.loader.php' => 'php', 'translation.loader.yml' => 'yml', 'translation.loader.xliff' => 'xliff'), array('cache_dir' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/translations', 'debug' => true), $this->get('session'));
     }
 
     /**
@@ -1736,7 +1755,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTwigService()
     {
-        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => true, 'strict_variables' => true, 'exception_controller' => 'Symfony\\Bundle\\TwigBundle\\Controller\\ExceptionController::showAction', 'cache' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/twig', 'charset' => 'UTF-8'));
+        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => true, 'strict_variables' => true, 'exception_controller' => 'Symfony\\Bundle\\TwigBundle\\Controller\\ExceptionController::showAction', 'cache' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/twig', 'charset' => 'UTF-8'));
 
         $instance->addExtension(new \Symfony\Bundle\SecurityBundle\Twig\Extension\SecurityExtension($this->get('security.context')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($this->get('translator')));
@@ -1777,7 +1796,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['twig.loader'] = $instance = new \Symfony\Bundle\TwigBundle\Loader\FilesystemLoader($this->get('templating.locator'), $this->get('templating.name_parser'));
 
-        $instance->addPath('C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\TwigBundle\\DependencyInjection/../../../Bridge/Twig/Resources/views/Form');
+        $instance->addPath('C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Bundle\\TwigBundle\\DependencyInjection/../../../Bridge/Twig/Resources/views/Form');
 
         return $instance;
     }
@@ -1792,7 +1811,20 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getValidatorService()
     {
-        return $this->services['validator'] = new \Symfony\Component\Validator\Validator($this->get('validator.mapping.class_metadata_factory'), new \Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory($this, array('doctrine.orm.validator.unique' => 'doctrine.orm.validator.unique')), array(0 => $this->get('doctrine.orm.validator_initializer')));
+        return $this->services['validator'] = new \Symfony\Component\Validator\Validator($this->get('validator.mapping.class_metadata_factory'), new \Symfony\Bundle\FrameworkBundle\Validator\ConstraintValidatorFactory($this, array('doctrine.orm.validator.unique' => 'doctrine.orm.validator.unique', 'password_validator' => 'validator.unique.password')), array(0 => $this->get('doctrine.orm.validator_initializer')));
+    }
+
+    /**
+     * Gets the 'validator.unique.password' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Mooi\UserBundle\Validator\PasswordValidator A Mooi\UserBundle\Validator\PasswordValidator instance.
+     */
+    protected function getValidator_Unique_PasswordService()
+    {
+        return $this->services['validator.unique.password'] = new \Mooi\UserBundle\Validator\PasswordValidator();
     }
 
     /**
@@ -1839,6 +1871,16 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the security.acl.dbal.connection service alias.
+     *
+     * @return stdClass An instance of the doctrine.dbal.default_connection service
+     */
+    protected function getSecurity_Acl_Dbal_ConnectionService()
+    {
+        return $this->get('doctrine.dbal.default_connection');
+    }
+
+    /**
      * Gets the 'assetic.asset_factory' service.
      *
      * This service is shared.
@@ -1852,7 +1894,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_AssetFactoryService()
     {
-        $this->services['assetic.asset_factory'] = $instance = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), $this, new \Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($this->getDefaultParameters()), 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/../web', true);
+        $this->services['assetic.asset_factory'] = $instance = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), $this, new \Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($this->getDefaultParameters()), 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/../web', true);
 
         $instance->addWorker(new \Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker());
 
@@ -1873,7 +1915,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_CacheService()
     {
-        return $this->services['assetic.cache'] = new \Assetic\Cache\FilesystemCache('C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/assetic/assets');
+        return $this->services['assetic.cache'] = new \Assetic\Cache\FilesystemCache('C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/assetic/assets');
     }
 
     /**
@@ -1924,7 +1966,58 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Access_DecisionManagerService()
     {
-        return $this->services['security.access.decision_manager'] = new \Symfony\Component\Security\Core\Authorization\AccessDecisionManager(array(0 => new \Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter(new \Symfony\Component\Security\Core\Role\RoleHierarchy(array('ROLE_ADMIN' => array(0 => 'ROLE_USER'), 'ROLE_SUPERADMIN' => array(0 => 'ROLE_USER', 1 => 'ROLE_ADMIN', 2 => 'ROLE_ALLOWED_TO_SWITCH')))), 1 => new \Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter($this->get('security.authentication.trust_resolver'))), 'affirmative', false, true);
+        return $this->services['security.access.decision_manager'] = new \Symfony\Component\Security\Core\Authorization\AccessDecisionManager(array(0 => new \Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter($this->get('security.role_hierarchy')), 1 => new \Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter($this->get('security.authentication.trust_resolver')), 2 => new \Symfony\Component\Security\Acl\Voter\AclVoter($this->get('security.acl.provider'), $this->get('security.acl.object_identity_retrieval_strategy'), $this->get('security.acl.security_identity_retrieval_strategy'), $this->get('security.acl.permission.map'), $this->get('monolog.logger.security'), true)), 'affirmative', false, true);
+    }
+
+    /**
+     * Gets the 'security.acl.object_identity_retrieval_strategy' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return Symfony\Component\Security\Acl\Domain\ObjectIdentityRetrievalStrategy A Symfony\Component\Security\Acl\Domain\ObjectIdentityRetrievalStrategy instance.
+     */
+    protected function getSecurity_Acl_ObjectIdentityRetrievalStrategyService()
+    {
+        return $this->services['security.acl.object_identity_retrieval_strategy'] = new \Symfony\Component\Security\Acl\Domain\ObjectIdentityRetrievalStrategy();
+    }
+
+    /**
+     * Gets the 'security.acl.permission.map' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return Symfony\Component\Security\Acl\Permission\BasicPermissionMap A Symfony\Component\Security\Acl\Permission\BasicPermissionMap instance.
+     */
+    protected function getSecurity_Acl_Permission_MapService()
+    {
+        return $this->services['security.acl.permission.map'] = new \Symfony\Component\Security\Acl\Permission\BasicPermissionMap();
+    }
+
+    /**
+     * Gets the 'security.acl.security_identity_retrieval_strategy' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return Symfony\Component\Security\Acl\Domain\SecurityIdentityRetrievalStrategy A Symfony\Component\Security\Acl\Domain\SecurityIdentityRetrievalStrategy instance.
+     */
+    protected function getSecurity_Acl_SecurityIdentityRetrievalStrategyService()
+    {
+        return $this->services['security.acl.security_identity_retrieval_strategy'] = new \Symfony\Component\Security\Acl\Domain\SecurityIdentityRetrievalStrategy($this->get('security.role_hierarchy'), $this->get('security.authentication.trust_resolver'));
     }
 
     /**
@@ -1941,7 +2034,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.user_db'), new \Symfony\Component\Security\Core\User\UserChecker(), 'user_area', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4fca967955398')));
+        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.user_db'), new \Symfony\Component\Security\Core\User\UserChecker(), 'user_area', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4fe0623da6ad5')));
     }
 
     /**
@@ -1979,6 +2072,23 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'security.role_hierarchy' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return Symfony\Component\Security\Core\Role\RoleHierarchy A Symfony\Component\Security\Core\Role\RoleHierarchy instance.
+     */
+    protected function getSecurity_RoleHierarchyService()
+    {
+        return $this->services['security.role_hierarchy'] = new \Symfony\Component\Security\Core\Role\RoleHierarchy(array('ROLE_STUDENT' => array(0 => 'ROLE_USER'), 'ROLE_TEACHER' => array(0 => 'ROLE_STUDENT'), 'ROLE_ADMIN' => array(0 => 'ROLE_TEACHER'), 'ROLE_SUPERADMIN' => array(0 => 'ROLE_ADMIN')));
+    }
+
+    /**
      * Gets the 'security.user.provider.concrete.user_db' service.
      *
      * This service is shared.
@@ -1992,7 +2102,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_User_Provider_Concrete_UserDbService()
     {
-        return $this->services['security.user.provider.concrete.user_db'] = new \Symfony\Bridge\Doctrine\Security\User\EntityUserProvider($this->get('doctrine.orm.default_entity_manager'), 'MooiUserBundle:User', 'email');
+        return $this->services['security.user.provider.concrete.user_db'] = new \Symfony\Bridge\Doctrine\Security\User\EntityUserProvider($this->get('doctrine.orm.default_entity_manager'), 'MooiUserBundle:User', 'username');
     }
 
     /**
@@ -2009,7 +2119,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTemplating_LocatorService()
     {
-        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev');
+        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev');
     }
 
     /**
@@ -2060,7 +2170,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getValidator_Mapping_ClassMetadataFactoryService()
     {
-        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader($this->get('annotation_reader')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Component\\Form/Resources/config/validation.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array(0 => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle\\Resources\\config\\validation.yml', 1 => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle\\Resources\\config\\validation.yml')))), NULL);
+        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader($this->get('annotation_reader')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Component\\Form/Resources/config/validation.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array(0 => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle\\Resources\\config\\validation.yml', 1 => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle\\Resources\\config\\validation.yml')))), NULL);
     }
 
     /**
@@ -2112,12 +2222,12 @@ class appDevDebugProjectContainer extends Container
     protected function getDefaultParameters()
     {
         return array(
-            'kernel.root_dir' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app',
+            'kernel.root_dir' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app',
             'kernel.environment' => 'dev',
             'kernel.debug' => true,
             'kernel.name' => 'app',
-            'kernel.cache_dir' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev',
-            'kernel.logs_dir' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/logs',
+            'kernel.cache_dir' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev',
+            'kernel.logs_dir' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/logs',
             'kernel.bundles' => array(
                 'FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle',
                 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle',
@@ -2165,7 +2275,7 @@ class appDevDebugProjectContainer extends Container
             'translation.loader.yml.class' => 'Symfony\\Component\\Translation\\Loader\\YamlFileLoader',
             'translation.loader.xliff.class' => 'Symfony\\Component\\Translation\\Loader\\XliffFileLoader',
             'debug.event_dispatcher.class' => 'Symfony\\Bundle\\FrameworkBundle\\Debug\\TraceableEventDispatcher',
-            'debug.container.dump' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/appDevDebugProjectContainer.xml',
+            'debug.container.dump' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/appDevDebugProjectContainer.xml',
             'kernel.secret' => '7ty56fgtgf4rdewsx3efc4rt5u7yhi',
             'kernel.trust_proxy_headers' => false,
             'session.class' => 'Symfony\\Component\\HttpFoundation\\Session',
@@ -2193,11 +2303,11 @@ class appDevDebugProjectContainer extends Container
             'validator.mapping.loader.yaml_files_loader.class' => 'Symfony\\Component\\Validator\\Mapping\\Loader\\YamlFilesLoader',
             'validator.validator_factory.class' => 'Symfony\\Bundle\\FrameworkBundle\\Validator\\ConstraintValidatorFactory',
             'validator.mapping.loader.xml_files_loader.mapping_files' => array(
-                0 => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Component\\Form/Resources/config/validation.xml',
+                0 => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\vendor\\symfony\\src\\Symfony\\Component\\Form/Resources/config/validation.xml',
             ),
             'validator.mapping.loader.yaml_files_loader.mapping_files' => array(
-                0 => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle\\Resources\\config\\validation.yml',
-                1 => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle\\Resources\\config\\validation.yml',
+                0 => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\UserBundle\\Resources\\config\\validation.yml',
+                1 => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\src\\Mooi\\WallBundle\\Resources\\config\\validation.yml',
             ),
             'profiler.class' => 'Symfony\\Component\\HttpKernel\\Profiler\\Profiler',
             'profiler_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\ProfilerListener',
@@ -2210,7 +2320,7 @@ class appDevDebugProjectContainer extends Container
             'data_collector.memory.class' => 'Symfony\\Component\\HttpKernel\\DataCollector\\MemoryDataCollector',
             'profiler_listener.only_exceptions' => false,
             'profiler_listener.only_master_requests' => false,
-            'profiler.storage.dsn' => 'sqlite:C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/profiler.db',
+            'profiler.storage.dsn' => 'sqlite:C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/profiler.db',
             'profiler.storage.username' => '',
             'profiler.storage.password' => '',
             'profiler.storage.lifetime' => 86400,
@@ -2229,7 +2339,7 @@ class appDevDebugProjectContainer extends Container
             'router.cache_warmer.class' => 'Symfony\\Bundle\\FrameworkBundle\\CacheWarmer\\RouterCacheWarmer',
             'router.options.matcher.cache_class' => 'appdevUrlMatcher',
             'router.options.generator.cache_class' => 'appdevUrlGenerator',
-            'router.resource' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/config/routing_dev.yml',
+            'router.resource' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/config/routing_dev.yml',
             'request_listener.http_port' => 80,
             'request_listener.https_port' => 443,
             'templating.engine.delegating.class' => 'Symfony\\Bundle\\FrameworkBundle\\Templating\\DelegatingEngine',
@@ -2324,15 +2434,32 @@ class appDevDebugProjectContainer extends Container
             'security.access.always_authenticate_before_granting' => false,
             'security.authentication.hide_user_not_found' => true,
             'security.role_hierarchy.roles' => array(
-                'ROLE_ADMIN' => array(
+                'ROLE_STUDENT' => array(
                     0 => 'ROLE_USER',
+                ),
+                'ROLE_TEACHER' => array(
+                    0 => 'ROLE_STUDENT',
+                ),
+                'ROLE_ADMIN' => array(
+                    0 => 'ROLE_TEACHER',
                 ),
                 'ROLE_SUPERADMIN' => array(
-                    0 => 'ROLE_USER',
-                    1 => 'ROLE_ADMIN',
-                    2 => 'ROLE_ALLOWED_TO_SWITCH',
+                    0 => 'ROLE_ADMIN',
                 ),
             ),
+            'security.acl.permission_granting_strategy.class' => 'Symfony\\Component\\Security\\Acl\\Domain\\PermissionGrantingStrategy',
+            'security.acl.voter.class' => 'Symfony\\Component\\Security\\Acl\\Voter\\AclVoter',
+            'security.acl.permission.map.class' => 'Symfony\\Component\\Security\\Acl\\Permission\\BasicPermissionMap',
+            'security.acl.object_identity_retrieval_strategy.class' => 'Symfony\\Component\\Security\\Acl\\Domain\\ObjectIdentityRetrievalStrategy',
+            'security.acl.security_identity_retrieval_strategy.class' => 'Symfony\\Component\\Security\\Acl\\Domain\\SecurityIdentityRetrievalStrategy',
+            'security.acl.cache.doctrine.class' => 'Symfony\\Component\\Security\\Acl\\Domain\\DoctrineAclCache',
+            'security.acl.collection_cache.class' => 'Symfony\\Component\\Security\\Acl\\Domain\\AclCollectionCache',
+            'security.acl.dbal.provider.class' => 'Symfony\\Component\\Security\\Acl\\Dbal\\MutableAclProvider',
+            'security.acl.dbal.class_table_name' => 'acl_classes',
+            'security.acl.dbal.entry_table_name' => 'acl_entries',
+            'security.acl.dbal.oid_table_name' => 'acl_object_identities',
+            'security.acl.dbal.oid_ancestors_table_name' => 'acl_object_identity_ancestors',
+            'security.acl.dbal.sid_table_name' => 'acl_security_identities',
             'twig.class' => 'Twig_Environment',
             'twig.loader.class' => 'Symfony\\Bundle\\TwigBundle\\Loader\\FilesystemLoader',
             'templating.engine.twig.class' => 'Symfony\\Bundle\\TwigBundle\\TwigEngine',
@@ -2353,7 +2480,7 @@ class appDevDebugProjectContainer extends Container
                 'debug' => true,
                 'strict_variables' => true,
                 'exception_controller' => 'Symfony\\Bundle\\TwigBundle\\Controller\\ExceptionController::showAction',
-                'cache' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/twig',
+                'cache' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/twig',
                 'charset' => 'UTF-8',
             ),
             'monolog.logger.class' => 'Symfony\\Bridge\\Monolog\\Logger',
@@ -2431,7 +2558,7 @@ class appDevDebugProjectContainer extends Container
             'doctrine.orm.validator.unique.class' => 'Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntityValidator',
             'doctrine.orm.validator_initializer.class' => 'Symfony\\Bridge\\Doctrine\\Validator\\EntityInitializer',
             'doctrine.orm.auto_generate_proxy_classes' => true,
-            'doctrine.orm.proxy_dir' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/doctrine/orm/Proxies',
+            'doctrine.orm.proxy_dir' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/doctrine/orm/Proxies',
             'doctrine.orm.proxy_namespace' => 'Proxies',
             'assetic.asset_factory.class' => 'Symfony\\Bundle\\AsseticBundle\\Factory\\AssetFactory',
             'assetic.asset_manager.class' => 'Assetic\\Factory\\LazyAssetManager',
@@ -2447,7 +2574,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.node.paths' => array(
 
             ),
-            'assetic.cache_dir' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/assetic',
+            'assetic.cache_dir' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/cache/dev/assetic',
             'assetic.twig_extension.class' => 'Symfony\\Bundle\\AsseticBundle\\Twig\\AsseticExtension',
             'assetic.twig_formula_loader.class' => 'Assetic\\Extension\\Twig\\TwigFormulaLoader',
             'assetic.helper.dynamic.class' => 'Symfony\\Bundle\\AsseticBundle\\Templating\\DynamicAsseticHelper',
@@ -2456,10 +2583,10 @@ class appDevDebugProjectContainer extends Container
             'assetic.debug' => true,
             'assetic.use_controller' => true,
             'assetic.enable_profiler' => false,
-            'assetic.read_from' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/../web',
-            'assetic.write_to' => 'C:\\Users\\henk\\Documents\\NetBeansProjects\\Showkees\\app/../web',
+            'assetic.read_from' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/../web',
+            'assetic.write_to' => 'C:\\Users\\Henkie\\Documents\\NetBeansProjects\\Showkees\\app/../web',
             'assetic.java.bin' => 'C:\\Windows\\system32\\java.EXE',
-            'assetic.node.bin' => 'C:\\Program Files (x86)\\NodeJS\\node.EXE',
+            'assetic.node.bin' => '/usr/bin/node',
             'assetic.sass.bin' => '/usr/bin/sass',
             'assetic.filter.cssrewrite.class' => 'Assetic\\Filter\\CssRewriteFilter',
             'assetic.twig_extension.functions' => array(

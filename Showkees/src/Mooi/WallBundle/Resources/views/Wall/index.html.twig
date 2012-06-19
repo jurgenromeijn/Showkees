@@ -44,7 +44,7 @@
                 </ul>
                 {% if wallOwnerPost.getWallOwner().getId() == id %}
                 <a href="{{ path('MooiWallBundle_WallEdit', {'postId': wallOwnerPost.getId() }) }}">
-                    <img class="edit_post_button" src="{{ asset('images/close_delete.png') }}" alt="" />
+                    <img class="edit_post_button" src="{{ asset('images/edit_post_button.png') }}" alt="" />
                 </a>
                 <a class="confirm" href="{{ path('MooiWallBundle_WallDelete', {'postId' : wallOwnerPost.getId()}) }}">
                             <img class="delete_post_button" src="{{ asset('images/close_delete.png') }}" alt="" />
@@ -67,14 +67,22 @@
                 </form>
             </div>
             <div class="replies">
-                {% if wallOwnerPost.getReplies == true %}
+                {% if wallOwnerPost.getReplies | length > 0 %}
                 <h2>Reacties</h2>
                 {% endif %}
                 {% for reply in wallOwnerPost.getReplies %}
                 <div class="reply">
-                    <p>
-                        {{ reply.text }}
-                    </p>
+                    {% if reply.getSender.getId == wallOwner.getId %}
+                        <img class="avatar_left" src="{{ asset('images/reply_avatar.png') }}" alt="reply avatar"/>
+                        <p class="reply_right">
+                            {{ reply.text }}
+                        </p>
+                    {% else %}
+                        <img class="avatar_right" src="{{ asset('images/reply_avatar.png') }}" alt="reply avatar"/>
+                        <p class="reply_left">
+                            {{ reply.text }}
+                        </p>
+                    {% endif %}
                     <ul class="replyItems">
                         <li><a href="{{ path('MooiWallBundle_WallIndex', {'id': reply.getSender.getId }) }}">{{ reply.getSender.getUserName }}</a></li>
                         <li>{{ reply.time|date('l,  j F Y') }}</li>
