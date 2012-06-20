@@ -7,7 +7,7 @@
 
 {% block content %}
     <h1>Leerlingen overzicht</h1>
-    {% if teacher.getStudents()|length < 1 %}
+    {% if teacher.students|length < 1 %}
         <p>Je hebt nog geen leerlingen aan jezelf toegewezen.</p>
     {% else %}
         <table class="dataTable">
@@ -25,21 +25,21 @@
             </thead>
             <tbody>
             
-                {% for student in teacher.getStudents() %}
+                {% for student in teacher.students %}
                 
                     <tr>
                     
                         <td>
-                            <a href="{{ path('MooiWallBundle_WallIndex', {'id': student.getId()}) }}">{{ student.getFullname() }}</a>
+                            <a href="{{ path('MooiWallBundle_WallIndex', {'name': student.username}) }}">{{ student.fullname }}</a>
                         </td>
                         <td>
-                            <a href="{{ path('MooiUserBundle_UserEdit', {'username': student.getUsername()}) }}">Aanpassen</a>
+                            <a href="{{ path('MooiUserBundle_UserEdit', {'username': student.username}) }}">Aanpassen</a>
                         </td>
                         <td>
-                            <a class="confirm" href="{{ path('MooiUserBundle_TeacherRemoveStudentOverview', {'username': student.getUsername()}) }}">
+                            <a class="confirm" href="{{ path('MooiUserBundle_TeacherRemoveStudentOverview', {'username': student.username}) }}">
                                 Verwijderen
                                 <h3 class="head">Leerling verwijderen</h3>
-                                <p class="body">Weet je zeker dat je wilt dat {{ student.getFullname() }} niet langer een van je leerlingen is?</p>
+                                <p class="body">Weet je zeker dat je wilt dat {{ student.fullname }} niet langer een van je leerlingen is?</p>
                             </a>
                         </td>
                         
@@ -63,8 +63,8 @@
         </form>
         <ul id="studentList">
         {% for student in students %}
-            {% if student.getId() not in pupilList %}
-                <li><a href="{{ path('MooiUserBundle_TeacherAddStudentOverview', {'username': student.getUsername()}) }}">{{ student.getFullName() }}</a></li>
+            {% if student.id not in pupilList %}
+                <li><a href="{{ path('MooiUserBundle_TeacherAddStudentOverview', {'username': student.username}) }}">{{ student.fullname }}</a></li>
             {% endif %}
         {% endfor %}
         </ul>

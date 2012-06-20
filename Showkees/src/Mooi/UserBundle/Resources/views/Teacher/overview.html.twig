@@ -25,10 +25,10 @@
                     <tr>
                     
                         <td>
-                            {{ admin.getFullname() }}
+                            {{ admin.fullname }}
                         </td>
                         <td>
-                            <a href="{{ path('MooiUserBundle_UserEdit', {'username': admin.getUsername()}) }}">Aanpassen</a>
+                            <a href="{{ path('MooiUserBundle_UserEdit', {'username': admin.username}) }}">Aanpassen</a>
                         </td>
                         
                     </tr>
@@ -62,10 +62,10 @@
                     <tr>
                     
                         <td>
-                            {{ teacher.getFullname() }}
+                            {{ teacher.fullname }}
                         </td>
                         <td>
-                            <a href="{{ path('MooiUserBundle_UserEdit', {'username': teacher.getUsername()}) }}">aanpassen</a>
+                            <a href="{{ path('MooiUserBundle_UserEdit', {'username': teacher.username}) }}">aanpassen</a>
                         </td>
                         
                     </tr>

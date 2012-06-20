@@ -20,15 +20,15 @@
                 {% for subject in subjects %}
                 <tr>
                 
-                    <td>{{ subject.getName() }}</td>
+                    <td>{{ subject.name }}</td>
                     <td>
-                        <a href="{{ path('MooiWallBundle_SubjectEdit', {'name' : subject.getName()}) }}">Aanpassen</a>
+                        <a href="{{ path('MooiWallBundle_SubjectEdit', {'name' : subject.name}) }}">Aanpassen</a>
                     </td>
                     <td>
-                        <a class="confirm" href="{{ path('MooiWallBundle_SubjectDelete', {'name' : subject.getName()}) }}">
+                        <a class="confirm" href="{{ path('MooiWallBundle_SubjectDelete', {'name' : subject.name}) }}">
                             verwijderen
-                            <h3 class="head">{{ subject.getName() }} Verwijderen</h3>
-                            <p class="body">Weet je zeker dat je het vak {{ subject.getName() }} en alle bijbehorende posts wilt verwijderen?</p>
+                            <h3 class="head">{{ subject.name }} Verwijderen</h3>
+                            <p class="body">Weet je zeker dat je het vak {{ subject.name }} en alle bijbehorende posts wilt verwijderen?</p>
                         </a>
                     </td>
                     

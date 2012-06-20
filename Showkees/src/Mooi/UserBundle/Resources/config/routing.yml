@@ -8,10 +8,6 @@ MooiUserBundle_setupRolesACL:
     defaults: { _controller: MooiUserBundle:Setup:RolesACL } 
 
 #user
-MooiUserBundle_UserIndex:
-    pattern:  /user/
-    defaults: { _controller: MooiUserBundle:User:index }
-
 MooiUserBundle_UserCreate:
     pattern: /user/create
     defaults: { _controller: MooiUserBundle:User:create }

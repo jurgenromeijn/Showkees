@@ -86,7 +86,7 @@ class UserController extends Controller
                 
                 // Set flash message and redirect to another page
                 $this->get("session")->setFlash('notice', 'Het account is toegevoegd.');
-                return $this->redirect($this->generateUrl('MooiUserBundle_UserIndex'));
+                return $this->redirect($this->generateUrl('index'));
                 
             }
             
@@ -187,7 +187,7 @@ class UserController extends Controller
                 
                 // Set flash message and redirect to another page
                 $this->get("session")->setFlash('notice', 'De instellingen zijn aangepast.');
-                return $this->redirect($this->generateUrl('MooiUserBundle_UserIndex'));
+                return $this->redirect($this->generateUrl('index'));
                 
             }
             
