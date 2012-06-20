@@ -43,3 +43,7 @@ MooiWallBundle_WallReplyAdd:
 MooiWallBundle_NotificationOverview:
     pattern: /notifications
     defaults: { _controller: MooiWallBundle:Notification:overview }
+    
+MooiWallBundle_NotificationMarkAsRead:
+    pattern: /notifications/mark
+    defaults: { _controller: MooiWallBundle:Notification:markAsRead }

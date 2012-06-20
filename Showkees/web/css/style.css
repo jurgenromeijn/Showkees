@@ -426,7 +426,7 @@ body
     background-image: url('../images/notificationIcon.png');
 }
 
-#notificationArea>a
+#notificationArea>p
 {
     padding-top: 40px;
     font-size: 2em;
@@ -434,6 +434,11 @@ body
     text-align: center;
     cursor: pointer;
     height: 40px;
+}
+
+#notificationArea>a
+{
+    display: none;
 }
 
 #notificationArea>div
@@ -494,6 +499,7 @@ body
     margin-top: 5px;
     text-align: right;
     font-size: 0.7em;
+    color: #000;
 }
 
 /**

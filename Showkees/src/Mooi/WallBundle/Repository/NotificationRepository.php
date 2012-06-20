@@ -3,6 +3,7 @@
 namespace Mooi\WallBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Mooi\WallBundle\Entity\Notification;
 
 /**
  * NotificationRepository
@@ -12,4 +13,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class NotificationRepository extends EntityRepository
 {
+    
+    public function markAsRead($userId)
+    {
+        
+        $entityManager = $this->getEntityManager();
+        
+        $query = $entityManager->createQueryBuilder()
+                ->update('MooiWallBundle:Notification', 'n')
+                ->set('n.new', 0)
+                ->where('n.owner = :userId')
+                ->setParameter('userId', $userId)
+                ->getQuery();
+                
+        $query->execute();
+        
+    }
+    
 }

@@ -18,7 +18,7 @@
             <tbody>
                 {% for notification in app.user.notifications %}
                     <tr>
-                        <td>{{ notification.message }}</td>
+                        <td>{{ notification.about.fullname }} {{ notification.message }}</td>
                         <td>{{ notification.quote }}</td>
                         <td>{{ notification.time.format('d-m-Y') }}</td>
                         <td>{{ notification.time.format('H:i:s') }}</td>

@@ -1,6 +1,7 @@
 Mooi\WallBundle\Entity\Notification:
   type: entity
   table: notifications
+  repositoryClass: Mooi\WallBundle\Repository\NotificationRepository
   fields:
     id:
       type: integer

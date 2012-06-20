@@ -1,5 +1,6 @@
-<div id="notificationArea">
-    <a>{{ app.user.newNotificationsAmmount }}</a>
+{% set newNotifications = app.user.newNotificationsAmmount %}
+<div id="notificationArea" {% if newNotifications|length > 0 %}class="new"{% endif %}>
+    <a href="{{ path('MooiWallBundle_NotificationMarkAsRead') }}"></a><p>{{ newNotifications }}</p>
     {% if app.user.notifications|length > 0 %}
         <div>
             <div>
