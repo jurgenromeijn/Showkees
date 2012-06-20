@@ -1010,11 +1010,24 @@ table.dataTable th.action
  .replies{
     background: #edf6f6;
     margin-left: 55px;
+    position: relative;
  }
  .replies h2{
     color: #54C2C1; 
     border-bottom: solid 1px #399;
     padding: 5px;
+ }
+ #contentWrapper .replyMenu{
+    position: absolute;
+    bottom: 11px;
+    right: 13px;
+    list-style: none;
+ }
+ #contentWrapper .replyMenu li{
+     display: inline; 
+ }
+ #contentWrapper .replyMenu li a{
+     text-decoration: none;
  }
  .post h2{
      color: #ff000 !important;

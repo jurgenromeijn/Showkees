@@ -39,6 +39,14 @@ MooiWallBundle_WallReplyAdd:
     pattern: /wall/comment/add/{postId}
     defaults: { _controller: MooiWallBundle:Reply:add }
     
+MooiWallBundle_WallReplyEdit:
+    pattern: /wall/comment/edit/{replyId}
+    defaults: { _controller: MooiWallBundle:Reply:edit }
+    
+MooiWallBundle_WallReplyDelete:
+    pattern: /wall/comment/delete/{replyId}
+    defaults: { _controller: MooiWallBundle:Reply:delete }
+    
 #Notifications
 MooiWallBundle_NotificationOverview:
     pattern: /notifications

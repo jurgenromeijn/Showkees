@@ -144,6 +144,123 @@ class ReplyController extends Controller
         
     }
     
+    public function editAction($replyId)
+    {
+        
+        $request = $this->getRequest();
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        $reply = $this->getDoctrine()
+            ->getRepository('MooiWallBundle:Post')
+            ->find($replyId);
+        $wallOwner = $reply->getWallOwner();
+        
+        
+        //edit reply
+        $formReply = $this->createForm(new WallReplyType(), $reply);
+        
+        if ($request->getMethod() == 'POST') 
+        {
+
+            $formReply->bindRequest($request);   
+
+            if ($formReply->isValid())
+            {
+                //set post data
+                $newReply->setTime(new \DateTime);
+
+                // Save the Post to the database
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($post);
+                $em->flush();
+                
+                $this->get("session")->setFlash('notice', 'Je comment is gewijzigd.');
+                
+                return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
+                    'id'  => $wallOwner->getId()
+                )));
+
+             }
+
+        }
+        
+        foreach($wallOwner->getWallOwnerPosts() as $post)
+        {
+            if($replyId == $reply->getId())
+            {
+                
+                $replyForm['form']      = $formReply;
+                $replyForm['show']      = true;
+                
+            }
+            else
+            {
+                
+                $replyForm['form']      = $this->createForm(new WallReplyType(), $newReply);
+                $replyForm['show']      = false;
+                
+            }
+            
+            $replyForm['action']    = $this->get('router')->generate('MooiWallBundle_WallReplyAdd', array('postId' => $post->getId()));
+            $replyForm['form']      = $replyForm['form']->createView();
+            $post->setReplyForm($replyForm);
+
+        }
+        
+        //set new post object and create form
+        $newPost = new Post();
+        $formPost = $this->createForm(new WallPostType(), $newPost);
+        
+
+        return $this->render('MooiWallBundle:Wall:index.html.twig', array(
+                'formPostTitle'     => 'Voeg een post toe',
+                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $wallOwner->getId())),      
+                'formPost'          => $formPost->createView(),
+                'id'                => $wallOwner->getId(),
+                'wallOwner'         => $wallOwner,
+                'user'              => $user,
+                'showForm'          => false
+        ));
+        
+        
+    }
+    
+    public function deleteAction($replyId)
+    {
+        
+       $reply = $this->getDoctrine()
+            ->getRepository('MooiWallBundle:Post')
+            ->find($replyId);
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        $wallOwnerId = $reply->getWallOwner()->getId();
+        
+        if($reply != null)
+        {
+            
+            $entityManager = $this->getDoctrine()->getEntityManager();
+            $entityManager->remove($reply);
+            $entityManager->flush();
+
+            $this->get("session")->setFlash('notice', 'Het comment is verwijderd.');
+            
+            return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
+                'id'  => $wallOwnerId
+            )));
+            
+        }
+        else
+        {
+            
+            return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
+                'id'  => $user->getId()
+            )));
+            
+        } 
+        
+    }
+            
+    
 }
 
 ?>
