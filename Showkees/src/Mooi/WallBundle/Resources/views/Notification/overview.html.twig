@@ -1,0 +1,32 @@
+{% extends '::singleColumnLayout.html.twig' %}
+
+{% block content %}
+
+    <h1>Meldingen</h1>
+    {% if app.user.notifications|length < 1 %}
+        <p>Je hebt nog geen meldingen</p>
+    {% else %}
+        <table class="dataTable">
+            <thead>
+                <tr>
+                    <th>Melding</th>
+                    <th>Bericht</th>
+                    <th class="action">Datum</th>
+                    <th class="action">Tijd</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for notification in app.user.notifications %}
+                    <tr>
+                        <td>{{ notification.message }}</td>
+                        <td>{{ notification.quote }}</td>
+                        <td>{{ notification.time.format('d-m-Y') }}</td>
+                        <td>{{ notification.time.format('H:i:s') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
+    
+    

@@ -38,3 +38,8 @@ MooiWallBundle_SubjectDelete:
 MooiWallBundle_WallReplyAdd:
     pattern: /wall/comment/add/{postId}
     defaults: { _controller: MooiWallBundle:Reply:add }
+    
+#Notifications
+MooiWallBundle_NotificationOverview:
+    pattern: /notifications
+    defaults: { _controller: MooiWallBundle:Notification:overview }

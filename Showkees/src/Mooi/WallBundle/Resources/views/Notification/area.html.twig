@@ -4,6 +4,9 @@
         <div>
             <div>
                 <h4>Meldingen</h4>
+                {% if app.user.notifications|length < 1 %}
+                    <p>Je hebt nog geen meldingen</p>
+                {% else %}
                 <ul>
                     {% for notification in app.user.notifications(5) %}
                     <li>
@@ -12,7 +15,8 @@
                     </li>
                     {% endfor %}
                 </ul>
-                <a>Bekijk alle meldingen &raquo;</a>
+                <a href="{{ path('MooiWallBundle_NotificationOverview') }}">Bekijk alle meldingen &raquo;</a>
+                {% endif %}
             </div>
         </div>
     {% endif %}

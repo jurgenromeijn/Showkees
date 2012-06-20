@@ -271,20 +271,27 @@ class WallController extends Controller
             ->getRepository('MooiWallBundle:Post')
             ->find($postId);
         
-        $notification = new Notification();
-        $notification->setMessage(Notification::MESSAGE_LIKE);
-        $notification->setQuote($post);
-        $notification->setPost($post);
-        $notification->setOwner($post->getSender());
-        $notification->setAbout($user);
+        $entityManager = $this->getDoctrine()->getEntityManager();
+
+        //only add a notification if somone else's post is liked
+        if($user->getId() != $post->getSender()->getId())
+        {
+        
+            $notification = new Notification();
+            $notification->setMessage(Notification::MESSAGE_LIKE);
+            $notification->setQuote($post);
+            $notification->setPost($post);
+            $notification->setOwner($post->getSender());
+            $notification->setAbout($user);
+            $entityManager->persist($notification);
+        
+        }
                 
         $amountLikes = $post->getLikes();
         $amountLikes++;
         $post->setLikes($amountLikes);
         
-        $entityManager = $this->getDoctrine()->getEntityManager();
         $entityManager->persist($post);
-        $entityManager->persist($notification);
         $entityManager->flush();
         
         $responseJson = array(
