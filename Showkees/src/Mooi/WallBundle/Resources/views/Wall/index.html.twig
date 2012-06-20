@@ -11,15 +11,15 @@
         <div id="content_left">
             <div id="formMenu" {% if showForm %} class="formBool" {% endif %}>
                 <p>
-                    <a class="add_post_button" href="{{ path('MooiWallBundle_WallAdd', {'id': id }) }}">Voeg een post toe</a>
+                    <a class="add_post_button" href="{{ path('MooiWallBundle_WallAdd', {'name': wallOwner.username }) }}">Voeg een post toe</a>
                 </p>
                 {% include 'MooiWallBundle:Wall:postForm.html.twig' %}
             </div>
             
-            {% for wallOwnerPost in wallOwner.getWallOwnerPosts %}
+            {% for wallOwnerPost in wallOwner.wallOwnerPosts %}
             <div class="post">
                 <h2>
-                    {{ wallOwnerPost.getWallOwner().getUserName() }}<span> over </span>{{wallOwnerPost.getSubject}}
+                    {{ wallOwnerPost.wallOwner.username }}<span> over </span>{{wallOwnerPost.getSubject}}
                 </h2>
                     <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost"/>
                 <p class="post_text">
@@ -42,14 +42,14 @@
                     <li><a class="commentButton" href="{{ wallOwnerPost.getId() }}">Reageer</a></li>
                     <li>{{ wallOwnerPost.time|date('l,  j F Y') }}</li>
                 </ul>
-                {% if wallOwnerPost.getWallOwner().getId() == id %}
+                {% if wallOwnerPost.getWallOwner().getId() == wallOwner.id %}
                 <a href="{{ path('MooiWallBundle_WallEdit', {'postId': wallOwnerPost.getId() }) }}">
                     <img class="edit_post_button" src="{{ asset('images/edit_post_button.png') }}" alt="" />
                 </a>
                 <a class="confirm" href="{{ path('MooiWallBundle_WallDelete', {'postId' : wallOwnerPost.getId()}) }}">
                             <img class="delete_post_button" src="{{ asset('images/close_delete.png') }}" alt="" />
                             <h3 class="head">Post verwijderen</h3>
-                            <p class="body">Weet je zeker dat je de post van {% if user.getUserName == wallOwnerPost.getWallOwner().getUserName() %} jezelf {% else %} {{ wallOwnerPost.getWallOwner().getUserName() }} {% endif %} wilt verwijderen?</p>
+                            <p class="body">Weet je zeker dat je de post van {% if app.user.getUserName == wallOwnerPost.getWallOwner().getUserName() %} jezelf {% else %} {{ wallOwnerPost.getWallOwner().getUserName() }} {% endif %} wilt verwijderen?</p>
                         </a>
                 {% endif %}
             </div>

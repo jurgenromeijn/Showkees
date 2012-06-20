@@ -1,15 +1,15 @@
 #wall itself
 MooiWallBundle_WallIndex:
-    pattern:  /wall/{id}
-    defaults: { _controller: MooiWallBundle:Wall:index }
+    pattern:  /wall/{name}
+    defaults: { _controller: MooiWallBundle:Wall:index, name: null }
     
 MooiWallBundle_WallEdit:
     pattern: /wall/edit/{postId}
     defaults: { _controller: MooiWallBundle:Wall:edit }
 
 MooiWallBundle_WallAdd:
-    pattern: /wall/add/{id}
-    defaults: { _controller: MooiWallBundle:Wall:add }
+    pattern: /wall/{name}/add
+    defaults: { _controller: MooiWallBundle:Wall:add, name: null }
     
 MooiWallBundle_WallDelete:
     pattern: /wall/delete/{postId}
@@ -18,6 +18,7 @@ MooiWallBundle_WallDelete:
 MooiWallBundle_WallLike:
     pattern: /wall/like/{postId}
     defaults: { _controller: MooiWallBundle:Wall:like }
+
 #subjects
 MooiWallBundle_SubjectIndex:
     pattern: /subject
@@ -34,6 +35,7 @@ MooiWallBundle_SubjectEdit:
 MooiWallBundle_SubjectDelete:
     pattern: /subject/delete/{name}
     defaults: { _controller: MooiWallBundle:Subject:delete }   
+
 #replies
 MooiWallBundle_WallReplyAdd:
     pattern: /wall/comment/add/{postId}

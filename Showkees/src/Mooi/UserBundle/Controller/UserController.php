@@ -18,21 +18,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class UserController extends Controller 
 {
 
-    
-    public function indexAction()
-    {
-        
-        $userId = $this->get('security.context')
-                            ->getToken()
-                            ->getUser()
-                            ->getId();
-        
-        return $this->forward('MooiWallBundle:Wall:index', array(
-            'id'  => $userId
-        ));
-        
-    }
-
     public function loginAction() 
     {
         $request = $this->getRequest();

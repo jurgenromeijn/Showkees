@@ -340,4 +340,29 @@ class Post
     {
         return $this->type;
     }
+    /**
+     * @var Mooi\WallBundle\Entity\Notification
+     */
+    private $notifications;
+
+
+    /**
+     * Add notifications
+     *
+     * @param Mooi\WallBundle\Entity\Notification $notifications
+     */
+    public function addNotification(\Mooi\WallBundle\Entity\Notification $notifications)
+    {
+        $this->notifications[] = $notifications;
+    }
+
+    /**
+     * Get notifications
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
 }

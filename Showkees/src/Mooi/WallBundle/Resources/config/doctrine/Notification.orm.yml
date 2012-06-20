@@ -34,6 +34,8 @@ Mooi\WallBundle\Entity\Notification:
         referencedColumnName: id
     post:
       targetEntity: Mooi\WallBundle\Entity\Post
+      inversedBy: notifications
       joinColumn:
         name: post_id
         referencedColumnName: id
+        onDelete: cascade

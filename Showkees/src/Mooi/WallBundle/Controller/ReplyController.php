@@ -34,6 +34,12 @@ class ReplyController extends Controller
             ->find($postId);
         $wallOwner = $post->getWallOwner();
         
+        if($post == null)
+        {
+            
+            throw $this->createNotFoundException('Deze post kon niet worden gevonden');
+        
+        }
         
         //set new post object and create form
         $newReply = new Post();
@@ -97,7 +103,7 @@ class ReplyController extends Controller
                 $this->get("session")->setFlash('notice', 'Je comment is toegevoegd.');
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                    'id'  => $wallOwner->getId()
+                    'name'  => $wallOwner->getUsername()
                 )));
 
              }
@@ -134,11 +140,9 @@ class ReplyController extends Controller
 
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
-                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $wallOwner->getId())),      
+                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUsername())),      
                 'formPost'          => $formPost->createView(),
-                'id'                => $wallOwner->getId(),
                 'wallOwner'         => $wallOwner,
-                'user'              => $user,
                 'showForm'          => false
         ));
         

@@ -15,13 +15,27 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class WallController extends Controller
 {
 
-    public function indexAction($id)
+    public function indexAction($name)
     {
         
         $user = $this->get('security.context')->getToken()->getUser();
-        $wallOwner = $this->getDoctrine()
-            ->getRepository('MooiUserBundle:User')
-              ->find($id);
+        if($name == null)
+        {
+            $wallOwner = $user;
+        }
+        else
+        {
+            $wallOwner = $this->getDoctrine()
+                ->getRepository('MooiUserBundle:User')
+                ->findOneByUsername($name);   
+        }
+        
+        if($wallOwner == null)
+        {
+            
+            throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
+        
+        }
         
         /*$wallOwnerPosts = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
@@ -45,25 +59,36 @@ class WallController extends Controller
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
-                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $id)),      
+                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $user->getUsername())),      
                 'formPost'          => $postForm->createView(),
-                'id'                => $id,
                 'wallOwner'         => $wallOwner,
-                'user'              => $user,
                 'showForm'          => false
         ));
    
     }
     
-    public function addAction($id)
+    public function addAction($name)
     {
         
         $request = $this->getRequest();
         $user = $this->get('security.context')->getToken()->getUser();
-        $wallOwner = $this->getDoctrine()
-            ->getRepository('MooiUserBundle:User')
-            ->find($id);
+        if($name == null)
+        {
+            $wallOwner = $user;
+        }
+        else
+        {
+            $wallOwner = $this->getDoctrine()
+                ->getRepository('MooiUserBundle:User')
+                ->findOneByUsername($name);   
+        }
         
+        if($wallOwner == null)
+        {
+            
+            throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
+        
+        }
         
         //set new post object and create form
         $newPost = new Post();
@@ -125,7 +150,7 @@ class WallController extends Controller
                 $this->get("session")->setFlash('notice', 'De post is toegevoegd.');
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                    'id'  => $id
+                    'name'  => $wallOwner->getUsername()
                 )));
 
             }
@@ -145,11 +170,9 @@ class WallController extends Controller
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
-                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $id)),      
+                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUsername())),      
                 'formPost'          => $postForm->createView(),
-                'id'                => $id,
                 'wallOwner'         => $wallOwner,
-                'user'              => $user,
                 'showForm'          => true
         ));
         
@@ -159,12 +182,10 @@ class WallController extends Controller
     {
 
         $request = $this->getRequest();
-        $user = $this->get('security.context')->getToken()->getUser();
         $post = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
             ->find($postId);
         
-        $wallOwnerId = $post->getWallOwner()->getId();
         $wallOwnerPosts = $post->getWallOwner()->getWallOwnerPosts();
         
         if($post == null)
@@ -195,8 +216,8 @@ class WallController extends Controller
                 $this->get("session")->setFlash('notice', 'De post is gewijzigd.');
 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                    'id'  => $wallOwnerId
-                )));
+                    'name'  => $post->getWallOwner()->getUsername())
+                ));
 
             }
 
@@ -219,9 +240,7 @@ class WallController extends Controller
             'formPostTitle'     => 'Wijzig de post',
             'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallEdit', array('postId' => $postId)),      
             'formPost'          => $form->createView(),
-            'id'                => $wallOwnerId,
             'wallOwner'         => $post->getWallOwner(),
-            'user'              => $user,
             'showForm'          => true
         ));
         
@@ -237,29 +256,23 @@ class WallController extends Controller
         $user = $this->get('security.context')->getToken()->getUser();
         $wallOwnerId = $post->getWallOwner()->getId();
         
-        if($post != null)
+        if($post == null)
         {
             
-            $entityManager = $this->getDoctrine()->getEntityManager();
-            $entityManager->remove($post);
-            $entityManager->flush();
+            throw $this->createNotFoundException('Deze post kon niet worden gevonden');
+        
+        }
+            
+        $entityManager = $this->getDoctrine()->getEntityManager();
+        $entityManager->remove($post);
+        $entityManager->flush();
 
-            $this->get("session")->setFlash('notice', 'De post is verwijderd.');
+        $this->get("session")->setFlash('notice', 'De post is verwijderd.');
+
+        return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
+            'name'  => $post->getWallOwner()->getUsername()
+        )));
             
-            return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                'id'  => $wallOwnerId
-            )));
-            
-        }
-        else
-        {
-            
-            return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                'id'  => $user->getId()
-            )));
-            
-        }
-         
     }
     
     public function likeAction($postId)

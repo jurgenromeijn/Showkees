@@ -10,7 +10,7 @@ MooiUserBundle_UserLogin:
 
 index:
     pattern:  /
-    defaults: { _controller: MooiUserBundle:User:index }
+    defaults: { _controller: MooiWallBundle:Wall:index, name: null }
 
 # Internal routing configuration to handle ESI
 #_internal:

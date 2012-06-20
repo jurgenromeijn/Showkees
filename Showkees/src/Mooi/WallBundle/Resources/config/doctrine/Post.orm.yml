@@ -42,6 +42,9 @@ Mooi\WallBundle\Entity\Post:
         images:
             targetEntity: Image
             mappedBy: post_images
+        notifications:
+            targetEntity: Mooi\WallBundle\Entity\Notification
+            mappedBy: post
     manyToOne:
         sender:
             targetEntity: Mooi\UserBundle\Entity\User
