@@ -48,6 +48,10 @@ MooiWallBundle_WallReplyEdit:
 MooiWallBundle_WallReplyDelete:
     pattern: /wall/comment/delete/{replyId}
     defaults: { _controller: MooiWallBundle:Reply:delete }
+
+MooiWallBundle_WallReplyLike:
+    pattern: /wall/comment/like/{replyId}
+    defaults: { _controller: MooiWallBundle:Reply:like }
     
 #Notifications
 MooiWallBundle_NotificationOverview:

@@ -973,7 +973,10 @@ table.dataTable th.action
      float: left;
  }
  .reply .avatar_right{
-     float: left;
+     float: right;
+ }
+ .reply img + p a{
+     text-decoration: none;
  }
  #contentWrapper .reply p{
      margin: 0;
@@ -993,6 +996,16 @@ table.dataTable th.action
      margin-right: 10px;
      width: 106px;
  }
+ #contentColumn .post h2{
+     margin-top: 0;
+ }
+ #contentColumn #formMenu + .post{
+     padding-top: 30px;
+ }
+ #contentColumn #formMenu + .post h2{
+     border-top: solid 1px #54C2C1;
+     padding-top: 25px;
+ }
  #contentColumn .post > p{
      width: 480px;
      float: right;
@@ -1000,9 +1013,6 @@ table.dataTable th.action
  }
  .reply{
      border-bottom: solid 1px #399;
- }
- #contentWrapper #postForm .button{
-     border-bottom: solid 1px #54C2C1;
  }
  .reply:first-child{
      border-top: solid 1px #54C2C1;
@@ -1037,14 +1047,24 @@ table.dataTable th.action
  .post h2 span{
      color: #6666;
  }
+ #contentColumn #formMenu + .post .delete_post_button{
+    position: absolute;
+    top: 52px;
+    left: 45px;
+ }
+ #contentColumn #formMenu + .post .edit_post_button{
+    position: absolute;
+    top: 52px;
+    left: 12px;
+ }
  .post a .delete_post_button{
     position: absolute;
-    top: 30px;
+    top: 13px;
     left: 45px;;
  }
  .post a .edit_post_button{
     position: absolute;
-    top: 30px;
+    top: 13px;
     left: 12px;
  }
  .image_gallery{
@@ -1088,4 +1108,9 @@ table.dataTable th.action
  }
  .likes{
      display: inline;
+ }
+ #contentWrapper .empty{
+    text-align: center;
+    clear: both;
+    padding-top: 50px;  
  }

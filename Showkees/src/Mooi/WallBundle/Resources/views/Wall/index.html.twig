@@ -40,7 +40,7 @@
                         </p>
                     </li>
                     <li><a class="commentButton" href="{{ wallOwnerPost.getId() }}">Reageer</a></li>
-                    <li>{{ wallOwnerPost.time|date('l,  j F Y') }}</li>
+                    <li>{{ wallOwnerPost.time|date('d-m-Y') }}</li>
                 </ul>
                 {% if wallOwnerPost.getWallOwner().getId() == wallOwner.id %}
                 <a href="{{ path('MooiWallBundle_WallEdit', {'postId': wallOwnerPost.getId() }) }}">
@@ -91,23 +91,30 @@
                     {% if reply.getSender.getId == wallOwner.getId %}
                         <img class="avatar_left" src="{{ asset('images/reply_avatar.png') }}" alt="reply avatar"/>
                         <p class="reply_right">
-                            {{ reply.text }}
+                            <a href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
                         </p>
                     {% else %}
                         <img class="avatar_right" src="{{ asset('images/reply_avatar.png') }}" alt="reply avatar"/>
                         <p class="reply_left">
-                            {{ reply.text }}
+                            <a href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
                         </p>
                     {% endif %}
                     <ul class="replyItems">
-                        <li><a href="{{ path('MooiWallBundle_WallIndex', {'id': reply.getSender.getId }) }}">{{ reply.getSender.getUserName }}</a></li>
-                        <li>{{ reply.time|date('l,  j F Y') }}</li>
+                        <li>
+                             <a class="like_button" href="{{ path('MooiWallBundle_WallLike', {'postId' : wallOwnerPost.getId()}) }}">Vind ik goed</a>
+                            <p class="likes">
+                                {% if reply.getLikes() %}
+                                    <span>{{ reply.getLikes() }}</span> likes
+                                {% endif %}    
+                            </p>
+                        </li>
+                        <li>{{ reply.time|date('d-m-Y') }}</li>
                     </ul>
                 </div>
                 {% endfor %}
             </div>   
             {% else %}
-                <div class="empty">Er zijn nog geen posts op deze wall</div>
+                <p class="empty">Er zijn nog geen posts op deze wall</p>
             {% endfor %} 
         </div>    
         

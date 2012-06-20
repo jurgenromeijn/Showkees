@@ -263,6 +263,46 @@ class ReplyController extends Controller
         } 
         
     }
+    
+    public function likeAction($replyId)
+    {
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        $reply = $this->getDoctrine()
+            ->getRepository('MooiWallBundle:Post')
+            ->find($replyId);
+        
+        $entityManager = $this->getDoctrine()->getEntityManager();
+
+        //only add a notification if somone else's post is liked
+        if($user->getId() != $reply->getSender()->getId())
+        {
+        
+            $notification = new Notification();
+            $notification->setMessage(Notification::MESSAGE_LIKE);
+            $notification->setQuote($reply);
+            $notification->setPost($reply);
+            $notification->setOwner($reply->getSender());
+            $notification->setAbout($user);
+            $entityManager->persist($notification);
+        
+        }
+                
+        $amountLikes = $reply->getLikes();
+        $amountLikes++;
+        $reply->setLikes($amountLikes);
+        
+        $entityManager->persist($reply);
+        $entityManager->flush();
+        
+        $responseJson = array(
+            'succes' => true
+        );
+        
+        return new Response(json_encode($responseJson));
+        
+    }
             
     
 }

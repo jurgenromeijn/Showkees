@@ -254,7 +254,7 @@ class WallController extends Controller
             ->find($postId);
         
         $user = $this->get('security.context')->getToken()->getUser();
-        $wallOwnerId = $post->getWallOwner()->getId();
+        $userNameWallOwner = $post->getWallOwner()->getUserName();
         
         if($post == null)
         {
