@@ -436,16 +436,6 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Add notifications
-     *
-     * @param Mooi\WallBundle\Entity\Notifications $notifications
-     */
-    public function addNotifications(\Mooi\WallBundle\Entity\Notifications $notifications)
-    {
-        $this->notifications[] = $notifications;
-    }
-
-    /**
      * Get notifications
      *
      * @return Doctrine\Common\Collections\Collection 

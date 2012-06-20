@@ -14,6 +14,7 @@ namespace Mooi\WallBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Mooi\WallBundle\Entity\Post;
+use Mooi\WallBundle\Entity\Notification;
 use Mooi\WallBundle\Form\Type\WallPostType;
 use Mooi\WallBundle\Form\Type\WallReplyType;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,16 +47,52 @@ class ReplyController extends Controller
 
             if ($formReply->isValid())
             {
+                
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                //create notifications
+                if($wallOwner->getId() == $user->getId())
+                {
+                    //Notifications for teachers
+                    foreach ($wallOwner->getTeachers() as $teacher) 
+                    {
+                        
+                        $teacherNotification = new Notification();
+                        $teacherNotification->setMessage(($user->getGender() == User::GENDER_MALE) ? 
+                                Notification::MESSAGE_WALL_OWN_MALE : 
+                                Notification::MESSAGE_WALL_OWN_FEMALE);
+                        $teacherNotification->setQuote($newReply);
+                        $teacherNotification->setPost($newReply);
+                        $teacherNotification->setOwner($teacher);
+                        $teacherNotification->setAbout($wallOwner);
+                        
+                        $entityManager->persist($teacherNotification);
+                    
+                    }
+                }
+                else
+                {
+                    
+                    //Notification for student
+                    $studentNotification = new Notification();
+                    $studentNotification->setMessage(Notification::MESSAGE_WALL_OTHER);
+                    $studentNotification->setQuote($newReply);
+                    $studentNotification->setPost($newReply);
+                    $studentNotification->setOwner($wallOwner);
+                    $studentNotification->setAbout($user);
+                    
+                    $entityManager->persist($studentNotification);
+                    
+                }
+                
                 //set post data
-                $newReply->setTime(new \DateTime);
                 $newReply->setSender($user);
                 $newReply->setWallOwner($wallOwner);
                 $post->addReply($newReply);
 
                 // Save the Post to the database
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($post);
-                $em->flush();
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                $entityManager->persist($post);
+                $entityManager->flush();
                 
                 $this->get("session")->setFlash('notice', 'Je comment is toegevoegd.');
                 

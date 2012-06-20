@@ -2,7 +2,7 @@
 
 namespace Mooi\WallBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Mooi\WallBundle\Entity\Post
@@ -36,7 +36,9 @@ class Post
 
     public function __construct()
     {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->time = new \DateTime();
+        $this->replies = new ArrayCollection();
     }
     
     /**

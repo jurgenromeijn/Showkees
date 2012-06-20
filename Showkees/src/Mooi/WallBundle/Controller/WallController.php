@@ -4,6 +4,7 @@ namespace Mooi\WallBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Mooi\WallBundle\Entity\Post;
+use Mooi\UserBundle\Entity\User;
 use Mooi\WallBundle\Entity\Notification;
 use Mooi\WallBundle\Form\Type\WallPostType;
 use Mooi\WallBundle\Form\Type\WallReplyType;
@@ -77,15 +78,49 @@ class WallController extends Controller
             if ($postForm->isValid()) 
             {
 
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                //create notifications
+                if($wallOwner->getId() == $user->getId())
+                {
+                    //Notifications for teachers
+                    foreach ($wallOwner->getTeachers() as $teacher) 
+                    {
+                        
+                        $teacherNotification = new Notification();
+                        $teacherNotification->setMessage(($user->getGender() == User::GENDER_MALE) ? 
+                                Notification::MESSAGE_WALL_OWN_MALE : 
+                                Notification::MESSAGE_WALL_OWN_FEMALE);
+                        $teacherNotification->setQuote($newPost);
+                        $teacherNotification->setPost($newPost);
+                        $teacherNotification->setOwner($teacher);
+                        $teacherNotification->setAbout($wallOwner);
+                        
+                        $entityManager->persist($teacherNotification);
+                    
+                    }
+                }
+                else
+                {
+                    
+                    //Notification for student
+                    $studentNotification = new Notification();
+                    $studentNotification->setMessage(Notification::MESSAGE_WALL_OTHER);
+                    $studentNotification->setQuote($newPost);
+                    $studentNotification->setPost($newPost);
+                    $studentNotification->setOwner($wallOwner);
+                    $studentNotification->setAbout($user);
+                    
+                    $entityManager->persist($studentNotification);
+                    
+                }
+                
                 //set post data
-                $newPost->setTime(new \DateTime);
                 $newPost->setSender($user);
                 $newPost->setWallOwner($wallOwner);
 
                 // Save the Post to the database
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($newPost);
-                $em->flush();
+                $entityManager->persist($newPost);
+                $entityManager->flush();
                 
                 $this->get("session")->setFlash('notice', 'De post is toegevoegd.');
                 
@@ -153,9 +188,9 @@ class WallController extends Controller
                 $post->setTime(new \DateTime);
 
                 // Save the Post to the database
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($post);
-                $em->flush();
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                $entityManager->persist($post);
+                $entityManager->flush();
 
                 $this->get("session")->setFlash('notice', 'De post is gewijzigd.');
 
@@ -247,10 +282,10 @@ class WallController extends Controller
         $amountLikes++;
         $post->setLikes($amountLikes);
         
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->persist($post);
-        $em->persist($notification);
-        $em->flush();
+        $entityManager = $this->getDoctrine()->getEntityManager();
+        $entityManager->persist($post);
+        $entityManager->persist($notification);
+        $entityManager->flush();
         
         $responseJson = array(
             'succes' => true
