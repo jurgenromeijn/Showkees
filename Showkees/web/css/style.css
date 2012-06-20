@@ -335,7 +335,7 @@ body
 #userOptions
 {
     position: absolute;
-    right: 0px;
+    right: 93px;
     top: 45px;
 }
 
@@ -394,7 +394,7 @@ body
 {
     position: absolute;
     top: 0px;
-    right: 0px;
+    right: 93px;
     list-style: none;
     line-height: 0px;
     background: rgba(255, 255, 255, 0.2);
@@ -412,7 +412,82 @@ body
     background: #54C2C1;
     cursor: pointer;
 }
- 
+
+/**
+ * Notification area
+ */
+#notificationArea
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 40px;
+    padding-top: 40px;
+    width: 93px;
+    background-image: url('../images/notificationIcon.png');
+}
+
+#notificationArea>a
+{
+    font-size: 2em;
+    display: block;
+    text-align: center;
+}
+
+#notificationArea>div
+{
+    position: absolute;
+    right: 0px;
+    top: 80px;
+    display: none;
+}
+
+#notificationArea:hover>div
+{
+    display: block;
+}
+
+#notificationArea>div>div
+{
+    margin-top: 2px;
+    width: 300px;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 12px;
+}
+
+#notificationArea>div>div h4
+{
+    border-bottom: #54C2C0 1px solid;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+#notificationArea>div>div li
+{
+    list-style: none;
+    border-bottom: #54C2C0 1px solid;
+    padding: 5px 0;
+    font-size: 0.8em;
+}
+
+#notificationArea>div>div li p.quote
+{
+    font-style: italic;
+    color: #666;
+    font-weight: lighter;
+    font-size: 0.8em;
+}
+
+#notificationArea>div>div>a
+{
+    display: block;
+    margin-top: 5px;
+    text-align: right;
+    font-size: 0.7em;
+}
+
 /**
  * Content
  */

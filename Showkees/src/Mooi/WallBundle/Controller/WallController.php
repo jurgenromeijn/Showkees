@@ -4,6 +4,7 @@ namespace Mooi\WallBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Mooi\WallBundle\Entity\Post;
+use Mooi\WallBundle\Entity\Notification;
 use Mooi\WallBundle\Form\Type\WallPostType;
 use Mooi\WallBundle\Form\Type\WallReplyType;
 use Symfony\Component\HttpFoundation\Request;
@@ -229,16 +230,26 @@ class WallController extends Controller
     public function likeAction($postId)
     {
         
+        $user = $this->get('security.context')->getToken()->getUser();
+        
         $post = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
             ->find($postId);
         
+        $notification = new Notification();
+        $notification->setMessage(Notification::MESSAGE_LIKE);
+        $notification->setQuote($post);
+        $notification->setPost($post);
+        $notification->setOwner($post->getSender());
+        $notification->setAbout($user);
+                
         $amountLikes = $post->getLikes();
         $amountLikes++;
         $post->setLikes($amountLikes);
         
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($post);
+        $em->persist($notification);
         $em->flush();
         
         $responseJson = array(

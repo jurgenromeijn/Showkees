@@ -1,0 +1,19 @@
+<div id="notificationArea">
+    <a>{{ app.user.newNotificationsAmmount }}</a>
+    {% if app.user.notifications|length > 0 %}
+        <div>
+            <div>
+                <h4>Meldingen</h4>
+                <ul>
+                    {% for notification in app.user.notifications(5) %}
+                    <li>
+                        <p>{{ notification.about.fullname }} {{ notification.message }}</p>
+                        <p class="quote">&quot;{{ notification.quote }}&quot;</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a>Bekijk alle meldingen &raquo;</a>
+            </div>
+        </div>
+    {% endif %}
+</div>

@@ -26,14 +26,18 @@ class User implements UserInterface, \Serializable
     protected $teachers;
     protected $students;
     protected $style;
-
+    protected $notifications;
+    protected $notifications_about;
+    
     public function __construct()
     {
-        $this->is_active = true;
-        $this->salt      = md5(uniqid(null, true));
-        $this->date      = new \DateTime();
-        $this->teachers  = new ArrayCollection();
-        $this->students  = new ArrayCollection();
+        $this->is_active           = true;
+        $this->salt                = md5(uniqid(null, true));
+        $this->date                = new \DateTime();
+        $this->teachers            = new ArrayCollection();
+        $this->students            = new ArrayCollection();
+        $this->notifications       = new ArrayCollection();
+        $this->notifications_about = new ArrayCollection();
     }
     
     /**
@@ -430,16 +434,6 @@ class User implements UserInterface, \Serializable
     {
         return $this->style;
     }
-    /**
-     * @var Mooi\WallBundle\Entity\Notifications
-     */
-    private $notifications;
-
-    /**
-     * @var Mooi\WallBundle\Entity\Notifications
-     */
-    private $notifications_about;
-
 
     /**
      * Add notifications
@@ -456,9 +450,22 @@ class User implements UserInterface, \Serializable
      *
      * @return Doctrine\Common\Collections\Collection 
      */
-    public function getNotifications()
+    public function getNotifications($ammount = 0)
     {
-        return $this->notifications;
+                
+        if($ammount > 0)
+        {
+            
+            return $this->notifications->slice(0, $ammount);
+            
+        }
+        else
+        {
+        
+            return $this->notifications;
+        
+        }
+        
     }
 
     /**
@@ -480,4 +487,32 @@ class User implements UserInterface, \Serializable
     {
         $this->notifications[] = $notifications;
     }
+    
+    public function getNewNotificationsAmmount()
+    {
+        
+        $newNotifications = 0;
+        
+        foreach ($this->notifications as $notification) 
+        {
+            
+            if($notification->getNew() == true)
+            {
+                
+                $newNotifications++;
+                
+            }
+            else
+            {
+                
+                break;
+                
+            }
+            
+        }
+        
+        return $newNotifications;
+        
+    }
+    
 }

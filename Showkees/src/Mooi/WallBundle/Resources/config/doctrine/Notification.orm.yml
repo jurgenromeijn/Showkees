@@ -8,7 +8,12 @@ Mooi\WallBundle\Entity\Notification:
       generator:
         strategy: AUTO
     message:
-      type: text
+      type: string
+      length: 255
+    quote:
+      type: string
+      length: 53
+      nullable: true
     new:
       type: boolean
     time:

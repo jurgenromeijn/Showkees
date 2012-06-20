@@ -9,6 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Notification
 {
+    
+    const MESSAGE_WALL_OWN_MALE   = "heeft een bericht op zijn Showkees geplaatst!";
+    const MESSAGE_WALL_OWN_FEMALE = "heeft een bericht op haar Showkees geplaatst!";
+    const MESSAGE_WALL_OTHER      = "heeft een bericht op jouw Showkees geplaatst!";
+    const MESSAGE_LIKE            = "vindt een post van jou leuk!";
+
     /**
      * @var integer $id
      */
@@ -39,6 +45,12 @@ class Notification
      */
     private $about;
 
+    
+    public function __construct()
+    {
+        $this->new  = true;
+        $this->time = new \DateTime();
+    }
 
     /**
      * Get id
@@ -55,7 +67,7 @@ class Notification
      *
      * @param text $message
      */
-    public function setMessage($message)
+    public function setMessage($message, \Mooi\WallBundle\Entity\Post $post = null)
     {
         $this->message = $message;
     }
@@ -173,5 +185,32 @@ class Notification
     public function getPost()
     {
         return $this->post;
+    }
+    /**
+     * @var string $quote
+     */
+    private $quote;
+
+
+    /**
+     * Set quote
+     *
+     * @param string $quote
+     */
+    public function setQuote(\Mooi\WallBundle\Entity\Post $post)
+    {
+        $this->quote = (strlen($post->getText()) > 50) ?
+                            substr($post->getText(), 0, 50) . '...' :
+                            $post->getText();
+    }
+
+    /**
+     * Get quote
+     *
+     * @return string 
+     */
+    public function getQuote()
+    {
+        return $this->quote;
     }
 }

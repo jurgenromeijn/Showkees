@@ -64,11 +64,13 @@ Mooi\UserBundle\Entity\User:
             targetEntity: Mooi\WallBundle\Entity\Notification
             mappedBy: owner
             orderBy: 
+                new: DESC
                 time: DESC
         notifications_about:
             targetEntity: Mooi\WallBundle\Entity\Notification
             mappedBy: about
             orderBy: 
+                new: DESC
                 time: DESC 
     manyToMany:
         students:
