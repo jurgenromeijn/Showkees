@@ -57,9 +57,15 @@ body
         background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #46bd48), color-stop(0.51, #46bd48), color-stop(1, #fff));
     }
     
-    body.green #contentWrapper .form_row>input, body.green #contentWrapper .form_row>select, body.green #contentWrapper .form_row>textarea
+    body.green #contentWrapper .form_row>input, body.green #contentWrapper .form_row>select, body.green #contentWrapper .form_row>textarea, 
+    body.green #notificationArea>div>div, body.green #notificationArea>div>div h4, body.green #notificationArea>div>div li
     {
         border-color: #46bd48;
+    }
+    
+    body.green #notificationArea>div>div, body.green .replies
+    {
+        background-color: #D6E9D6;
     }
 
     /**
@@ -95,9 +101,15 @@ body
         background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #ebde00), color-stop(0.51, #ebde00), color-stop(1, #fff));
     }
     
-    body.yellow #contentWrapper .form_row>input, body.yellow #contentWrapper .form_row>select, body.yellow #contentWrapper .form_row>textarea
+    body.yellow #contentWrapper .form_row>input, body.yellow #contentWrapper .form_row>select, body.yellow #contentWrapper .form_row>textarea, 
+    body.yellow #notificationArea>div>div, body.yellow #notificationArea>div>div h4, body.yellow #notificationArea>div>div li
     {
         border-color: #ebde00;
+    }
+    
+    body.yellow #notificationArea>div>div, body.yellow .replies
+    {
+        background-color: #F3F2E2;
     }
 
     /**
@@ -133,9 +145,15 @@ body
         background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #eb8500), color-stop(0.51, #eb8500), color-stop(1, #fff));
     }
     
-    body.orange #contentWrapper .form_row>input, body.orange #contentWrapper .form_row>select, body.orange #contentWrapper .form_row>textarea
+    body.orange #contentWrapper .form_row>input, body.orange #contentWrapper .form_row>select, body.orange #contentWrapper .form_row>textarea, 
+    body.orange #notificationArea>div>div, body.orange #notificationArea>div>div h4, body.orange #notificationArea>div>div li
     {
         border-color: #eb8500;
+    }
+    
+    body.orange #notificationArea>div>div, body.orange .replies
+    {
+        background-color: #F7EEE2;
     }
     
     /**
@@ -171,10 +189,16 @@ body
         background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #df2f2f), color-stop(0.51, #df2f2f), color-stop(1, #fff));
     }
     
-    body.red #contentWrapper .form_row>input, body.red #contentWrapper .form_row>select, body.red #contentWrapper .form_row>textarea
+    body.red #contentWrapper .form_row>input, body.red #contentWrapper .form_row>select, body.red #contentWrapper .form_row>textarea, 
+    body.red #notificationArea>div>div, body.red #notificationArea>div>div h4, body.red #notificationArea>div>div li
     {
         border-color: #df2f2f;
 
+    }
+    
+    body.red #notificationArea>div>div, body.red .replies
+    {
+        background-color: #F5DCDC;
     }
 
     /**
@@ -210,10 +234,16 @@ body
         background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #a546b6), color-stop(0.51, #a546b6), color-stop(1, #fff));
     }
     
-    body.purple #contentWrapper .form_row>input, body.purple #contentWrapper .form_row>select, body.purple #contentWrapper .form_row>textarea
+    body.purple #contentWrapper .form_row>input, body.purple #contentWrapper .form_row>select, body.purple #contentWrapper .form_row>textarea, 
+    body.purple #notificationArea>div>div, body.purple #notificationArea>div>div h4, body.purple #notificationArea>div>div li
     {
         border-color: #a546b6;
 
+    }
+    
+    body.purple #notificationArea>div>div, body.purple .replies
+    {
+        background-color: #EFDFF1;
     }
 
     /**
@@ -249,10 +279,16 @@ body
         background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #ff99cc), color-stop(0.51, #ff99cc), color-stop(1, #fff));
     }
     
-    body.pink #contentWrapper .form_row>input, body.pink #contentWrapper .form_row>select, body.pink #contentWrapper .form_row>textarea
+    body.pink #contentWrapper .form_row>input, body.pink #contentWrapper .form_row>select, body.pink #contentWrapper .form_row>textarea, 
+    body.pink #notificationArea>div>div, body.pink #notificationArea>div>div h4, body.pink #notificationArea>div>div li
     {
         border-color: #ff99cc;
 
+    }
+    
+    body.pink #notificationArea>div>div, body.pink .replies
+    {
+        background-color: #FFEDF6;
     }
 
     /**
@@ -288,10 +324,16 @@ body
         background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.01, #666666), color-stop(0.51, #666666), color-stop(1, #fff));
     }
     
-    body.gray #contentWrapper .form_row>input, body.gray #contentWrapper .form_row>select, body.gray #contentWrapper .form_row>textarea
+    body.gray #contentWrapper .form_row>input, body.gray #contentWrapper .form_row>select, body.gray #contentWrapper .form_row>textarea, 
+    body.gray #notificationArea>div>div, body.gray #notificationArea>div>div h4, body.gray #notificationArea>div>div li
     {
         border-color: #666666;
 
+    }
+    
+    body.gray #notificationArea>div>div, body.gray .replies
+    {
+        background-color: #E9E9E9;
     }
     
 /**
@@ -436,6 +478,11 @@ body
     height: 40px;
 }
 
+#notificationArea.new>p
+{
+    color: #f05a23;
+}
+
 #notificationArea>a
 {
     display: none;
@@ -458,10 +505,15 @@ body
 {
     margin-top: 2px;
     width: 300px;
-    background-color: #ffffff;
+    background-color: #edf6f6;
     padding: 10px;
-    border: 2px solid #000;
+    border: 2px solid #54C2C1;
     border-radius: 12px;
+}
+
+#notificationArea.new>div>div
+{
+    border-color: #f05a23 !important;
 }
 
 #notificationArea>div>div h4
@@ -517,14 +569,9 @@ body
     margin: 1em 0;
 }
 
-#contentWrapper h1
-{
-    
-}
-
 #contentWrapper h2
 {
-    color: #399;
+    color: #54C2C1;
 }
 /**
  * Flash messages
@@ -961,7 +1008,7 @@ table.dataTable th.action
      border-top: solid 1px #54C2C1;
  }
  .replies{
-    background: #C1E9E8;
+    background: #edf6f6;
     margin-left: 55px;
  }
  .replies h2{
@@ -975,7 +1022,7 @@ table.dataTable th.action
      text-align: right;
  }
  .post h2 span{
-     color: #54C2C1;
+     color: #6666;
  }
  .post a .delete_post_button{
     position: absolute;
