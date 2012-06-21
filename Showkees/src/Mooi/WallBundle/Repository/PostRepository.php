@@ -15,7 +15,7 @@ class PostRepository extends EntityRepository
 {
     
 
-    public function findMainPostsByUser($userId)
+    public function findMainPostsByUser($userName)
     {
         
         /*$queryBuilder = $this->getEntityManager()->createQueryBuilder();
@@ -35,11 +35,11 @@ class PostRepository extends EntityRepository
                 ->createQuery('SELECT p, u 
                                 FROM MooiWallBundle:Post p 
                                 INNER JOIN p.wall_owner u 
-                                WHERE u.username = :user_id
+                                WHERE u.username = :user_name
                                 ORDER BY p.time desc')
-                                ->setParameter('user_id', $userId);
+                                ->setParameter('user_name', $userName);
         
-                $query->getResult();
+        return $query->getResult();
 
         
     }

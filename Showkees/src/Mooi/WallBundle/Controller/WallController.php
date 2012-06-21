@@ -19,7 +19,7 @@ class WallController extends Controller
     {
         
         $user = $this->get('security.context')->getToken()->getUser();
-        if($name == null)
+        /*if($name == null)
         {
             $wallOwner = $user;
         }
@@ -35,14 +35,14 @@ class WallController extends Controller
             
             throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
         
-        }
+        }*/
         
-        /*$wallOwnerPosts = $this->getDoctrine()
+        $wallOwnerPosts = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
-            ->findMainPostsByUser($id);*/
+            ->findMainPostsByUser($name);
         
         //set new post object and create form
-        $newPost = new Post();
+        /*$newPost = new Post();
         $postForm = $this->createForm(new WallPostType(), $newPost);
         
         foreach($wallOwner->getWallOwnerPosts() as $post)
@@ -63,7 +63,7 @@ class WallController extends Controller
                 'formPost'          => $postForm->createView(),
                 'wallOwner'         => $wallOwner,
                 'showForm'          => false
-        ));
+        ));*/
    
     }
     
