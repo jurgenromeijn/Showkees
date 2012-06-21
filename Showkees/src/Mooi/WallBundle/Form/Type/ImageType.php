@@ -5,13 +5,12 @@ namespace Mooi\WallBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class WallImageType extends AbstractType
+class ImageType extends AbstractType
 {
     
     public function buildForm(FormBuilder $builder, array $options)
     {
         
-        $builder->add('name', 'text', array('label' => 'Naam'));
         $builder->add('file', 'file');
         
     }
@@ -27,7 +26,7 @@ class WallImageType extends AbstractType
     {
         
         return array(
-            'data_class'    => 'Mooi\WallBundle\Entity\Image'         
+            'data_class' => 'Mooi\WallBundle\Entity\Image'         
         );
         
     }

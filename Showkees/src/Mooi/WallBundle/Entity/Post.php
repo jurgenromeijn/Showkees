@@ -187,42 +187,6 @@ class Post
     }
     
     /**
-     * @var Mooi\WallBundle\Entity\Image
-     */
-    private $images;
-
-
-    /**
-     * Add images
-     *
-     * @param Mooi\WallBundle\Entity\Image $images
-     */
-    public function addImages(\Mooi\WallBundle\Entity\Image $images)
-    {
-        $this->images[] = $images;
-    }
-
-    /**
-     * Get images
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * Add images
-     *
-     * @param Mooi\WallBundle\Entity\Image $images
-     */
-    public function addImage(\Mooi\WallBundle\Entity\Image $images)
-    {
-        $this->images[] = $images;
-    }
-    
-    /**
      * @var Mooi\WallBundle\Entity\Subject
      */
     private $subject;
@@ -365,5 +329,30 @@ class Post
     public function getNotifications()
     {
         return $this->notifications;
+    }
+    /**
+     * @var Mooi\WallBundle\Entity\Image
+     */
+    private $images;
+
+
+    /**
+     * Add images
+     *
+     * @param Mooi\WallBundle\Entity\Image $images
+     */
+    public function addImage(\Mooi\WallBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+    }
+
+    /**
+     * Get images
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

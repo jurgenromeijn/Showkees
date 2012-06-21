@@ -2,13 +2,17 @@
 
 namespace Mooi\WallBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Mooi\WallBundle\Entity\Image
  */
 class Image
 {
+    
+    private $file;
+    
     /**
      * @var integer $id
      */
@@ -18,29 +22,17 @@ class Image
      * @var string $name
      */
     private $name;
-    
-    /**
-     * @var file 
-     */
-    private $file;
-    
+
     /**
      * @var datetime $time
      */
     private $time;
-    
-    
-    /**
-     * @var string $url
-     */
-    private $url;
 
     /**
-     * Get id
-     *
-     * @return integer 
+     * @var string $extension
      */
-    
+    private $extension;
+
     /**
      * @var Mooi\WallBundle\Entity\Post
      */
@@ -48,25 +40,10 @@ class Image
 
 
     /**
-     * Set posts
+     * Get id
      *
-     * @param Mooi\WallBundle\Entity\Post $posts
+     * @return integer 
      */
-    public function setPosts(\Mooi\WallBundle\Entity\Post $posts)
-    {
-        $this->posts = $posts;
-    }
-
-    /**
-     * Get posts
-     *
-     * @return Mooi\WallBundle\Entity\Post 
-     */
-    public function getPosts()
-    {
-        return $this->posts;
-    }
-    
     public function getId()
     {
         return $this->id;
@@ -91,17 +68,6 @@ class Image
     {
         return $this->name;
     }
-    
-
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    public function setFile($file)
-    {
-        $this->file = $file;
-    }
 
     /**
      * Set time
@@ -124,41 +90,121 @@ class Image
     }
 
     /**
-     * Set url
+     * Set extension
      *
-     * @param string $url
+     * @param string $extension
      */
-    public function setUrl($url)
+    public function setExtension($extension)
     {
-        $this->url = $url;
+        $this->extension = $extension;
     }
 
     /**
-     * Get url
+     * Get extension
      *
      * @return string 
      */
-    public function getUrl()
+    public function getExtension()
     {
-        return $this->url;
+        return $this->extension;
+    }
+
+    /**
+     * Add posts
+     *
+     * @param Mooi\WallBundle\Entity\Post $posts
+     */
+    public function addPost(\Mooi\WallBundle\Entity\Post $posts)
+    {
+        $this->posts[] = $posts;
+    }
+
+    /**
+     * Get posts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
     
-    public $path;
+    /**
+     * Set file
+     *
+     * @param file $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file
+     *
+     * @return file 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+    
+    public function __construct()
+    {
+        $this->time  = new \DateTime();
+        $this->posts = new ArrayCollection();
+    }
+    
+        private $filenameForRemove;
+
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            $this->extension = $this->file->guessExtension();
+            $this->name      = $file->getClientOriginalName();
+        }
+    }
+
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        // you must throw an exception here if the file cannot be moved
+        // so that the entity is not persisted to the database
+        // which the UploadedFile move() method does
+        $this->file->move($this->getUploadRootDir(), $this->id.'.'.$this->file->guessExtension());
+
+        unset($this->file);
+    }
+
+    public function storeFilenameForRemove()
+    {
+        $this->filenameForRemove = $this->getAbsolutePath();
+    }
+
+    public function removeUpload()
+    {
+        if ($this->filenameForRemove) {
+            unlink($this->filenameForRemove);
+        }
+    }
 
     public function getAbsolutePath()
     {
-        return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
+        return null === $this->extension ? null : $this->getUploadRootDir().'/'.$this->id.'.'.$this->extension;
     }
-
+    
     public function getWebPath()
     {
-        return null === $this->path ? null : $this->getUploadDir() . '/' . $this->path;
+        return null === $this->extension ? null : $this->getUploadDir().'/'.$this->id.'.'.$this->extension;
     }
 
     protected function getUploadRootDir()
     {
         // the absolute directory path where uploaded documents should be saved
-        return '../../../../web/' . $this->getUploadDir();
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
@@ -166,26 +212,5 @@ class Image
         // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
         return 'uploads';
     }
-    
-    public function upload()
-    {
-        // the file property can be empty if the field is not required
-        if (null === $this->file) {
-            return;
-        }
 
-        // we use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-        // move takes the target directory and then the target filename to move to
-        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
-
-        // set the path property to the filename where you'ved saved the file
-        $this->path = $this->file->getClientOriginalName();
-        $this->setUrl($this->path);
-
-        // clean up the file property as you won't need it anymore
-        $this->file = null;
-    }
-    
 }

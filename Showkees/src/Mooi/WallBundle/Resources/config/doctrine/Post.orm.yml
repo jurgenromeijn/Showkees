@@ -38,12 +38,24 @@ Mooi\WallBundle\Entity\Post:
         mainPosts:
             targetEntity: Mooi\WallBundle\Entity\Post
             mappedBy: replies
-            cascade: ["persist"]
             onDelete: cascade
-    oneToMany:
         images:
-            targetEntity: Image
-            mappedBy: post_images
+            targetEntity: Mooi\WallBundle\Entity\Image
+            inversedBy: mainPosts
+            orderBy: 
+                time: ASC
+            joinTable:
+                name: post_has_images
+                joinColumns:
+                    joinColumn:
+                        name: post_id
+                        referencedColumnName: id
+                        onDelete: cascade
+                inverseJoinColumns:
+                    joinColumn:
+                        name: image_id
+                        referencedColumnName: id
+    oneToMany:
         notifications:
             targetEntity: Mooi\WallBundle\Entity\Notification
             mappedBy: post
