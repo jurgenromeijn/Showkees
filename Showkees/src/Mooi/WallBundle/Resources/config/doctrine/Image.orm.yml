@@ -11,12 +11,12 @@ Mooi\WallBundle\Entity\Image:
             length: 60
         time:
             type: datetime
-        extension:
-            type: string
-            length: 4
+        url:
+          type: string
+          length: 100
     manyToOne:
         posts:
-            targetEntity: Mooi\UserBundle\Entity\User
+            targetEntity: Mooi\WallBundle\Entity\Post
             inversedBy: posts
             joinColumn:
                 name: post_id

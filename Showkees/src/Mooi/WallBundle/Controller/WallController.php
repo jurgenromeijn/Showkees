@@ -147,7 +147,7 @@ class WallController extends Controller
                 $entityManager->persist($newPost);
                 $entityManager->flush();
                 
-                $this->get("session")->setFlash('notice', 'De post is toegevoegd.');
+                $this->get("session")->setFlash('notice', 'Het bericht is toegevoegd.');
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                     'name'  => $wallOwner->getUsername()
@@ -191,7 +191,7 @@ class WallController extends Controller
         if($post == null)
         {
             
-            throw $this->createNotFoundException("De post kon niet gevonden worden");
+            throw $this->createNotFoundException("Het bericht kon niet gevonden worden");
             
         }
 
@@ -213,7 +213,7 @@ class WallController extends Controller
                 $entityManager->persist($post);
                 $entityManager->flush();
 
-                $this->get("session")->setFlash('notice', 'De post is gewijzigd.');
+                $this->get("session")->setFlash('notice', 'Het bericht is gewijzigd.');
 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                     'name'  => $post->getWallOwner()->getUsername())
@@ -259,7 +259,7 @@ class WallController extends Controller
         if($post == null)
         {
             
-            throw $this->createNotFoundException('Deze post kon niet worden gevonden');
+            throw $this->createNotFoundException('Het bericht kon niet worden gevonden');
         
         }
             
@@ -267,7 +267,7 @@ class WallController extends Controller
         $entityManager->remove($post);
         $entityManager->flush();
 
-        $this->get("session")->setFlash('notice', 'De post is verwijderd.');
+        $this->get("session")->setFlash('notice', 'Het bericht is verwijderd.');
 
         return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
             'name'  => $post->getWallOwner()->getUsername()
