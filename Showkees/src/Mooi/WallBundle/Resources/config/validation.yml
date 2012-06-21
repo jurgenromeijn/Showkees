@@ -13,3 +13,16 @@ Mooi\WallBundle\Entity\Subject:
     name:
       - NotBlank: {message: "Vul een naam voor het vak in."}
       - MinLength: {limit: 3, message: "De naam moet langer zijn dan 2 tekens."}
+      
+Mooi\WallBundle\Entity\Image:
+  properties:
+    file:
+      - Image:
+          maxSize: 1k
+          maxSizeMessage: De afbeelding mag maximaal 1mb zijn.
+          mimeTypesMessage: De afbeelding moet een gif, jpg of png zijn.
+          uploadIniSizeErrorMessage: De afbeelding mag niet groter dan {{ limit }} zijn.
+          uploadFormSizeErrorMessage: De afbeelding is te groot.
+          uploadErrorMessage: Er is iets fout gegaan tijdens het uploaden.
+          notReadableMessage: De afbeelding kon niet gelezen worden.
+          notFoundMessage: De afbeelding kon niet gevonden worden.

@@ -21,14 +21,19 @@ class FileController extends Controller
             
             $form->bindRequest($this->getRequest());
             
-            $entityManager = $this->getDoctrine()->getEntityManager();
+            if($form->isValid())
+            {
+                        
+                $entityManager = $this->getDoctrine()->getEntityManager();
 
-            $entityManager->persist($image);
-            $entityManager->flush();
+                $entityManager->persist($image);
+                $entityManager->flush();
 
-            $this->get("session")->setFlash('notice', 'Je upload ' . $image->getWebPath());
+                $this->get("session")->setFlash('notice', 'Je upload ' . $image->getWebPath());
 
-            $this->redirect($this->generateUrl('MooiWallBundle_WallFileUpload'));
+                $this->redirect($this->generateUrl('MooiWallBundle_WallFileUpload'));
+            
+            }
             
         }
 

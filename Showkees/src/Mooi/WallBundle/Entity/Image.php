@@ -161,7 +161,7 @@ class Image
     {
         if (null !== $this->file) {
             $this->extension = $this->file->guessExtension();
-            $this->name      = $file->getClientOriginalName();
+            $this->name      = $this->file->getClientOriginalName();
         }
     }
 
