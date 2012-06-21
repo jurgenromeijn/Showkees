@@ -22,13 +22,21 @@ class WallController extends Controller
         if($name == null)
         {
             $wallOwner = $user;
+            $wallOwnerPosts = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Post')
+                ->findMainPostsByUser($wallOwner->getUserName());
+            
         }
         else
         {
             
             $wallOwner = $this->getDoctrine()
                 ->getRepository('MooiUserBundle:User')
-                ->findOneByUsername($name);   
+                ->findOneByUsername($name);
+            $wallOwnerPosts = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Post')
+                ->findMainPostsByUser($name);
+            
         }
         
         if($wallOwner == null)
@@ -38,9 +46,6 @@ class WallController extends Controller
         
         }
         
-        $wallOwnerPosts = $this->getDoctrine()
-                ->getRepository('MooiWallBundle:Post')
-                ->findMainPostsByUser($name);
         
         //set new post object and create form
         $newPost = new Post();
