@@ -23,13 +23,14 @@ Mooi\WallBundle\Entity\Post:
             cascade: ["persist"]
             inversedBy: mainPosts
             orderBy: 
-                time: DESC
+                time: ASC
             joinTable:
-                name: posts_has_posts
+                name: post_has_replies
                 joinColumns:
                     joinColumn:
                         name: post_id
                         referencedColumnName: id
+                        onDelete: cascade
                 inverseJoinColumns:
                     joinColumn:
                         name: reply_id
@@ -38,6 +39,7 @@ Mooi\WallBundle\Entity\Post:
             targetEntity: Mooi\WallBundle\Entity\Post
             mappedBy: replies
             cascade: ["persist"]
+            onDelete: cascade
     oneToMany:
         images:
             targetEntity: Image

@@ -19,6 +19,7 @@ class WallController extends Controller
     {
         
         $user = $this->get('security.context')->getToken()->getUser();
+        
         if($name == null)
         {
             $wallOwner = $user;
@@ -61,7 +62,6 @@ class WallController extends Controller
             $post->setReplyForm($replyForm);
             
         }
-        
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
