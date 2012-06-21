@@ -21,7 +21,9 @@
                 <h2>
                     {{ wallOwnerPost.getSender.username }}<span> over </span>{{wallOwnerPost.getSubject}}
                 </h2>
-                    <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost"/>
+                    <a name="post{{ wallOwnerPost.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'name': wallOwner.username}) }}">
+                        <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost"/>
+                    </a>
                 <p class="post_text">
                     {{ wallOwnerPost.getText() }}
                 </p>
@@ -88,15 +90,15 @@
                             </li>
                         </ul>
                     {% endif %}
-                    {% if reply.getSender.getId == wallOwner.getId %}
+                    {% if reply.getSender.getId != wallOwnerPost.getSender.getId %}
                         <img class="avatar_left" src="{{ asset('images/reply_avatar.png') }}" alt="reply avatar"/>
                         <p class="reply_right">
-                            <a href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
+                            <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
                         </p>
                     {% else %}
                         <img class="avatar_right" src="{{ asset('images/reply_avatar.png') }}" alt="reply avatar"/>
                         <p class="reply_left">
-                            <a href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
+                            <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
                         </p>
                     {% endif %}
                     <ul class="replyItems">

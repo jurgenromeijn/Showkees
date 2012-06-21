@@ -28,6 +28,12 @@ class WallController extends Controller
                 ->findMainPostsByUser($wallOwner->getUserName());
             
         }
+        else if(!$user->perMissionWall($name))
+        {
+            
+            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            
+        }
         else
         {
             
@@ -39,15 +45,12 @@ class WallController extends Controller
                 ->findMainPostsByUser($name);
             
         }
-        
         if($wallOwner == null)
         {
             
             throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
         
         }
-        
-        
         //set new post object and create form
         $newPost = new Post();
         $postForm = $this->createForm(new WallPostType(), $newPost);
@@ -155,7 +158,7 @@ class WallController extends Controller
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                     'name'  => $wallOwner->getUsername()
-                )));
+                )) . '#post' . $newPost->getId() );
 
             }
 
@@ -224,7 +227,7 @@ class WallController extends Controller
 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                     'name'  => $post->getWallOwner()->getUsername())
-                ));
+                ) . '#post' . $post->getId() );
 
             }
 

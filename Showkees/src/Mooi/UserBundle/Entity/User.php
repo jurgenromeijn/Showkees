@@ -505,4 +505,43 @@ class User implements UserInterface, \Serializable
         
     }
     
+    public function perMissionWall($name)
+    {
+        
+        $access = false;
+        
+        if($name == $this->getUserName())
+        {
+            
+            return true;
+            
+        }
+        
+        $userRole = $this->getRole()->getInternalName();
+            
+        switch ($userRole) 
+        {
+            case 'ROLE_SUPER_ADMIN':
+                $access = true;
+                break;
+            case 'ROLE_ADMIN':
+                $access = true;
+                break;
+            case 'ROLE_TEACHER':
+                $access = true;
+                break;
+            case 'ROLE_STUDENT':
+                $access = false;
+                break;
+            default:
+                $access = false;
+            break; 
+
+        }
+        
+        
+        return $access;
+        
+    }
+    
 }

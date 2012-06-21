@@ -9,6 +9,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
  */
 class Post
 {
+    
     /**
      * @var integer $id
      */

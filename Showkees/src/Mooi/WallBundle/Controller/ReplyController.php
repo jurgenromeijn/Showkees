@@ -105,7 +105,7 @@ class ReplyController extends Controller
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                     'name'  => $wallOwner->getUsername()
-                )));
+                )) . '#reply' . $newReply->getId() );
 
              }
 
@@ -159,7 +159,9 @@ class ReplyController extends Controller
             ->getRepository('MooiWallBundle:Post')
             ->find($replyId);
         $wallOwner = $reply->getWallOwner();
-        
+        $wallOwnerPosts = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Post')
+                ->findMainPostsByUser($wallOwner->getUserName());
         
         //edit reply
         $formReply = $this->createForm(new WallReplyType(), $reply);
@@ -172,18 +174,18 @@ class ReplyController extends Controller
             if ($formReply->isValid())
             {
                 //set post data
-                $newReply->setTime(new \DateTime);
+                $reply->setTime(new \DateTime);
 
                 // Save the Post to the database
                 $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($post);
+                $em->persist($reply);
                 $em->flush();
                 
                 $this->get("session")->setFlash('notice', 'Je comment is gewijzigd.');
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                    'id'  => $wallOwner->getId()
-                )));
+                    'name'  => $wallOwner->getUserName()
+                )) . '#reply' . $reply->getId() );
 
              }
 
@@ -206,7 +208,7 @@ class ReplyController extends Controller
                 
             }
             
-            $replyForm['action']    = $this->get('router')->generate('MooiWallBundle_WallReplyAdd', array('postId' => $post->getId()));
+            $replyForm['action']    = $this->get('router')->generate('MooiWallBundle_WallReplyEdit', array('replyId' => $reply->getId()));
             $replyForm['form']      = $replyForm['form']->createView();
             $post->setReplyForm($replyForm);
 
@@ -223,6 +225,7 @@ class ReplyController extends Controller
                 'formPost'          => $formPost->createView(),
                 'id'                => $wallOwner->getId(),
                 'wallOwner'         => $wallOwner,
+                'wallOwnerPosts'    => $wallOwnerPosts,
                 'user'              => $user,
                 'showForm'          => false
         ));
@@ -238,7 +241,7 @@ class ReplyController extends Controller
             ->find($replyId);
         
         $user = $this->get('security.context')->getToken()->getUser();
-        $wallOwnerId = $reply->getWallOwner()->getId();
+        $wallOwnerUserName = $reply->getWallOwner()->getUserName();
         
         if($reply != null)
         {
@@ -250,7 +253,7 @@ class ReplyController extends Controller
             $this->get("session")->setFlash('notice', 'Het comment is verwijderd.');
             
             return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                'id'  => $wallOwnerId
+                'name'  => $wallOwnerUserName,
             )));
             
         }
@@ -258,7 +261,7 @@ class ReplyController extends Controller
         {
             
             return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-                'id'  => $user->getId()
+                'name'  => $wallOwnerUserName,
             )));
             
         } 
