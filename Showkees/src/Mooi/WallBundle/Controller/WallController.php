@@ -61,7 +61,7 @@ class WallController extends Controller
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUserName())),     
                 'formPost'          => $postForm->createView(),
                 'wallOwner'         => $wallOwner,
-                'wallOwnerPosts'   => $wallOwnerPosts,
+                'wallOwnerPosts'    => $wallOwnerPosts,
                 'showForm'          => false
         ));
    
