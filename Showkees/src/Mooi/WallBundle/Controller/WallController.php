@@ -19,12 +19,15 @@ class WallController extends Controller
     {
         
         $user = $this->get('security.context')->getToken()->getUser();
-        /*if($name == null)
+        if($name == null)
         {
             $wallOwner = $user;
         }
         else
         {
+            $wallOwnerPosts = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Post')
+                ->findMainPostsByUser($name);
             $wallOwner = $this->getDoctrine()
                 ->getRepository('MooiUserBundle:User')
                 ->findOneByUsername($name);   
@@ -35,14 +38,10 @@ class WallController extends Controller
             
             throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
         
-        }*/
-        
-        $wallOwnerPosts = $this->getDoctrine()
-            ->getRepository('MooiWallBundle:Post')
-            ->findMainPostsByUser($name);
+        }
         
         //set new post object and create form
-        /*$newPost = new Post();
+        $newPost = new Post();
         $postForm = $this->createForm(new WallPostType(), $newPost);
         
         foreach($wallOwner->getWallOwnerPosts() as $post)
@@ -59,11 +58,12 @@ class WallController extends Controller
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
-                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $user->getUsername())),      
+                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUserName())),     
                 'formPost'          => $postForm->createView(),
                 'wallOwner'         => $wallOwner,
+                'wallOwnerPosts'   => $wallOwnerPosts,
                 'showForm'          => false
-        ));*/
+        ));
    
     }
     
@@ -72,16 +72,12 @@ class WallController extends Controller
         
         $request = $this->getRequest();
         $user = $this->get('security.context')->getToken()->getUser();
-        if($name == null)
-        {
-            $wallOwner = $user;
-        }
-        else
-        {
+        
+        
             $wallOwner = $this->getDoctrine()
                 ->getRepository('MooiUserBundle:User')
                 ->findOneByUsername($name);   
-        }
+        
         
         if($wallOwner == null)
         {
@@ -142,7 +138,8 @@ class WallController extends Controller
                 //set post data
                 $newPost->setSender($user);
                 $newPost->setWallOwner($wallOwner);
-
+                $newPost->setType('post');
+                
                 // Save the Post to the database
                 $entityManager->persist($newPost);
                 $entityManager->flush();
@@ -187,6 +184,9 @@ class WallController extends Controller
             ->find($postId);
         
         $wallOwnerPosts = $post->getWallOwner()->getWallOwnerPosts();
+        $wallOwnerPostsExReply = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Post')
+                ->findMainPostsByUser($post->getWallOwner()->getUserName());
         
         if($post == null)
         {
@@ -241,6 +241,7 @@ class WallController extends Controller
             'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallEdit', array('postId' => $postId)),      
             'formPost'          => $form->createView(),
             'wallOwner'         => $post->getWallOwner(),
+            'wallOwnerPosts'    => $wallOwnerPostsExReply,
             'showForm'          => true
         ));
         

@@ -34,14 +34,22 @@ class PostRepository extends EntityRepository
         $query = $this->getEntityManager()
                 ->createQuery('SELECT p, u 
                                 FROM MooiWallBundle:Post p 
-                                INNER JOIN p.wall_owner u 
+                                JOIN p.wall_owner u
                                 WHERE u.username = :user_name
+                                AND p.type = :post_type
                                 ORDER BY p.time desc')
-                                ->setParameter('user_name', $userName);
+                                ->setParameter('user_name', $userName)
+                                ->setParameter('post_type', 'post');
         
         return $query->getResult();
 
-        
+        /*
+         SELECT p, u 
+         FROM MooiWallBundle:Post p 
+         JOIN p.wall_owner u
+         WHERE u.username = :user_name
+         ORDER BY p.time desc
+         */
     }
     
 }

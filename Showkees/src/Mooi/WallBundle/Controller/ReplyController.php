@@ -93,6 +93,7 @@ class ReplyController extends Controller
                 //set post data
                 $newReply->setSender($user);
                 $newReply->setWallOwner($wallOwner);
+                $newReply->setType('reply');
                 $post->addReply($newReply);
 
                 // Save the Post to the database
