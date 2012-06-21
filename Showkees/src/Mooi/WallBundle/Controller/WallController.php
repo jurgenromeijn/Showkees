@@ -25,9 +25,7 @@ class WallController extends Controller
         }
         else
         {
-            $wallOwnerPosts = $this->getDoctrine()
-                ->getRepository('MooiWallBundle:Post')
-                ->findMainPostsByUser($name);
+            
             $wallOwner = $this->getDoctrine()
                 ->getRepository('MooiUserBundle:User')
                 ->findOneByUsername($name);   
@@ -39,6 +37,10 @@ class WallController extends Controller
             throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
         
         }
+        
+        $wallOwnerPosts = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Post')
+                ->findMainPostsByUser($name);
         
         //set new post object and create form
         $newPost = new Post();

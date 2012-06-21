@@ -11,7 +11,7 @@
         <div id="content_left">
             <div id="formMenu" {% if showForm %} class="formBool" {% endif %}>
                 <p
-                    <a class="add_post_button" href="{{ path('MooiWallBundle_WallAdd', {'name': wallOwner.username}) }}">{{ wallOwner.username }}Voeg een post toe</a>
+                    <a class="add_post_button" href="{{ path('MooiWallBundle_WallAdd', {'name': wallOwner.username}) }}">Voeg een post toe</a>
                 </p>
                 {% include 'MooiWallBundle:Wall:postForm.html.twig' %}
             </div>
