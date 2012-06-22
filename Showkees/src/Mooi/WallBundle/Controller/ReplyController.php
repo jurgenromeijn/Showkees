@@ -29,7 +29,7 @@ class ReplyController extends Controller
         $request = $this->getRequest();
         $user = $this->get('security.context')->getToken()->getUser();
         
-        if(!$user->hasWallPermisions($name))
+        if(!$user->hasWallPermisions($user->getUsername()))
         {
             
             throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
@@ -162,7 +162,7 @@ class ReplyController extends Controller
         $request = $this->getRequest();
         $user = $this->get('security.context')->getToken()->getUser();
         
-        if(!$user->hasWallPermisions($name))
+        if(!$user->hasWallPermisions($user->getUsername()))
         {
             
             throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
@@ -252,7 +252,7 @@ class ReplyController extends Controller
         
         $user = $this->get('security.context')->getToken()->getUser();
         
-        if(!$user->hasWallPermisions($name))
+        if(!$user->hasWallPermisions($user->getUsername()))
         {
             
             throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
@@ -295,7 +295,7 @@ class ReplyController extends Controller
         
         $user = $this->get('security.context')->getToken()->getUser();
         
-        if(!$user->hasWallPermisions($name))
+        if(!$user->hasWallPermisions($user->getUsername()))
         {
             
             throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');

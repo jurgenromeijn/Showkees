@@ -51,26 +51,6 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * Set first_name
      *
      * @param string $firstName
@@ -544,4 +524,29 @@ class User implements UserInterface, \Serializable
         
     }
     
+    /**
+     * @var Mooi\WallBundle\Entity\Image
+     */
+    private $avatar;
+
+
+    /**
+     * Set avatar
+     *
+     * @param Mooi\WallBundle\Entity\Image $avatar
+     */
+    public function setAvatar(\Mooi\WallBundle\Entity\Image $avatar)
+    {
+        $this->avatar = $avatar;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return Mooi\WallBundle\Entity\Image 
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
 }

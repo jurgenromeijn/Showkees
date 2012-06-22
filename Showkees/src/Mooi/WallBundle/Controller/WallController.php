@@ -219,7 +219,7 @@ class WallController extends Controller
         $request = $this->getRequest();
         $user = $this->get('security.context')->getToken()->getUser();
         
-        if(!$user->hasWallPermisions($name))
+        if(!$user->hasWallPermisions($user->getUsername()))
         {
             
             throw $this->createNotFoundException('U hebt niet genoeg rechten om deze pagina te bezoeken');

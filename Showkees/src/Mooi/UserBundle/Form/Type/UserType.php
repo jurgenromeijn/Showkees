@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 use Mooi\UserBundle\Entity\User;
 use Mooi\UserBundle\Repository\RoleRepository;
+use Mooi\WallBundle\Form\Type\ImageType;
 
 class UserType extends AbstractType
 {
@@ -14,13 +15,15 @@ class UserType extends AbstractType
     private $allowRoleChanging;
     private $allowUsernameChanging;
     private $passWordRequired;
+    private $allowAvatarUploading;
 
-    public function __construct(User $user, $allowRoleChanging = true, $allowUsernameChanging = true, $passwordRequired = true)
+    public function __construct(User $user, $allowRoleChanging = true, $allowUsernameChanging = true, $passwordRequired = true, $allowAvatarUploading = false)
     {
-        $this->user = $user;
-        $this->allowRoleChanging = $allowRoleChanging;
+        $this->user                  = $user;
+        $this->allowRoleChanging     = $allowRoleChanging;
         $this->allowUsernameChanging = $allowUsernameChanging;
-        $this->passWordRequired = $passwordRequired;
+        $this->passWordRequired      = $passwordRequired;
+        $this->allowAvatarUploading  = $allowAvatarUploading;
     }
     
     public function buildForm(FormBuilder $builder, array $options)
@@ -48,7 +51,7 @@ class UserType extends AbstractType
             ),
             'expanded' => true
         ));
-        
+                        
         if($this->allowRoleChanging && $user->getRole()->getId() <= 2)
         {
             
@@ -93,6 +96,17 @@ class UserType extends AbstractType
                 'invalid_message' => 'De wachtwoorden komen niet overeen!'
             ));
         }
+        
+        if($this->allowAvatarUploading)
+        {
+            
+            $builder->add('avatar', new ImageType(), array(
+                'required' => false,
+                'label'    => "Avatar"
+            ));
+            
+        }
+
         
     }
 

@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Mooi\UserBundle\Model\UserFactory;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Mooi\WallBundle\Form\Type\ImageType;
+
 /**
  * Description of UserController
  *
@@ -135,7 +137,7 @@ class UserController extends Controller
             
         }
         
-        $form = $this->createForm(new UserType($securityUser, !$ownAccount, false, false), $user, array(
+        $form = $this->createForm(new UserType($securityUser, !$ownAccount, false, false, true), $user, array(
             "validation_groups" => array("Default", "update")
         ));
         

@@ -6,13 +6,14 @@ use Mooi\WallBundle\Entity\Image;
 use Mooi\WallBundle\Form\Type\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class FileController extends Controller
 {
 
-    public function uploadAction()
+    public function uploadAction(Request $request)
     {
-        
+                
         $image = new Image();
         $form = $this->createForm(new ImageType(), $image);
 

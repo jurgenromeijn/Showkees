@@ -18,7 +18,7 @@ Mooi\WallBundle\Entity\Image:
   properties:
     file:
       - Image:
-          maxSize: 1k
+          maxSize: 1024k
           maxSizeMessage: De afbeelding mag maximaal 1mb zijn.
           mimeTypesMessage: De afbeelding moet een gif, jpg of png zijn.
           uploadIniSizeErrorMessage: De afbeelding mag niet groter dan {{ limit }} zijn.
