@@ -17,9 +17,6 @@
             <div class="clearfix"></div>
         </div>
     </form>
-    {% if user.avatar != null %}
-        <img src="{{ user.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" />
-    {% endif %}
 {% endblock %}
     
     

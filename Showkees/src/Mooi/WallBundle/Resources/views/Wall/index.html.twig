@@ -25,19 +25,23 @@
                 </h2>
                     <a name="post{{ wallOwnerPost.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'name': wallOwner.username}) }}">
                         {% if wallOwnerPost.getSender.avatar != null %}
-                            <img src="{{ wallOwnerPost.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" />
+                            <img src="{{ wallOwnerPost.getSender.avatar.webPath | apply_filter('thumbnail') }}" class="avatar" alt="avatar" />
                         {% else %}
-                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost"/>
+                            <img src="{{ asset('images/mainPost_avatar.png') }}" class="avatar" alt="mainPost"/>
                         {% endif %}
                     </a>
                 <p class="post_text">
                     {{ wallOwnerPost.getText() }}
                 </p>
+                {% if wallOwnerPost.images|length > 0 %}
                 <div class="image_gallery">
-                    <img src="{{ asset('images/afbeelding.gif') }}" alt="" />
-                    <img src="{{ asset('images/afbeelding.gif') }}" alt="" />
-                    <img src="{{ asset('images/afbeelding.gif') }}" alt="" />
+                    {% for image in wallOwnerPost.images %}
+                        <a href="{{ asset(image.webPath) }}" rel="lightbox[{{ wallOwnerPost.id }}]">
+                            <img src="{{ image.webPath | apply_filter('thumbnail') }}" alt="{{ image.name }}" />
+                        </a>
+                    {% endfor %}
                 </div>
+                {% endif %}
                 <ul class="postItems">
                     <li>
                         <a class="like_button" href="{{ path('MooiWallBundle_WallLike', {'postId' : wallOwnerPost.getId()}) }}">Vind ik goed</a>
@@ -100,16 +104,15 @@
                         {% if reply.getSender.avatar != null %}
                             <img src="{{ reply.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" class="avatar_left" />
                         {% else %}
-                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost" class="avatar_left" />
+                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost" class="avatar_left avatar" />
                         {% endif %}
                         <p class="reply_right">
                             <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
                         </p>
                     {% else %}
                         {% if reply.getSender.avatar != null %}
-                            <img src="{{ reply.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" class="avatar_right" />
+                            <img src="{{ reply.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" class="avatar_right avatar" />
                         {% else %}
-                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost"  class="avatar_right" />
                         {% endif %}
                         <p class="reply_left">
                             <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}

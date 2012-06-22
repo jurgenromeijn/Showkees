@@ -791,6 +791,31 @@ table.dataTable th.action
 }
 
 /**
+ * Avatar
+ */
+.avatar
+{
+    padding: 10px 10px 20px 10px;
+    background-color: #fff;
+    border-radius: 2px;
+    -webkit-box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    -moz-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    -webkit-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    -o-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    -ms-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* IE10+ */
+    background: linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+}
+
+/**
  * Confirmation window
  */
 .confirm .head, .confirm .body
@@ -987,12 +1012,12 @@ table.dataTable th.action
  #contentWrapper .reply .reply_right{
      float: right;
      margin-left: 10px;
-     width: 426px;
+     width: 406px;
  }
  #contentWrapper .reply .reply_left{
      float: left;
      margin-right: 10px;
-     width: 426px;
+     width: 406px;
  }
  .post > img{
      float: left;
@@ -1010,7 +1035,7 @@ table.dataTable th.action
      padding-top: 25px;
  }
  #contentColumn .post > p{
-     width: 480px;
+     width: 460px;
      float: right;
      margin: 0;
  }

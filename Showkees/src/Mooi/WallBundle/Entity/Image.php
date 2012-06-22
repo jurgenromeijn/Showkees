@@ -132,6 +132,8 @@ class Image
         return $this->posts;
     }
     
+    private $oldFile;
+    
     /**
      * Set file
      *
@@ -139,6 +141,7 @@ class Image
      */
     public function setFile($file)
     {
+        $this->oldFile = $this->getAbsolutePath();
         $this->file    = $file;
         $this->fileSet = true;
         $this->time    = new \DateTime();
@@ -171,6 +174,10 @@ class Image
         if (null !== $this->file) {
             $this->extension = $this->file->guessExtension();
             $this->name      = $this->file->getClientOriginalName();
+            if($this->oldFile !== null && file_exists($this->oldFile))
+            {
+                unlink($this->oldFile);
+            }
         }
     }
 
@@ -204,7 +211,7 @@ class Image
     {
         return null === $this->extension ? null : $this->getUploadRootDir().'/'.$this->id.'_'.$this->time->getTimestamp().'.'.$this->extension;
     }
-    
+
     public function getWebPath()
     {
         return null === $this->extension ? null : $this->getUploadDir().'/'.$this->id.'_'.$this->time->getTimestamp().'.'.$this->extension;

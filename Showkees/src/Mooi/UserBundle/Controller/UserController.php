@@ -203,7 +203,7 @@ class UserController extends Controller
                 
                 // Set flash message and redirect to another page
                 $this->get("session")->setFlash('notice', 'De instellingen zijn aangepast.');
-                //return $this->redirect($this->generateUrl('index'));
+                return $this->redirect($this->generateUrl('index'));
                 
             }
             

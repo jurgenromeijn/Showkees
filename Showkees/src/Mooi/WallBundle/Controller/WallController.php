@@ -101,7 +101,10 @@ class WallController extends Controller
         $wallOwner = $this->getDoctrine()
             ->getRepository('MooiUserBundle:User')
             ->findOneByUsername($name);   
-        
+        $wallOwnerPosts = $this->getDoctrine()
+            ->getRepository('MooiWallBundle:Post')
+            ->findMainPostsByUser($name);
+
         if($wallOwner == null)
         {
             
@@ -110,9 +113,9 @@ class WallController extends Controller
         }
         
         //set new post object and create form
-        $newPost = new Post();
-        $postForm = $this->createForm(new WallPostType(), $newPost);
-        $newReply = new Post();
+        $post = new Post();
+        $postForm = $this->createForm(new WallPostType(), $post);
+        $reply = new Post();
 
         if ($request->getMethod() == 'POST') 
         {
@@ -123,6 +126,26 @@ class WallController extends Controller
             {
 
                 $entityManager = $this->getDoctrine()->getEntityManager();
+                
+                //check files
+                foreach ($post->getImages() as $image) 
+                {
+                    
+                    if($image->getId() == null && !$image->isFileSet())
+                    {
+                        
+                        $post->getImages()->removeElement($image);
+
+                    }
+                    else
+                    {
+
+                        $entityManager->persist($image);
+
+                    }
+                    
+                }
+                
                 //create notifications
                 if($wallOwner->getId() == $user->getId())
                 {
@@ -134,8 +157,8 @@ class WallController extends Controller
                         $teacherNotification->setMessage(($user->getGender() == User::GENDER_MALE) ? 
                                 Notification::MESSAGE_WALL_OWN_MALE : 
                                 Notification::MESSAGE_WALL_OWN_FEMALE);
-                        $teacherNotification->setQuote($newPost);
-                        $teacherNotification->setPost($newPost);
+                        $teacherNotification->setQuote($post);
+                        $teacherNotification->setPost($post);
                         $teacherNotification->setOwner($teacher);
                         $teacherNotification->setAbout($wallOwner);
                         
@@ -149,8 +172,8 @@ class WallController extends Controller
                     //Notification for student
                     $studentNotification = new Notification();
                     $studentNotification->setMessage(Notification::MESSAGE_WALL_OTHER);
-                    $studentNotification->setQuote($newPost);
-                    $studentNotification->setPost($newPost);
+                    $studentNotification->setQuote($post);
+                    $studentNotification->setPost($post);
                     $studentNotification->setOwner($wallOwner);
                     $studentNotification->setAbout($user);
                     
@@ -159,28 +182,28 @@ class WallController extends Controller
                 }
                 
                 //set post data
-                $newPost->setSender($user);
-                $newPost->setWallOwner($wallOwner);
-                $newPost->setType('post');
+                $post->setSender($user);
+                $post->setWallOwner($wallOwner);
+                $post->setType('post');
                 
                 // Save the Post to the database
-                $entityManager->persist($newPost);
+                $entityManager->persist($post);
                 $entityManager->flush();
                 
                 $this->get("session")->setFlash('notice', 'Het bericht is toegevoegd.');
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                     'name'  => $wallOwner->getUsername()
-                )) . '#post' . $newPost->getId() );
+                )) . '#post' . $post->getId() );
 
             }
 
         }
         
-        foreach($wallOwner->getWallOwnerPosts() as $post)
+        foreach($wallOwnerPosts as $post)
         {
             
-            $replyForm['form'] = $this->createForm(new WallReplyType(), $newReply);
+            $replyForm['form'] = $this->createForm(new WallReplyType(), $reply);
             $replyForm['form'] = $replyForm['form']->createView();
             $replyForm['action'] = $this->get('router')->generate('MooiWallBundle_WallReplyAdd', array('postId' => $post->getId()));
             $replyForm['show'] = false;
@@ -242,12 +265,29 @@ class WallController extends Controller
 
             if ($form->isValid()) 
             {
+                
+                $entityManager = $this->getDoctrine()->getEntityManager();
+                
+                //check files
+                foreach ($post->getImages() as $image) 
+                {
+                    
+                    if($image->getId() == null && !$image->isFileSet())
+                    {
+                        
+                        $post->getImages()->removeElement($image);
 
-                //set post data
-                $post->setTime(new \DateTime);
+                    }
+                    else
+                    {
+
+                        $entityManager->persist($image);
+
+                    }
+                    
+                }
 
                 // Save the Post to the database
-                $entityManager = $this->getDoctrine()->getEntityManager();
                 $entityManager->persist($post);
                 $entityManager->flush();
 

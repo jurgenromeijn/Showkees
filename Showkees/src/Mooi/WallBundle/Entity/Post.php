@@ -38,6 +38,7 @@ class Post
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->images = new ArrayCollection();
         $this->time = new \DateTime();
         $this->replies = new ArrayCollection();
     }
