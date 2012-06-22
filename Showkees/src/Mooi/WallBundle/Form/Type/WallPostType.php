@@ -4,6 +4,7 @@ namespace Mooi\WallBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Mooi\WallBundle\Form\Type\ImageType;
 
 class WallPostType extends AbstractType
 {
@@ -16,10 +17,11 @@ class WallPostType extends AbstractType
             'label' => 'Vakken',
             'empty_value' => 'Kies een vak'
         ));
-        /*$builder->add('file', 'file', array(
-            'class' => 'Mooi\WallBundle\Entity\Image',
-        ));*/
-        //$builder->add('attachment', 'file');
+        $builder->add('images', 'collection', array(
+            'type' => new ImageType(),
+            'allow_add' => true,
+            'by_reference' => false
+        ));
         
     }
 
@@ -34,7 +36,7 @@ class WallPostType extends AbstractType
     {
         
         return array(
-            'data_class'    => 'Mooi\WallBundle\Entity\Post'         
+            'data_class'    => 'Mooi\WallBundle\Entity\Post'    
         );
         
     }

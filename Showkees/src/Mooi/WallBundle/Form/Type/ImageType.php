@@ -21,7 +21,7 @@ class ImageType extends AbstractType
     public function getName()
     {
         
-        return 'WallImage';
+        return 'Image';
         
     }
     

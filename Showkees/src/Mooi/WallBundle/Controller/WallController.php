@@ -116,7 +116,6 @@ class WallController extends Controller
             ->getRepository('MooiUserBundle:User')
             ->findOneByUsername($name);   
         
-        
         if($wallOwner == null)
         {
             
@@ -208,6 +207,7 @@ class WallController extends Controller
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUsername())),      
                 'formPost'          => $postForm->createView(),
                 'wallOwner'         => $wallOwner,
+                'wallOwnerPosts'    => $wallOwnerPosts,
                 'showForm'          => true
         ));
         
@@ -281,6 +281,10 @@ class WallController extends Controller
             $post->setReplyForm($replyForm);
             
         }
+
+        $wallOwnerPosts = $this->getDoctrine()
+            ->getRepository('MooiWallBundle:Post')
+            ->findMainPostsByUser($name);
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
             'formPostTitle'     => 'Wijzig de post',
