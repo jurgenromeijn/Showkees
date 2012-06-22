@@ -130,7 +130,13 @@
                 {% endfor %}
             </div>   
             {% else %}
-                <p class="empty">Er zijn nog geen berichten op deze wall</p>
+                {% if warningFilter is defined %}
+                    {% if warningFilter == true %}
+                        <p class="empty">{{ warningFilter }}</p>
+                    {% endif %} 
+                {% else %}
+                    <p class="empty">Er zijn nog geen berichten op deze wall</p>
+                {% endif %}
             {% endfor %} 
         </div>    
         
@@ -138,7 +144,6 @@
 
 {% block sidebarContent %}
      <div id="filterColumn">
-       
         {% include 'MooiWallBundle:Wall:filter.html.twig' %}
      </div>
 {% endblock %}

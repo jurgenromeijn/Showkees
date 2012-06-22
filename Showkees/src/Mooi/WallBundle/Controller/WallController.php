@@ -384,6 +384,7 @@ class WallController extends Controller
     {
         
         $request = $this->getRequest();
+        $warningFilter = null;
         $user = $this->get('security.context')->getToken()->getUser();
         
         if($name == null)
@@ -424,7 +425,20 @@ class WallController extends Controller
                 $wallOwnerPosts = $this->getDoctrine()
                     ->getRepository('MooiWallBundle:Subject')
                     ->filterByYearAndSubject($name, $filterData->getSubject(), $filterData->getYears());
-                $wallOwnerPosts = $wallOwnerPosts[0]->getPosts();
+                
+                
+                if($wallOwnerPosts)
+                {
+                    
+                     $wallOwnerPosts = $wallOwnerPosts[0]->getPosts();
+                    
+                }
+                else
+                {
+                    
+                    $warningFilter = 'Er zijn geen berichten in de door u gezochte criteria';
+                    
+                }
                 
             }
             else
@@ -467,7 +481,8 @@ class WallController extends Controller
                 'wallOwner'         => $wallOwner,
                 'wallOwnerPosts'    => $wallOwnerPosts,
                 'filterForm'        => $filterForm->createView(),
-                'showForm'          => false
+                'showForm'          => false,
+                'warningFilter'     => $warningFilter
         ));
         
     }
