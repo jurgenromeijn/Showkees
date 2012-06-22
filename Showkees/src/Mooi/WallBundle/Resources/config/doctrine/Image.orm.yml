@@ -22,8 +22,3 @@ Mooi\WallBundle\Entity\Image:
         extension:
             type: string
             length: 4
-    manyToMany:
-        posts: 
-            targetEntity: Mooi\WallBundle\Entity\Post
-            mappedBy: images
-            onDelete: cascade

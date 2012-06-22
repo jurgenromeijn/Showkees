@@ -32,11 +32,6 @@ class Image
      * @var string $extension
      */
     private $extension;
-
-    /**
-     * @var Mooi\WallBundle\Entity\Post
-     */
-    private $posts;
     
     // check this far to see whether we need to save the image
     private $fileSet = false;
@@ -110,26 +105,6 @@ class Image
     public function getExtension()
     {
         return $this->extension;
-    }
-
-    /**
-     * Add posts
-     *
-     * @param Mooi\WallBundle\Entity\Post $posts
-     */
-    public function addPost(\Mooi\WallBundle\Entity\Post $posts)
-    {
-        $this->posts[] = $posts;
-    }
-
-    /**
-     * Get posts
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getPosts()
-    {
-        return $this->posts;
     }
     
     private $oldFile;
