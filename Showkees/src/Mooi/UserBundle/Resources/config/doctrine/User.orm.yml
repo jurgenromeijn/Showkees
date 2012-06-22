@@ -46,7 +46,6 @@ Mooi\UserBundle\Entity\User:
         avatar:
             targetEntity: Mooi\WallBundle\Entity\Image
             nullable: true
-            cascade: ["persist"]
             joinColumn:
                 name: avatar_id
                 referencedColumnName: id

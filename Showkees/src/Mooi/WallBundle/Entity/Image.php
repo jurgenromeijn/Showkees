@@ -37,6 +37,9 @@ class Image
      * @var Mooi\WallBundle\Entity\Post
      */
     private $posts;
+    
+    // check this far to see whether we need to save the image
+    private $fileSet = false;
 
 
     /**
@@ -136,7 +139,9 @@ class Image
      */
     public function setFile($file)
     {
-        $this->file = $file;
+        $this->file    = $file;
+        $this->fileSet = true;
+        $this->time    = new \DateTime();
     }
 
     /**
@@ -149,9 +154,13 @@ class Image
         return $this->file;
     }
     
+    public function isFileSet()
+    {
+        return $this->fileSet;
+    }
+
     public function __construct()
     {
-        $this->time  = new \DateTime();
         $this->posts = new ArrayCollection();
     }
     
@@ -174,7 +183,7 @@ class Image
         // you must throw an exception here if the file cannot be moved
         // so that the entity is not persisted to the database
         // which the UploadedFile move() method does
-        $this->file->move($this->getUploadRootDir(), $this->id.'.'.$this->file->guessExtension());
+        $this->file->move($this->getUploadRootDir(), $this->id.'_'.$this->time->getTimestamp().'.'.$this->file->guessExtension());
 
         unset($this->file);
     }
@@ -193,12 +202,12 @@ class Image
 
     public function getAbsolutePath()
     {
-        return null === $this->extension ? null : $this->getUploadRootDir().'/'.$this->id.'.'.$this->extension;
+        return null === $this->extension ? null : $this->getUploadRootDir().'/'.$this->id.'_'.$this->time->getTimestamp().'.'.$this->extension;
     }
     
     public function getWebPath()
     {
-        return null === $this->extension ? null : $this->getUploadDir().'/'.$this->id.'.'.$this->extension;
+        return null === $this->extension ? null : $this->getUploadDir().'/'.$this->id.'_'.$this->time->getTimestamp().'.'.$this->extension;
     }
 
     protected function getUploadRootDir()

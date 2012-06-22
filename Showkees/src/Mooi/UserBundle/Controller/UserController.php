@@ -151,6 +151,9 @@ class UserController extends Controller
             
             if ($form->isValid()) 
             {
+
+                // Save the User to the database
+                $entityManager = $this->getDoctrine()->getEntityManager();
                 
                 if($user->getRole()->getId() < $securityUser->getRole()->getId())
                 {
@@ -158,7 +161,7 @@ class UserController extends Controller
                     throw new AccessDeniedException("Je mag geen rang hoger dan je eigen instellen");
                     
                 }
-                elseif($securityUser->getRole()->getId() == 1)
+                elseif($securityUser->getRole()->getId() == 4)
                 {
                     
                     // if a user gets set to student, make sure he has no studnets under him
@@ -181,15 +184,26 @@ class UserController extends Controller
                     $user->setPassword($originalPassword);
                     
                 }
+                                
+                if($user->getAvatar()->getId() == null && !$user->getAvatar()->isFileSet())
+                {
+                    
+                    $user->setAvatar(null);
+                    
+                }
+                else
+                {
+                    
+                    $entityManager->persist($user->getAvatar());
+                    
+                }
                                                 
-                // Save the User to the database
-                $entityManager = $this->getDoctrine()->getEntityManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
                 
                 // Set flash message and redirect to another page
                 $this->get("session")->setFlash('notice', 'De instellingen zijn aangepast.');
-                return $this->redirect($this->generateUrl('index'));
+                //return $this->redirect($this->generateUrl('index'));
                 
             }
             

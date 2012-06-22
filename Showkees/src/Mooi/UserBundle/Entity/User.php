@@ -535,7 +535,7 @@ class User implements UserInterface, \Serializable
      *
      * @param Mooi\WallBundle\Entity\Image $avatar
      */
-    public function setAvatar(\Mooi\WallBundle\Entity\Image $avatar)
+    public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
     }
