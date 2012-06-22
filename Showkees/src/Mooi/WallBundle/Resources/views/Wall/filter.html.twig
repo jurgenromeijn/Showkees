@@ -1,0 +1,10 @@
+{% form_theme filterForm '::baseForm.html.twig' %}
+
+{% block filter %}
+    <form id="filterForm" action="{{ path('MooiWallBundle_WallFilter', {'name' : wallOwner.getUserName}) }}" method="get" autocomplete="off" {{ form_enctype(filterForm) }} >
+        <div class="form_row">
+            <div class="clearfix"></div>
+        </div>
+        {{ form_widget(filterForm) }}
+    </form>
+{% endblock %}

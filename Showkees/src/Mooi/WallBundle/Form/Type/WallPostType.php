@@ -12,7 +12,10 @@ class WallPostType extends AbstractType
     {
         
         $builder->add('text', 'textarea', array('label' => 'Bericht'));
-        $builder->add('subject', null, array('label' => 'Vakken'));
+        $builder->add('subject', null, array(
+            'label' => 'Vakken',
+            'empty_value' => 'Kies een vak'
+        ));
         /*$builder->add('file', 'file', array(
             'class' => 'Mooi\WallBundle\Entity\Image',
         ));*/

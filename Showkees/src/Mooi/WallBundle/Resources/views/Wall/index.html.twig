@@ -5,6 +5,7 @@
      <script src="{{ asset('js/likes.js') }}" type="text/javascript"></script>
      <script src="{{ asset('js/postForm.js') }}" type="text/javascript"></script>
      <script src="{{ asset('js/replyForm.js') }}" type="text/javascript"></script>
+     <script src="{{ asset('js/filter.js') }}" type="text/javascript"></script>
 {% endblock %}
 
 {% block content %}
@@ -123,6 +124,8 @@
 {% endblock %}
 
 {% block sidebarContent %}
-    <h1>Filters</h1>
-    <p>Hier kan door berichten gezocht worden</p>
+     <div id="filterColumn">
+       
+        {% include 'MooiWallBundle:Wall:filter.html.twig' %}
+     </div>
 {% endblock %}

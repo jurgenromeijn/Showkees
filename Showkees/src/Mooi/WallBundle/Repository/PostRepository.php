@@ -14,23 +14,22 @@ use Doctrine\ORM\EntityRepository;
 class PostRepository extends EntityRepository
 {
     
-
-    public function findMainPostsByUser($userName)
+    
+    public function filterYearsPosts()
     {
         
-        /*$queryBuilder = $this->getEntityManager()->createQueryBuilder();
+        $query = $this->getEntityManager()
+                ->createQuery('SELECT p.time
+                                FROM MooiWallBundle:Post p 
+                                ORDER BY p.time');
         
-        $queryBuilder->select('p, u')
-                ->from('MooiWallBundle:Post', 'p')
-                ->join('MooiUserBundle:User', 'u')
-                ->where('u.id = :user_id')
-                ->andWhere('p.type = :type')
-                ->orderBy('p.time', 'DESC')
-                ->setParameter('user_id', $userId)
-                ->setParameter('type', 'post');
+        return $query->getResult();
         
-        return $queryBuilder->getQuery()->getResult();*/
-        
+    }
+    
+    public function findMainPostsByUser($userName)
+    {
+
         $query = $this->getEntityManager()
                 ->createQuery('SELECT p, u 
                                 FROM MooiWallBundle:Post p 
@@ -42,14 +41,7 @@ class PostRepository extends EntityRepository
                                 ->setParameter('post_type', 'post');
         
         return $query->getResult();
-
-        /*
-         SELECT p, u 
-         FROM MooiWallBundle:Post p 
-         JOIN p.wall_owner u
-         WHERE u.username = :user_name
-         ORDER BY p.time desc
-         */
+        
     }
     
 }

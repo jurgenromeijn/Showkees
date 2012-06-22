@@ -505,23 +505,23 @@ class User implements UserInterface, \Serializable
         
     }
     
-    public function perMissionWall($name)
+    public function hasWallPermisions($name = null)
     {
         
         $access = false;
         
         if($name == $this->getUserName())
-        {
+        { 
             
             return true;
             
         }
         
         $userRole = $this->getRole()->getInternalName();
-            
+        
         switch ($userRole) 
         {
-            case 'ROLE_SUPER_ADMIN':
+            case 'ROLE_SUPERADMIN':
                 $access = true;
                 break;
             case 'ROLE_ADMIN':

@@ -379,6 +379,7 @@ body
     position: absolute;
     right: 93px;
     top: 45px;
+    z-index: 2;
 }
 
 #userOptions>a
@@ -466,6 +467,7 @@ body
     height: 80px;
     width: 93px;
     background-image: url('../images/notificationIcon.png');
+    z-index: 2;
 }
 
 #notificationArea>p
@@ -884,6 +886,7 @@ table.dataTable th.action
           -moz-border-radius: 12px;
           border-radius: 12px;
           padding: 0 10px;
+          z-index: 1;
       }
       
       #sidebarColumn h1
@@ -1114,3 +1117,65 @@ table.dataTable th.action
     clear: both;
     padding-top: 50px;  
  }
+ #sidebarColumn #filterForm .form_row{
+     border: none;
+}
+#sidebarColumn #filterForm .form_row select{
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    padding: 10px;
+    -moz-box-shadow:    inset 0 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 0 10px #000000;
+   box-shadow:         inset 0 0 0 10px #000000;
+}
+#sidebarColumn #filterForm .form_row > label{
+    margin: 0;
+    color: #fff;
+    font-size: 45px;
+    height: 50px;
+}
+#filterColumn{
+    position: relative;
+}
+#filterColumn img{
+    position: absolute;
+}
+#filterColumn img:first-child{
+    top: 20px;
+    right: 1px;
+    z-index: -1;
+}
+#sidebarColumn #WallFilter input + .form_row{
+    height: 126px;
+    background: url(../images/vakken_icon.png) no-repeat 89% 17px;
+    padding-top: 47px;
+}
+#sidebarColumn #WallFilter .form_row{
+    padding-top: 20px;
+    background: url(../images/jaar_icon.png) no-repeat 89% -6px;
+}
+#WallFilter_time_date select{
+    disply: none; 
+}
+#WallFilter_time_date_year{
+    width: 264px;
+    height: 46px;
+    color: #666;
+    float: none;
+    max-height: 100px;
+    font-style: italic;
+    font-size: 1.2em;
+    border: 1px solid #54C2C1;
+}
+#WallFilter_time_date_month, #WallFilter_time_date_day, #WallFilter_time_time{
+    display: none;
+}
+#contentWrapper #filterForm .form_row > select{
+   border: 1px solid #54C2C1;
+   z-index: 2;
+}
+#sidebarColumn #filterForm .form_row{
+    border: none;
+    
+}

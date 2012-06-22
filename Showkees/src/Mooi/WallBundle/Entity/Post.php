@@ -355,4 +355,20 @@ class Post
     {
         return $this->images;
     }
+    
+    private $years;
+    
+    public function setYears($years)
+    {
+        
+        $this->years = $years;
+        
+    }
+    
+    public function getYears()
+    {
+        
+        return $this->years;
+        
+    }
 }

@@ -29,6 +29,13 @@ class ReplyController extends Controller
         $request = $this->getRequest();
         $user = $this->get('security.context')->getToken()->getUser();
         
+        if(!$user->hasWallPermisions($name))
+        {
+            
+            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            
+        }
+        
         $post = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
             ->find($postId);
@@ -155,6 +162,13 @@ class ReplyController extends Controller
         $request = $this->getRequest();
         $user = $this->get('security.context')->getToken()->getUser();
         
+        if(!$user->hasWallPermisions($name))
+        {
+            
+            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            
+        }
+        
         $reply = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
             ->find($replyId);
@@ -236,11 +250,19 @@ class ReplyController extends Controller
     public function deleteAction($replyId)
     {
         
-       $reply = $this->getDoctrine()
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if(!$user->hasWallPermisions($name))
+        {
+            
+            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            
+        }
+        
+        $reply = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
             ->find($replyId);
         
-        $user = $this->get('security.context')->getToken()->getUser();
         $wallOwnerUserName = $reply->getWallOwner()->getUserName();
         
         if($reply != null)
@@ -272,6 +294,13 @@ class ReplyController extends Controller
     {
         
         $user = $this->get('security.context')->getToken()->getUser();
+        
+        if(!$user->hasWallPermisions($name))
+        {
+            
+            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            
+        }
         
         $reply = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
