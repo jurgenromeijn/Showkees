@@ -20,10 +20,8 @@ MooiWallBundle_WallLike:
     defaults: { _controller: MooiWallBundle:Wall:like }
 
 MooiWallBundle_WallFilter:  
-    pattern: /filter/{name}/{subject}/{year}
-    defaults: { _controller: MooiWallBundle:Wall:filter, name: null, subject: null, year: null}
-    requirements:
-        _method:  GET
+    pattern: wall/{name}/filter
+    defaults: { _controller: MooiWallBundle:Wall:filter, name: null}
 #subjects
 MooiWallBundle_SubjectIndex:
     pattern: /subject

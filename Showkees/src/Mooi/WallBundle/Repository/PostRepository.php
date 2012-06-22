@@ -13,20 +13,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
-    
-    
-    public function filterYearsPosts()
-    {
-        
-        $query = $this->getEntityManager()
-                ->createQuery('SELECT p.time
-                                FROM MooiWallBundle:Post p 
-                                ORDER BY p.time');
-        
-        return $query->getResult();
-        
-    }
-    
+
     public function findMainPostsByUser($userName)
     {
 

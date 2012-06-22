@@ -113,6 +113,7 @@ class Post
      */
     public function getTime()
     {
+        
         return $this->time;
     }
 
@@ -378,4 +379,5 @@ class Post
     {
         return $this->images;
     }
+    
 }

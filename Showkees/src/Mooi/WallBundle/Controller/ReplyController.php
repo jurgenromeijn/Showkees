@@ -17,6 +17,7 @@ use Mooi\WallBundle\Entity\Post;
 use Mooi\WallBundle\Entity\Notification;
 use Mooi\WallBundle\Form\Type\WallPostType;
 use Mooi\WallBundle\Form\Type\WallReplyType;
+use Mooi\WallBundle\Form\Type\WallFilterType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -145,12 +146,17 @@ class ReplyController extends Controller
         $newPost = new Post();
         $formPost = $this->createForm(new WallPostType(), $newPost);
         
+        //filter form
+        $filterPost = new Post();
+        $filterForm = $this->createForm(new WallFilterType(), $filterPost);
+        $filterForm = $filterForm->createView();
 
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUsername())),      
                 'formPost'          => $formPost->createView(),
                 'wallOwner'         => $wallOwner,
+                'filterForm'        => $filterForm,
                 'showForm'          => false
         ));
         
@@ -232,7 +238,12 @@ class ReplyController extends Controller
         $newPost = new Post();
         $formPost = $this->createForm(new WallPostType(), $newPost);
         
-
+        
+        //filter form
+        $filterPost = new Post();
+        $filterForm = $this->createForm(new WallFilterType(), $filterPost);
+        $filterForm = $filterForm->createView();
+        
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $wallOwner->getId())),      
@@ -241,6 +252,7 @@ class ReplyController extends Controller
                 'wallOwner'         => $wallOwner,
                 'wallOwnerPosts'    => $wallOwnerPosts,
                 'user'              => $user,
+                'filterForm'        => $filterForm,
                 'showForm'          => false
         ));
         

@@ -1,6 +1,7 @@
 Mooi\WallBundle\Entity\Subject:
     type: entity
     table: subjects
+    repositoryClass: Mooi\WallBundle\Repository\SubjectRepository
     id:
         id:
             type: integer
@@ -15,4 +16,4 @@ Mooi\WallBundle\Entity\Subject:
     oneToMany:
         posts:
             targetEntity: Post
-            mappedBy: posts
+            mappedBy: subject

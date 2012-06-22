@@ -19,10 +19,6 @@ class WallFilterType extends AbstractType
             'label' => 'Jaartal',
             'empty_value' => 'Kies een jaartal'
         ));
-        /*$builder->add('file', 'file', array(
-            'class' => 'Mooi\WallBundle\Entity\Image',
-        ));*/
-        //$builder->add('attachment', 'file');
         
     }
 
@@ -37,7 +33,9 @@ class WallFilterType extends AbstractType
     {
         
         return array(
-            'data_class'    => 'Mooi\WallBundle\Entity\Post'         
+            'data_class'        => 'Mooi\WallBundle\Entity\Post',
+            'csrf_protection'   => FALSE
+
         );
         
     }

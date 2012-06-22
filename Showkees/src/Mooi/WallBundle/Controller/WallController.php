@@ -5,6 +5,7 @@ namespace Mooi\WallBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Mooi\WallBundle\Entity\Post;
 use Mooi\UserBundle\Entity\User;
+use Mooi\WallBundle\Entity\Filter;
 use Mooi\WallBundle\Entity\Notification;
 use Mooi\WallBundle\Form\Type\WallPostType;
 use Mooi\WallBundle\Form\Type\WallReplyType;
@@ -35,17 +36,6 @@ class WallController extends Controller
             throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
             
         }
-        /*else if($subject)
-        {
-            
-            $wallOwner = $this->getDoctrine()
-                ->getRepository('MooiUserBundle:User')
-                ->findOneByUsername($name);
-            $wallOwnerPosts = $this->getDoctrine()
-                ->getRepository('MooiWallBundle:Post')
-                ->findMainPostsByUser($name, $subject);
-            
-        }*/
         else
         {
             
@@ -79,11 +69,7 @@ class WallController extends Controller
         }
         
         //filter form
-        $filterYearsPosts = $this->getDoctrine()
-                ->getRepository('MooiWallBundle:Post')
-                ->filterYearsPosts();
         $filterPost = new Post();
-        $filterPost->setYears($filterYearsPosts);
         $filterForm = $this->createForm(new WallFilterType(), $filterPost);
         $filterForm = $filterForm->createView();
         
@@ -202,12 +188,18 @@ class WallController extends Controller
             
         }
         
+        //filter form
+        $filterPost = new Post();
+        $filterForm = $this->createForm(new WallFilterType(), $filterPost);
+        $filterForm = $filterForm->createView();
+        
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUsername())),      
                 'formPost'          => $postForm->createView(),
                 'wallOwner'         => $wallOwner,
                 'wallOwnerPosts'    => $wallOwnerPosts,
+                'filterForm'        => $filterForm,
                 'showForm'          => true
         ));
         
@@ -284,7 +276,13 @@ class WallController extends Controller
 
         $wallOwnerPosts = $this->getDoctrine()
             ->getRepository('MooiWallBundle:Post')
-            ->findMainPostsByUser($name);
+            ->findMainPostsByUser($user->getUserName());
+        
+        
+        //filter form
+        $filterPost = new Post();
+        $filterForm = $this->createForm(new WallFilterType(), $filterPost);
+        $filterForm = $filterForm->createView();
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
             'formPostTitle'     => 'Wijzig de post',
@@ -292,6 +290,7 @@ class WallController extends Controller
             'formPost'          => $form->createView(),
             'wallOwner'         => $post->getWallOwner(),
             'wallOwnerPosts'    => $wallOwnerPostsExReply,
+            'filterForm'        => $filterForm,
             'showForm'          => true
         ));
         
@@ -302,7 +301,7 @@ class WallController extends Controller
         
         $user = $this->get('security.context')->getToken()->getUser();
         
-        if(!$user->hasWallPermisions($name))
+        if(!$user->hasWallPermisions($user->getUserName()))
         {
             
             throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
@@ -381,9 +380,10 @@ class WallController extends Controller
         
     }
     
-    public function filterAction($name, $subject, $year)
+    public function filterAction($name)
     {
         
+        $request = $this->getRequest();
         $user = $this->get('security.context')->getToken()->getUser();
         
         if($name == null)
@@ -394,34 +394,48 @@ class WallController extends Controller
                 ->findMainPostsByUser($wallOwner->getUserName());
             
         }
-        else if(!$user->hasWallPermisions($name))
+  
+        $filterPost = new Post();
+        $form = $this->createForm(new WallFilterType(), $filterPost);
+        
+        
+        if(!$user->hasWallPermisions($name))
         {
             
             throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
             
         }
-        /*else if($subject)
-        {
-            
-            $wallOwner = $this->getDoctrine()
-                ->getRepository('MooiUserBundle:User')
-                ->findOneByUsername($name);
-            $wallOwnerPosts = $this->getDoctrine()
-                ->getRepository('MooiWallBundle:Post')
-                ->findMainPostsByUser($name, $subject);
-            
-        }*/
         else
         {
+            if(($request->getMethod() == 'POST'))
+            {
+                
+                //TODO validatie
+                $form->bindRequest($request);
+                
+                $filterData = new Post();
+                $filterData->setYears($filterPost->getYears());
+                $filterData->setSubject($filterPost->getSubject());
             
-            $wallOwner = $this->getDoctrine()
+            
+                $wallOwner = $this->getDoctrine()
                 ->getRepository('MooiUserBundle:User')
                 ->findOneByUsername($name);
-            $wallOwnerPosts = $this->getDoctrine()
-                ->getRepository('MooiWallBundle:Post')
-                ->findMainPostsByUser($name);
-            
+                $wallOwnerPosts = $this->getDoctrine()
+                    ->getRepository('MooiWallBundle:Subject')
+                    ->filterByYearAndSubject($name, $filterData->getSubject(), $filterData->getYears());
+                $wallOwnerPosts = $wallOwnerPosts[0]->getPosts();
+                
+            }
+            else
+            {
+                
+                throw $this->createNotFoundException('De filter dient toegepast te worden');
+                
+            }
+
         }
+        
         if($wallOwner == null)
         {
             
@@ -431,6 +445,7 @@ class WallController extends Controller
         //set new post object and create form
         $newPost = new Post();
         $postForm = $this->createForm(new WallPostType(), $newPost);
+        $filterForm = $this->createForm(new WallFilterType(), $filterData);
         
         foreach($wallOwner->getWallOwnerPosts() as $post)
         {
@@ -443,14 +458,7 @@ class WallController extends Controller
             
         }
         
-        //filter form
-        $filterYearsPosts = $this->getDoctrine()
-                ->getRepository('MooiWallBundle:Post')
-                ->filterYearsPosts();
-        $filterPost = new Post();
-        $filterPost->setYears($filterYearsPosts);
-        $filterForm = $this->createForm(new WallFilterType(), $filterPost);
-        $filterForm = $filterForm->createView();
+
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een post toe',
@@ -458,7 +466,7 @@ class WallController extends Controller
                 'formPost'          => $postForm->createView(),
                 'wallOwner'         => $wallOwner,
                 'wallOwnerPosts'    => $wallOwnerPosts,
-                'filterForm'        => $filterForm,
+                'filterForm'        => $filterForm->createView(),
                 'showForm'          => false
         ));
         
