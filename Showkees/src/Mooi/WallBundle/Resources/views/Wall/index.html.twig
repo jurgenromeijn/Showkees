@@ -24,7 +24,11 @@
                     {{ wallOwnerPost.getSender.username }}<span> over </span>{{wallOwnerPost.getSubject}}
                 </h2>
                     <a name="post{{ wallOwnerPost.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'name': wallOwner.username}) }}">
-                        <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost"/>
+                        {% if wallOwnerPost.getSender.avatar != null %}
+                            <img src="{{ wallOwnerPost.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" />
+                        {% else %}
+                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost"/>
+                        {% endif %}
                     </a>
                 <p class="post_text">
                     {{ wallOwnerPost.getText() }}
@@ -93,12 +97,20 @@
                         </ul>
                     {% endif %}
                     {% if reply.getSender.getId != wallOwnerPost.getSender.getId %}
-                        <img class="avatar_left" src="{{ asset('images/reply_avatar.png') }}" alt="reply avatar"/>
+                        {% if reply.getSender.avatar != null %}
+                            <img src="{{ reply.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" class="avatar_left" />
+                        {% else %}
+                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost" class="avatar_left" />
+                        {% endif %}
                         <p class="reply_right">
                             <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
                         </p>
                     {% else %}
-                        <img class="avatar_right" src="{{ asset('images/reply_avatar.png') }}" alt="reply avatar"/>
+                        {% if reply.getSender.avatar != null %}
+                            <img src="{{ reply.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" class="avatar_right" />
+                        {% else %}
+                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost"  class="avatar_right" />
+                        {% endif %}
                         <p class="reply_left">
                             <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
                         </p>

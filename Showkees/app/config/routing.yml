@@ -25,3 +25,8 @@ login_check:
 
 logout:
     pattern:   /logout
+
+#imagine bundle, for resizing our images
+_imagine:
+    resource: .
+    type:     imagine

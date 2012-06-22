@@ -197,8 +197,7 @@ class UserController extends Controller
         
         return $this->render("MooiUserBundle:User:edit.html.twig", array(
             'form' => $form->createView(),
-            'user' => $user,
-            'username' => $username
+            'user' => $user
         ));
         
     }

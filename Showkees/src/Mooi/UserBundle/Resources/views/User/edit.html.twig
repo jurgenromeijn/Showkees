@@ -4,10 +4,10 @@
 
 {% block content %}
     <h1>Instellingen</h1>
-    <form action="{{ path('MooiUserBundle_UserEdit', {'username': username}) }}" method="post" autocomplete="off" {{ form_enctype(form) }}>
+    <form action="{{ path('MooiUserBundle_UserEdit', {'username': user.username}) }}" method="post" autocomplete="off" {{ form_enctype(form) }}>
         <div class="form_row">
             <span class="label">Gebruikersnaam</span>
-            <span class="value">{{ user.getUsername() }}</span>
+            <span class="value">{{ user.username }}</span>
             <div class="clearfix"></div>
         </div>
         {{ form_widget(form) }}
@@ -17,6 +17,9 @@
             <div class="clearfix"></div>
         </div>
     </form>
+    {% if user.avatar != null %}
+        <img src="{{ user.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" />
+    {% endif %}
 {% endblock %}
     
     
