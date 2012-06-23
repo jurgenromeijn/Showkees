@@ -1066,17 +1066,28 @@ table.dataTable th.action
 }
  
  /**
- * Temp css
+ * Henk ongegroepeerde onbekende chaotische css
  */
 
- .post, .reply{
+ .post
+ {
      border-bottom: solid 1px #54C2C1;
-     padding: 15px 10px;
+     padding: 0 10px 10px 0;
      color: #666;
      margin-bottom: 10px;
      position: relative;
      clear: both;
- }
+}
+ 
+.reply{
+     border-bottom: solid 1px #54C2C1;
+     padding: 0 10px 10px 10px;
+     color: #666;
+     margin-bottom: 10px;
+     position: relative;
+     clear: both;
+}
+
  .reply .avatar_left{
      float: left;
  }
@@ -1114,11 +1125,20 @@ table.dataTable th.action
      border-top: solid 1px #54C2C1;
      padding-top: 25px;
  }
- #contentColumn .post > p{
+ 
+ #contentColumn .post > .postInfoWrapper
+ {
      width: 460px;
      float: right;
      margin: 0;
  }
+ 
+#contentColumn .post > .postInfoWrapper > .postWrapper
+{
+    min-height: 70px;
+}
+
+ 
  .reply{
      border-bottom: solid 1px #399;
  }
@@ -1134,10 +1154,11 @@ table.dataTable th.action
     color: #54C2C1; 
     border-bottom: solid 1px #399;
     padding: 5px;
+    margin: 9px !important;
  }
  #contentWrapper .replyMenu{
     position: absolute;
-    bottom: 11px;
+    bottom: 0px;
     right: 13px;
     list-style: none;
  }
@@ -1153,7 +1174,7 @@ table.dataTable th.action
      text-align: right;
  }
  .post h2 span{
-     color: #6666;
+     color: #666666;
  }
  #contentColumn #formMenu + .post .delete_post_button{
     position: absolute;
@@ -1167,26 +1188,50 @@ table.dataTable th.action
  }
  .post a .delete_post_button{
     position: absolute;
-    top: 13px;
-    left: 45px;;
+    top: 0px;
+    left: 45px;
  }
  .post a .edit_post_button{
     position: absolute;
-    top: 13px;
+    top: 0px;
     left: 12px;
  }
- .image_gallery{
-     overflow: hidden;
-     clear: both;
-     padding-top: 10px;
+ 
+ .image_gallery
+ {
+     padding: 11px 9px 11px 11px;
+    background: #fcfff4; /* Old browsers */
+    background: -moz-linear-gradient(left,  #fcfff4 0%, #e9e9ce 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#fcfff4), color-stop(100%,#e9e9ce)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%); /* IE10+ */
+    background: linear-gradient(left,  #fcfff4 0%,#e9e9ce 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#e9e9ce',GradientType=1 ); /* IE6-9 */
+    -webkit-box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
  }
- .image_gallery img{
-     float: left;
-     margin-right: 5px;
-     border: solid 1px #666;
+ 
+ .image_gallery li
+ {
+     list-style: none;
+     display: inline-block;
+     margin: 2px 2px 0px 0;
  }
+ 
+ .image_gallery li a
+ {
+     display: block;
+     padding: 3px;
+     background: #fff;
+     line-height: 0px;
+     border: 1px solid #ddd;
+ }
+
+ 
  .postItems, .replyItems{
-     padding: 11px 0;
+     padding: 11px 0 0 0;
     list-style: none;
  }
  .replyItems{

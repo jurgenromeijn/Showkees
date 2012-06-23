@@ -22,37 +22,49 @@
                 <h2>
                     {{ wallOwnerPost.getSender.username }}<span> over </span>{{wallOwnerPost.getSubject}}
                 </h2>
-                    <a name="post{{ wallOwnerPost.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'name': wallOwner.username}) }}">
-                        {% if wallOwnerPost.getSender.avatar != null %}
-                            <img src="{{ wallOwnerPost.getSender.avatar.webPath | apply_filter('thumbnail') }}" class="avatar" alt="avatar" />
-                        {% else %}
-                            <img src="{{ asset('images/mainPost_avatar.png') }}" class="avatar" alt="mainPost"/>
-                        {% endif %}
-                    </a>
-                <p class="post_text">
-                    {{ wallOwnerPost.getText() }}
-                </p>
-                {% if wallOwnerPost.images|length > 0 %}
-                <div class="image_gallery">
-                    {% for image in wallOwnerPost.images %}
-                        <a href="{{ asset(image.webPath) }}" rel="lightbox[{{ wallOwnerPost.id }}]">
-                            <img src="{{ image.webPath | apply_filter('thumbnail') }}" alt="{{ image.name }}" />
-                        </a>
-                    {% endfor %}
-                </div>
-                {% endif %}
-                <ul class="postItems">
-                    <li>
-                        <a class="like_button" href="{{ path('MooiWallBundle_WallLike', {'postId' : wallOwnerPost.getId()}) }}">Vind ik goed</a>
-                        <p class="likes">
-                            {% if wallOwnerPost.getLikes() %}
-                                <span>{{ wallOwnerPost.getLikes() }}</span> likes
-                            {% endif %}    
+                <a name="post{{ wallOwnerPost.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'name': wallOwner.username}) }}">
+                    {% if wallOwnerPost.getSender.avatar != null %}
+                        <img src="{{ wallOwnerPost.getSender.avatar.webPath | apply_filter('thumbnail') }}" class="avatar" alt="avatar" />
+                    {% else %}
+                        <img src="{{ asset('images/mainPost_avatar.png') }}" class="avatar" alt="mainPost"/>
+                    {% endif %}
+                </a>
+                <div class="postInfoWrapper">
+                    <div class="postWrapper">
+                        <p class="post_text">
+                            {{ wallOwnerPost.getText()|nl2br }}
                         </p>
-                    </li>
-                    <li><a class="commentButton" href="{{ wallOwnerPost.getId() }}">Reageer</a></li>
-                    <li>{{ wallOwnerPost.time|date('d-m-Y') }}</li>
-                </ul>
+                        {% if wallOwnerPost.images|length > 0 %}
+                        <div class="image_gallery">
+                            <h3>Afbeeldingen</h3>
+                            <ul>
+                                {% spaceless %}
+                            {% for image in wallOwnerPost.images %}
+                                <li>
+                                    <a href="{{ asset(image.webPath) }}" rel="lightbox[{{ wallOwnerPost.id }}]">
+                                        <img src="{{ image.webPath | apply_filter('thumbnail') }}" alt="{{ image.name }}" />
+                                    </a>
+                                </li>
+                            {% endfor %}
+                                {% endspaceless %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <ul class="postItems">
+                        <li>
+                            <a class="like_button" href="{{ path('MooiWallBundle_WallLike', {'postId' : wallOwnerPost.getId()}) }}">Vind ik goed</a>
+                            <p class="likes">
+                                {% if wallOwnerPost.getLikes() %}
+                                    (<span>{{ wallOwnerPost.getLikes() }}</span>)
+                                {% endif %}    
+                            </p>
+                        </li>
+                        <li><a class="commentButton" href="{{ wallOwnerPost.getId() }}">Reageer</a></li>
+                        <li>{{ wallOwnerPost.time|date('d-m-Y') }}</li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
                 {% if wallOwnerPost.getWallOwner().getId() == wallOwner.id %}
                 <a href="{{ path('MooiWallBundle_WallEdit', {'postId': wallOwnerPost.getId() }) }}">
                     <img class="edit_post_button" src="{{ asset('images/edit_post_button.png') }}" alt="" />
