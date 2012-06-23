@@ -28,10 +28,6 @@ Mooi\UserBundle\Entity\User:
         gender:
             type: string
             columnDefinition: ENUM('man', 'vrouw')
-        email:
-            type: string
-            length: 150
-            nullable: true
         password:
             type: string
             length: 100

@@ -12,12 +12,11 @@
 {% block content %}
         <div id="content_left">
             <div id="formMenu" {% if showForm %} class="formBool" {% endif %}>
-                <p
+                <p>
                     <a class="add_post_button" href="{{ path('MooiWallBundle_WallAdd', {'name': wallOwner.username}) }}">Voeg een post toe</a>
                 </p>
                 {% include 'MooiWallBundle:Wall:postForm.html.twig' %}
             </div>
-            
             {% for wallOwnerPost in wallOwnerPosts %}
             <div class="post">
                 <h2>
@@ -102,9 +101,9 @@
                     {% endif %}
                     {% if reply.getSender.getId != wallOwnerPost.getSender.getId %}
                         {% if reply.getSender.avatar != null %}
-                            <img src="{{ reply.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" class="avatar_left" />
+                            <img src="{{ reply.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" class="avatar_left avatar" />
                         {% else %}
-                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="mainPost" class="avatar_left avatar" />
+                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="avatar" class="avatar_left avatar" />
                         {% endif %}
                         <p class="reply_right">
                             <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
@@ -113,6 +112,7 @@
                         {% if reply.getSender.avatar != null %}
                             <img src="{{ reply.getSender.avatar.webPath | apply_filter('thumbnail') }}" alt="avatar" class="avatar_right avatar" />
                         {% else %}
+                            <img src="{{ asset('images/mainPost_avatar.png') }}" alt="avatar" class="avatar_right avatar" />
                         {% endif %}
                         <p class="reply_left">
                             <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}

@@ -72,10 +72,6 @@ class UserType extends AbstractType
             
         }
 
-        $builder->add('email', 'email', array(
-            'label'    => 'Emailadres',
-            'required' => false
-        ));
         if($this->passWordRequired)
         {
             $builder->add('password', 'repeated', array (

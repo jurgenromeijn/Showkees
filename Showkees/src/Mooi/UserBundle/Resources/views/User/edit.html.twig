@@ -10,7 +10,31 @@
             <span class="value">{{ user.username }}</span>
             <div class="clearfix"></div>
         </div>
-        {{ form_widget(form) }}
+        {{ form_row(form.first_name) }}
+        {{ form_row(form.preposition) }}
+        {{ form_row(form.last_name) }}
+        {{ form_row(form.gender) }}
+        {% if form.role is defined %}
+            {{ form_row(form.role) }}
+        {% endif %}
+        {{ form_row(form.password) }}
+        <div class="form_row" id="formAvatar">
+            <div id="avatarLabelAndErrors">
+                <label>Avatar</label>
+                {{ form_errors(form.avatar.file) }}
+            </div>
+            <div id="newAvatar">
+                <div><label for="user_avatar_file">Nieuwe avatar</label></div>
+                <div><p class="avatar"><span>?</span></p></div>
+                <div>{{ form_widget(form.avatar.file) }}</div>
+            </div>
+            <div id="currentAvatar">
+                <h4>Huidige avatar</h4>
+                <div><img class="avatar" src="{{ currentAvatar|apply_filter('thumbnail') }}" alt="huidige avatar" /></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        {{ form_rest(form) }}
         <div class="button">
             <input type="submit" class="button" value="Opslaan" />
             <p>Velden met een * zijn verplicht.</p>

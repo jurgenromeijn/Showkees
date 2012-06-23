@@ -16,7 +16,6 @@ class User implements UserInterface, \Serializable
     protected $first_name;
     protected $last_name;
     protected $preposition;
-    protected $email;
     protected $salt;
     protected $password;
     protected $is_active;
@@ -140,26 +139,6 @@ class User implements UserInterface, \Serializable
         return $this->gender;
     }
     
-    /**
-     * Set email
-     *
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
     /**
      * Set password
      *

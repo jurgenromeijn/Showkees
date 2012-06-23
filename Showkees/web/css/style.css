@@ -619,7 +619,7 @@ body
     width: 300px;    
 }
 
-#contentWrapper .form_row>input, #contentWrapper .form_row>select, #contentWrapper .form_row>textarea
+#contentWrapper .form_row>input, #contentWrapper .form_row>select, #contentWrapper .form_row>textarea, #contentWrapper #formAvatar input
 {
     padding: 10px 0;
     border: 5px solid #54C2C1;
@@ -707,6 +707,85 @@ input.button, .add_post_button
     color: #399;
     font-weight: bold;
 }
+
+    /**
+    * Avatar form part
+    */
+    #contentWrapper #formAvatar
+    {
+        padding: 8px 0;
+    }
+    
+    #contentWrapper #formAvatar *
+    {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    #contentWrapper #formAvatar #avatarLabelAndErrors
+    {
+        float: left;
+    }
+    
+    #contentWrapper form #formAvatar ul.errors
+    {
+        margin-left: 20px;
+    }
+    
+    #contentWrapper #formAvatar .avatar
+    {
+        width: 100px;
+        height: 100px;
+        -moz-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(0deg, 0deg);
+        -webkit-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(0deg, 0deg);
+        -o-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(0deg, 0deg);
+        -ms-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(0deg, 0deg);
+        transform: scale(1) rotate(0deg) translate(0px, 0px) skew(0deg, 0deg);
+        padding: 10px 10px 20px 10px;
+        display: inline-block;
+        margin: 8px 0;
+    }
+
+    #contentWrapper #formAvatar #currentAvatar
+    {
+        float: right;
+        text-align: center;
+    }
+
+    #contentWrapper #formAvatar h4, #contentWrapper #formAvatar label
+    {
+        font-size: 1.2em;    
+        padding-top: 8px;
+        display: inline-block;
+        font-weight: normal;
+    }
+
+    #contentWrapper #formAvatar .avatar span
+    {
+        display: block;
+        background: #fff;
+        border: 1px solid #ddd;
+        color: #ddd;
+        font-size: 100px;
+        text-align: center;
+        line-height: 100px;
+        height: 100px;
+    }
+    
+    #contentWrapper #formAvatar #newAvatar
+    {
+        text-align: center;
+        float: right;
+        border-left: 2px solid #54C2C1;
+        padding-left: 20px;
+        margin-left: 20px;
+   }
+    
+    #contentWrapper #formAvatar input
+    {
+        float: none;
+        width: 114px;
+    }
 
 /**
  * Sidebar forms

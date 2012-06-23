@@ -124,6 +124,8 @@ class UserController extends Controller
             
         }
         
+        $currentAvatar = $user->getAvatar()->getWebPath();
+        
         if($user == null)
         {
             
@@ -133,10 +135,10 @@ class UserController extends Controller
         elseif($securityUser->getUsername() == $user->getUsername())
         {
             
-            $ownAccount = true;            
+            $ownAccount = true;
             
         }
-        
+                
         $form = $this->createForm(new UserType($securityUser, !$ownAccount, false, false, true), $user, array(
             "validation_groups" => array("Default", "update")
         ));
@@ -210,8 +212,9 @@ class UserController extends Controller
         }
         
         return $this->render("MooiUserBundle:User:edit.html.twig", array(
-            'form' => $form->createView(),
-            'user' => $user
+            'form'          => $form->createView(),
+            'user'          => $user,
+            'currentAvatar' => $currentAvatar
         ));
         
     }
