@@ -4,10 +4,10 @@ $(document).ready(function()
 {
     
     
-    collectionHolder = $('div#WallPost_images');
-    collectionHolder.append('<a href="#" class="addImageLink">Voeg een afbeelding toe</a>');
+    collectionHolder = $('#postFormImageList');
+    collectionHolder.append('<li class="add"><a href="#" class="addImageLink">+ Voeg nog een afbeelding toe</a></li>');
     
-    $("div#WallPost_images .addImageLink").click(addImage);
+    $("#postFormImageList .addImageLink").click(addImage);
 
 });
 
@@ -21,5 +21,5 @@ function addImage(e)
     // instead be a number based on the current collection's length.
     var newForm = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
 
-    $("div#WallPost_images .addImageLink").before(newForm);
+    $("#postFormImageList .addImageLink").before(newForm);
 }

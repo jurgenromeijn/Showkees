@@ -5,6 +5,7 @@ namespace Mooi\WallBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Mooi\WallBundle\Entity\Post;
 use Mooi\UserBundle\Entity\User;
+use Mooi\WallBundle\Entity\Image;
 use Mooi\WallBundle\Entity\Filter;
 use Mooi\WallBundle\Entity\Notification;
 use Mooi\WallBundle\Form\Type\WallPostType;
@@ -55,6 +56,7 @@ class WallController extends Controller
         }
         //set new post object and create form
         $newPost = new Post();
+        $newPost->addImage(new Image());
         $postForm = $this->createForm(new WallPostType(), $newPost);
         
         foreach($wallOwner->getWallOwnerPosts() as $post)

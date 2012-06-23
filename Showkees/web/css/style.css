@@ -592,7 +592,7 @@ body
 /**
  * Contentforms
  */
-#contentWrapper form .form_row
+#contentWrapper form>.form_row, #contentWrapper form>div>.form_row
 {
     border-bottom: 1px #ddd dotted;
     padding: 10px 0;
@@ -651,10 +651,8 @@ body
     font-size: 1.2em;    
 }
 
-#contentWrapper form>div>div textArea{
-    width: 468px;
+#contentWrapper form textArea{
     height: 210px;
-    padding-top: 10px;
 }
 #contentWrapper form>div>div textarea + label{
     display: none;
@@ -1153,7 +1151,7 @@ table.dataTable th.action
     color: #54C2C1; 
     border-bottom: solid 1px #399;
     padding: 5px;
-    margin: 9px !important;
+    margin-bottom: 10px !important;
  }
  #contentWrapper .replyMenu{
     position: absolute;

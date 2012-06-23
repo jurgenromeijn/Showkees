@@ -3,10 +3,18 @@
 {% block formPost %}
     <form id="postForm" action="{{ formPostAction }}" method="post" autocomplete="off" {{ form_enctype(formPost) }} >
         <h1>{{ formPostTitle }}</h1>
+        <div class="form_row"></div>
+        {{ form_row(formPost.text) }}
+        {{ form_row(formPost.subject) }}
         <div class="form_row">
-            <div class="clearfix"></div>
+            {{ form_label(formPost.images) }}
+            <ul id="postFormImageList" data-prototype="{{ form_widget(formPost.images.get('prototype')) | e }}">
+            {% for image in formPost.images %}
+                <li>{{ form_row(image.file) }}</li>
+            {% endfor %}
+            </ul>
         </div>
-        {{ form_widget(formPost) }}
+        {{ form_rest(formPost) }}
         <div class="button">
             <input type="submit" class="button" value="Plaatsen" />
             <div class="clearfix"></div>

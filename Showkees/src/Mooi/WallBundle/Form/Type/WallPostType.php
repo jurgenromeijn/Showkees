@@ -18,6 +18,7 @@ class WallPostType extends AbstractType
             'empty_value' => 'Kies een vak'
         ));
         $builder->add('images', 'collection', array(
+            'label' => 'Afbeeldingen',
             'type' => new ImageType(),
             'allow_add' => true,
             'by_reference' => false
