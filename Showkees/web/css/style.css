@@ -779,6 +779,7 @@ input.button, .add_post_button
         border-left: 2px solid #54C2C1;
         padding-left: 20px;
         margin-left: 20px;
+        overflow: hidden;
    }
     
     #contentWrapper #formAvatar input
