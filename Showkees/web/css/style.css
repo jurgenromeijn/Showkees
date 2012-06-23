@@ -1135,9 +1135,8 @@ table.dataTable th.action
  
 #contentColumn .post > .postInfoWrapper > .postWrapper
 {
-    min-height: 70px;
+    min-height: 90px;
 }
-
  
  .reply{
      border-bottom: solid 1px #399;

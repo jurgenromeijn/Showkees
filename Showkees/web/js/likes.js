@@ -20,7 +20,9 @@ function likePost()
     
     var amountLikes = likesView.children('span').text();
     $.post(url);
-        
+    
+    alert(url);
+    
     amountLikes++;
     likesView.children('span').text(amountLikes);
     
