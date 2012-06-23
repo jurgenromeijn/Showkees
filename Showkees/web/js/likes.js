@@ -14,7 +14,7 @@ function likePost()
     if(likesView.children().size() == 0)
     {
         
-        likesView.html('<span>0</span> likes');
+        likesView.html('(<span>0</span>)');
         
     }
     
