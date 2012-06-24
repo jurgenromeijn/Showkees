@@ -64,10 +64,11 @@
                             <li class="gray">Grijs</li>
                         </ul>
                         <div id="userOptions">
-                            <a href="{{ path('index') }}">Opties</a>
+                            <a>Menu</a>
                             <ul>
-                                <li><a href="{{ path('logout') }}">Uitloggen</a></li>
-                                <li><a href="{{ path('MooiUserBundle_UserEdit') }}">Instelligen</a></li>
+                                {% if not is_granted('ROLE_TEACHER') %}
+                                    <li><a href="{{ path('index') }}">Mijn Showkees</a></li>
+                                {% endif %}
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <li><a href="{{ path('MooiWallBundle_SubjectIndex') }}">Vakken</a></li>
                                     <li><a href="{{ path('MooiUserBundle_TeacherOverview') }}">Docenten overzicht</a></li>
@@ -80,6 +81,8 @@
                                 {% elseif is_granted('ROLE_TEACHER') %}
                                     <li><a href="{{ path('MooiUserBundle_UserCreate') }}">Leerling Toevoegen</a></li>
                                 {% endif%}
+                                <li><a href="{{ path('MooiUserBundle_UserEdit') }}">Instelligen</a></li>
+                                <li><a href="{{ path('logout') }}">Uitloggen</a></li>
                             </ul>
                         </div>
                         {% include 'MooiWallBundle:Notification:area.html.twig' %}
