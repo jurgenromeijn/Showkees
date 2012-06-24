@@ -533,6 +533,13 @@ body
     font-size: 0.8em;
 }
 
+#notificationArea>div>div li a
+{
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+
 #notificationArea>div>div li p.quote
 {
     font-style: italic;
@@ -906,7 +913,7 @@ table.dataTable th.action
 /**
  * Avatar
  */
-.avatar
+.avatar, .image
 {
     padding: 10px 10px 20px 10px;
     background-color: #fff;

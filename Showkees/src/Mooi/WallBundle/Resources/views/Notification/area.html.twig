@@ -10,8 +10,10 @@
             <ul>
                 {% for notification in app.user.notifications(5) %}
                 <li>
-                    <p>{{ notification.about.fullname }} {{ notification.message }}</p>
-                    <p class="quote">&quot;{{ notification.quote }}&quot;</p>
+                    <a href="{{ path('MooiWallBundle_WallIndex', {'name': notification.about.username}) }}#post{{ notification.post.id }}">
+                        <p>{{ notification.about.fullname }} {{ notification.message }}</p>
+                        <p class="quote">&quot;{{ notification.quote }}&quot;</p>
+                    </a>
                 </li>
                 {% endfor %}
             </ul>
