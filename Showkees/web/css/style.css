@@ -42,7 +42,7 @@ body
         color: #339933;
     }
     
-    body.green #sidebarColumn #studentSearchField
+    body.green #sidebarColumn #studentSearchField, body.green .replies h2, body.green .reply
     {
         border-color: #339933;
     }
@@ -58,7 +58,10 @@ body
     }
     
     body.green #contentWrapper .form_row>input, body.green #contentWrapper .form_row>select, body.green #contentWrapper .form_row>textarea, 
-    body.green #notificationArea>div>div, body.green #notificationArea>div>div h4, body.green #notificationArea>div>div li
+    body.green #notificationArea>div>div, body.green #notificationArea>div>div h4, body.green #notificationArea>div>div li,
+    body.green #contentWrapper .formImages .newImage, body.green #contentWrapper #formAvatar #newAvatar, body.green #contentWrapper .formImages .newImage,
+    body.green #contentWrapper #formAvatar input, body.green #contentWrapper .formImages input,
+    body.green .post, body.green #contentColumn #formMenu + .post h2
     {
         border-color: #46bd48;
     }
@@ -86,7 +89,7 @@ body
         color: #999900;
     }
     
-    body.yellow #sidebarColumn #studentSearchField
+    body.yellow #sidebarColumn #studentSearchField, body.yellow .replies h2, body.yellow .reply
     {
         border-color: #999900;
     }
@@ -102,7 +105,10 @@ body
     }
     
     body.yellow #contentWrapper .form_row>input, body.yellow #contentWrapper .form_row>select, body.yellow #contentWrapper .form_row>textarea, 
-    body.yellow #notificationArea>div>div, body.yellow #notificationArea>div>div h4, body.yellow #notificationArea>div>div li
+    body.yellow #notificationArea>div>div, body.yellow #notificationArea>div>div h4, body.yellow #notificationArea>div>div li,
+    body.yellow #contentWrapper .formImages .newImage, body.yellow #contentWrapper #formAvatar #newAvatar, body.yellow #contentWrapper .formImages .newImage,
+    body.yellow #contentWrapper #formAvatar input, body.yellow #contentWrapper .formImages input,
+    body.yellow .post, body.yellow #contentColumn #formMenu + .post h2
     {
         border-color: #ebde00;
     }
@@ -130,7 +136,7 @@ body
         color: #cc6600;
     }
     
-    body.orange #sidebarColumn #studentSearchField
+    body.orange #sidebarColumn #studentSearchField, body.orange .replies h2, body.orange .reply
     {
         border-color: #cc6600;
     }
@@ -146,7 +152,10 @@ body
     }
     
     body.orange #contentWrapper .form_row>input, body.orange #contentWrapper .form_row>select, body.orange #contentWrapper .form_row>textarea, 
-    body.orange #notificationArea>div>div, body.orange #notificationArea>div>div h4, body.orange #notificationArea>div>div li
+    body.orange #notificationArea>div>div, body.orange #notificationArea>div>div h4, body.orange #notificationArea>div>div li,
+    body.orange #contentWrapper .formImages .newImage, body.orange #contentWrapper #formAvatar #newAvatar, body.orange #contentWrapper .formImages .newImage,
+    body.orange #contentWrapper #formAvatar input, body.orange #contentWrapper .formImages input,
+    body.orange .post, body.orange #contentColumn #formMenu + .post h2
     {
         border-color: #eb8500;
     }
@@ -174,7 +183,7 @@ body
         color: #cc3333;
     }
     
-    body.red #sidebarColumn #studentSearchField
+    body.red #sidebarColumn #studentSearchField, body.red .replies h2, body.red .reply
     {
         border-color: #cc3333;
     }
@@ -190,7 +199,10 @@ body
     }
     
     body.red #contentWrapper .form_row>input, body.red #contentWrapper .form_row>select, body.red #contentWrapper .form_row>textarea, 
-    body.red #notificationArea>div>div, body.red #notificationArea>div>div h4, body.red #notificationArea>div>div li
+    body.red #notificationArea>div>div, body.red #notificationArea>div>div h4, body.red #notificationArea>div>div li,
+    body.red #contentWrapper .formImages .newImage, body.red #contentWrapper #formAvatar #newAvatar, body.red #contentWrapper .formImages .newImage,
+    body.red #contentWrapper #formAvatar input, body.red #contentWrapper .formImages input,
+    body.red .post, body.red #contentColumn #formMenu + .post h2
     {
         border-color: #df2f2f;
 
@@ -219,7 +231,7 @@ body
         color: #993399;
     }
     
-    body.purple #sidebarColumn #studentSearchField
+    body.purple #sidebarColumn #studentSearchField, body.purple .replies h2, body.purple .reply
     {
         border-color: #993399;
     }
@@ -235,7 +247,10 @@ body
     }
     
     body.purple #contentWrapper .form_row>input, body.purple #contentWrapper .form_row>select, body.purple #contentWrapper .form_row>textarea, 
-    body.purple #notificationArea>div>div, body.purple #notificationArea>div>div h4, body.purple #notificationArea>div>div li
+    body.purple #notificationArea>div>div, body.purple #notificationArea>div>div h4, body.purple #notificationArea>div>div li,
+    body.purple #contentWrapper .formImages .newImage, body.purple #contentWrapper #formAvatar #newAvatar, body.purple #contentWrapper .formImages .newImage,
+    body.purple #contentWrapper #formAvatar input, body.purple #contentWrapper .formImages input,
+    body.purple .post, body.purple #contentColumn #formMenu + .post h2
     {
         border-color: #a546b6;
 
@@ -264,7 +279,7 @@ body
         color: #cc6699;
     }
     
-    body.pink #sidebarColumn #studentSearchField
+    body.pink #sidebarColumn #studentSearchField, body.pink .replies h2, body.pink .reply
     {
         border-color: #cc6699;
     }
@@ -280,7 +295,10 @@ body
     }
     
     body.pink #contentWrapper .form_row>input, body.pink #contentWrapper .form_row>select, body.pink #contentWrapper .form_row>textarea, 
-    body.pink #notificationArea>div>div, body.pink #notificationArea>div>div h4, body.pink #notificationArea>div>div li
+    body.pink #notificationArea>div>div, body.pink #notificationArea>div>div h4, body.pink #notificationArea>div>div li,
+    body.pink #contentWrapper .formImages .newImage, body.pink #contentWrapper #formAvatar #newAvatar, body.pink #contentWrapper .formImages .newImage,
+    body.pink #contentWrapper #formAvatar input, body.pink #contentWrapper .formImages input,
+    body.pink .post, body.pink #contentColumn #formMenu + .post h2
     {
         border-color: #ff99cc;
 
@@ -309,7 +327,7 @@ body
         color: #333333;
     }
     
-    body.gray #sidebarColumn #studentSearchField
+    body.gray #sidebarColumn #studentSearchField, body.gray .replies h2, body.gray .reply
     {
         border-color: #333333;
     }
@@ -325,7 +343,10 @@ body
     }
     
     body.gray #contentWrapper .form_row>input, body.gray #contentWrapper .form_row>select, body.gray #contentWrapper .form_row>textarea, 
-    body.gray #notificationArea>div>div, body.gray #notificationArea>div>div h4, body.gray #notificationArea>div>div li
+    body.gray #notificationArea>div>div, body.gray #notificationArea>div>div h4, body.gray #notificationArea>div>div li,
+    body.gray #contentWrapper .formImages .newImage, body.gray #contentWrapper #formAvatar #newAvatar, body.gray #contentWrapper .formImages .newImage,
+    body.gray #contentWrapper #formAvatar input, body.gray #contentWrapper .formImages input,
+    body.gray .post, body.gray #contentColumn #formMenu + .post h2
     {
         border-color: #666666;
 
