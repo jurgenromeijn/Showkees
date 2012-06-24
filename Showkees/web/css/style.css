@@ -619,7 +619,7 @@ body
     width: 300px;    
 }
 
-#contentWrapper .form_row>input, #contentWrapper .form_row>select, #contentWrapper .form_row>textarea, #contentWrapper #formAvatar input
+#contentWrapper .form_row>input, #contentWrapper .form_row>select, #contentWrapper .form_row>textarea, #contentWrapper #formAvatar input, #contentWrapper .formImages input
 {
     padding: 10px 0;
     border: 5px solid #54C2C1;
@@ -704,33 +704,55 @@ input.button, .add_post_button
 {
     color: #399;
     font-weight: bold;
+    cursor: pointer;
 }
 
     /**
-    * Avatar form part
+    * File form part
     */
-    #contentWrapper #formAvatar
+    #contentWrapper #formAvatar, #contentWrapper .formImages
     {
         padding: 8px 0;
     }
     
-    #contentWrapper #formAvatar *
+    #contentWrapper #formAvatar *, #contentWrapper .formImages *
     {
         margin: 0px;
         padding: 0px;
     }
     
-    #contentWrapper #formAvatar #avatarLabelAndErrors
+    #contentWrapper #formAvatar #avatarLabelAndErrors, #contentWrapper .formImages #imageLabelAndErrors
     {
         float: left;
     }
+    
+    #contentWrapper .formImages #postFormImageList
+    {
+        float: right;
+        list-style: none;
+    }
+    
+    #contentWrapper .formImages #postFormImageList li
+    {
+        margin-bottom: 10px;
+    }
+        
+    #contentWrapper .formImages #postFormImageList li.add a
+    {
+        text-align: right;
+        display: block;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
     
     #contentWrapper form #formAvatar ul.errors
     {
         margin-left: 20px;
     }
     
-    #contentWrapper #formAvatar .avatar
+    #contentWrapper #formAvatar .avatar, #contentWrapper .formImages .image
     {
         width: 100px;
         height: 100px;
@@ -744,13 +766,15 @@ input.button, .add_post_button
         margin: 8px 0;
     }
 
-    #contentWrapper #formAvatar #currentAvatar
+    #contentWrapper #formAvatar #currentAvatar, 
+    #contentWrapper .formImages .currentImage
     {
         float: right;
         text-align: center;
     }
 
-    #contentWrapper #formAvatar h4, #contentWrapper #formAvatar label
+    #contentWrapper #formAvatar h4, #contentWrapper #formAvatar label, 
+    #contentWrapper .formImages label, #contentWrapper .formImages h4
     {
         font-size: 1.2em;    
         padding-top: 8px;
@@ -758,7 +782,7 @@ input.button, .add_post_button
         font-weight: normal;
     }
 
-    #contentWrapper #formAvatar .avatar span
+    #contentWrapper #formAvatar .avatar span, #contentWrapper .formImages .image
     {
         display: block;
         background: #fff;
@@ -770,7 +794,12 @@ input.button, .add_post_button
         height: 100px;
     }
     
-    #contentWrapper #formAvatar #newAvatar
+    #contentWrapper .formImages .image
+    {
+        display: inline-block;
+    }
+    
+    #contentWrapper #formAvatar #newAvatar, #contentWrapper .formImages .newImage
     {
         text-align: center;
         float: right;
@@ -780,7 +809,7 @@ input.button, .add_post_button
         overflow: hidden;
    }
     
-    #contentWrapper #formAvatar input
+    #contentWrapper #formAvatar input, #contentWrapper .formImages input
     {
         float: none;
         width: 114px;
@@ -1225,7 +1254,6 @@ table.dataTable th.action
      line-height: 0px;
      border: 1px solid #ddd;
  }
-
  
  .postItems, .replyItems{
      padding: 11px 0 0 0;

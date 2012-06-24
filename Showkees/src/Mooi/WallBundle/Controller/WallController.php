@@ -56,9 +56,8 @@ class WallController extends Controller
         }
         //set new post object and create form
         $newPost = new Post();
-        $newPost->addImage(new Image());
         $postForm = $this->createForm(new WallPostType(), $newPost);
-        
+                
         foreach($wallOwner->getWallOwnerPosts() as $post)
         {
             
@@ -500,6 +499,7 @@ class WallController extends Controller
         }
         //set new post object and create form
         $newPost = new Post();
+        
         $postForm = $this->createForm(new WallPostType(), $newPost);
         $filterForm = $this->createForm(new WallFilterType(), $filterData);
         

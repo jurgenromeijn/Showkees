@@ -1,20 +1,57 @@
 {% form_theme formPost '::baseForm.html.twig' %}
 
+{% set imagePrototype %}
+    <li>
+        <div class="newImage">
+            <div>{{ form_label(formPost.images.get('prototype').file) }}</div>
+            <div><p class="image"><span>?</span></p></div>
+            <div>{{ form_widget(formPost.images.get('prototype').file) }}</div>
+        </div>
+        <div class="currentImage">
+            <h4>Huidige afbeelding</h4>
+            <div><p class="image"><span>?</span></p></div>
+            <div><a class="deleteImage">Verwijderen</a></div>
+        </div>
+        <div class="clearfix"></div>
+    </li>
+{% endset %}
+
 {% block formPost %}
     <form id="postForm" action="{{ formPostAction }}" method="post" autocomplete="off" {{ form_enctype(formPost) }} >
         <h1>{{ formPostTitle }}</h1>
         <div class="form_row"></div>
         {{ form_row(formPost.text) }}
         {{ form_row(formPost.subject) }}
-        <div class="form_row">
-            {{ form_label(formPost.images) }}
-            <ul id="postFormImageList" data-prototype="{{ form_widget(formPost.images.get('prototype')) | e }}">
+        <div class="form_row formImages">
+            <div id="imageLabelAndErrors">
+                {{ form_label(formPost.images) }}
+            </div>
+            <ul id="postFormImageList" data-prototype="{{ imagePrototype|escape }}">
             {% for image in formPost.images %}
-                <li>{{ form_row(image.file) }}</li>
+                <li>
+                    <div class="newImage">
+                        <div>{{ form_label(image.file) }}</div>
+                        <div><p class="image"><span>?</span></p></div>
+                        <div>{{ form_widget(image.file) }}</div>
+                    </div>
+                    <div class="currentImage">
+                        <h4>Huidige afbeelding</h4>
+                        <div>                            
+                            {% if image.vars.value.id != null %}
+                                <img src="{{ image.vars.value.webPath|apply_filter('thumbnail') }}" class="image" /> 
+                            {% else %}
+                                <p class="image"><span>?</span></p>
+                            {% endif %}
+                        </div>
+                        <div><a class="deleteImage">Verwijderen</a></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
             {% endfor %}
             </ul>
+            <div class="clearfix"></div>
         </div>
-        {{ form_rest(formPost) }}
+        {{ form_row(formPost._token) }}
         <div class="button">
             <input type="submit" class="button" value="Plaatsen" />
             <div class="clearfix"></div>
