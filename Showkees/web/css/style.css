@@ -736,7 +736,13 @@ input.button, .add_post_button
     {
         margin-bottom: 10px;
     }
-        
+    
+    #postFormImageList ul.errors
+    {
+        margin-top: 5px;
+        list-style: disc;
+    }
+    
     #contentWrapper .formImages #postFormImageList li.add a
     {
         text-align: right;

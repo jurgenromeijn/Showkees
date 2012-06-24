@@ -21,6 +21,7 @@ class WallPostType extends AbstractType
             'label' => 'Afbeeldingen',
             'type' => new ImageType(),
             'allow_add' => true,
+            'allow_delete' => true,
             'by_reference' => false
         ));
         

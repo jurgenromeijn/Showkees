@@ -38,14 +38,16 @@
                         <h4>Huidige afbeelding</h4>
                         <div>                            
                             {% if image.vars.value.id != null %}
-                                <img src="{{ image.vars.value.webPath|apply_filter('thumbnail') }}" class="image" /> 
+                                <a href="{{ asset(image.vars.value.webPath) }}" rel="lightbox[form]"><img src="{{ image.vars.value.webPath|apply_filter('thumbnail') }}" class="image" /></a>
                             {% else %}
                                 <p class="image"><span>?</span></p>
                             {% endif %}
                         </div>
                         <div><a class="deleteImage">Verwijderen</a></div>
                     </div>
-                    <div class="clearfix"></div>
+                    <div class="clearfix">
+                        {{ form_errors(image.file) }}
+                    </div>
                 </li>
             {% endfor %}
             </ul>
