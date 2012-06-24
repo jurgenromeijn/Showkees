@@ -64,7 +64,3 @@ MooiWallBundle_NotificationOverview:
 MooiWallBundle_NotificationMarkAsRead:
     pattern: /notifications/mark
     defaults: { _controller: MooiWallBundle:Notification:markAsRead }
-#file upload
-MooiWallBundle_WallFileUpload:
-    pattern: /wall/file/upload
-    defaults: { _controller: MooiWallBundle:File:upload }
