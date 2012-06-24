@@ -34,7 +34,7 @@ class ReplyController extends Controller
         if(!$user->hasWallPermisions($user->getUsername()))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze wall te bezoeken.');
             
         }
         
@@ -46,7 +46,7 @@ class ReplyController extends Controller
         if($post == null)
         {
             
-            throw $this->createNotFoundException('Deze post kon niet worden gevonden');
+            throw $this->createNotFoundException('Dit bericht kon niet worden gevonden.');
         
         }
         
@@ -110,7 +110,7 @@ class ReplyController extends Controller
                 $entityManager->persist($post);
                 $entityManager->flush();
                 
-                $this->get("session")->setFlash('notice', 'Je comment is toegevoegd.');
+                $this->get("session")->setFlash('notice', 'Je reactie is toegevoegd.');
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                     'name'  => $wallOwner->getUsername()
@@ -153,7 +153,7 @@ class ReplyController extends Controller
         $filterForm = $filterForm->createView();
 
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
-                'formPostTitle'     => 'Voeg een post toe',
+                'formPostTitle'     => 'Voeg een bericht toe',
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUsername())),      
                 'formPost'          => $formPost->createView(),
                 'wallOwner'         => $wallOwner,
@@ -172,7 +172,7 @@ class ReplyController extends Controller
         if(!$user->hasWallPermisions($user->getUsername()))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze wall te bezoeken.');
             
         }
         
@@ -202,7 +202,7 @@ class ReplyController extends Controller
                 $em->persist($reply);
                 $em->flush();
                 
-                $this->get("session")->setFlash('notice', 'Je comment is gewijzigd.');
+                $this->get("session")->setFlash('notice', 'Je reactie is gewijzigd.');
                 
                 return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                     'name'  => $wallOwner->getUserName()
@@ -246,7 +246,7 @@ class ReplyController extends Controller
         $filterForm = $filterForm->createView();
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
-                'formPostTitle'     => 'Voeg een post toe',
+                'formPostTitle'     => 'Voeg een bericht toe',
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $wallOwner->getId())),      
                 'formPost'          => $formPost->createView(),
                 'id'                => $wallOwner->getId(),
@@ -268,7 +268,7 @@ class ReplyController extends Controller
         if(!$user->hasWallPermisions($user->getUsername()))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze wall te bezoeken.');
             
         }
         
@@ -285,7 +285,7 @@ class ReplyController extends Controller
             $entityManager->remove($reply);
             $entityManager->flush();
 
-            $this->get("session")->setFlash('notice', 'Het comment is verwijderd.');
+            $this->get("session")->setFlash('notice', 'De reactie is verwijderd.');
             
             return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
                 'name'  => $wallOwnerUserName,
@@ -311,7 +311,7 @@ class ReplyController extends Controller
         if(!$user->hasWallPermisions($user->getUsername()))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze wall te bezoeken.');
             
         }
         

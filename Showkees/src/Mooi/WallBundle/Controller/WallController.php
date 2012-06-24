@@ -34,7 +34,7 @@ class WallController extends Controller
         else if(!$user->hasWallPermisions($name))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze Showkees te bezoeken.');
             
         }
         else
@@ -51,7 +51,7 @@ class WallController extends Controller
         if($wallOwner == null)
         {
             
-            throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
+            throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden.');
         
         }
         //set new post object and create form
@@ -75,7 +75,7 @@ class WallController extends Controller
         $filterForm = $filterForm->createView();
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
-                'formPostTitle'     => 'Voeg een post toe',
+                'formPostTitle'     => 'Voeg een bericht toe',
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUserName())),     
                 'formPost'          => $postForm->createView(),
                 'wallOwner'         => $wallOwner,
@@ -95,7 +95,7 @@ class WallController extends Controller
         if(!$user->hasWallPermisions($name))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze pagina te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze pagina te bezoeken.');
             
         }
         
@@ -109,7 +109,7 @@ class WallController extends Controller
         if($wallOwner == null)
         {
             
-            throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
+            throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden.');
         
         }
         
@@ -218,7 +218,7 @@ class WallController extends Controller
         $filterForm = $filterForm->createView();
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
-                'formPostTitle'     => 'Voeg een post toe',
+                'formPostTitle'     => 'Voeg een bericht toe',
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUsername())),      
                 'formPost'          => $postForm->createView(),
                 'wallOwner'         => $wallOwner,
@@ -238,7 +238,7 @@ class WallController extends Controller
         if(!$user->hasWallPermisions($user->getUsername()))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze pagina te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze pagina te bezoeken.');
             
         }
         $post = $this->getDoctrine()
@@ -253,7 +253,7 @@ class WallController extends Controller
         if($post == null)
         {
             
-            throw $this->createNotFoundException("Het bericht kon niet gevonden worden");
+            throw $this->createNotFoundException("Het bericht kon niet gevonden worden.");
             
         }
 
@@ -326,7 +326,7 @@ class WallController extends Controller
         $filterForm = $filterForm->createView();
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
-            'formPostTitle'     => 'Wijzig de post',
+            'formPostTitle'     => 'Bericht wijzigen',
             'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallEdit', array('postId' => $postId)),      
             'formPost'          => $form->createView(),
             'wallOwner'         => $post->getWallOwner(),
@@ -345,7 +345,7 @@ class WallController extends Controller
         if(!$user->hasWallPermisions($user->getUserName()))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze Showkees te bezoeken.');
             
         }
         
@@ -358,7 +358,7 @@ class WallController extends Controller
         if($post == null)
         {
             
-            throw $this->createNotFoundException('Het bericht kon niet worden gevonden');
+            throw $this->createNotFoundException('Het bericht kon niet worden gevonden.');
         
         }
             
@@ -382,7 +382,7 @@ class WallController extends Controller
         if(!$user->hasWallPermisions($name))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze pagina te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze pagina te bezoeken.');
             
         }
         
@@ -444,7 +444,7 @@ class WallController extends Controller
         if(!$user->hasWallPermisions($name))
         {
             
-            throw $this->createNotFoundException('U hebt niet genoeg rechten om deze wall te bezoeken');
+            throw $this->createNotFoundException('Je hebt niet genoeg rechten om deze Showkees te bezoeken.');
             
         }
         else
@@ -477,7 +477,7 @@ class WallController extends Controller
                 else
                 {
                     
-                    $warningFilter = 'Er zijn geen berichten in de door u gezochte criteria';
+                    $warningFilter = 'Er konden geen berichten gevonden worden die voldeden aan je zoekopdracht.';
                     
                 }
                 
@@ -485,7 +485,7 @@ class WallController extends Controller
             else
             {
                 
-                throw $this->createNotFoundException('De filter dient toegepast te worden');
+                throw $this->createNotFoundException('Er is geen filter ingesteld.');
                 
             }
 
@@ -494,7 +494,7 @@ class WallController extends Controller
         if($wallOwner == null)
         {
             
-            throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden');
+            throw $this->createNotFoundException('Deze gebruiker kon niet worden gevonden.');
         
         }
         //set new post object and create form
@@ -517,7 +517,7 @@ class WallController extends Controller
 
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
-                'formPostTitle'     => 'Voeg een post toe',
+                'formPostTitle'     => 'Voeg een bericht toe',
                 'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUserName())),     
                 'formPost'          => $postForm->createView(),
                 'wallOwner'         => $wallOwner,
