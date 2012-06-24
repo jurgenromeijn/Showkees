@@ -1117,8 +1117,12 @@ table.dataTable th.action
      margin-bottom: 10px;
      position: relative;
      clear: both;
+     min-height: 210px;
 }
- 
+.post .avatar.right{
+    float: right;
+    margin-left: 5px;
+} 
 .reply{
      border-bottom: solid 1px #54C2C1;
      padding: 0 10px 10px 10px;
@@ -1297,6 +1301,9 @@ table.dataTable th.action
  .postItems li p{
      margin: 0 0 0 7px !important;
  }
+ .postItems{
+     float: left;
+ }
  .likes{
      display: inline;
  }
@@ -1308,14 +1315,14 @@ table.dataTable th.action
  #sidebarColumn #filterForm .form_row{
      border: none;
 }
+#sidebarColumn #filterForm input[type="text"]{
+    
+}
 #sidebarColumn #filterForm .form_row select{
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
     padding: 10px;
-    -moz-box-shadow:    inset 0 0 0 10px #000000;
-   -webkit-box-shadow: inset 0 0 0 10px #000000;
-   box-shadow:         inset 0 0 0 10px #000000;
 }
 #sidebarColumn #filterForm .form_row > label{
     margin: 0;
@@ -1334,7 +1341,7 @@ table.dataTable th.action
     right: 1px;
     z-index: -1;
 }
-#sidebarColumn #WallFilter input + .form_row{
+#sidebarColumn #WallFilter .form_row:first-child{
     height: 126px;
     background: url(../images/vakken_icon.png) no-repeat 89% 17px;
     padding-top: 47px;
@@ -1342,6 +1349,9 @@ table.dataTable th.action
 #sidebarColumn #WallFilter .form_row{
     padding-top: 20px;
     background: url(../images/jaar_icon.png) no-repeat 89% -6px;
+}
+#sidebarColumn #filterColumn input.button{
+    margin-right: 18px;
 }
 #WallFilter_time_date select{
     disply: none; 

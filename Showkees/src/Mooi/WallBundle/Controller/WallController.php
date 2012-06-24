@@ -503,7 +503,7 @@ class WallController extends Controller
         $postForm = $this->createForm(new WallPostType(), $newPost);
         $filterForm = $this->createForm(new WallFilterType(), $filterData);
         
-        foreach($wallOwner->getWallOwnerPosts() as $post)
+        foreach($wallOwnerPosts as $post)
         {
             
             $replyForm['form'] = $this->createForm(new WallReplyType(), new Post());
@@ -513,8 +513,6 @@ class WallController extends Controller
             $post->setReplyForm($replyForm);
             
         }
-        
-
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een bericht toe',
