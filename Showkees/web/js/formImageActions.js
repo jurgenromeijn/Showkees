@@ -5,7 +5,7 @@ $(document).ready(function()
     
     
     collectionHolder = $('#postFormImageList');
-    collectionHolder.append('<li class="add"><a href="#" class="addImageLink">+ Voeg een afbeelding toe</a></li>');
+    collectionHolder.append('<li class="add"><a href="#" class="addImageLink">+ Voeg een plaatje toe</a></li>');
     
     $("#postFormImageList .addImageLink").click(addImage);
     $("#postFormImageList .deleteImage").live('click', removeImage);

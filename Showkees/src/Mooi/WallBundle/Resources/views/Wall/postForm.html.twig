@@ -8,7 +8,7 @@
             <div>{{ form_widget(formPost.images.get('prototype').file) }}</div>
         </div>
         <div class="currentImage">
-            <h4>Huidige afbeelding</h4>
+            <h4>Huidige plaatje</h4>
             <div><p class="image"><span>?</span></p></div>
             <div><a class="deleteImage">Verwijderen</a></div>
         </div>
@@ -35,7 +35,7 @@
                         <div>{{ form_widget(image.file) }}</div>
                     </div>
                     <div class="currentImage">
-                        <h4>Huidige afbeelding</h4>
+                        <h4>Huidige plaatje</h4>
                         <div>                            
                             {% if image.vars.value.id != null %}
                                 <a href="{{ asset(image.vars.value.webPath) }}" rel="lightbox[form]"><img src="{{ image.vars.value.webPath|apply_filter('thumbnail') }}" class="image" /></a>

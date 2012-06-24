@@ -14,11 +14,10 @@ class WallPostType extends AbstractType
         
         $builder->add('text', 'textarea', array('label' => 'Bericht'));
         $builder->add('subject', null, array(
-            'label' => 'Vakken',
-            'empty_value' => 'Kies een vak'
+            'label' => 'Vak'
         ));
         $builder->add('images', 'collection', array(
-            'label' => 'Afbeeldingen',
+            'label' => 'Plaatjes',
             'type' => new ImageType(),
             'allow_add' => true,
             'allow_delete' => true,

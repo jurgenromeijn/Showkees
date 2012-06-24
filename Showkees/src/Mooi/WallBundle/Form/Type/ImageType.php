@@ -13,7 +13,7 @@ class ImageType extends AbstractType
         
         $builder->add('file', 'file', array(
             'required' => false,
-            'label'    => 'Nieuwe afbeelding'
+            'label'    => 'Nieuwe plaatje'
         ));
         
     }

@@ -19,10 +19,10 @@ Mooi\WallBundle\Entity\Image:
     file:
       - Image:
           maxSize: 1024k
-          maxSizeMessage: De afbeelding mag maximaal 1mb zijn.
-          mimeTypesMessage: De afbeelding moet een gif, jpg of png zijn.
-          uploadIniSizeErrorMessage: De afbeelding mag niet groter dan {{ limit }} zijn.
-          uploadFormSizeErrorMessage: De afbeelding is te groot.
+          maxSizeMessage: Het plaatje mag maximaal 1mb zijn.
+          mimeTypesMessage: Het plaatje moet een gif, jpg of png zijn.
+          uploadIniSizeErrorMessage: Het plaatje mag niet groter dan {{ limit }} zijn.
+          uploadFormSizeErrorMessage: Het plaatje is te groot.
           uploadErrorMessage: Er is iets fout gegaan tijdens het uploaden.
-          notReadableMessage: De afbeelding kon niet gelezen worden.
-          notFoundMessage: De afbeelding kon niet gevonden worden.
+          notReadableMessage: Het plaatje kon niet gelezen worden.
+          notFoundMessage: Het plaatje kon niet gevonden worden.

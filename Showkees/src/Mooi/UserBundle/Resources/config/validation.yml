@@ -19,9 +19,9 @@ Mooi\UserBundle\Entity\User:
       - NotBlank: {message: "Selecteer een rol."}
     password:
       - Regex:
-          pattern:  "/^.{1,7}$/"
-          message:  "Wachtwoord moet 8 tekens of langer zijn."
+          pattern:  "/^.{1,5}$/"
+          message:  "Wachtwoord moet 6 tekens of langer zijn."
           match:    false
           groups:   [update]
       - NotBlank: {message: "Vul een wachtwoord in.", groups: [registration]}
-      - MinLength: {limit: 8, message: "Wachtwoord moet 8 tekens of langer zijn.", groups: [registration]}
+      - MinLength: {limit: 6, message: "Wachtwoord moet 6 tekens of langer zijn.", groups: [registration]}
