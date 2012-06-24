@@ -19,7 +19,7 @@
                 {% for notification in app.user.notifications %}
                     <tr>
                         <td>{{ notification.about.fullname }} {{ notification.message }}</td>
-                        <td>{{ notification.quote }}</td>
+                        <td><a href="{{ path('MooiWallBundle_WallIndex', {'name': notification.about.username}) }}#post{{ notification.post.id }}">{{ notification.quote }}</a></td>
                         <td>{{ notification.time.format('d-m-Y') }}</td>
                         <td>{{ notification.time.format('H:i:s') }}</td>
                     </tr>
