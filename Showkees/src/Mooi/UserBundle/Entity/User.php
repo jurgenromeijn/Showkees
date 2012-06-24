@@ -528,4 +528,28 @@ class User implements UserInterface, \Serializable
     {
         return $this->avatar;
     }
+    
+    public function getAvatarUrl()
+    {
+        
+        if($this->avatar != null)
+        {
+            
+            return $this->avatar->getWebPath();
+            
+        }
+        elseif($this->gender == self::GENDER_MALE)
+        {
+            
+            return "images/avatarPlaceholderMale.png";
+            
+        }
+        else 
+        {
+            
+            return "images/avatarPlaceholderFemale.png";
+
+        }
+        
+    }
 }

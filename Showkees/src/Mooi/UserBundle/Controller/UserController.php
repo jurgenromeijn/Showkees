@@ -124,7 +124,7 @@ class UserController extends Controller
             
         }
         
-        $currentAvatar = $user->getAvatar()->getWebPath();
+        $currentAvatar = $user->getAvatarUrl();
         
         if($user == null)
         {
