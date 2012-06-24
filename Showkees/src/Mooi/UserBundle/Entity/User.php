@@ -303,6 +303,31 @@ class User implements UserInterface, \Serializable
         return $fullName;
         
     }
+    
+    public function getDisplayName()
+    {
+    
+        if($this->role->getInternalName() == "ROLE_STUDENT")
+        {
+            
+            return $this->first_name;
+            
+        }
+        elseif($this->gender == self::GENDER_MALE)
+        {
+            
+            return 'Meester ' . $this->first_name;
+            
+        }
+        else
+        {
+            
+            return 'Juf ' . $this->first_name;
+            
+        }
+        
+    }
+
     /**
      * @var Mooi\WallBundle\Entity\Post
      */

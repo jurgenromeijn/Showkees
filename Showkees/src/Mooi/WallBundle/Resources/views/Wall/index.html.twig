@@ -20,7 +20,7 @@
             {% for wallOwnerPost in wallOwnerPosts %}
             <div class="post">
                 <h2>
-                    {{ wallOwnerPost.getSender.username }}<span> over </span>{{wallOwnerPost.getSubject}}
+                    {{ wallOwnerPost.getSender.displayName }}<span> over </span>{{wallOwnerPost.getSubject}}
                 </h2>
                 <a name="post{{ wallOwnerPost.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'name': wallOwner.username}) }}">
                     <img src="{{ wallOwnerPost.getSender.avatarUrl|apply_filter('thumbnail') }}" class="avatar" alt="avatar" />
@@ -70,7 +70,7 @@
                 <a class="confirm" href="{{ path('MooiWallBundle_WallDelete', {'postId' : wallOwnerPost.getId()}) }}">
                             <img class="delete_post_button" src="{{ asset('images/close_delete.png') }}" alt="" />
                             <h3 class="head">Bericht verwijderen</h3>
-                            <p class="body">Weet je zeker dat je het bericht van {% if app.user.getUserName == wallOwnerPost.getWallOwner().getUserName() %} jezelf {% else %} {{ wallOwnerPost.getWallOwner().getUserName() }} {% endif %} wilt verwijderen?</p>
+                            <p class="body">Weet je zeker dat je het bericht van {% if app.user.getUserName == wallOwnerPost.sender.username %} jezelf {% else %} {{ wallOwnerPost.sender.displayName }} {% endif %} wilt verwijderen?</p>
                         </a>
                 {% endif %}
             </div>
@@ -104,7 +104,7 @@
                                 <a class="confirm" href="{{ path('MooiWallBundle_WallReplyDelete', {'replyId' : reply.getId()}) }}">
                                     <img class="delete_post_button" src="{{ asset('images/close_delete.png') }}" alt="" />
                                     <h3 class="head">Reactie verwijderen</h3>
-                                    <p class="body">Weet je zeker dat je de reactie van {% if app.user.getUserName == wallOwnerPost.getWallOwner().getUserName() %} jezelf {% else %} {{ wallOwnerPost.getWallOwner().getUserName() }} {% endif %} wilt verwijderen?</p>
+                                    <p class="body">Weet je zeker dat je de reactie van {% if app.user.getUserName == wallOwnerPost.sender.username %} jezelf {% else %} {{ wallOwnerPost.sender.displayName }} {% endif %} wilt verwijderen?</p>
                                 </a>
                             </li>
                         </ul>
@@ -112,12 +112,12 @@
                     {% if reply.getSender.getId != wallOwnerPost.getSender.getId %}
                         <img src="{{ reply.getSender.avatarUrl|apply_filter('thumbnail') }}" alt="avatar" class="avatar_left avatar" />
                         <p class="reply_right">
-                            <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
+                            <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.displayName }}</a> {{ reply.text }}
                         </p>
                     {% else %}
                         <img src="{{ reply.getSender.avatarUrl | apply_filter('thumbnail') }}" alt="avatar" class="avatar_right avatar" />
                         <p class="reply_left">
-                            <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.getUserName }}</a> {{ reply.text }}
+                            <a name="reply{{ reply.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'userName': reply.getSender.getUserName }) }}">{{ reply.getSender.displayName }}</a> {{ reply.text }}
                         </p>
                     {% endif %}
                     <ul class="replyItems">
