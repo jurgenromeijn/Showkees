@@ -69,8 +69,8 @@
                 </a>
                 <a class="confirm" href="{{ path('MooiWallBundle_WallDelete', {'postId' : wallOwnerPost.getId()}) }}">
                             <img class="delete_post_button" src="{{ asset('images/close_delete.png') }}" alt="" />
-                            <h3 class="head">Post verwijderen</h3>
-                            <p class="body">Weet je zeker dat je de post van {% if app.user.getUserName == wallOwnerPost.getWallOwner().getUserName() %} jezelf {% else %} {{ wallOwnerPost.getWallOwner().getUserName() }} {% endif %} wilt verwijderen?</p>
+                            <h3 class="head">Bericht verwijderen</h3>
+                            <p class="body">Weet je zeker dat je het bericht van {% if app.user.getUserName == wallOwnerPost.getWallOwner().getUserName() %} jezelf {% else %} {{ wallOwnerPost.getWallOwner().getUserName() }} {% endif %} wilt verwijderen?</p>
                         </a>
                 {% endif %}
             </div>
@@ -103,8 +103,8 @@
                             <li>
                                 <a class="confirm" href="{{ path('MooiWallBundle_WallReplyDelete', {'replyId' : reply.getId()}) }}">
                                     <img class="delete_post_button" src="{{ asset('images/close_delete.png') }}" alt="" />
-                                    <h3 class="head">Bericht verwijderen</h3>
-                                    <p class="body">Weet je zeker dat je het bericht van {% if app.user.getUserName == wallOwnerPost.getWallOwner().getUserName() %} jezelf {% else %} {{ wallOwnerPost.getWallOwner().getUserName() }} {% endif %} wilt verwijderen?</p>
+                                    <h3 class="head">Reactie verwijderen</h3>
+                                    <p class="body">Weet je zeker dat je de reactie van {% if app.user.getUserName == wallOwnerPost.getWallOwner().getUserName() %} jezelf {% else %} {{ wallOwnerPost.getWallOwner().getUserName() }} {% endif %} wilt verwijderen?</p>
                                 </a>
                             </li>
                         </ul>
