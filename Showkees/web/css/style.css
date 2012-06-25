@@ -403,7 +403,7 @@ body
     z-index: 2;
 }
 
-#userOptions>a
+#userOptions>span
 {
     display: block;
     padding: 8px;
@@ -414,11 +414,11 @@ body
     text-align: right;
 }
 
-#userOptions:hover>a
+#userOptions:hover>span
 {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 5px 5px 0px 0px;
-    cursor: pointer;
+    cursor:default;
 }
 
 #userOptions ul
