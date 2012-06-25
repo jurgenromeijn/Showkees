@@ -62,7 +62,7 @@
                     </ul>
                 </div>
                 <div class="clearfix"></div>
-                {% if wallOwnerPost.getWallOwner.getId == wallOwnerPost.getSender.getId or wallOwnerPost.getWallOwner.getRole.getId > wallOwnerPost.getSender.getId %}
+                {% if wallOwnerPost.getWallOwner.getId == wallOwnerPost.getSender.getId or is_granted('ROLE_TEACHER') %}
                 <a href="{{ path('MooiWallBundle_WallEdit', {'postId': wallOwnerPost.getId() }) }}">
                     <img class="edit_post_button" src="{{ asset('images/edit_post_button.png') }}" alt="" />
                 </a>
@@ -79,7 +79,7 @@
                 {% endif %}
                 {% for reply in wallOwnerPost.getReplies %}
                 <div class="reply">
-                    {% if app.user.id == reply.getSender.getId %}
+                    {% if app.user.id == reply.getSender.getId or is_granted('ROLE_TEACHER') %}
                         <ul class="replyMenu">
                             <li>
                                 <a href="{{ path('MooiWallBundle_WallReplyEdit', {'replyId': reply.getId }) }}#reply{{ reply.getId }}">
