@@ -119,9 +119,22 @@
                         <li>{{ reply.time|date('d-m-Y') }}</li>
                     </ul>
                 </div>
+                <div id="replyFormShow{{ reply.getId }}" class="replyFormCheck{% if reply.getReplyForm.show %} formReplyBool{% endif %}" >
+                    {% form_theme reply.getReplyForm.form '::baseForm.html.twig' %}
+                    <form class="replyForm replyFormShow{{ reply.getId() }}" action="{{ path('MooiWallBundle_WallReplyEdit', {'replyId' : reply.getId()}) }}" method="post" autocomplete="off" {{ form_enctype(wallOwnerPost.getReplyForm.form ) }} >
+                        <div class="form_row">
+                            <div class="clearfix"></div>
+                        </div>
+                        {{ form_widget(reply.getReplyForm.form ) }}
+                        <div class="button">
+                            <input type="submit" class="button" value="Plaatsen" />
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
                 {% endfor %}
             </div>
-            <div id="replyFormShow{{ wallOwnerPost.getId }}" class="replyFormCheck{% if wallOwnerPost.getReplyForm.show == true %} formReplyBool{% endif %}" >
+            <div id="replyFormShow{{ wallOwnerPost.getId }}" class="replyFormCheck{% if wallOwnerPost.getReplyForm.show == 1 %} formReplyBool{% endif %}" >
                 {% form_theme wallOwnerPost.getReplyForm.form '::baseForm.html.twig' %}
                 <form class="replyForm replyFormShow{{ wallOwnerPost.getId() }}" action="{{ wallOwnerPost.getReplyForm.action }}" method="post" autocomplete="off" {{ form_enctype(wallOwnerPost.getReplyForm.form ) }} >
                     <div class="form_row">

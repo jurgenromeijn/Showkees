@@ -369,7 +369,7 @@ class WallController extends Controller
         $this->get("session")->setFlash('notice', 'Het bericht is verwijderd.');
 
         return $this->redirect($this->generateUrl('MooiWallBundle_WallIndex', array(
-            'name'  => $post->getWallOwner()->getUsername()
+            'name'  => $userNameWallOwner
         )));
             
     }

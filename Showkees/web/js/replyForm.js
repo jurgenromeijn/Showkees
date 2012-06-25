@@ -41,7 +41,7 @@ $(function(){
            
            replyFormByPostId.slideUp(600);
            
-       } 
+       }
         
        return false;
        

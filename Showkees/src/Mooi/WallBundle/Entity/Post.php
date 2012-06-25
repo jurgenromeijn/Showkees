@@ -267,7 +267,7 @@ class Post
         $this->replies[] = $replies;
     }
             
-    private $replyForm;
+    public $replyForm;
     
     public function setReplyForm($replyForm)
     {
