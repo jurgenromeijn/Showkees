@@ -22,9 +22,8 @@
                     {{ wallOwnerPost.getSender.displayName }}<span> over </span>{{wallOwnerPost.getSubject}}
                 </h2>
                 
-                <a name="post{{ wallOwnerPost.getId }}" href="{{ path('MooiWallBundle_WallIndex', {'name': wallOwner.username}) }}">
-                    <img class="avatar {% if app.user.getId != wallOwnerPost.getSender.getId %}right{% endif %}" src="{{ wallOwnerPost.getSender.avatarUrl|apply_filter('thumbnail') }}" alt="avatar" />
-                </a>
+                <a name="post{{ wallOwnerPost.getId }}"></a>
+                <img class="avatar {% if app.user.getId != wallOwnerPost.getSender.getId %}right{% endif %}" src="{{ wallOwnerPost.getSender.avatarUrl|apply_filter('thumbnail') }}" alt="avatar" />
                 <div class="postInfoWrapper">
                     <div class="postWrapper">
                         <p class="post_text">
@@ -49,8 +48,7 @@
                         </div>
                         {% endif %}
                     </div>
-                </div>
-                <ul class="postItems">
+                    <ul class="postItems">
                         <li>
                             <a class="like_button" href="{{ path('MooiWallBundle_WallLike', {'postId' : wallOwnerPost.getId()}) }}">Vind ik goed</a>
                             <p class="likes">
@@ -62,6 +60,7 @@
                         <li><a class="commentButton" href="{{ wallOwnerPost.getId() }}">Reageer</a></li>
                         <li>{{ wallOwnerPost.time|date('d-m-Y') }}</li>
                     </ul>
+                </div>
                 <div class="clearfix"></div>
                 {% if wallOwnerPost.getWallOwner.getId == wallOwnerPost.getSender.getId or wallOwnerPost.getWallOwner.getRole.getId > wallOwnerPost.getSender.getId %}
                 <a href="{{ path('MooiWallBundle_WallEdit', {'postId': wallOwnerPost.getId() }) }}">

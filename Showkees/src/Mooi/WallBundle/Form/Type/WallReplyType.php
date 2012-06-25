@@ -11,7 +11,7 @@ class WallReplyType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         
-        $builder->add('text', 'textarea', array('label' => 'Bericht'));
+        $builder->add('text', 'textarea', array('label' => 'Reactie'));
         
     }
 

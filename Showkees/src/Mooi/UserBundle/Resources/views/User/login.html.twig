@@ -8,7 +8,7 @@
     {{ parent() }}
     <script src="{{ asset('js/jquery/plugins/jquery.placeholder.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/addPlaceholders.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/closeLoginError.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/login.js') }}" type="text/javascript"></script>
 {% endblock %}
     
 {% block body %}
@@ -26,14 +26,24 @@
             <fieldset id="button">
                 <input type="submit" value="Login" class="button" />
             </fieldset>
+            <button id="about">Over Showkees</button>
             <p id="toolTip">
                 <img src="{{ asset('images/tabletshowkees40.png') }}" alt="" class="icon" />
                 Vul eerst je <strong>Gebruikersnaam</strong> en <strong>Wachtwoord</strong> in. Daarna klik je op <strong>login</strong>
             </p>
         </form>
     </div>
+    <div id="overlay"></div>
+    <div id="aboutWindow">
+        <h3>Over Showkees</h3>
+        <div class="content">
+            <p>Showkees maakt het op een makkelijke en toegankelijke manier mogelijk om de werkjes en resultaten van alle leerlingen zichtbaar te maken. Doordat het portfolio zich online bevindt, kun je altijd en overal aan iedereen die het maar wilt zien jouw prestaties showen.</p> 
+            <p>De digitale manier van tentoonstellen zorgt er voor dat kinderen ook werkjes van thuis kunnen uploaden. Met een simpel fotootje staat in een handomdraai de nieuwe Picasso of Dali in sp&eacute; online. Zo kunnen niet alleen de ouders thuis dagelijks de voortgang in de gaten houden, maar de docenten ook zien waar de kinderen zich thuis mee bezighouden.</p>
+            <p>Showkees houdt op een snelle en simpele manier de ouders thuis op de hoogte van waar het kind mee bezig is en waar de ouders eventueel op moeten letten of bij kunnen helpen.</p>
+            <button id="closeAbout" class="button">Sluiten</button>
+        </div>
+    </div>
     {% if error %}
-        <div id="loginErrorOverlay"></div>
         <div id="loginError">
             <h3>Oeps</h3>
             <p>Deze gebruikersnaam & wachtwoord combinatie konden niet worden gevonden. Probeer het nog eens.</p>

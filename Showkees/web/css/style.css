@@ -591,7 +591,7 @@ body
 {
      width: 940px;
      margin: 10px auto;
-     padding: 10px 10px 0px;
+     padding: 10px 10px 30px;
 }
 
 #contentWrapper p, #contentWrapper h1, #contentWrapper h2
@@ -1121,7 +1121,7 @@ table.dataTable th.action
 }
 .post .avatar.right{
     float: right;
-    margin-left: 5px;
+    margin-left: 10px;
 } 
 .reply{
      border-bottom: solid 1px #54C2C1;
