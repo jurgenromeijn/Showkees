@@ -378,6 +378,7 @@ body
 {
     position: absolute;
     top: 10px;
+    border:none;
 }
 
 #headerWrapper h1{
@@ -733,7 +734,9 @@ input.button, .add_post_button
     font-weight: bold;
     cursor: pointer;
 }
-
+#contentWrapper a img{
+    border: none;
+}
     /**
     * File form part
     */
@@ -952,7 +955,6 @@ table.dataTable th.action
     background: -o-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* IE10+ */
     background: linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
 }
 
 /**
