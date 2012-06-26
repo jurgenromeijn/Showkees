@@ -1,12 +1,3 @@
-#setup
-MooiUserBundle_setupRoles:
-    pattern: /setup/roles
-    defaults: { _controller: MooiUserBundle:Setup:Roles } 
-
-MooiUserBundle_setupRolesACL:
-    pattern: /setup/roles_acl
-    defaults: { _controller: MooiUserBundle:Setup:RolesACL } 
-
 #user
 MooiUserBundle_UserCreate:
     pattern: /user/create

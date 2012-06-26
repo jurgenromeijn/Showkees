@@ -25,6 +25,7 @@ class SubjectRepository extends EntityRepository
                                 JOIN p.wall_owner u
                                 WHERE s.id = :post_subject_id
                                 AND u.username = :user_name
+                                AND p.type = \'post\'
                                 AND SUBSTRING(p.time, 1, 4) = SUBSTRING(:year, 1, 4)')
                                 ->setParameter('post_subject_id', $subject)
                                 ->setParameter('user_name', $userName)
