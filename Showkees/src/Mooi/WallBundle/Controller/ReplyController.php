@@ -150,31 +150,32 @@ class ReplyController extends Controller
         $newPost = new Post();
         $formPost = $this->createForm(new WallPostType(), $newPost);
         
-        $years = $this->getDoctrine()
-                ->getRepository('MooiWallBundle:Post')
-                ->getYearsOfPosts($name);
-        
         $yearsOfPosts   = array();
         $subjectsPosts  = array();
         
-        foreach($years as $year => $value)
-        {
-            
-            $yearsOfPosts[] = $value[1];
-            
-        }
+        $years = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Post')
+                ->getYearsOfPosts($user->getUserName());
         
         $subjects = $this->getDoctrine()
                 ->getRepository('MooiWallBundle:Subject')
                 ->getAllSubjectsByName();
         
-        foreach($subjects as $subject)
+        foreach($years as $year => $value)
         {
             
-            $subjectsPosts[] = $subject['name'];
+            $yearsOfPosts[$value[1]] = $value[1];
             
         }
 
+        foreach($subjects as $subject => $value)
+        {
+            
+            $id = (int)$value['id'];
+            $subjectsPosts[$id] = $value['name'];
+            
+        }
+        
         //filter form
         $filterForm = $this->createForm(new WallFilterType($subjectsPosts, $yearsOfPosts));
         $filterForm = $filterForm->createView();
@@ -266,33 +267,33 @@ class ReplyController extends Controller
         //set new post object and create form
         $newPost = new Post();
         $formPost = $this->createForm(new WallPostType(), $newPost);
-        
+
+        $yearsOfPosts   = array();
+        $subjectsPosts  = array();
         
         $years = $this->getDoctrine()
                 ->getRepository('MooiWallBundle:Post')
                 ->getYearsOfPosts($user->getUserName());
         
-        $yearsOfPosts   = array();
-        $subjectsPosts  = array();
-        
-        foreach($years as $year => $value)
-        {
-            
-            $yearsOfPosts[] = $value[1];
-            
-        }
-        
         $subjects = $this->getDoctrine()
                 ->getRepository('MooiWallBundle:Subject')
                 ->getAllSubjectsByName();
         
-        foreach($subjects as $subject)
+        foreach($years as $year => $value)
         {
             
-            $subjectsPosts[] = $subject['name'];
+            $yearsOfPosts[$value[1]] = $value[1];
             
         }
 
+        foreach($subjects as $subject => $value)
+        {
+            
+            $id = (int)$value['id'];
+            $subjectsPosts[$id] = $value['name'];
+            
+        }
+        
         //filter form
         $filterForm = $this->createForm(new WallFilterType($subjectsPosts, $yearsOfPosts));
         $filterForm = $filterForm->createView();

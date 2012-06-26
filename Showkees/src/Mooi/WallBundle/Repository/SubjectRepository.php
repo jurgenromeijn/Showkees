@@ -37,8 +37,9 @@ class SubjectRepository extends EntityRepository
     {
         
         $query = $this->getEntityManager()
-                ->createQuery('SELECT s.name
-                                FROM MooiWallBundle:Subject s');
+                ->createQuery('SELECT s.id, s.name
+                                FROM MooiWallBundle:Subject s
+                                ORDER BY s.name');
         return $query->getResult();
         
     }

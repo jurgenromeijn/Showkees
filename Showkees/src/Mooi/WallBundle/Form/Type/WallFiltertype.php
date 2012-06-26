@@ -25,12 +25,14 @@ class WallFilterType extends AbstractType
         $builder->add('subject', 'choice', array(
             'choices'       => $this->subjects,
             'label'         => 'Vakken',
-            'empty_value'   => 'Kies een vak'
+            'empty_value'   => 'Kies een vak',
+            "property_path" => false
         ));
         $builder->add('years', 'choice', array(
             'choices' => $this->years,
             'label' => 'Jaren',
-            'empty_value' => 'Kies een jaar'
+            'empty_value' => 'Kies een jaar',
+            "property_path" => false
         ));
         
     }

@@ -41,7 +41,7 @@ body
         color: #339933;
     }
     
-    body.green #sidebarColumn #studentSearchField, body.green .replies h2, body.green .reply
+    body.green #sidebarColumn #studentSearchField, body.green .replies h2, body.green .reply, body.green #contentWrapper #filterForm .form_row > select
     {
         border-color: #339933;
     }
@@ -88,7 +88,7 @@ body
         color: #999900;
     }
     
-    body.yellow #sidebarColumn #studentSearchField, body.yellow .replies h2, body.yellow .reply
+    body.yellow #sidebarColumn #studentSearchField, body.yellow .replies h2, body.yellow .reply, body.yellow #contentWrapper #filterForm .form_row > select
     {
         border-color: #999900;
     }
@@ -135,7 +135,7 @@ body
         color: #cc6600;
     }
     
-    body.orange #sidebarColumn #studentSearchField, body.orange .replies h2, body.orange .reply
+    body.orange #sidebarColumn #studentSearchField, body.orange .replies h2, body.orange .reply, body.orange #contentWrapper #filterForm .form_row > select
     {
         border-color: #cc6600;
     }
@@ -182,7 +182,7 @@ body
         color: #cc3333;
     }
     
-    body.red #sidebarColumn #studentSearchField, body.red .replies h2, body.red .reply
+    body.red #sidebarColumn #studentSearchField, body.red .replies h2, body.red .reply, body.red #contentWrapper #filterForm .form_row > select
     {
         border-color: #cc3333;
     }
@@ -230,7 +230,7 @@ body
         color: #993399;
     }
     
-    body.purple #sidebarColumn #studentSearchField, body.purple .replies h2, body.purple .reply
+    body.purple #sidebarColumn #studentSearchField, body.purple .replies h2, body.purple .reply, body.purple #contentWrapper #filterForm .form_row > select
     {
         border-color: #993399;
     }
@@ -278,7 +278,7 @@ body
         color: #cc6699;
     }
     
-    body.pink #sidebarColumn #studentSearchField, body.pink .replies h2, body.pink .reply
+    body.pink #sidebarColumn #studentSearchField, body.pink .replies h2, body.pink .reply, body.pink #contentWrapper #filterForm .form_row > select
     {
         border-color: #cc6699;
     }
@@ -326,7 +326,7 @@ body
         color: #333333;
     }
     
-    body.gray #sidebarColumn #studentSearchField, body.gray .replies h2, body.gray .reply
+    body.gray #sidebarColumn #studentSearchField, body.gray .replies h2, body.gray .reply, body.gray #contentWrapper #filterForm .form_row > select
     {
         border-color: #333333;
     }
@@ -1059,7 +1059,7 @@ table.dataTable th.action
           font-size: 1.2em;
       }
       
-      #sidebarColumn #studentSearchField
+      #sidebarColumn #studentSearchField, #sidebarColumn #filterForm .form_row > select
       {
           width: 100%;
           background-color: #fff;
@@ -1387,8 +1387,10 @@ table.dataTable th.action
     display: none;
 }
 #contentWrapper #filterForm .form_row > select{
-   border: 1px solid #54C2C1;
-   z-index: 2;
+   border: 4px solid #399;
+    z-index: 2;
+    border-radius: 4px;
+    background-image: none;
 }
 #sidebarColumn #filterForm .form_row{
     border: none;
