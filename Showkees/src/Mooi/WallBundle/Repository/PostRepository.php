@@ -33,46 +33,16 @@ class PostRepository extends EntityRepository
     
     public function getYearsOfPosts($userName)
     {
-        
-        // creating doctrines result set mapping obj.
-        /*$rsm = new Doctrine\ORM\Query\ResultSetMapping();
-
-        // mapping results to the message entity
-        $rsm->addEntityResult('Mooi\WallBundle\Entity\Post', 'p');
-        $rsm->addFieldResult('m', 'id', 'id');
-        $rsm->addFieldResult('m', 'time', 'time');
-        $rsm->addFieldResult('m', 'rating', 'rating');
-
-        $sql = "SELECT YEAR(time) as createYear
-                FROM post";
-
-        $query = $this->_em->createNativeQuery($sql, $rsm);
-        //$query->setParameter(1, $domainId);
-        $query->getResult();*/
-        
-       /* $query = $this->getEntityManager()
-        ->createQuery('
-            SELECT p, c FROM AcmeStoreBundle:Product p
-            JOIN p.category c
-            WHERE p.id = :id'
-        )->setParameter('id', $id);
-
-    try {
-        return $query->getSingleResult();
-    } catch (\Doctrine\ORM\NoResultException $e) {
-        return null;
-    }*/
-        /*$query = $this->getEntityManager()
-        return $this->createQuery('DISTINCT(DATE_FORMAT( year , "%Y")) years')*/
-        
+           
         $query = $this->getEntityManager()
-                ->createQuery('SELECT DATE_FORMAT( time , "%Y") as years FROM AcmeStoreBundle:Product p');
+                ->createQuery('SELECT DISTINCT(SUBSTRING(p.time, 1, 4)) 
+                                FROM MooiWallBundle:Post p
+                                ORDER BY p.time');
         
         return $query->getResult();
-
-      
-        
+ 
     }
+ 
     
 }
 

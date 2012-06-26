@@ -5,16 +5,19 @@ $(function(){
    
    var commentButton    = $('.commentButton'),
        checkReplyForm   = $('.replyForm');
-       
+   
+   
+   
    if($('div').hasClass('replyFormCheck formReplyBool'))
    {
-       var postIdForm = $('.replyFormCheck.formReplyBool').attr('id'),
+      
+      var postIdForm = $('.replyFormCheck.formReplyBool').attr('id'),
            form = $('.' + postIdForm);
-           
+   
        checkReplyForm.hide();//all replyforms hide
        $(form).show();
-       $('textarea', '.' + form).focus();
-        
+       $('textarea', form).focus();
+   
    }
    else
    {
@@ -42,7 +45,7 @@ $(function(){
            replyFormByPostId.slideUp(600);
            
        }
-        
+       
        return false;
        
    });

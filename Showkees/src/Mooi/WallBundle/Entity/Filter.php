@@ -10,34 +10,34 @@ use \Doctrine\Common\Collections\ArrayCollection;
 class Filter
 {
     
-    private $subject;
-    private $year;
+    private $subjects;
+    private $years;
     
-    public function setSubject($subject)
+    public function setSubjects($subjects)
     {
         
-        $this->subject = $subject;
+        $this->subjects = $subjects;
         
     }
     
-    public function getSubject()
+    public function getSubjects()
     {
         
         return $this->subject;
         
     }
     
-    public function setYear($year)
+    public function setYears($years)
     {
         
-        $this->year = $year;
+        $this->years = $years;
         
     }
     
-    public function getYear()
+    public function getYears()
     {
         
-        return $this->year->format('Y');
+        return $this->years;
         
     }
 

@@ -19,25 +19,28 @@ class SubjectRepository extends EntityRepository
     {
         
         $query = $this->getEntityManager()
-                ->createQuery('SELECT s, p
+                ->createQuery('SELECT s, p, u
                                 FROM MooiWallBundle:Subject s
                                 JOIN s.posts p
-                                WHERE s.id = :post_subject_id
-                                ')//AND YEAR(p.time) = 2006
-                                ->setParameter('post_subject_id', $subject);
-        return $query->getResult();
-        /*
-                                'SELECT p, u 
-                                FROM MooiWallBundle:Post p 
                                 JOIN p.wall_owner u
-                                WHERE u.username = :user_name
-                                AND p.type = :post_type
-                                AND p.subject = :post_subject
-                                ORDER BY p.time desc')
+                                WHERE s.id = :post_subject_id
+                                AND u.username = :user_name
+                                AND SUBSTRING(p.time, 1, 4) = SUBSTRING(:year, 1, 4)')
+                                ->setParameter('post_subject_id', $subject)
                                 ->setParameter('user_name', $userName)
-                                ->setParameter('post_type', 'post' 
-         
-         */
+                                ->setParameter('year', $year);
+        return $query->getResult();
+        
+    }
+    
+    public function getAllSubjectsByName()
+    {
+        
+        $query = $this->getEntityManager()
+                ->createQuery('SELECT s.name
+                                FROM MooiWallBundle:Subject s');
+        return $query->getResult();
+        
     }
     
 }

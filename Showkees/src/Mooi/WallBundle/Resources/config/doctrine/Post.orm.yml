@@ -30,7 +30,6 @@ Mooi\WallBundle\Entity\Post:
                     joinColumn:
                         name: post_id
                         referencedColumnName: id
-                        onDelete: cascade
                 inverseJoinColumns:
                     joinColumn:
                         name: reply_id
@@ -38,7 +37,6 @@ Mooi\WallBundle\Entity\Post:
         mainPosts:
             targetEntity: Mooi\WallBundle\Entity\Post
             mappedBy: replies
-            onDelete: cascade
         images:
             targetEntity: Mooi\WallBundle\Entity\Image
             inversedBy: mainPosts

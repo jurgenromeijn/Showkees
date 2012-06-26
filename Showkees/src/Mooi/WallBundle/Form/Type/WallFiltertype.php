@@ -8,20 +8,33 @@ use Symfony\Component\Form\FormBuilder;
 class WallFilterType extends AbstractType
 {
     
-    public function buildForm(FormBuilder $builder, array $options)
+    private $subjects;
+    private $years;
+    
+    public function __construct($subjects, $years)
     {
         
-        $builder->add('subject', null, array(
-            'label' => 'Vakken',
-            'empty_value' => 'Kies een vak'
+        $this->subjects = $subjects;
+        $this->years = $years;
+        
+    }
+    
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+
+        $builder->add('subject', 'choice', array(
+            'choices'       => $this->subjects,
+            'label'         => 'Vakken',
+            'empty_value'   => 'Kies een vak'
         ));
-        $builder->add('time', null, array(
-            'label' => 'Jaartal',
-            'empty_value' => 'Kies een jaartal'
+        $builder->add('years', 'choice', array(
+            'choices' => $this->years,
+            'label' => 'Jaren',
+            'empty_value' => 'Kies een jaar'
         ));
         
     }
-
+    
     public function getName()
     {
         
@@ -33,7 +46,6 @@ class WallFilterType extends AbstractType
     {
         
         return array(
-            'data_class'        => 'Mooi\WallBundle\Entity\Post',
             'csrf_protection'   => FALSE
 
         );

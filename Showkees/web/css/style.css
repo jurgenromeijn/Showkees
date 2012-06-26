@@ -19,7 +19,6 @@ body
     padding: 0;
     margin: 0;
 }
-
 /**
  * Customizationstyles
  */
@@ -602,7 +601,7 @@ body
 #contentWrapper h2
 {
     color: #54C2C1;
-}
+}   
 /**
  * Flash messages
  */
@@ -1119,6 +1118,10 @@ table.dataTable th.action
      clear: both;
      min-height: 210px;
 }
+.post .avatar.left{
+    float: left;
+    margin-right: 10px;
+} 
 .post .avatar.right{
     float: right;
     margin-left: 10px;
@@ -1199,6 +1202,20 @@ table.dataTable th.action
     padding: 5px;
     margin-bottom: 10px !important;
  }
+ #contentWrapper .replyForm label{
+     margin-left: 15px;
+     width: 200px;
+ }
+ .replyForm textarea,  .replyForm input.button{
+     margin-right: 15px;
+ }
+ .replyAddForm{
+    background: #EDF6F6;
+    margin-left: 55px;
+}
+.replyItems.left{
+    margin-left: 137px;
+}
  #contentWrapper .replyMenu{
     position: absolute;
     bottom: 0px;

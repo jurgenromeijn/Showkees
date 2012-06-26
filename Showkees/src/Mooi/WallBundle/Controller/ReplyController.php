@@ -122,38 +122,63 @@ class ReplyController extends Controller
              }
 
         }
-        
-        foreach($wallOwner->getWallOwnerPosts() as $post)
+   
+        foreach($wallOwnerPosts as $singlePost)
         {
-            if($postId == $post->getId())
+            if($postId == $singlePost->getId())
             {
                 
                 $replyForm['form']      = $formReply;
-                $replyForm['show']      = true;
+                $replyForm['show']      = 1;
                 
             }
             else
             {
                 
                 $replyForm['form']      = $this->createForm(new WallReplyType(), $newReply);
-                $replyForm['show']      = false;
+                $replyForm['show']      = 0;
                 
             }
             
-            $replyForm['action']    = $this->get('router')->generate('MooiWallBundle_WallReplyAdd', array('postId' => $post->getId()));
+            $replyForm['action']    = $this->get('router')->generate('MooiWallBundle_WallReplyAdd', array('name' => $singlePost->getUserName()));
             $replyForm['form']      = $replyForm['form']->createView();
-            $post->setReplyForm($replyForm);
-
+            $singlePost->setReplyForm($replyForm);
+            
         }
         
         //set new post object and create form
         $newPost = new Post();
         $formPost = $this->createForm(new WallPostType(), $newPost);
         
+        $years = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Post')
+                ->getYearsOfPosts($name);
+        
+        $yearsOfPosts   = array();
+        $subjectsPosts  = array();
+        
+        foreach($years as $year => $value)
+        {
+            
+            $yearsOfPosts[] = $value[1];
+            
+        }
+        
+        $subjects = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Subject')
+                ->getAllSubjectsByName();
+        
+        foreach($subjects as $subject)
+        {
+            
+            $subjectsPosts[] = $subject['name'];
+            
+        }
+
         //filter form
-        $filterPost = new Post();
-        $filterForm = $this->createForm(new WallFilterType(), $filterPost);
+        $filterForm = $this->createForm(new WallFilterType($subjectsPosts, $yearsOfPosts));
         $filterForm = $filterForm->createView();
+        
 
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een bericht toe',
@@ -214,9 +239,9 @@ class ReplyController extends Controller
 
         }
         
-        foreach($wallOwner->getWallOwnerPosts() as $post)
+        foreach($wallOwner->getWallOwnerPosts() as $singePost)
         {
-            if($replyId == $post->getId())
+            if($replyId == $singePost->getId())
             {
 
                 $replyForm['form']      = $this->createForm(new WallReplyType(), $reply);
@@ -232,9 +257,9 @@ class ReplyController extends Controller
             }
             
             
-            $replyForm['form']      = $replyForm['form']->createView();
-            $replyForm['action']    = $this->get('router')->generate('MooiWallBundle_WallReplyAdd', array('postId' => $post->getId()));
-            $post->setReplyForm($replyForm);
+            $replyForm['form']          = $replyForm['form']->createView();
+            $replyForm['action']        = $this->get('router')->generate('MooiWallBundle_WallReplyAdd', array('postId' => $singePost->getId()));
+            $singePost->setReplyForm($replyForm);
             
         }
         
@@ -243,20 +268,45 @@ class ReplyController extends Controller
         $formPost = $this->createForm(new WallPostType(), $newPost);
         
         
+        $years = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Post')
+                ->getYearsOfPosts($user->getUserName());
+        
+        $yearsOfPosts   = array();
+        $subjectsPosts  = array();
+        
+        foreach($years as $year => $value)
+        {
+            
+            $yearsOfPosts[] = $value[1];
+            
+        }
+        
+        $subjects = $this->getDoctrine()
+                ->getRepository('MooiWallBundle:Subject')
+                ->getAllSubjectsByName();
+        
+        foreach($subjects as $subject)
+        {
+            
+            $subjectsPosts[] = $subject['name'];
+            
+        }
+
         //filter form
-        $filterPost = new Post();
-        $filterForm = $this->createForm(new WallFilterType(), $filterPost);
+        $filterForm = $this->createForm(new WallFilterType($subjectsPosts, $yearsOfPosts));
         $filterForm = $filterForm->createView();
         
         return $this->render('MooiWallBundle:Wall:index.html.twig', array(
                 'formPostTitle'     => 'Voeg een bericht toe',
-                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('id' => $wallOwner->getId())),      
+                'formPostAction'    => $this->get('router')->generate('MooiWallBundle_WallAdd', array('name' => $wallOwner->getUserName())),      
                 'formPost'          => $formPost->createView(),
                 'id'                => $wallOwner->getId(),
                 'wallOwner'         => $wallOwner,
                 'wallOwnerPosts'    => $wallOwnerPosts,
                 'user'              => $user,
                 'filterForm'        => $filterForm,
+                'editReplyForm'     => true,
                 'showForm'          => false
         ));
         
